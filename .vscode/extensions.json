@@ -1,0 +1,26 @@
+{
+  "recommendations": [
+    "berublan.vscode-log-viewer",
+    "mikestead.dotenv",
+    "drknoxy.eslint-disable-snippets",
+    "wayou.vscode-todo-highlight",
+    "dbaeumer.vscode-eslint",
+    "thibault-vanderseypen.i18n-json-editor",
+    "snyk-security.vscode-vuln-cost",
+    "pflannery.vscode-versionlens",
+    "orta.vscode-jest",
+    "esbenp.prettier-vscode",
+    "christian-kohler.npm-intellisense"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.cpptools",
+    "dart-code.dart-code",
+    "ecmel.vscode-html-css",
+    "ms-vscode.powershell",
+    "octref.vetur",
+    "ms-azuretools.vscode-docker",
+    "firefox-devtools.vscode-firefox-debug",
+    "dbaeumer.jshint",
+    "hookyqr.beautify"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "logViewer.watch": [
+    {
+      "title": "node log",
+      "pattern": "./logs/*"
+    }
+  ]
+}
