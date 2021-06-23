@@ -4,6 +4,7 @@ import Logger from '$src/Logger';
 import Store from '$src/Store';
 import Ready from '$src/events/Discord/ready';
 import GuildMemberAdd from '$src/events/Discord/guildMemberAdd';
+import GuildMemberRemove from '$src/events/Discord/guildMemberRemove';
 
 import Events from '$src/events/App/';
 
@@ -29,6 +30,7 @@ const App = {
       Ready(loader);
     });
     this.Store.client.on('guildMemberAdd', GuildMemberAdd);
+    this.Store.client.on('guildMemberRemove', GuildMemberRemove);
   },
 };
 
