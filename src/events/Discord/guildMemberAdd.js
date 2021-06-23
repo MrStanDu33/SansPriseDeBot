@@ -14,7 +14,7 @@ export default (member) => {
 
   Logger.info(`New member just came ! (${member.user.tag})`);
   const loader = Logger.loader(
-    { spinner: 'aesthetic', color: 'cyan' },
+    { spinner: 'dots10', color: 'cyan' },
     `Creating welcome channel for ${member.user.tag}`,
     'info',
   );

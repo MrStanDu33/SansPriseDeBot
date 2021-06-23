@@ -11,7 +11,7 @@ export default (member) => {
 
   Logger.info(`A member just left ! (${member.user.tag})`);
   const loader = Logger.loader(
-    { spinner: 'aesthetic', color: 'cyan' },
+    { spinner: 'dots10', color: 'cyan' },
     `Deleting welcome channel for ${member.user.tag}`,
     'info',
   );
