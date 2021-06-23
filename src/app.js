@@ -35,3 +35,16 @@ const App = {
 };
 
 export default App;
+
+process.once('SIGUSR2', () => {
+  Logger.info('Stopping Discord.js client');
+  const loader = Logger.loader(
+    { spinner: 'aesthetic', color: 'cyan' },
+    'Disconnecting Discord bot to Discord ...',
+    'info',
+  );
+  Store.client.destroy();
+  loader.succeed();
+  Logger.info('Discord bot successfully disconnected');
+  process.kill(process.pid, 'SIGUSR2');
+});

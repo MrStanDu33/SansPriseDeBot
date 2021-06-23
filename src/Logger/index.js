@@ -30,7 +30,8 @@ export default {
       text: message,
     }).start();
 
-    this.debugToFile(message);
+    const methodName = `${logType}ToFile`;
+    this[methodName](message);
 
     return spinnerInstance;
   },
