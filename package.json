@@ -17,6 +17,9 @@
   "license": "GPL-3.0-or-later",
   "private": "true",
   "scripts": {
+    "testDebug": "NODE_OPTIONS=--experimental-vm-modules node --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
+    "testWatch": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
     "start": "node --experimental-specifier-resolution=node index.js",
@@ -33,13 +36,16 @@
     "stack-trace": "*"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.14.7",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.5",
     "link-module-alias": "^1.2.0",
     "prettier": "^2.3.1"
   },
