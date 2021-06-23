@@ -8,7 +8,9 @@ export default {
       throw new Error('please provide an valid callback');
     }
 
-    this[`_${event}`] = cb;
+    if (!this[`_${event}`]) this[`_${event}`] = [];
+
+    this[`_${event}`].push(cb);
   },
   emit(event, ...args) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
@@ -16,6 +18,6 @@ export default {
     }
     if (!this[`_${event}`]) return;
 
-    this[`_${event}`](...args);
+    this[`_${event}`].forEach((cb) => cb(...args));
   },
 };
