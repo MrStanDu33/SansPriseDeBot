@@ -3,4 +3,4 @@ import App from '$src/app';
 
 Dotenv.config();
 
-App();
+App.constructor();
