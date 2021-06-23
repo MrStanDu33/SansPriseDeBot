@@ -6,8 +6,6 @@ import chalk from 'chalk';
 import { get } from 'stack-trace';
 import cliSpinners from 'cli-spinners';
 
-/* eslint-disable no-console */
-
 export default {
   loader(spinnerSettings, message, logType) {
     if (!['debug', 'info', 'warn', 'error'].includes(logType)) {
@@ -59,44 +57,16 @@ export default {
     console.log(`${this.prefixes.console.debug} |`, ...debug);
   },
 
-  debugToFile(...debug) {
-    if (!process.env.APP_DEBUG) return;
-    debug.forEach((debugData) => {
-      this.writeToLogFile(
-        `${this.getDateTime()} | ${this.prefixes.file.debug} | ${this.getCaller(
-          true,
-        )} | ${debugData}`,
-      );
-    });
-  },
   infoToConsole(...info) {
     // eslint-disable-next-line no-console
     console.log(`${this.prefixes.console.info} |`, ...info);
   },
-  infoToFile(...info) {
-    if (!process.env.APP_DEBUG) return;
-    info.forEach((infoData) => {
-      this.writeToLogFile(
-        `${this.getDateTime()} | ${this.prefixes.file.info} | ${this.getCaller(
-          true,
-        )} | ${infoData}`,
-      );
-    });
-  },
+
   warnToConsole(...warn) {
     // eslint-disable-next-line no-console
     console.log(`${this.prefixes.console.warn} |`, ...warn);
   },
-  warnToFile(...warn) {
-    if (!process.env.APP_DEBUG) return;
-    warn.forEach((warnData) => {
-      this.writeToLogFile(
-        `${this.getDateTime()} | ${this.prefixes.file.warn} | ${this.getCaller(
-          true,
-        )} | ${warnData}`,
-      );
-    });
-  },
+
   errorToConsole(...error) {
     const fatal = error.length > 1 ? error.splice(-1)[0] : false;
     // eslint-disable-next-line no-console
@@ -104,16 +74,6 @@ export default {
       `${this.prefixes.console.error}`,
       ...error,
     );
-  },
-  errorToFile(...error) {
-    if (!process.env.APP_DEBUG) return;
-    error.forEach((errorData) => {
-      this.writeToLogFile(
-        `${this.getDateTime()} | ${this.prefixes.file.error} | ${this.getCaller(
-          true,
-        )} | ${errorData}`,
-      );
-    });
   },
 
   writeToLogFile(...data) {
@@ -125,6 +85,50 @@ export default {
         if (err) throw err;
       },
     );
+  },
+
+  debugToFile(...debug) {
+    if (!process.env.APP_DEBUG) return;
+    debug.forEach((debugData) => {
+      this.writeToLogFile(
+        `${this.getDateTime()} | ${this.prefixes.file.debug} | ${this.getCaller(
+          true,
+        )} | ${debugData}`,
+      );
+    });
+  },
+
+  infoToFile(...info) {
+    if (!process.env.APP_DEBUG) return;
+    info.forEach((infoData) => {
+      this.writeToLogFile(
+        `${this.getDateTime()} | ${this.prefixes.file.info} | ${this.getCaller(
+          true,
+        )} | ${infoData}`,
+      );
+    });
+  },
+
+  warnToFile(...warn) {
+    if (!process.env.APP_DEBUG) return;
+    warn.forEach((warnData) => {
+      this.writeToLogFile(
+        `${this.getDateTime()} | ${this.prefixes.file.warn} | ${this.getCaller(
+          true,
+        )} | ${warnData}`,
+      );
+    });
+  },
+
+  errorToFile(...error) {
+    if (!process.env.APP_DEBUG) return;
+    error.forEach((errorData) => {
+      this.writeToLogFile(
+        `${this.getDateTime()} | ${this.prefixes.file.error} | ${this.getCaller(
+          true,
+        )} | ${errorData}`,
+      );
+    });
   },
 
   prefixes: {
@@ -142,11 +146,11 @@ export default {
     },
   },
 
-  getDateTime() {
-    const dateObj = new Date();
-
-    const year = dateObj.getFullYear();
-    const month = [
+  getYear(date) {
+    return date.getFullYear();
+  },
+  getMonth(date) {
+    return [
       'Jan',
       'Feb',
       'Mar',
@@ -159,13 +163,35 @@ export default {
       'Oct',
       'Nov',
       'Dec',
-    ][dateObj.getMonth()];
-    const day = `0${dateObj.getDate()}`.slice(-2);
+    ][date.getMonth()];
+  },
+  getDay(date) {
+    return `0${date.getDate()}`.slice(-2);
+  },
+  getHours(date) {
+    return `0${date.getHours()}`.slice(-2);
+  },
+  getMinutes(date) {
+    return `0${date.getMinutes()}`.slice(-2);
+  },
+  getSeconds(date) {
+    return `0${date.getSeconds()}`.slice(-2);
+  },
+  getMilliseconds(date) {
+    return `00${date.getMilliseconds()}`.slice(-3);
+  },
 
-    const hours = `0${dateObj.getHours()}`.slice(-2);
-    const minutes = `0${dateObj.getMinutes()}`.slice(-2);
-    const seconds = `0${dateObj.getSeconds()}`.slice(-2);
-    const milliseconds = `00${dateObj.getMilliseconds()}`.slice(-3);
+  getDateTime() {
+    const date = new Date();
+
+    const year = this.getYear(date);
+    const month = this.getMonth(date);
+    const day = this.getDay(date);
+
+    const hours = this.getHours(date);
+    const minutes = this.getMinutes(date);
+    const seconds = this.getSeconds(date);
+    const milliseconds = this.getMilliseconds(date);
 
     // prints date & time in YYYY Mmm - DD HH:MM:SS,MS format
     return `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
