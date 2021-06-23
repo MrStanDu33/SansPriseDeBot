@@ -10,7 +10,9 @@
     "pflannery.vscode-versionlens",
     "orta.vscode-jest",
     "esbenp.prettier-vscode",
-    "christian-kohler.npm-intellisense"
+    "christian-kohler.npm-intellisense",
+    "steoates.autoimport",
+    "wix.vscode-import-cost"
   ],
   "unwantedRecommendations": [
     "ms-vscode.cpptools",
