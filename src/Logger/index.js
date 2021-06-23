@@ -55,8 +55,23 @@ export default {
   },
 
   debugToConsole(...debug) {
-    // eslint-disable-next-line no-console
     console.log(`${this.prefixes.console.debug} |`, ...debug);
+  },
+
+  infoToConsole(...info) {
+    console.log(`${this.prefixes.console.info} |`, ...info);
+  },
+
+  warnToConsole(...warn) {
+    console.log(`${this.prefixes.console.warn} |`, ...warn);
+  },
+
+  errorToConsole(...error) {
+    const fatal = error.length > 1 ? error.splice(-1)[0] : false;
+    console[fatal ? 'error' : 'log'](
+      `${this.prefixes.console.error}`,
+      ...error,
+    );
   },
 
   debugToFile(...debug) {
@@ -69,10 +84,7 @@ export default {
       );
     });
   },
-  infoToConsole(...info) {
-    // eslint-disable-next-line no-console
-    console.log(`${this.prefixes.console.info} |`, ...info);
-  },
+
   infoToFile(...info) {
     if (!process.env.APP_DEBUG) return;
     info.forEach((infoData) => {
@@ -83,10 +95,7 @@ export default {
       );
     });
   },
-  warnToConsole(...warn) {
-    // eslint-disable-next-line no-console
-    console.log(`${this.prefixes.console.warn} |`, ...warn);
-  },
+
   warnToFile(...warn) {
     if (!process.env.APP_DEBUG) return;
     warn.forEach((warnData) => {
@@ -97,14 +106,7 @@ export default {
       );
     });
   },
-  errorToConsole(...error) {
-    const fatal = error.length > 1 ? error.splice(-1)[0] : false;
-    // eslint-disable-next-line no-console
-    console[fatal ? 'error' : 'log'](
-      `${this.prefixes.console.error}`,
-      ...error,
-    );
-  },
+
   errorToFile(...error) {
     if (!process.env.APP_DEBUG) return;
     error.forEach((errorData) => {
@@ -142,10 +144,12 @@ export default {
     },
   },
 
-  getDateTime() {
-    const dateObj = new Date();
+  getYear(date) {
+    return date.getFullYear();
+  },
 
-    const year = dateObj.getFullYear();
+  getMonth(date) {
+    const monthIndex = date.getMonth();
     const month = [
       'Jan',
       'Feb',
@@ -159,13 +163,40 @@ export default {
       'Oct',
       'Nov',
       'Dec',
-    ][dateObj.getMonth()];
-    const day = `0${dateObj.getDate()}`.slice(-2);
+    ][monthIndex];
+    return month;
+  },
 
-    const hours = `0${dateObj.getHours()}`.slice(-2);
-    const minutes = `0${dateObj.getMinutes()}`.slice(-2);
-    const seconds = `0${dateObj.getSeconds()}`.slice(-2);
-    const milliseconds = `00${dateObj.getMilliseconds()}`.slice(-3);
+  getDay(date) {
+    return `0${date.getDate()}`.slice(-2);
+  },
+
+  getHours(date) {
+    return `0${date.getHours()}`.slice(-2);
+  },
+
+  getMinutes(date) {
+    return `0${date.getMinutes()}`.slice(-2);
+  },
+
+  getSeconds(date) {
+    return `0${date.getSeconds()}`.slice(-2);
+  },
+
+  getMilliseconds(date) {
+    return `00${date.getMilliseconds()}`.slice(-3);
+  },
+
+  getDateTime() {
+    const dateObj = new Date();
+
+    const year = this.getYear(dateObj);
+    const month = this.getMonth(dateObj);
+    const day = this.getDay(dateObj);
+    const hours = this.getHours(dateObj);
+    const minutes = this.getMinutes(dateObj);
+    const seconds = this.getSeconds(dateObj);
+    const milliseconds = this.getMilliseconds(dateObj);
 
     // prints date & time in YYYY Mmm - DD HH:MM:SS,MS format
     return `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
