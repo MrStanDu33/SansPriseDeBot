@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals';
 import Logger from '$src/Logger';
 
 describe('Logger', () => {
@@ -126,22 +127,28 @@ describe('Logger', () => {
     });
 
     describe('getDateTime', () => {
+      beforeAll(() => {
+        jest.useFakeTimers('modern');
+        jest.setSystemTime(new Date(1624540851150));
+      });
+
+      afterAll(() => {
+        jest.useRealTimers();
+      });
       it("should return instant moment's datetime", () => {
-        const todayDate = new Date();
+        const year = 2021;
+        const month = 'Jun';
+        const day = 24;
 
-        const year = Logger.getYear(todayDate);
-        const month = Logger.getMonth(todayDate);
-        const day = Logger.getDay(todayDate);
-
-        const hours = Logger.getHours(todayDate);
-        const minutes = Logger.getMinutes(todayDate);
-        const seconds = Logger.getSeconds(todayDate);
-        const milliseconds = Logger.getMilliseconds(todayDate);
+        const hours = 15;
+        const minutes = 20;
+        const seconds = 51;
+        const milliseconds = 150;
 
         const expected = `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
-        // need to crop last two digits of milliseconds to catch delay within test execution
-        expect(Logger.getDateTime()).toEqual(
-          expect.stringContaining(expected.slice(0, -2)),
+        // need to ignores last two digits of milliseconds to catch delay within test execution
+        expect(Logger.getDateTime().slice(0, -2)).toEqual(
+          expected.slice(0, -2),
         );
       });
     });
