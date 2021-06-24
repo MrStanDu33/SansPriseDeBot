@@ -1,5 +1,5 @@
 {
   "WELCOME_CHANNEL_NAME": "Welcome",
   "WELCOME_CHANNEL_TOPIC": "Server presentation and role selection",
-  "WELCOME_MESSAGE": "Welcome to you, %s"
+  "WELCOME_MESSAGE": "Welcome to you, <@%s>"
 }

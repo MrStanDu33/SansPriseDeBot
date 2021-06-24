@@ -6,5 +6,5 @@ export default (data) => {
 
   const channel = client.channels.cache.get(data.id);
 
-  channel.send(`${i18n.l('WELCOME_MESSAGE', data.linkedMemberUsername)}`);
+  channel.send(`${i18n.l('WELCOME_MESSAGE', data.linkedMemberId)}`);
 };
