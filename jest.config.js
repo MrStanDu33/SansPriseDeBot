@@ -1,3 +1,3 @@
-process.env.TZ = 'GMT';
+process.env.TZ = 'Europe/Paris';
 
-module.exports = {};
+export default {};
