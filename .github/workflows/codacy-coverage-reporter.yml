@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [15.x]
+        node-version: [16.x]
 
     name: codacy-coverage-reporter
     steps:
@@ -24,9 +24,8 @@ jobs:
       - name: Running tests
         run: |
           npm run coverage
-      - uses: actions/checkout@master
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: coverage/lcov.info
+          coverage-reports: ./coverage/lcov.info
