@@ -131,10 +131,10 @@ describe('Logger', () => {
         jest.useFakeTimers('modern');
         jest.setSystemTime(new Date(1624540851150));
       });
-
       afterAll(() => {
         jest.useRealTimers();
       });
+
       it("should return instant moment's datetime", () => {
         const year = 2021;
         const month = 'Jun';
