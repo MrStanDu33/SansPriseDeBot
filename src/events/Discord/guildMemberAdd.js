@@ -1,4 +1,4 @@
-import db from '$src/db';
+import { logDb } from '$src/Db';
 import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
@@ -42,7 +42,7 @@ export default (member) => {
         linkedMemberUsername: member.user.tag,
       };
 
-      db.push('/app/followingChannels[]', data, true);
+      logDb.push('/app/followingChannels[]', data, true);
 
       EventBus.emit('sendWelcomeMessage', data);
     })

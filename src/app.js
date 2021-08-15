@@ -9,7 +9,7 @@ import GuildMemberRemove from '$src/events/Discord/guildMemberRemove';
 import Events from '$src/events/App/';
 
 const App = {
-  constructor() {
+  async constructor() {
     this.Events = Events;
     this.Store = Store;
 

@@ -1,0 +1,39 @@
+{
+    "$schema": "./rolesTree.schema.json",
+    "default": {
+        "type": "question",
+        "question": "Bonjour1, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
+        "answers": [
+            {
+                "icon": "✔️",
+                "text": "Oui",
+                "actions": {
+                    "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
+                        "type": "question",
+                        "question": "Bonjour2, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
+                        "answers": []
+                    }
+                }
+            },
+            {
+                "icon": "❌",
+                "text": "Non",
+                "actions": {
+                    "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
+                        "type": "addRole",
+                        "role": "Débutant"
+                    },
+                    "6978174d-3683-4954-bc62-3c28f1c8d303": {
+                        "type": "printMessage",
+                        "message": "Okay, great ! First things first ..."
+                    },
+                    "5e3e2502-8071-4161-96f7-b5cabdf577b6": {
+                        "type": "question",
+                        "question": "Bonjour3, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
+                        "answers": []
+                    }
+                }
+            }
+        ]
+    }
+}

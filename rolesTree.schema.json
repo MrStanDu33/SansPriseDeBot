@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RolesTree Schema",
+  "description": "Tree of questions to ask to the user when he lands on the server and actions to perform by the bot",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "default": {
+      "$ref": "#/definitions/action"
+    },
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema path/url for this file"
+    },
+    "definitions": {
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "object",
+          "patternProperties": {
+            "[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}": {
+              "$ref": "#/definitions/question"
+            }
+          },
+          "properties": {
+            "type": "object",
+            "properties": {
+              "question": {
+                "type": "string"
+              },
+              "answers": {
+                "type": "array",
+                "items": { "$ref": "#/definitions/answer" }
+              }
+            },
+            "required": ["question", "answers"],
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  },
+  "required": ["default", "$schema"],
+  "definitions": {
+    "question": {
+      "type": "object",
+      "description": "Question to ask to user",
+      "properties": {
+        "type": {
+          "enum": ["question"]
+        },
+        "question": {
+          "type": "string"
+        },
+        "answers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/answer" },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": ["type", "question", "answers"],
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "object",
+      "description": "Action to perform by the bot.",
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["question"]
+            },
+            "$ref": {
+              "type": "string",
+              "pattern": "^#/definitions/questions/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+            }
+          },
+          "required": ["type", "$ref"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["question"]
+            },
+            "question": {
+              "type": "string"
+            },
+            "answers": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/answer" },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": ["type", "question", "answers"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["addRole"]
+            },
+            "role": {
+              "type": "string"
+            }
+          },
+          "required": ["type", "role"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["printMessage"]
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": ["type", "message"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "answer": {
+      "type": "object",
+      "properties": {
+        "icon": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "object",
+          "patternProperties": {
+            "[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/action"
+                }
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["icon", "text", "actions"],
+      "additionalItems": false
+    }
+  }
+}
