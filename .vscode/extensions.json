@@ -12,7 +12,18 @@
     "esbenp.prettier-vscode",
     "christian-kohler.npm-intellisense",
     "steoates.autoimport",
-    "wix.vscode-import-cost"
+    "wix.vscode-import-cost",
+    "tory.unique-id-generator",
+    "coenraads.bracket-pair-colorizer-2",
+    "markis.code-coverage",
+    "brainfit.vscode-coverage-highlighter",
+    "usernamehw.errorlens",
+    "vtrois.gitmoji-vscode",
+    "oderwat.indent-rainbow",
+    "xabikos.javascriptsnippets",
+    "eg2.vscode-npm-script",
+    "jakob101.relativepath",
+    "gruntfuggly.todo-tree"
   ],
   "unwantedRecommendations": [
     "ms-vscode.cpptools",
