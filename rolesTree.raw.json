@@ -8,7 +8,7 @@
     "questions": {
       "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b": {
         "type": "question",
-        "question": "Bonjour1, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
+        "question": "Bonjour, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous 👇",
         "answers": [
           {
             "icon": "✔️",
@@ -26,15 +26,45 @@
             "actions": {
               "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
                 "type": "addRole",
-                "role": "Débutant"
+                "role": "667286314802216962"
               },
               "6978174d-3683-4954-bc62-3c28f1c8d303": {
                 "type": "printMessage",
-                "message": "Okay, great ! First things first ..."
+                "message": "Très bien ! Voici quelques tutos vidéos qui te permettrons d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après."
               },
-              "5e3e2502-8071-4161-96f7-b5cabdf577b6": {
+              "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
                 "type": "question",
-                "$ref": "#/definitions/questions/5e3e2502-8071-4161-96f7-b5cabdf577b6"
+                "$ref": "#/definitions/questions/a9c626f3-1d8f-4852-8f07-277b36e42aa6"
+              }
+            }
+          }
+        ]
+      },
+      "485fa472-21cb-43bc-8cfb-37a30cbf7437": {
+        "type": "question",
+        "question": "Es-tu plus à l'aise avec la plateforme ?",
+        "answers": [
+          {
+            "icon": "✔️",
+            "text": "Oui",
+            "actions": {
+              "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
+                "type": "question",
+                "$ref": "#/definitions/questions/a9c626f3-1d8f-4852-8f07-277b36e42aa6"
+              }
+            }
+          },
+          {
+            "icon": "❌",
+            "text": "Non",
+            "actions": {
+              "a834da4d-7214-42be-b94c-d16db788aa6e": {
+                "type": "printMessage",
+                "message": "D'accord, je vais contacter l'administrateur afin qu'il puisse t'accompagné dans ton apprentissage."
+              },
+              "8fd3deac-4003-4c0e-91a1-ae55b3f6d245": {
+                "type": "printMessage",
+                "message": "<@209656163736879105>"
               }
             }
           }
@@ -42,13 +72,311 @@
       },
       "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
         "type": "question",
-        "question": "Bonjour2, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
-        "answers": []
+        "question": "Très bien ! Dans quel pôle de formation es-tu ?",
+        "answers": [
+          {
+            "icon": ":developpement:",
+            "text": "Développement",
+            "actions": {
+              "57662076-aadd-405a-805b-c9f1b2330eb5": {
+                "type": "question",
+                "$ref": "#/definitions/questions/57662076-aadd-405a-805b-c9f1b2330eb5"
+              }
+            }
+          },
+          {
+            "icon": ":data:",
+            "text": "Data",
+            "actions": {
+              "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
+                "type": "question",
+                "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
+              }
+            }
+          },
+          {
+            "icon": ":data:",
+            "text": "Data",
+            "actions": {
+              "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
+                "type": "question",
+                "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
+              }
+            }
+          },
+          {
+            "icon": ":rh&g:",
+            "text": "Ressources humaines & Gestion",
+            "actions": {
+              "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
+                "type": "question",
+                "$ref": "#/definitions/questions/8653f9da-dc43-46cd-b090-b3fff0ece8e0"
+              }
+            }
+          },
+          {
+            "icon": ":business:",
+            "text": "Business",
+            "actions": {
+              "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
+                "type": "question",
+                "$ref": "#/definitions/questions/d6beff29-5f30-42b6-b8d2-ef8247da5461"
+              }
+            }
+          },
+          {
+            "icon": ":sys&r:",
+            "text": "Systèmes & Réseaux",
+            "actions": {
+              "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
+                "type": "question",
+                "$ref": "#/definitions/questions/35e62fd9-431d-4dbd-a2e9-21dc6401c961"
+              }
+            }
+          },
+          {
+            "icon": ":marketing-com:",
+            "text": "Marketing & Communication",
+            "actions": {
+              "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
+                "type": "question",
+                "$ref": "#/definitions/questions/13f55b1b-a9ef-45bf-9791-25a0a2b10135"
+              }
+            }
+          },
+          {
+            "icon": ":pedagogie:",
+            "text": "Pédagogie",
+            "actions": {
+              "656a9ee8-2280-4f1b-a48a-026e719ef812": {
+                "type": "question",
+                "$ref": "#/definitions/questions/656a9ee8-2280-4f1b-a48a-026e719ef812"
+              }
+            }
+          },
+          {
+            "icon": ":design:",
+            "text": "Design",
+            "actions": {
+              "84a48f7b-8a78-427d-84b6-6549e232aa09": {
+                "type": "question",
+                "$ref": "#/definitions/questions/84a48f7b-8a78-427d-84b6-6549e232aa09"
+              }
+            }
+          }
+        ]
       },
-      "5e3e2502-8071-4161-96f7-b5cabdf577b6": {
+      "57662076-aadd-405a-805b-c9f1b2330eb5": {
         "type": "question",
-        "question": "Bonjour3, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous ↓",
-        "answers": []
+        "question": "Est-ce que votre formation est encore proposée sur la page des parcours ?",
+        "answers": [
+          {
+            "icon": "✔️",
+            "text": "Oui",
+            "actions": {
+              "0b2e4439-725b-4931-b759-6b7b6743abc8": {
+                "type": "question",
+                "$ref": "#/definitions/questions/0b2e4439-725b-4931-b759-6b7b6743abc8"
+              }
+            }
+          },
+          {
+            "icon": "❌",
+            "text": "Non",
+            "actions": {
+              "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
+                "type": "question",
+                "$ref": "#/definitions/questions/306a718b-ebdd-4f4c-8510-f1b513f74ede"
+              }
+            }
+          }
+        ]
+      },
+      "0b2e4439-725b-4931-b759-6b7b6743abc8": {
+        "type": "question",
+        "question": "Sur lequel de ces parcours êtes vous ?",
+        "answers": [
+          {
+            "icon": ":dw:",
+            "text": "[DW] Développeur Web",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "654691713893531669"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":dfe:",
+            "text": "[DFE] Développeur Front-End",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "761183139283468298"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":daps:",
+            "text": "[DAP/S] Développeur d'application - PHP/Symfony",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364680968863775"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":daps:",
+            "text": "[DAP/S] Développeur d'application - PHP/Symfony",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364680968863775"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":al:",
+            "text": "[AL] Architecte logiciel",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646363430575669248"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":daa:",
+            "text": "[DAA] Développeur d'application - Android",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364432271671298"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":dapy:",
+            "text": "[DAPy] Développeur d'application - Python",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364551855603735"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":dai:",
+            "text": "[DAI] Développeur d'application - iOS",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364509119971388"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":daj:",
+            "text": "[DAJ] Développeur d'application - Java",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364729455017995"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          },
+          {
+            "icon": ":dsf:",
+            "text": "[DSF] Développeur Salesforce",
+            "actions": {
+              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
+                "type": "addRole",
+                "role": "646364040913879041"
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Ce salon va dispraitre dans x minutes"
+              }
+            }
+          }
+        ]
       }
     }
   }
