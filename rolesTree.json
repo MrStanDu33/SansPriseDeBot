@@ -26,7 +26,7 @@
                                                 "actions": {
                                                     "0b2e4439-725b-4931-b759-6b7b6743abc8": {
                                                         "type": "question",
-                                                        "question": "Sur lequel de ces parcours êtes vous ?",
+                                                        "question": "Sur lequel de ces parcours es-tu ?",
                                                         "answers": [
                                                             {
                                                                 "icon": ":dw:",
@@ -218,7 +218,117 @@
                                                 "actions": {
                                                     "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
                                                         "type": "question",
-                                                        "$ref": "#/definitions/questions/306a718b-ebdd-4f4c-8510-f1b513f74ede"
+                                                        "question": "Sur quel parcours es-tu ?",
+                                                        "answers": [
+                                                            {
+                                                                "icon": ":dwj:",
+                                                                "text": "[DWJ] Développeur Web Junior",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646362171655323648"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":pw:",
+                                                                "text": "[PW] Prep'Web",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646402911437324298"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":fs:",
+                                                                "text": "[FS] Prep'Full Stack",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "647070658471395328"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":dfs:",
+                                                                "text": "[DFS] Développeur Full Stack",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "698474572122685450"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":dafe:",
+                                                                "text": "[DAFE] Développeur d'application - Front-End",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646364372045660181"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":pa:",
+                                                                "text": "[PA] Prep'Android",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "660482169139101727"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             }
@@ -232,17 +342,99 @@
                                 "actions": {
                                     "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
-                                    }
-                                }
-                            },
-                            {
-                                "icon": ":data:",
-                                "text": "Data",
-                                "actions": {
-                                    "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
-                                        "type": "question",
-                                        "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":da:",
+                                                "text": "[DA] Data Analyst",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "696173744153952356"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ds:",
+                                                "text": "[DS] Data Scientist",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710834984503738430"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":iml:",
+                                                "text": "[IML] Ingénieur Machine Learning",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835047694860348"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":dar:",
+                                                "text": "[DAr] Data Architect",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835094084124693"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":iia:",
+                                                "text": "[IIA] Ingénieur IA",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835144990130270"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -252,7 +444,99 @@
                                 "actions": {
                                     "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/8653f9da-dc43-46cd-b090-b3fff0ece8e0"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":gp:",
+                                                "text": "[GP] Gestionnaire de paie",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950208519405606"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cgrh:",
+                                                "text": "[CGRH] Chargé de gestion des ressources humaines",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950556277538866"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":mrh:",
+                                                "text": "[MRH] Manager Ressources Humaines",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950567437402144"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rld:",
+                                                "text": "[RLD] Responsable Learning & Development",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951033320505415"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cep:",
+                                                "text": "[CEP] Conseiller en évolution professionnelle",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951214992982016"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -262,7 +546,81 @@
                                 "actions": {
                                     "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/d6beff29-5f30-42b6-b8d2-ef8247da5461"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":ce:",
+                                                "text": "[CE] Créateur d'entreprise",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951459520905236"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":e:",
+                                                "text": "[E] Entrepreneur",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951568525754420"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":mo:",
+                                                "text": "[MO] Manager opérationnel",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951670598074378"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ac:",
+                                                "text": "[AC] Attaché commercial",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951788429836298"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -272,7 +630,81 @@
                                 "actions": {
                                     "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/35e62fd9-431d-4dbd-a2e9-21dc6401c961"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":cpsi:",
+                                                "text": "[CPSI] Chef de projet SI",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952109423853608"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":aic:",
+                                                "text": "[AIC] Architecte infrastructure et cloud",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "648423968553828352"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rssi:",
+                                                "text": "[RSSI] Responsable en sécurité des systèmes d'information",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952210607374367"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ti:",
+                                                "text": "[TI] Technicien informatique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "750426997414690816"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -282,7 +714,63 @@
                                 "actions": {
                                     "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/13f55b1b-a9ef-45bf-9791-25a0a2b10135"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":esmc:",
+                                                "text": "[ESMC] Expert en stratégie marketing et communication",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952665349750834"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rmoc:",
+                                                "text": "[RMOC] Responsable marketing opératinnel et communication",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952808740159508"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cm:",
+                                                "text": "[CM] Community Manager",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952977937596458"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -292,7 +780,93 @@
                                 "actions": {
                                     "656a9ee8-2280-4f1b-a48a-026e719ef812": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/656a9ee8-2280-4f1b-a48a-026e719ef812"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":irp:",
+                                                "text": "[IRP] Ingénieur responsable pédagogique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790954051948773376"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":fe:",
+                                                "text": "[F/E] Formateur / Enseignant",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790954160160899133"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "icon": ":gdp:",
+                                "text": "Gestion de projet",
+                                "actions": {
+                                    "ad733db1-073c-4d6d-9f84-c0554e425c14": {
+                                        "type": "question",
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":cpd:",
+                                                "text": "[CPD] Chef de projet digital",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "679316012780224513"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":pm:",
+                                                "text": "[PM] Product manager",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "762993724590129223"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -302,7 +876,75 @@
                                 "actions": {
                                     "84a48f7b-8a78-427d-84b6-6549e232aa09": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/84a48f7b-8a78-427d-84b6-6549e232aa09"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":uxd:",
+                                                "text": "[UXD] UX Designer",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "752055308594970624"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "icon": ":autre:",
+                                "text": "Autre",
+                                "actions": {
+                                    "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
+                                        "type": "question",
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":pa:",
+                                                "text": "[PA] Prep'Apprentissage",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "804722783963185213"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":pn:",
+                                                "text": "[PN] Passeport Numérique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "823199058234703922"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             }
@@ -340,7 +982,7 @@
                                                 "actions": {
                                                     "0b2e4439-725b-4931-b759-6b7b6743abc8": {
                                                         "type": "question",
-                                                        "question": "Sur lequel de ces parcours êtes vous ?",
+                                                        "question": "Sur lequel de ces parcours es-tu ?",
                                                         "answers": [
                                                             {
                                                                 "icon": ":dw:",
@@ -532,7 +1174,117 @@
                                                 "actions": {
                                                     "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
                                                         "type": "question",
-                                                        "$ref": "#/definitions/questions/306a718b-ebdd-4f4c-8510-f1b513f74ede"
+                                                        "question": "Sur quel parcours es-tu ?",
+                                                        "answers": [
+                                                            {
+                                                                "icon": ":dwj:",
+                                                                "text": "[DWJ] Développeur Web Junior",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646362171655323648"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":pw:",
+                                                                "text": "[PW] Prep'Web",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646402911437324298"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":fs:",
+                                                                "text": "[FS] Prep'Full Stack",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "647070658471395328"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":dfs:",
+                                                                "text": "[DFS] Développeur Full Stack",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "698474572122685450"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":dafe:",
+                                                                "text": "[DAFE] Développeur d'application - Front-End",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "646364372045660181"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "icon": ":pa:",
+                                                                "text": "[PA] Prep'Android",
+                                                                "actions": {
+                                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                                        "type": "addRole",
+                                                                        "role": "660482169139101727"
+                                                                    },
+                                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                                    },
+                                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                                        "type": "printMessage",
+                                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                                    }
+                                                                }
+                                                            }
+                                                        ]
                                                     }
                                                 }
                                             }
@@ -546,17 +1298,99 @@
                                 "actions": {
                                     "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
-                                    }
-                                }
-                            },
-                            {
-                                "icon": ":data:",
-                                "text": "Data",
-                                "actions": {
-                                    "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
-                                        "type": "question",
-                                        "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":da:",
+                                                "text": "[DA] Data Analyst",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "696173744153952356"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ds:",
+                                                "text": "[DS] Data Scientist",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710834984503738430"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":iml:",
+                                                "text": "[IML] Ingénieur Machine Learning",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835047694860348"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":dar:",
+                                                "text": "[DAr] Data Architect",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835094084124693"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":iia:",
+                                                "text": "[IIA] Ingénieur IA",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "710835144990130270"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -566,7 +1400,99 @@
                                 "actions": {
                                     "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/8653f9da-dc43-46cd-b090-b3fff0ece8e0"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":gp:",
+                                                "text": "[GP] Gestionnaire de paie",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950208519405606"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cgrh:",
+                                                "text": "[CGRH] Chargé de gestion des ressources humaines",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950556277538866"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":mrh:",
+                                                "text": "[MRH] Manager Ressources Humaines",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790950567437402144"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rld:",
+                                                "text": "[RLD] Responsable Learning & Development",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951033320505415"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cep:",
+                                                "text": "[CEP] Conseiller en évolution professionnelle",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951214992982016"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -576,7 +1502,81 @@
                                 "actions": {
                                     "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/d6beff29-5f30-42b6-b8d2-ef8247da5461"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":ce:",
+                                                "text": "[CE] Créateur d'entreprise",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951459520905236"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":e:",
+                                                "text": "[E] Entrepreneur",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951568525754420"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":mo:",
+                                                "text": "[MO] Manager opérationnel",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951670598074378"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ac:",
+                                                "text": "[AC] Attaché commercial",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790951788429836298"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -586,7 +1586,81 @@
                                 "actions": {
                                     "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/35e62fd9-431d-4dbd-a2e9-21dc6401c961"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":cpsi:",
+                                                "text": "[CPSI] Chef de projet SI",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952109423853608"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":aic:",
+                                                "text": "[AIC] Architecte infrastructure et cloud",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "648423968553828352"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rssi:",
+                                                "text": "[RSSI] Responsable en sécurité des systèmes d'information",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952210607374367"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":ti:",
+                                                "text": "[TI] Technicien informatique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "750426997414690816"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -596,7 +1670,63 @@
                                 "actions": {
                                     "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/13f55b1b-a9ef-45bf-9791-25a0a2b10135"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":esmc:",
+                                                "text": "[ESMC] Expert en stratégie marketing et communication",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952665349750834"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":rmoc:",
+                                                "text": "[RMOC] Responsable marketing opératinnel et communication",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952808740159508"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":cm:",
+                                                "text": "[CM] Community Manager",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790952977937596458"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -606,7 +1736,93 @@
                                 "actions": {
                                     "656a9ee8-2280-4f1b-a48a-026e719ef812": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/656a9ee8-2280-4f1b-a48a-026e719ef812"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":irp:",
+                                                "text": "[IRP] Ingénieur responsable pédagogique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790954051948773376"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":fe:",
+                                                "text": "[F/E] Formateur / Enseignant",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "790954160160899133"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "icon": ":gdp:",
+                                "text": "Gestion de projet",
+                                "actions": {
+                                    "ad733db1-073c-4d6d-9f84-c0554e425c14": {
+                                        "type": "question",
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":cpd:",
+                                                "text": "[CPD] Chef de projet digital",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "679316012780224513"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":pm:",
+                                                "text": "[PM] Product manager",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "762993724590129223"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             },
@@ -616,7 +1832,75 @@
                                 "actions": {
                                     "84a48f7b-8a78-427d-84b6-6549e232aa09": {
                                         "type": "question",
-                                        "$ref": "#/definitions/questions/84a48f7b-8a78-427d-84b6-6549e232aa09"
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":uxd:",
+                                                "text": "[UXD] UX Designer",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "752055308594970624"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            },
+                            {
+                                "icon": ":autre:",
+                                "text": "Autre",
+                                "actions": {
+                                    "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
+                                        "type": "question",
+                                        "question": "Sur quel parcours es-tu ?",
+                                        "answers": [
+                                            {
+                                                "icon": ":pa:",
+                                                "text": "[PA] Prep'Apprentissage",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "804722783963185213"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            },
+                                            {
+                                                "icon": ":pn:",
+                                                "text": "[PN] Passeport Numérique",
+                                                "actions": {
+                                                    "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                                                        "type": "addRole",
+                                                        "role": "823199058234703922"
+                                                    },
+                                                    "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                                                        "type": "printMessage",
+                                                        "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                                                    },
+                                                    "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                                                        "type": "printMessage",
+                                                        "message": "Ce salon va dispraitre dans x minutes"
+                                                    }
+                                                }
+                                            }
+                                        ]
                                     }
                                 }
                             }
