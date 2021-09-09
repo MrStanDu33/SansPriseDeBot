@@ -1,4 +1,4 @@
-import Discord from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import Logger from '$src/Logger';
 
 import Store from '$src/Store';
@@ -15,7 +15,14 @@ const App = {
 
     Logger.info('Starting Discord.js client');
     if (!this.Store.client) {
-      this.Store.client = new Discord.Client();
+      // TODO: Review discord Intents for more security
+      this.Store.client = new Client({
+        intents: [
+          Intents.FLAGS.GUILDS,
+          Intents.FLAGS.GUILD_MEMBERS,
+          Intents.FLAGS.GUILD_WEBHOOKS,
+        ],
+      });
     }
     this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
     this.setDiscordEvents();
