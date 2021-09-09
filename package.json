@@ -31,7 +31,7 @@
   "dependencies": {
     "chalk": "^4.1.1",
     "cli-spinners": "^2.6.0",
-    "discord.js": "^12.5.3",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "i18n": "^0.13.3",
     "json-refs": "^3.0.15",
@@ -49,7 +49,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.0.5",
     "jest-mock": "^27.0.3",
     "link-module-alias": "^1.2.0",
