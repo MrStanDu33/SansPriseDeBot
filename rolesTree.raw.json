@@ -26,7 +26,9 @@
             "actions": {
               "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
                 "type": "addRole",
-                "role": "667286314802216962"
+                "role": {
+                  "$ref": "#/definitions/roles/debutant_sur_discord"
+                }
               },
               "6978174d-3683-4954-bc62-3c28f1c8d303": {
                 "type": "printMessage",
