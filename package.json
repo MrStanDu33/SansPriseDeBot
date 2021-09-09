@@ -17,6 +17,7 @@
   "license": "GPL-3.0-or-later",
   "private": "true",
   "scripts": {
+    "lint": "eslint . --ext .js --ignore-pattern node_modules/",
     "testDebug": "NODE_OPTIONS=--experimental-vm-modules node --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
     "testWatch": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
