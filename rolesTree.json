@@ -34,7 +34,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "654691713893531669"
+                                                                        "role": {
+                                                                            "name": "[DW] Développeur Web",
+                                                                            "discordId": "654691713893531669"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -52,7 +55,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "761183139283468298"
+                                                                        "role": {
+                                                                            "name": "[DFE] Développeur Front-End",
+                                                                            "discordId": "761183139283468298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -70,7 +76,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364680968863775"
+                                                                        "role": {
+                                                                            "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+                                                                            "discordId": "646364680968863775"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -88,7 +97,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364680968863775"
+                                                                        "role": {
+                                                                            "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+                                                                            "discordId": "646364680968863775"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -106,7 +118,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646363430575669248"
+                                                                        "role": {
+                                                                            "name": "[AL] Architecte logiciel",
+                                                                            "discordId": "646363430575669248"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -124,7 +139,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364432271671298"
+                                                                        "role": {
+                                                                            "name": "[DAA] Développeur d'application - Android",
+                                                                            "discordId": "646364432271671298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -142,7 +160,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364551855603735"
+                                                                        "role": {
+                                                                            "name": "[DAPy] Développeur d'application - Python",
+                                                                            "discordId": "646364551855603735"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -160,7 +181,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364509119971388"
+                                                                        "role": {
+                                                                            "name": "[DAI] Développeur d'application - iOS",
+                                                                            "discordId": "646364509119971388"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -178,7 +202,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364729455017995"
+                                                                        "role": {
+                                                                            "name": "[DAJ] Développeur d'application - Java",
+                                                                            "discordId": "646364729455017995"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -196,7 +223,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364040913879041"
+                                                                        "role": {
+                                                                            "name": "[DSF] Développeur Salesforce",
+                                                                            "discordId": "646364040913879041"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -226,7 +256,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646362171655323648"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DWJ] Développeur Web Junior",
+                                                                            "discordId": "646362171655323648"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -244,7 +277,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646402911437324298"
+                                                                        "role": {
+                                                                            "name": "(OLD) [PW] Prep'Web",
+                                                                            "discordId": "646402911437324298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -262,7 +298,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "647070658471395328"
+                                                                        "role": {
+                                                                            "name": "(OLD) [FS] Prep'Full-Stack",
+                                                                            "discordId": "698474572122685450"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -280,7 +319,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "698474572122685450"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DFS] Développeur Full Stack",
+                                                                            "discordId": "698474572122685450"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -298,7 +340,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646364372045660181"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DAFE] Développeur d'application - Front-End",
+                                                                            "discordId": "646364372045660181"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -316,7 +361,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "660482169139101727"
+                                                                        "role": {
+                                                                            "name": "(OLD) [PA] Prep'Android",
+                                                                            "discordId": "660482169139101727"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -350,7 +398,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "696173744153952356"
+                                                        "role": {
+                                                            "name": "[DA] Data Analyst",
+                                                            "discordId": "696173744153952356"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -368,7 +419,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710834984503738430"
+                                                        "role": {
+                                                            "name": "[DS] Data Scientist",
+                                                            "discordId": "710834984503738430"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -386,7 +440,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835047694860348"
+                                                        "role": {
+                                                            "name": "[IML] Ingénieur Machine Learning",
+                                                            "discordId": "710835047694860347"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -404,7 +461,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835094084124693"
+                                                        "role": {
+                                                            "name": "[DAr] Data Architect",
+                                                            "discordId": "710835094084124693"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -422,7 +482,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835144990130270"
+                                                        "role": {
+                                                            "name": "[IIA] Ingénieur IA",
+                                                            "discordId": "710835144990130270"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -452,7 +515,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950208519405606"
+                                                        "role": {
+                                                            "name": "[GP] Gestionnaire de paie",
+                                                            "discordId": "790950208519405606"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -470,7 +536,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950556277538866"
+                                                        "role": {
+                                                            "name": "[CGRH] Chargé de gestion des ressources humaines",
+                                                            "discordId": "790950556277538866"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -484,11 +553,14 @@
                                             },
                                             {
                                                 "icon": ":mrh:",
-                                                "text": "[MRH] Manager Ressources Humaines",
+                                                "text": "[MRH] Manager RH",
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950567437402144"
+                                                        "role": {
+                                                            "name": "[MRH] Manager RH",
+                                                            "discordId": "790950567437402144"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -506,7 +578,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951033320505415"
+                                                        "role": {
+                                                            "name": "[RLD] Responsable Learning & Development",
+                                                            "discordId": "790951033320505415"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -524,7 +599,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951214992982016"
+                                                        "role": {
+                                                            "name": "[CEP] Conseiller en évolution professionnelle",
+                                                            "discordId": "790951214992982016"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -554,7 +632,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951459520905236"
+                                                        "role": {
+                                                            "name": "[CE] Créateur d'entreprise",
+                                                            "discordId": "790951459520905236"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -572,7 +653,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951568525754420"
+                                                        "role": {
+                                                            "name": "[E] Entrepreneur",
+                                                            "discordId": "790951568525754420"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -590,7 +674,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951670598074378"
+                                                        "role": {
+                                                            "name": "[MO] Manager opérationnel",
+                                                            "discordId": "790951670598074378"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -608,7 +695,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951788429836298"
+                                                        "role": {
+                                                            "name": "[AC] Attaché commercial",
+                                                            "discordId": "790951788429836298"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -638,7 +728,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952109423853608"
+                                                        "role": {
+                                                            "name": "[CPSI] Chef de projet SI",
+                                                            "discordId": "790952109423853608"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -651,12 +744,15 @@
                                                 }
                                             },
                                             {
-                                                "icon": ":aic:",
-                                                "text": "[AIC] Architecte infrastructure et cloud",
+                                                "icon": ":air:",
+                                                "text": "[AIR] Administrateur infrastructure et réseaux",
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "648423968553828352"
+                                                        "role": {
+                                                            "name": "[AIR] Administrateur infrastructure et réseaux",
+                                                            "discordId": "648423968553828352"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -674,7 +770,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952210607374367"
+                                                        "role": {
+                                                            "name": "[RSSI] Responsable en sécurité des systèmes d'information",
+                                                            "discordId": "790952210607374367"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -692,7 +791,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "750426997414690816"
+                                                        "role": {
+                                                            "name": "[TI] Technicien informatique",
+                                                            "discordId": "750426997414690816"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -722,7 +824,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952665349750834"
+                                                        "role": {
+                                                            "name": "[ESMC] Expert en stratégie marketing et communication",
+                                                            "discordId": "790952665349750834"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -740,7 +845,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952808740159508"
+                                                        "role": {
+                                                            "name": "[RMOC] Responsable marketing opérationnel et communication",
+                                                            "discordId": "790952808740159508"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -758,7 +866,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952977937596458"
+                                                        "role": {
+                                                            "name": "[CM] Community Manager",
+                                                            "discordId": "790952977937596458"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -788,7 +899,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790954051948773376"
+                                                        "role": {
+                                                            "name": "[IRP] Ingénieur responsable pédagogique",
+                                                            "discordId": "790954051948773376"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -806,7 +920,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790954160160899133"
+                                                        "role": {
+                                                            "name": "[F/E] Formateur / Enseignant",
+                                                            "discordId": "790954160160899133"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -836,7 +953,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "679316012780224513"
+                                                        "role": {
+                                                            "name": "[CPD] Chef de projet digital",
+                                                            "discordId": "679316012780224513"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -854,7 +974,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "762993724590129223"
+                                                        "role": {
+                                                            "name": "[PM] Product Manager",
+                                                            "discordId": "762993724590129223"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -884,7 +1007,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "752055308594970624"
+                                                        "role": {
+                                                            "name": "[UXD] UX Designer",
+                                                            "discordId": "752055308594970624"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -914,7 +1040,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "804722783963185213"
+                                                        "role": {
+                                                            "name": "[PN] Passeport Numérique",
+                                                            "discordId": "823199058234703922"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -932,7 +1061,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "823199058234703922"
+                                                        "role": {
+                                                            "name": "[PN] Passeport Numérique",
+                                                            "discordId": "823199058234703922"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -990,7 +1122,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "654691713893531669"
+                                                                        "role": {
+                                                                            "name": "[DW] Développeur Web",
+                                                                            "discordId": "654691713893531669"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1008,7 +1143,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "761183139283468298"
+                                                                        "role": {
+                                                                            "name": "[DFE] Développeur Front-End",
+                                                                            "discordId": "761183139283468298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1026,7 +1164,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364680968863775"
+                                                                        "role": {
+                                                                            "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+                                                                            "discordId": "646364680968863775"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1044,7 +1185,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364680968863775"
+                                                                        "role": {
+                                                                            "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+                                                                            "discordId": "646364680968863775"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1062,7 +1206,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646363430575669248"
+                                                                        "role": {
+                                                                            "name": "[AL] Architecte logiciel",
+                                                                            "discordId": "646363430575669248"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1080,7 +1227,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364432271671298"
+                                                                        "role": {
+                                                                            "name": "[DAA] Développeur d'application - Android",
+                                                                            "discordId": "646364432271671298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1098,7 +1248,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364551855603735"
+                                                                        "role": {
+                                                                            "name": "[DAPy] Développeur d'application - Python",
+                                                                            "discordId": "646364551855603735"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1116,7 +1269,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364509119971388"
+                                                                        "role": {
+                                                                            "name": "[DAI] Développeur d'application - iOS",
+                                                                            "discordId": "646364509119971388"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1134,7 +1290,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364729455017995"
+                                                                        "role": {
+                                                                            "name": "[DAJ] Développeur d'application - Java",
+                                                                            "discordId": "646364729455017995"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1152,7 +1311,10 @@
                                                                 "actions": {
                                                                     "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                                                                         "type": "addRole",
-                                                                        "role": "646364040913879041"
+                                                                        "role": {
+                                                                            "name": "[DSF] Développeur Salesforce",
+                                                                            "discordId": "646364040913879041"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1182,7 +1344,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646362171655323648"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DWJ] Développeur Web Junior",
+                                                                            "discordId": "646362171655323648"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1200,7 +1365,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646402911437324298"
+                                                                        "role": {
+                                                                            "name": "(OLD) [PW] Prep'Web",
+                                                                            "discordId": "646402911437324298"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1218,7 +1386,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "647070658471395328"
+                                                                        "role": {
+                                                                            "name": "(OLD) [FS] Prep'Full-Stack",
+                                                                            "discordId": "698474572122685450"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1236,7 +1407,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "698474572122685450"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DFS] Développeur Full Stack",
+                                                                            "discordId": "698474572122685450"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1254,7 +1428,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "646364372045660181"
+                                                                        "role": {
+                                                                            "name": "(OLD) [DAFE] Développeur d'application - Front-End",
+                                                                            "discordId": "646364372045660181"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1272,7 +1449,10 @@
                                                                 "actions": {
                                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                                         "type": "addRole",
-                                                                        "role": "660482169139101727"
+                                                                        "role": {
+                                                                            "name": "(OLD) [PA] Prep'Android",
+                                                                            "discordId": "660482169139101727"
+                                                                        }
                                                                     },
                                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                                         "type": "printMessage",
@@ -1306,7 +1486,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "696173744153952356"
+                                                        "role": {
+                                                            "name": "[DA] Data Analyst",
+                                                            "discordId": "696173744153952356"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1324,7 +1507,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710834984503738430"
+                                                        "role": {
+                                                            "name": "[DS] Data Scientist",
+                                                            "discordId": "710834984503738430"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1342,7 +1528,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835047694860348"
+                                                        "role": {
+                                                            "name": "[IML] Ingénieur Machine Learning",
+                                                            "discordId": "710835047694860347"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1360,7 +1549,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835094084124693"
+                                                        "role": {
+                                                            "name": "[DAr] Data Architect",
+                                                            "discordId": "710835094084124693"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1378,7 +1570,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "710835144990130270"
+                                                        "role": {
+                                                            "name": "[IIA] Ingénieur IA",
+                                                            "discordId": "710835144990130270"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1408,7 +1603,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950208519405606"
+                                                        "role": {
+                                                            "name": "[GP] Gestionnaire de paie",
+                                                            "discordId": "790950208519405606"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1426,7 +1624,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950556277538866"
+                                                        "role": {
+                                                            "name": "[CGRH] Chargé de gestion des ressources humaines",
+                                                            "discordId": "790950556277538866"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1440,11 +1641,14 @@
                                             },
                                             {
                                                 "icon": ":mrh:",
-                                                "text": "[MRH] Manager Ressources Humaines",
+                                                "text": "[MRH] Manager RH",
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790950567437402144"
+                                                        "role": {
+                                                            "name": "[MRH] Manager RH",
+                                                            "discordId": "790950567437402144"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1462,7 +1666,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951033320505415"
+                                                        "role": {
+                                                            "name": "[RLD] Responsable Learning & Development",
+                                                            "discordId": "790951033320505415"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1480,7 +1687,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951214992982016"
+                                                        "role": {
+                                                            "name": "[CEP] Conseiller en évolution professionnelle",
+                                                            "discordId": "790951214992982016"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1510,7 +1720,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951459520905236"
+                                                        "role": {
+                                                            "name": "[CE] Créateur d'entreprise",
+                                                            "discordId": "790951459520905236"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1528,7 +1741,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951568525754420"
+                                                        "role": {
+                                                            "name": "[E] Entrepreneur",
+                                                            "discordId": "790951568525754420"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1546,7 +1762,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951670598074378"
+                                                        "role": {
+                                                            "name": "[MO] Manager opérationnel",
+                                                            "discordId": "790951670598074378"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1564,7 +1783,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790951788429836298"
+                                                        "role": {
+                                                            "name": "[AC] Attaché commercial",
+                                                            "discordId": "790951788429836298"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1594,7 +1816,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952109423853608"
+                                                        "role": {
+                                                            "name": "[CPSI] Chef de projet SI",
+                                                            "discordId": "790952109423853608"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1607,12 +1832,15 @@
                                                 }
                                             },
                                             {
-                                                "icon": ":aic:",
-                                                "text": "[AIC] Architecte infrastructure et cloud",
+                                                "icon": ":air:",
+                                                "text": "[AIR] Administrateur infrastructure et réseaux",
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "648423968553828352"
+                                                        "role": {
+                                                            "name": "[AIR] Administrateur infrastructure et réseaux",
+                                                            "discordId": "648423968553828352"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1630,7 +1858,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952210607374367"
+                                                        "role": {
+                                                            "name": "[RSSI] Responsable en sécurité des systèmes d'information",
+                                                            "discordId": "790952210607374367"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1648,7 +1879,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "750426997414690816"
+                                                        "role": {
+                                                            "name": "[TI] Technicien informatique",
+                                                            "discordId": "750426997414690816"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1678,7 +1912,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952665349750834"
+                                                        "role": {
+                                                            "name": "[ESMC] Expert en stratégie marketing et communication",
+                                                            "discordId": "790952665349750834"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1696,7 +1933,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952808740159508"
+                                                        "role": {
+                                                            "name": "[RMOC] Responsable marketing opérationnel et communication",
+                                                            "discordId": "790952808740159508"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1714,7 +1954,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790952977937596458"
+                                                        "role": {
+                                                            "name": "[CM] Community Manager",
+                                                            "discordId": "790952977937596458"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1744,7 +1987,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790954051948773376"
+                                                        "role": {
+                                                            "name": "[IRP] Ingénieur responsable pédagogique",
+                                                            "discordId": "790954051948773376"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1762,7 +2008,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "790954160160899133"
+                                                        "role": {
+                                                            "name": "[F/E] Formateur / Enseignant",
+                                                            "discordId": "790954160160899133"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1792,7 +2041,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "679316012780224513"
+                                                        "role": {
+                                                            "name": "[CPD] Chef de projet digital",
+                                                            "discordId": "679316012780224513"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1810,7 +2062,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "762993724590129223"
+                                                        "role": {
+                                                            "name": "[PM] Product Manager",
+                                                            "discordId": "762993724590129223"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1840,7 +2095,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "752055308594970624"
+                                                        "role": {
+                                                            "name": "[UXD] UX Designer",
+                                                            "discordId": "752055308594970624"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1870,7 +2128,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "804722783963185213"
+                                                        "role": {
+                                                            "name": "[PN] Passeport Numérique",
+                                                            "discordId": "823199058234703922"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
@@ -1888,7 +2149,10 @@
                                                 "actions": {
                                                     "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                                                         "type": "addRole",
-                                                        "role": "823199058234703922"
+                                                        "role": {
+                                                            "name": "[PN] Passeport Numérique",
+                                                            "discordId": "823199058234703922"
+                                                        }
                                                     },
                                                     "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                                                         "type": "printMessage",
