@@ -40,7 +40,7 @@
         "roles": {
           "type": "object",
           "patternProperties": {
-            "[a-z_]{2}}": {
+            "[a-z_]+}": {
               "type": "object",
               "properties": {
                 "name": {
