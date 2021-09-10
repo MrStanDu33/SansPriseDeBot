@@ -147,6 +147,26 @@
           },
           "required": ["type", "message"],
           "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["promptFile"]
+            },
+            "allowedMimeTypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "\\w+\\/[-+.\\w]+"
+              }
+            },
+            "errorMessage": {
+              "type": "string"
+            }
+          },
+          "required": ["type", "allowedMimeTypes", "errorMessage"],
+          "additionalProperties": false
         }
       ]
     },

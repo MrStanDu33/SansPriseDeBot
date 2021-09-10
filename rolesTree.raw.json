@@ -418,6 +418,22 @@
             "icon": ":dwj:",
             "text": "[DWJ] Développeur Web Junior",
             "actions": {
+              "c06e41bd-e8b8-4252-9997-d35e46cff019": {
+                "type": "printMessage",
+                "message": "D'accord ! Par question de sécurité, peux-tu m'envoyer une capture d'écran de ton tableau de bord d'étudiant ?"
+              },
+              "b682a4d2-6204-4e04-9c94-ada51af41a42": {
+                "type": "promptFile",
+                "allowedMimeTypes": [
+                  "image/bmp",
+                  "image/gif",
+                  "image/jpeg",
+                  "image/png",
+                  "image/tiff",
+                  "image/webp"
+                ],
+                "errorMessage": "Le fichier doit être une image."
+              },
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
