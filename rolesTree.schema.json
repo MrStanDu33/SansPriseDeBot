@@ -36,6 +36,23 @@
             "required": ["question", "answers"],
             "additionalProperties": false
           }
+        },
+        "roles": {
+          "type": "object",
+          "patternProperties": {
+            "[a-z_]+}": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "discordId": {
+                  "type": "string",
+                  "pattern": "^[0-9]{18}$"
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -106,7 +123,13 @@
               "enum": ["addRole"]
             },
             "role": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "$ref": {
+                  "type": "string",
+                  "pattern": "^#/definitions/roles/[a-z_]+$"
+                }
+              }
             }
           },
           "required": ["type", "role"],
@@ -123,6 +146,26 @@
             }
           },
           "required": ["type", "message"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["promptFile"]
+            },
+            "allowedMimeTypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "\\w+\\/[-+.\\w]+"
+              }
+            },
+            "errorMessage": {
+              "type": "string"
+            }
+          },
+          "required": ["type", "allowedMimeTypes", "errorMessage"],
           "additionalProperties": false
         }
       ]
