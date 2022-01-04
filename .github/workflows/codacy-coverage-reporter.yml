@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
-        run: npm install
+        run: npm install --loglevel verbose
       - name: Running tests
         run: |
           npm run coverage
