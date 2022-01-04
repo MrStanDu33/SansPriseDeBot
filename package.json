@@ -29,7 +29,7 @@
     "build:json": "node --experimental-specifier-resolution=node bin/buildJson.js"
   },
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "^5.0.0",
     "cli-spinners": "^2.6.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
@@ -44,8 +44,8 @@
     "@jest/globals": "^27.1.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.24.2",
