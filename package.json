@@ -29,7 +29,7 @@
     "build:json": "node --experimental-specifier-resolution=node bin/buildJson.js"
   },
   "dependencies": {
-    "chalk": "^5.0.0",
+    "chalk": "^4.1.1",
     "cli-spinners": "^2.6.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
