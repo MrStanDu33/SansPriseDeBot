@@ -19,9 +19,9 @@
   "scripts": {
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
     "testDebug": "NODE_OPTIONS=--experimental-vm-modules node --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
-    "testWatch": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
-    "coverage": "NODE_OPTIONS=--experimental-vm-modules npx jest --coverage",
+    "testWatch": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest",
+    "coverage": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest --coverage",
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
     "start": "node --experimental-specifier-resolution=node index.js",
