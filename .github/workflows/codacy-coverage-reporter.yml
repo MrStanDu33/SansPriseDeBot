@@ -20,12 +20,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Installing dependencies
-        run: npm install --loglevel verbose
-      - name: debug install
-        run: npm ls ansi-styles
+        run: npm install
       - name: Running tests
-        run: |
-          npm run coverage
+        run: npm run coverage
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:

@@ -18,10 +18,10 @@
   "private": "true",
   "scripts": {
     "lint": "eslint . --ext .js --ignore-pattern node_modules/",
-    "testDebug": "NODE_OPTIONS=--experimental-vm-modules node --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
-    "testWatch": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest --watch",
-    "test": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest",
-    "coverage": "NODE_OPTIONS=--experimental-vm-modules node ./node_modules/.bin/jest --coverage",
+    "testDebug": "node --experimental-vm-modules --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
+    "testWatch": "node --experimental-vm-modules ./node_modules/.bin/jest --watch",
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+    "coverage": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage",
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
     "start": "node --experimental-specifier-resolution=node index.js",
@@ -29,7 +29,7 @@
     "build:json": "node --experimental-specifier-resolution=node bin/buildJson.js"
   },
   "dependencies": {
-    "chalk": "^4.1.1",
+    "chalk": "5.0.0",
     "cli-spinners": "^2.6.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.6",
-    "@jest/globals": "^27.1.1",
+    "@jest/globals": "27.1.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.6.0",
@@ -50,7 +50,7 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^4.0.0",
-    "jest": "^27.1.1",
+    "jest": "^27.4.6",
     "jest-mock": "^27.1.1",
     "link-module-alias": "^1.2.0",
     "prettier": "^2.4.0"
