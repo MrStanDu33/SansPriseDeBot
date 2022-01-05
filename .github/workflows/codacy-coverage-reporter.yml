@@ -22,7 +22,7 @@ jobs:
       - name: Installing dependencies
         run: npm install --loglevel verbose
       - name: debug install
-        run: npm la ansi-styles
+        run: npm ls ansi-styles
       - name: Running tests
         run: |
           npm run coverage
