@@ -8,11 +8,18 @@ import cliSpinners from 'cli-spinners';
 
 export default {
   loader(spinnerSettings, message, logType) {
+    if (typeof message !== 'string' || message.length === 0) {
+      throw new Error(
+        'Please provide a valid message to print while loader spinning',
+      );
+    }
+
     if (!['debug', 'info', 'warn', 'error'].includes(logType)) {
       throw new Error(
         'Please provide a valid log type (debug,info,warn,error)',
       );
     }
+
     if (
       !Object.prototype.hasOwnProperty.call(
         cliSpinners,
@@ -65,7 +72,7 @@ export default {
 
   warnToConsole(...warn) {
     // eslint-disable-next-line no-console
-    console.log(`${this.prefixes.console.warn} |`, ...warn);
+    console.warn(`${this.prefixes.console.warn} |`, ...warn);
   },
 
   errorToConsole(...error) {
@@ -124,6 +131,8 @@ export default {
   errorToFile(...error) {
     if (!process.env.APP_DEBUG) return;
     error.forEach((errorData) => {
+      if (errorData === true) return;
+
       this.writeToLogFile(
         `${this.getDateTime()} | ${this.prefixes.file.error} | ${this.getCaller(
           true,
@@ -198,8 +207,12 @@ export default {
     return `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
   },
   getCaller(file = false) {
-    const filename = path.basename(get()[file ? 5 : 3].getFileName());
-    const line = get()[1].getLineNumber();
-    return `${filename}:${line}`;
+    const source = get()[file ? 5 : 3].getFileName();
+    if (source) {
+      const filename = path.basename(source);
+      const line = get()[1].getLineNumber();
+      return `${filename}:${line}`;
+    }
+    return 'unknown';
   },
 };
