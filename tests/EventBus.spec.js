@@ -4,23 +4,15 @@ import EventBus from '$src/EventBus';
 describe('EventBus', () => {
   describe('Event Listener', () => {
     it("Should require event's name", () => {
-      try {
+      expect(() => {
         EventBus.on();
-
-        expect(true).toBe(false); // force test to fail
-      } catch (e) {
-        expect(e.message).toBe('please provide an event name');
-      }
+      }).toThrowError('please provide an event name');
     });
 
     it('Should require a callback', () => {
-      try {
+      expect(() => {
         EventBus.on('eventName');
-
-        expect(true).toBe(false); // force test to fail
-      } catch (e) {
-        expect(e.message).toBe('please provide a valid callback');
-      }
+      }).toThrowError('please provide a valid callback');
     });
 
     it('Should allow to register an event', () => {
@@ -33,13 +25,9 @@ describe('EventBus', () => {
 
   describe('Event Emitter', () => {
     it("Should require event's name", () => {
-      try {
+      expect(() => {
         EventBus.emit();
-
-        expect(true).toBe(false); // force test to fail
-      } catch (e) {
-        expect(e.message).toBe('please provide an event name');
-      }
+      }).toThrowError('please provide an event name');
     });
 
     it('Should allow to emit an event', () => {

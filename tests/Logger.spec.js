@@ -7,29 +7,23 @@ import fs from 'fs';
 describe('Logger', () => {
   describe('loader', () => {
     it('check if message is given', () => {
-      try {
+      expect(() => {
         Logger.loader({});
-        expect(true).toBe(false); // if no error occured, force test to fail
-      } catch (e) {
-        expect(e.message).toBe(
-          'Please provide a valid message to print while loader spinning',
-        );
-      }
+      }).toThrowError(
+        'Please provide a valid message to print while loader spinning',
+      );
     });
 
     it('check if logType is given', () => {
-      try {
+      expect(() => {
         Logger.loader({}, 'this is a test message');
-        expect(true).toBe(false); // if no error occured, force test to fail
-      } catch (e) {
-        expect(e.message).toBe(
-          'Please provide a valid log type (debug,info,warn,error)',
-        );
-      }
+      }).toThrowError(
+        'Please provide a valid log type (debug,info,warn,error)',
+      );
     });
 
     it("check if given spinner's setting exist", () => {
-      try {
+      expect(() => {
         Logger.loader(
           {
             spinner: 'Not A Spinner',
@@ -37,10 +31,7 @@ describe('Logger', () => {
           'this is a test message',
           'info',
         );
-        expect(true).toBe(false); // if no error occured, force test to fail
-      } catch (e) {
-        expect(e.message).toMatch('Please provide a spinner name');
-      }
+      }).toThrowError('Please provide a spinner name');
     });
 
     it('calls start', async () => {
