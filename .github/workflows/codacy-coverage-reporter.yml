@@ -22,7 +22,7 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Running tests
-        run: npm run coverage
+        run: npm run test:coverage
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:
