@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
-// import { jest } from '@jest/globals';
 import Store from '$src/Store';
 
 describe('Store', () => {
