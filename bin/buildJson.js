@@ -9,7 +9,7 @@ const boot = async () => {
     'info',
   );
 
-  const rawData = await JsonRefs.resolveRefsAt('./rolesTree.raw.json');
+  const rawData = await JsonRefs.resolveRefsAt('./src/Db/rolesTree.raw.json');
   delete rawData.resolved.definitions;
   const data = rawData.resolved;
 
