@@ -5,7 +5,7 @@ export default {
     }
 
     if (!cb || typeof cb !== 'function') {
-      throw new Error('please provide an valid callback');
+      throw new Error('please provide a valid callback');
     }
 
     if (!this[`_${event}`]) this[`_${event}`] = [];
