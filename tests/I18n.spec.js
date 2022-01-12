@@ -5,9 +5,19 @@ import fs from 'fs';
 describe('I18n', () => {
   it('Should have a configuration file', () => {
     const filePath = 'src/locales';
-    const fileExist = fs.existsSync(path.join(process.cwd(), filePath));
+    const frenchConfFile = `${filePath}/fr.json`;
+    const englishConfFile = `${filePath}/en.json`;
 
-    expect(fileExist).toBe(true);
+    const frenchFileExist = fs.existsSync(
+      path.join(process.cwd(), frenchConfFile),
+    );
+
+    const englishFileExist = fs.existsSync(
+      path.join(process.cwd(), englishConfFile),
+    );
+
+    expect(frenchFileExist).toBe(true);
+    expect(englishFileExist).toBe(true);
   });
 
   it('Should look for locales on /src/locales folder', () => {
