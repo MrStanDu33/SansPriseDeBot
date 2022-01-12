@@ -71,6 +71,7 @@ describe('Logger', () => {
     let consoleWarnMock;
     let consoleErrorMock;
     const env = {};
+
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
       process.env.APP_DEBUG = true;
@@ -96,6 +97,7 @@ describe('Logger', () => {
         expect(consoleLogMock).toHaveBeenCalled();
       });
     });
+
     describe('info', () => {
       it('should print info to console and log file', () => {
         Logger.info('test');
@@ -104,6 +106,7 @@ describe('Logger', () => {
         expect(consoleLogMock).toHaveBeenCalled();
       });
     });
+
     describe('warn', () => {
       it('should print warn to console and log file', () => {
         Logger.warn('test');
@@ -112,6 +115,7 @@ describe('Logger', () => {
         expect(consoleWarnMock).toHaveBeenCalled();
       });
     });
+
     describe('error', () => {
       it('should print error to console and log file', () => {
         Logger.error('test');
@@ -134,11 +138,13 @@ describe('Logger', () => {
       consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
       consoleErrorMock = jest.spyOn(console, 'error').mockImplementation();
     });
+
     afterEach(() => {
       consoleLogMock.mockRestore();
       consoleWarnMock.mockRestore();
       consoleErrorMock.mockRestore();
     });
+
     describe('debugToConsole', () => {
       it('should print debug to console', () => {
         Logger.debugToConsole('test');
@@ -146,6 +152,7 @@ describe('Logger', () => {
         expect(consoleLogMock).toHaveBeenCalled();
       });
     });
+
     describe('infoToConsole', () => {
       it('should print info to console', () => {
         Logger.infoToConsole('test');
@@ -153,6 +160,7 @@ describe('Logger', () => {
         expect(consoleLogMock).toHaveBeenCalled();
       });
     });
+
     describe('warnToConsole', () => {
       it('should print warn to console', () => {
         Logger.warnToConsole('test');
@@ -160,6 +168,7 @@ describe('Logger', () => {
         expect(consoleWarnMock).toHaveBeenCalled();
       });
     });
+
     describe('errorToConsole', () => {
       it('should print error to console', () => {
         Logger.errorToConsole('test');
@@ -173,6 +182,7 @@ describe('Logger', () => {
   describe('File loggers', () => {
     let writeFileMock;
     const env = {};
+
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
       process.env.APP_DEBUG = true;
@@ -183,6 +193,7 @@ describe('Logger', () => {
       writeFileMock.mockRestore();
       process.env.APP_DEBUG = env.APP_DEBUG;
     });
+
     describe('writeToLogFile', () => {
       it('should write into the log file', () => {
         Logger.writeToLogFile('Test');
@@ -190,6 +201,7 @@ describe('Logger', () => {
         expect(writeFileMock).toHaveBeenCalled();
       });
     });
+
     describe('debugToFile', () => {
       it('should print debug to log file', () => {
         Logger.debugToFile('Test');
@@ -197,6 +209,7 @@ describe('Logger', () => {
         expect(writeFileMock).toHaveBeenCalled();
       });
     });
+
     describe('infoToFile', () => {
       it('should print info to log file', () => {
         Logger.infoToFile('Test');
@@ -204,6 +217,7 @@ describe('Logger', () => {
         expect(writeFileMock).toHaveBeenCalled();
       });
     });
+
     describe('warnToFile', () => {
       it('should print warn to log file', () => {
         Logger.warnToFile('Test');
@@ -211,6 +225,7 @@ describe('Logger', () => {
         expect(writeFileMock).toHaveBeenCalled();
       });
     });
+
     describe('errorToFile', () => {
       it('should print error to log file', () => {
         Logger.errorToFile('Test');
@@ -224,14 +239,17 @@ describe('Logger', () => {
     describe('getYear', () => {
       it("should return today's year", () => {
         const todayDate = new Date();
+
         expect(Logger.getYear(todayDate)).toEqual(todayDate.getFullYear());
       });
+
       it("should return given day's year", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getYear(date)).toEqual(date.getFullYear());
       });
     });
@@ -240,8 +258,10 @@ describe('Logger', () => {
       it("should return today's month", () => {
         const todayDate = new Date(); // 2009-11-10
         const month = todayDate.toLocaleString('default', { month: 'short' });
+
         expect(Logger.getMonth(todayDate)).toEqual(month);
       });
+
       it("should return given day's month", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
@@ -249,6 +269,7 @@ describe('Logger', () => {
           startDate + Math.random() * (endDate - startDate),
         );
         const month = date.toLocaleString('default', { month: 'short' });
+
         expect(Logger.getMonth(date)).toEqual(month);
       });
     });
@@ -256,16 +277,19 @@ describe('Logger', () => {
     describe('getDay', () => {
       it("should return today's day", () => {
         const todayDate = new Date();
+
         expect(Logger.getDay(todayDate)).toEqual(
           `0${todayDate.getDate()}`.slice(-2),
         );
       });
+
       it("should return given day's day", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getDay(date)).toEqual(`0${date.getDate()}`.slice(-2));
       });
     });
@@ -273,16 +297,19 @@ describe('Logger', () => {
     describe('getHour', () => {
       it("should return instant moment's hour", () => {
         const todayDate = new Date();
+
         expect(Logger.getHours(todayDate)).toEqual(
           `0${todayDate.getHours()}`.slice(-2),
         );
       });
+
       it("should return given moment's hour", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getHours(date)).toEqual(`0${date.getHours()}`.slice(-2));
       });
     });
@@ -290,16 +317,19 @@ describe('Logger', () => {
     describe('getMinutes', () => {
       it("should return instant moment's minutes", () => {
         const todayDate = new Date();
+
         expect(Logger.getMinutes(todayDate)).toEqual(
           `0${todayDate.getMinutes()}`.slice(-2),
         );
       });
+
       it("should return given moment's minutes", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getMinutes(date)).toEqual(
           `0${date.getMinutes()}`.slice(-2),
         );
@@ -309,16 +339,19 @@ describe('Logger', () => {
     describe('getSeconds', () => {
       it("should return instant moment's seconds", () => {
         const todayDate = new Date();
+
         expect(Logger.getSeconds(todayDate)).toEqual(
           `0${todayDate.getSeconds()}`.slice(-2),
         );
       });
+
       it("should return given moment's seconds", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getSeconds(date)).toEqual(
           `0${date.getSeconds()}`.slice(-2),
         );
@@ -328,16 +361,19 @@ describe('Logger', () => {
     describe('getMilliseconds', () => {
       it("should return instant moment's milliseconds", () => {
         const todayDate = new Date();
+
         expect(Logger.getMilliseconds(todayDate)).toEqual(
           `00${todayDate.getMilliseconds()}`.slice(-3),
         );
       });
+
       it("should return given moment's milliseconds", () => {
         const startDate = new Date(0).getTime();
         const endDate = new Date().getTime();
         const date = new Date(
           startDate + Math.random() * (endDate - startDate),
         );
+
         expect(Logger.getMilliseconds(date)).toEqual(
           `00${date.getMilliseconds()}`.slice(-3),
         );
@@ -349,6 +385,7 @@ describe('Logger', () => {
         jest.useFakeTimers('modern');
         jest.setSystemTime(new Date(1624540851150));
       });
+
       afterAll(() => {
         jest.useRealTimers();
       });
@@ -364,6 +401,7 @@ describe('Logger', () => {
         const milliseconds = 150;
 
         const expected = `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
+
         // need to ignores last two digits of milliseconds to catch delay within test execution
         expect(Logger.getDateTime().slice(0, -2)).toEqual(
           expected.slice(0, -2),
