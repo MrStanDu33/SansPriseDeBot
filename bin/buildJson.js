@@ -1,6 +1,6 @@
 import JsonRefs from 'json-refs';
 import Logger from '$src/Logger';
-import { actionsDb } from '$src/Db';
+import { rolesTree } from '$src/Db';
 
 const boot = async () => {
   const loader = Logger.loader(
@@ -13,7 +13,7 @@ const boot = async () => {
   delete rawData.resolved.definitions;
   const data = rawData.resolved;
 
-  actionsDb.push('/', data);
+  rolesTree.push('/', data);
 
   loader.succeed();
   Logger.info('Compilation done !');

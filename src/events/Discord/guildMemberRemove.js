@@ -1,4 +1,4 @@
-import { logDb } from '$src/Db';
+import { logs } from '$src/Db';
 import Logger from '$src/Logger/index';
 import Store from '$src/Store';
 
@@ -16,12 +16,12 @@ export default (member) => {
     'info',
   );
 
-  const followingChannels = logDb.getData('/app/followingChannels');
+  const followingChannels = logs.getData('/app/followingChannels');
   const followingChannel = followingChannels.find(
     (ch) => ch.linkedMemberId === member.user.id,
   );
 
-  const followingChannelIndex = logDb.getIndex(
+  const followingChannelIndex = logs.getIndex(
     '/app/followingChannels',
     followingChannel.id,
   );
@@ -33,7 +33,7 @@ export default (member) => {
     .then(() => {
       loader.succeed();
       Logger.info(`Channel ${followingChannel.name} successfully deleted !`);
-      logDb.delete(`/app/followingChannels[${followingChannelIndex}]`);
+      logs.delete(`/app/followingChannels[${followingChannelIndex}]`);
     })
     .catch((error) => {
       loader.fail();

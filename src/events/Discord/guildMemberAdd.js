@@ -1,6 +1,6 @@
-import { logDb } from '$src/Db';
 import i18n from '$src/I18n';
 import Store from '$src/Store';
+import { logs } from '$src/Db';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
 
@@ -42,7 +42,7 @@ export default (member) => {
         linkedMemberUsername: member.user.tag,
       };
 
-      logDb.push('/app/followingChannels[]', data, true);
+      logs.push('/app/followingChannels[]', data, true);
 
       EventBus.emit('sendWelcomeMessage', data);
     })
