@@ -7,4 +7,5 @@ export default {
     '^#(.*)$': '<rootDir>/node_modules/$1',
   },
   transform: {},
+  setupFiles: ['<rootDir>/tests/setup-tests.js'],
 };
