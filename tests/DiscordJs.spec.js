@@ -1,6 +1,9 @@
 import { Client, Intents } from 'discord.js';
 import { jest } from '@jest/globals';
 
+jest.retryTimes(4);
+jest.setTimeout(30000);
+
 describe('Discord.js', () => {
   describe('Auth', () => {
     it('Should have environment variables set', () => {

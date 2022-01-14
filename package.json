@@ -24,8 +24,8 @@
     "test:coverage": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage --forceExit",
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
-    "start": "node --experimental-specifier-resolution=node index.js",
-    "dev": "nodemon --experimental-specifier-resolution=node --inspect index.js",
+    "start": "node --experimental-vm-modules --experimental-specifier-resolution=node index.js",
+    "dev": "nodemon --experimental-vm-modules --experimental-specifier-resolution=node --inspect index.js",
     "build:json": "node --experimental-specifier-resolution=node bin/buildJson.js"
   },
   "dependencies": {
