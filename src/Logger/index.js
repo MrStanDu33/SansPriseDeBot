@@ -107,7 +107,6 @@ export default {
   },
 
   infoToFile(...info) {
-    if (!process.env.APP_DEBUG) return;
     info.forEach((infoData) => {
       this.writeToLogFile(
         `${this.getDateTime()} | ${this.prefixes.file.info} | ${this.getCaller(
@@ -129,7 +128,6 @@ export default {
   },
 
   errorToFile(...error) {
-    if (!process.env.APP_DEBUG) return;
     error.forEach((errorData) => {
       if (errorData === true) return;
 

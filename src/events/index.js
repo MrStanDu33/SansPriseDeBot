@@ -19,6 +19,7 @@ const eventFileHandler = async (eventFilesLocation, file) => {
   return true;
 };
 
+/* eslint-disable implicit-arrow-linebreak,function-paren-newline */
 eventFilesLocations.forEach((eventFilesLocation) => {
   fs.readdirSync(`./src/events/${eventFilesLocation}`)
     .filter(eventFilesFilter)
@@ -26,5 +27,6 @@ eventFilesLocations.forEach((eventFilesLocation) => {
       promises.push(eventFileHandler(eventFilesLocation, file)),
     );
 });
+/* eslint-enable implicit-arrow-linebreak,function-paren-newline */
 
 await Promise.all(promises);

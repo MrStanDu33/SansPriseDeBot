@@ -1,9 +1,8 @@
-export default {
-  parser: 'babel-eslint',
+module.exports = {
   root: true,
   env: {
     browser: false,
-    es6: true,
+    es2021: true,
     node: true,
     jest: true,
   },
@@ -19,6 +18,6 @@ export default {
     node: true,
   },
   parserOptions: {
-    allowImportExportEverywhere: true,
+    ecmaVersion: 13,
   },
 };

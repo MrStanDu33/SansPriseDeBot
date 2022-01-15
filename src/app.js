@@ -24,24 +24,25 @@ const App = {
   },
 
   setDiscordEvents() {
+    const { client } = this.Store;
     const loader = Logger.loader(
       { spinner: 'aesthetic', color: 'cyan' },
       'Connecting Discord bot to Discord ...',
       'info',
     );
 
-    this.Store.client.on('ready', () => {
+    client.on('ready', () => {
       EventBus.emit('Discord_ready', loader);
       EventBus.emit('App_syncDbOnBoot');
     });
 
-    this.Store.client.on('guildMemberAdd', () =>
-      EventBus.emit('Discord_guildMemberAdd'),
-    );
+    client.on('guildMemberAdd', () => EventBus.emit('Discord_guildMemberAdd'));
 
-    this.Store.client.on('guildMemberRemove', () =>
+    /* eslint-disable implicit-arrow-linebreak,function-paren-newline */
+    client.on('guildMemberRemove', () =>
       EventBus.emit('Discord_guildMemberRemove'),
     );
+    /* eslint-enable implicit-arrow-linebreak,function-paren-newline */
   },
 };
 
