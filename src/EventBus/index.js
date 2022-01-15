@@ -1,3 +1,5 @@
+import Logger from '$src/Logger';
+
 export default {
   on(event, cb) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
@@ -10,6 +12,7 @@ export default {
 
     if (!this[`_${event}`]) this[`_${event}`] = [];
 
+    Logger.debug(`Listening "${event}" event`);
     this[`_${event}`].push(cb);
   },
   emit(event, ...args) {
@@ -19,5 +22,6 @@ export default {
     if (!this[`_${event}`]) return;
 
     this[`_${event}`].forEach((cb) => cb(...args));
+    Logger.debug(`Event "${event}" dispatched`);
   },
 };
