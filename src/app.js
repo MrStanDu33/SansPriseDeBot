@@ -1,16 +1,11 @@
 import { Client, Intents } from 'discord.js';
-import Logger from '$src/Logger';
-
 import Store from '$src/Store';
-import Ready from '$src/events/Discord/ready';
-import GuildMemberAdd from '$src/events/Discord/guildMemberAdd';
-import GuildMemberRemove from '$src/events/Discord/guildMemberRemove';
-
-import Events from '$src/events/App/';
+import Logger from '$src/Logger';
+import EventBus from '$src/EventBus';
+import '$src/events/';
 
 const App = {
   async constructor() {
-    this.Events = Events;
     this.Store = Store;
 
     Logger.info('Starting Discord.js client');
@@ -27,17 +22,26 @@ const App = {
     this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
     this.setDiscordEvents();
   },
+
   setDiscordEvents() {
     const loader = Logger.loader(
       { spinner: 'aesthetic', color: 'cyan' },
       'Connecting Discord bot to Discord ...',
       'info',
     );
+
     this.Store.client.on('ready', () => {
-      Ready(loader);
+      EventBus.emit('Discord_ready', loader);
+      EventBus.emit('App_syncDbOnBoot');
     });
-    this.Store.client.on('guildMemberAdd', GuildMemberAdd);
-    this.Store.client.on('guildMemberRemove', GuildMemberRemove);
+
+    this.Store.client.on('guildMemberAdd', () =>
+      EventBus.emit('Discord_guildMemberAdd'),
+    );
+
+    this.Store.client.on('guildMemberRemove', () =>
+      EventBus.emit('Discord_guildMemberRemove'),
+    );
   },
 };
 

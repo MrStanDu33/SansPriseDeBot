@@ -1,4 +1,5 @@
-module.exports = {
+export default {
+  parser: 'babel-eslint',
   root: true,
   env: {
     browser: false,
@@ -16,5 +17,8 @@ module.exports = {
   },
   globals: {
     node: true,
+  },
+  parserOptions: {
+    allowImportExportEverywhere: true,
   },
 };
