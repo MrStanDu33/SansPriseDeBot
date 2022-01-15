@@ -61,7 +61,7 @@ export default {
   },
 
   debugToConsole(...debug) {
-    if (!process.env.APP_DEBUG) return;
+    if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
     console.log(`${this.prefixes.console.debug} |`, ...debug);
   },
@@ -72,7 +72,7 @@ export default {
   },
 
   warnToConsole(...warn) {
-    if (!process.env.APP_DEBUG) return;
+    if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
     console.warn(`${this.prefixes.console.warn} |`, ...warn);
   },
@@ -98,7 +98,7 @@ export default {
   },
 
   debugToFile(...debug) {
-    if (!process.env.APP_DEBUG) return;
+    if (process.env.APP_DEBUG === 'false') return;
     debug.forEach((debugData) => {
       this.writeToLogFile(
         `${this.getDateTime()} | ${this.prefixes.file.debug} | ${this.getCaller(
@@ -119,7 +119,7 @@ export default {
   },
 
   warnToFile(...warn) {
-    if (!process.env.APP_DEBUG) return;
+    if (process.env.APP_DEBUG === 'false') return;
     warn.forEach((warnData) => {
       this.writeToLogFile(
         `${this.getDateTime()} | ${this.prefixes.file.warn} | ${this.getCaller(

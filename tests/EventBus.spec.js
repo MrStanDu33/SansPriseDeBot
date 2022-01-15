@@ -2,6 +2,15 @@ import { jest } from '@jest/globals';
 import EventBus from '$src/EventBus';
 
 describe('EventBus', () => {
+  let APP_DEBUG;
+  beforeEach(() => {
+    APP_DEBUG = process.env.APP_DEBUG;
+    process.env.APP_DEBUG = false;
+  });
+
+  afterEach(() => {
+    process.env.APP_DEBUG = APP_DEBUG;
+  });
   describe('Event Listener', () => {
     it("Should require event's name", () => {
       expect(() => {

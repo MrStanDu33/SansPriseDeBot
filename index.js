@@ -1,6 +1,4 @@
-import Dotenv from 'dotenv';
+import '$src/config';
 import App from '$src/app';
-
-Dotenv.config();
 
 App.constructor();
