@@ -210,9 +210,9 @@ export default {
     const source = get()[file ? 5 : 3].getFileName();
     if (source) {
       const filename = path.basename(source);
-      const line = get()[1].getLineNumber();
-      return `${filename}:${line}`;
+      const line = get()[file ? 5 : 3].getLineNumber();
+      return `${filename}:${line}`.padStart(25, ' ');
     }
-    return 'unknown';
+    return 'unknown'.padStart(25, ' ');
   },
 };
