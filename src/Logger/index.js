@@ -61,6 +61,7 @@ export default {
   },
 
   debugToConsole(...debug) {
+    if (!process.env.APP_DEBUG) return;
     // eslint-disable-next-line no-console
     console.log(`${this.prefixes.console.debug} |`, ...debug);
   },
@@ -71,6 +72,7 @@ export default {
   },
 
   warnToConsole(...warn) {
+    if (!process.env.APP_DEBUG) return;
     // eslint-disable-next-line no-console
     console.warn(`${this.prefixes.console.warn} |`, ...warn);
   },
