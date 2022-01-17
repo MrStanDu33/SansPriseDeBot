@@ -11,6 +11,10 @@
     "type": "git",
     "url": "https://github.com/MrStanDu33/SansPriseDeBot"
   },
+  "engines": {
+    "node": ">=16.13.1"
+  },
+  "engineStrict": true,
   "main": "index.js",
   "type": "module",
   "author": "DANIELS-ROTH Stan <contact@daniels-roth-stan.fr> (https://daniels-roth-stan.fr/)",
