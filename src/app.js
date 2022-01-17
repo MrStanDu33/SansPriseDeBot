@@ -20,29 +20,17 @@ const App = {
       });
     }
     this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
-    this.setDiscordEvents();
-  },
 
-  setDiscordEvents() {
-    const { client } = this.Store;
     const loader = Logger.loader(
       { spinner: 'aesthetic', color: 'cyan' },
       'Connecting Discord bot to Discord ...',
       'info',
     );
 
-    client.on('ready', () => {
+    Store.client.on('ready', () => {
       EventBus.emit('Discord_ready', loader);
       EventBus.emit('App_syncDbOnBoot');
     });
-
-    client.on('guildMemberAdd', () => EventBus.emit('Discord_guildMemberAdd'));
-
-    /* eslint-disable implicit-arrow-linebreak,function-paren-newline */
-    client.on('guildMemberRemove', () =>
-      EventBus.emit('Discord_guildMemberRemove'),
-    );
-    /* eslint-enable implicit-arrow-linebreak,function-paren-newline */
   },
 };
 

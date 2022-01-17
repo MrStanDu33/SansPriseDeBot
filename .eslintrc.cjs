@@ -8,7 +8,10 @@ module.exports = {
   },
   extends: ['airbnb-base'],
   plugins: ['prettier'],
-  rules: {},
+  rules: {
+    'implicit-arrow-linebreak': 'off',
+    'function-paren-newline': 'off',
+  },
   settings: {
     'import/resolver': {
       alias: [['$src', './src']],
