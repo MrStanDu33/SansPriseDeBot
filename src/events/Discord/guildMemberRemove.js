@@ -3,6 +3,7 @@ import Logger from '$src/Logger/index';
 import Store from '$src/Store';
 
 export default (member) => {
+  if (process.env.DRY_RUN === 'true') return;
   /*
    * TODO: Detect on boot diff between channels on db and users on server.
    * if so => delete channel and record !

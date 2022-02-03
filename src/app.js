@@ -3,6 +3,7 @@ import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
 import '$src/events/';
+import cron from 'node-cron';
 
 const App = {
   async constructor() {
@@ -16,6 +17,7 @@ const App = {
           Intents.FLAGS.GUILDS,
           Intents.FLAGS.GUILD_MEMBERS,
           Intents.FLAGS.GUILD_WEBHOOKS,
+          Intents.FLAGS.GUILD_MESSAGES,
         ],
       });
     }
@@ -28,9 +30,18 @@ const App = {
     );
 
     Store.client.on('ready', () => {
+      // const channel = Store.client.channels.cache.get('646359583895322645');
+      // channel.send('Test de Julien à nouveau');
+
       EventBus.emit('Discord_ready', loader);
       EventBus.emit('App_syncDbOnBoot');
+
+      this.setCronJobs();
     });
+  },
+
+  setCronJobs() {
+    cron.schedule('* * * * *', () => EventBus.emit('App_processMissedMembers'));
   },
 };
 
