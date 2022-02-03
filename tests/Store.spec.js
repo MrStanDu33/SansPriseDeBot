@@ -14,7 +14,7 @@ describe('Store', () => {
       Store.thing = 'exist';
     });
 
-    it('Should store the data', () => {
+    it('Should return the data', () => {
       expect(Store.thing).toBe('exist');
       expect(Store.anotherThing).toBe(undefined);
     });
