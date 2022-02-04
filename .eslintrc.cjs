@@ -21,6 +21,7 @@ module.exports = {
   globals: {
     node: true,
   },
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 'latest',
   },
