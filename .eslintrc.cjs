@@ -22,6 +22,6 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 13,
+    ecmaVersion: 'latest',
   },
 };
