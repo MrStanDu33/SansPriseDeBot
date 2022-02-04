@@ -404,8 +404,7 @@ describe('Logger', () => {
   describe('Call stack resolver', () => {
     describe('getCaller', () => {
       it('should give the name of the caller', () => {
-        expect(Logger.getCaller(true)).toMatch(/^ {15}run\.js:[\d]{1,}$/);
-        expect(Logger.getCaller(false)).toMatch(/^ {18}unknown$/);
+        expect(Logger.getCaller()).toMatch(/^ {15}run\.js:[\d]{1,}$/);
       });
     });
   });

@@ -15,7 +15,6 @@ module.exports = {
 
     // 'jsdoc/check-examples': 1, see https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines
     'jsdoc/check-indentation': ['error'],
-    'jsdoc/check-line-alignment': ['error', 'always'],
     'jsdoc/check-param-names': [
       'error',
       {
