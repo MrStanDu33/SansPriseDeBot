@@ -6,11 +6,12 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['airbnb-base'],
-  plugins: ['prettier'],
+  extends: ['airbnb-base', 'plugin:jsdoc/recommended'],
+  plugins: ['prettier', 'jsdoc'],
   rules: {
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
+    'jsdoc/tag-lines': 'off',
   },
   settings: {
     'import/resolver': {
