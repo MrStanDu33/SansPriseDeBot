@@ -12,10 +12,29 @@ module.exports = {
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
     'jsdoc/tag-lines': 'off',
+
+    // 'jsdoc/check-examples': 1, see https://github.com/gajus/eslint-plugin-jsdoc#eslint-plugin-jsdoc-rules-tag-lines
+    'jsdoc/check-indentation': ['error'],
+    'jsdoc/check-line-alignment': ['error', 'always'],
+    'jsdoc/check-param-names': [
+      'error',
+      {
+        checkRestProperty: true,
+        allowExtraTrailingParamDocs: true,
+        useDefaultObjectProperties: true,
+      },
+    ],
+    'jsdoc/check-syntax': ['error', true],
   },
   settings: {
     'import/resolver': {
       alias: [['$src', './src']],
+    },
+    jsdoc: {
+      tagNamePreference: {
+        param: 'param',
+        returns: 'returns',
+      },
     },
   },
   globals: {

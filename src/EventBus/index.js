@@ -1,6 +1,13 @@
 import Logger from '$src/Logger';
 
 export default {
+  /**
+   * It adds a callback to the event listener list.
+   *
+   * @param event - The name of the event you want to listen to.
+   * @param cb - The callback function that will be called when the event is emitted.
+   * @returns {void}
+   */
   on(event, cb) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
       throw new Error('please provide an event name');
