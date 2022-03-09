@@ -1,16 +1,12 @@
 import { Client, Intents } from 'discord.js';
-import Logger from '$src/Logger';
-
 import Store from '$src/Store';
-import Ready from '$src/events/Discord/ready';
-import GuildMemberAdd from '$src/events/Discord/guildMemberAdd';
-import GuildMemberRemove from '$src/events/Discord/guildMemberRemove';
-
-import Events from '$src/events/App/';
+import Logger from '$src/Logger';
+import EventBus from '$src/EventBus';
+import '$src/events/';
+import cron from 'node-cron';
 
 const App = {
   async constructor() {
-    this.Events = Events;
     this.Store = Store;
 
     Logger.info('Starting Discord.js client');
@@ -21,23 +17,31 @@ const App = {
           Intents.FLAGS.GUILDS,
           Intents.FLAGS.GUILD_MEMBERS,
           Intents.FLAGS.GUILD_WEBHOOKS,
+          Intents.FLAGS.GUILD_MESSAGES,
         ],
       });
     }
     this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
-    this.setDiscordEvents();
-  },
-  setDiscordEvents() {
+
     const loader = Logger.loader(
       { spinner: 'aesthetic', color: 'cyan' },
       'Connecting Discord bot to Discord ...',
       'info',
     );
-    this.Store.client.on('ready', () => {
-      Ready(loader);
+
+    Store.client.on('ready', () => {
+      // const channel = Store.client.channels.cache.get('646359583895322645');
+      // channel.send('Test de Julien à nouveau');
+
+      EventBus.emit('Discord_ready', loader);
+      EventBus.emit('App_syncDbOnBoot');
+
+      this.setCronJobs();
     });
-    this.Store.client.on('guildMemberAdd', GuildMemberAdd);
-    this.Store.client.on('guildMemberRemove', GuildMemberRemove);
+  },
+
+  setCronJobs() {
+    cron.schedule('* * * * *', () => EventBus.emit('App_processMissedMembers'));
   },
 };
 

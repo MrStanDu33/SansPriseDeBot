@@ -26,7 +26,9 @@
             "actions": {
               "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
                 "type": "addRole",
-                "role": "667286314802216962"
+                "role": {
+                  "$ref": "#/definitions/roles/debutant_sur_discord"
+                }
               },
               "6978174d-3683-4954-bc62-3c28f1c8d303": {
                 "type": "printMessage",
@@ -212,7 +214,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "654691713893531669"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_web"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -230,7 +234,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "761183139283468298"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_front_end"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -248,7 +254,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364680968863775"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_php_symfony"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -266,7 +274,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364680968863775"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_php_symfony"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -284,7 +294,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646363430575669248"
+                "role": {
+                  "$ref": "#/definitions/roles/architecte_logiciel"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -302,7 +314,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364432271671298"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_android"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -320,7 +334,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364551855603735"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_python"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -338,7 +354,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364509119971388"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_ios"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -356,7 +374,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364729455017995"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_java"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -374,7 +394,9 @@
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
-                "role": "646364040913879041"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_salesforce"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -396,9 +418,27 @@
             "icon": ":dwj:",
             "text": "[DWJ] Développeur Web Junior",
             "actions": {
+              "c06e41bd-e8b8-4252-9997-d35e46cff019": {
+                "type": "printMessage",
+                "message": "D'accord ! Par question de sécurité, peux-tu m'envoyer une capture d'écran de ton tableau de bord d'étudiant ?"
+              },
+              "b682a4d2-6204-4e04-9c94-ada51af41a42": {
+                "type": "promptFile",
+                "allowedMimeTypes": [
+                  "image/bmp",
+                  "image/gif",
+                  "image/jpeg",
+                  "image/png",
+                  "image/tiff",
+                  "image/webp"
+                ],
+                "errorMessage": "Le fichier doit être une image."
+              },
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "646362171655323648"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_web_junior"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -416,7 +456,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "646402911437324298"
+                "role": {
+                  "$ref": "#/definitions/roles/prep_web"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -434,7 +476,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "647070658471395328"
+                "role": {
+                  "$ref": "#/definitions/roles/prep_full_stack"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -452,7 +496,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "698474572122685450"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_full_stack"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -470,7 +516,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "646364372045660181"
+                "role": {
+                  "$ref": "#/definitions/roles/developpeur_d_application_front_end"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -488,7 +536,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "660482169139101727"
+                "role": {
+                  "$ref": "#/definitions/roles/prep_android"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -512,7 +562,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "696173744153952356"
+                "role": {
+                  "$ref": "#/definitions/roles/data_analyst"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -530,7 +582,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "710834984503738430"
+                "role": {
+                  "$ref": "#/definitions/roles/data_scientist"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -548,7 +602,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "710835047694860348"
+                "role": {
+                  "$ref": "#/definitions/roles/ingenieur_machine_learning"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -566,7 +622,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "710835094084124693"
+                "role": {
+                  "$ref": "#/definitions/roles/data_architect"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -584,7 +642,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "710835144990130270"
+                "role": {
+                  "$ref": "#/definitions/roles/ingenieur_ia"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -608,7 +668,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790950208519405606"
+                "role": {
+                  "$ref": "#/definitions/roles/gestionnaire_de_paie"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -626,7 +688,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790950556277538866"
+                "role": {
+                  "$ref": "#/definitions/roles/charge_de_gestion_des_ressources_humaines"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -640,11 +704,13 @@
           },
           {
             "icon": ":mrh:",
-            "text": "[MRH] Manager Ressources Humaines",
+            "text": "[MRH] Manager RH",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790950567437402144"
+                "role": {
+                  "$ref": "#/definitions/roles/manager_rh"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -662,7 +728,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951033320505415"
+                "role": {
+                  "$ref": "#/definitions/roles/responsable_learning_development"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -680,7 +748,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951214992982016"
+                "role": {
+                  "$ref": "#/definitions/roles/conseiller_en_evolution_professionnelle"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -704,7 +774,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951459520905236"
+                "role": {
+                  "$ref": "#/definitions/roles/createur_d_entreprise"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -722,7 +794,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951568525754420"
+                "role": {
+                  "$ref": "#/definitions/roles/entrepreneur"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -740,7 +814,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951670598074378"
+                "role": {
+                  "$ref": "#/definitions/roles/manager_operationnel"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -758,7 +834,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790951788429836298"
+                "role": {
+                  "$ref": "#/definitions/roles/attache_commercial"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -782,7 +860,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790952109423853608"
+                "role": {
+                  "$ref": "#/definitions/roles/chef_de_projet_si"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -795,12 +875,14 @@
             }
           },
           {
-            "icon": ":aic:",
-            "text": "[AIC] Architecte infrastructure et cloud",
+            "icon": ":air:",
+            "text": "[AIR] Administrateur infrastructure et réseaux",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "648423968553828352"
+                "role": {
+                  "$ref": "#/definitions/roles/administrateur_infrastructure_et_reseaux"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -818,7 +900,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790952210607374367"
+                "role": {
+                  "$ref": "#/definitions/roles/responsable_en_securite_des_systemes_d_information"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -836,7 +920,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "750426997414690816"
+                "role": {
+                  "$ref": "#/definitions/roles/technicien_informatique"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -860,7 +946,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790952665349750834"
+                "role": {
+                  "$ref": "#/definitions/roles/expert_en_strategie_marketing_et_communication"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -878,7 +966,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790952808740159508"
+                "role": {
+                  "$ref": "#/definitions/roles/responsable_marketing_operationnel_et_communication"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -896,7 +986,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790952977937596458"
+                "role": {
+                  "$ref": "#/definitions/roles/community_manager"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -920,7 +1012,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790954051948773376"
+                "role": {
+                  "$ref": "#/definitions/roles/ingenieur_responsable_pedagogique"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -938,7 +1032,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "790954160160899133"
+                "role": {
+                  "$ref": "#/definitions/roles/formateur_enseignant"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -962,7 +1058,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "679316012780224513"
+                "role": {
+                  "$ref": "#/definitions/roles/chef_de_projet_digital"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -980,7 +1078,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "762993724590129223"
+                "role": {
+                  "$ref": "#/definitions/roles/product_manager"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -1004,7 +1104,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "752055308594970624"
+                "role": {
+                  "$ref": "#/definitions/roles/ux_designer"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -1028,7 +1130,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "804722783963185213"
+                "role": {
+                  "$ref": "#/definitions/roles/passeport_numerique"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -1046,7 +1150,9 @@
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
-                "role": "823199058234703922"
+                "role": {
+                  "$ref": "#/definitions/roles/passeport_numerique"
+                }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
@@ -1059,6 +1165,200 @@
             }
           }
         ]
+      }
+    },
+    "roles": {
+      "developpeur_d_application_python": {
+        "name": "[DAPy] Développeur d'application - Python",
+        "discordId": "646364551855603735"
+      },
+      "developpeur_web": {
+        "name": "[DW] Développeur Web",
+        "discordId": "654691713893531669"
+      },
+      "developpeur_salesforce": {
+        "name": "[DSF] Développeur Salesforce",
+        "discordId": "646364040913879041"
+      },
+      "architecte_logiciel": {
+        "name": "[AL] Architecte logiciel",
+        "discordId": "646363430575669248"
+      },
+      "developpeur_d_application_android": {
+        "name": "[DAA] Développeur d'application - Android",
+        "discordId": "646364432271671298"
+      },
+      "developpeur_front_end": {
+        "name": "[DFE] Développeur Front-End",
+        "discordId": "761183139283468298"
+      },
+      "developpeur_d_application_ios": {
+        "name": "[DAI] Développeur d'application - iOS",
+        "discordId": "646364509119971388"
+      },
+      "developpeur_d_application_java": {
+        "name": "[DAJ] Développeur d'application - Java",
+        "discordId": "646364729455017995"
+      },
+      "developpeur_d_application_php_symfony": {
+        "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+        "discordId": "646364680968863775"
+      },
+      "data_analyst": {
+        "name": "[DA] Data Analyst",
+        "discordId": "696173744153952356"
+      },
+      "data_scientist": {
+        "name": "[DS] Data Scientist",
+        "discordId": "710834984503738430"
+      },
+      "ingenieur_machine_learning": {
+        "name": "[IML] Ingénieur Machine Learning",
+        "discordId": "710835047694860347"
+      },
+      "data_architect": {
+        "name": "[DAr] Data Architect",
+        "discordId": "710835094084124693"
+      },
+      "ingenieur_ia": {
+        "name": "[IIA] Ingénieur IA",
+        "discordId": "710835144990130270"
+      },
+      "gestionnaire_de_paie": {
+        "name": "[GP] Gestionnaire de paie",
+        "discordId": "790950208519405606"
+      },
+      "charge_de_gestion_des_ressources_humaines": {
+        "name": "[CGRH] Chargé de gestion des ressources humaines",
+        "discordId": "790950556277538866"
+      },
+      "manager_rh": {
+        "name": "[MRH] Manager RH",
+        "discordId": "790950567437402144"
+      },
+      "responsable_learning_development": {
+        "name": "[RLD] Responsable Learning & Development",
+        "discordId": "790951033320505415"
+      },
+      "conseiller_en_evolution_professionnelle": {
+        "name": "[CEP] Conseiller en évolution professionnelle",
+        "discordId": "790951214992982016"
+      },
+      "createur_d_entreprise": {
+        "name": "[CE] Créateur d'entreprise",
+        "discordId": "790951459520905236"
+      },
+      "entrepreneur": {
+        "name": "[E] Entrepreneur",
+        "discordId": "790951568525754420"
+      },
+      "manager_operationnel": {
+        "name": "[MO] Manager opérationnel",
+        "discordId": "790951670598074378"
+      },
+      "attache_commercial": {
+        "name": "[AC] Attaché commercial",
+        "discordId": "790951788429836298"
+      },
+      "chef_de_projet_si": {
+        "name": "[CPSI] Chef de projet SI",
+        "discordId": "790952109423853608"
+      },
+      "administrateur_infrastructure_et_reseaux": {
+        "name": "[AIR] Administrateur infrastructure et réseaux",
+        "discordId": "648423968553828352"
+      },
+      "responsable_en_securite_des_systemes_d_information": {
+        "name": "[RSSI] Responsable en sécurité des systèmes d'information",
+        "discordId": "790952210607374367"
+      },
+      "technicien_informatique": {
+        "name": "[TI] Technicien informatique",
+        "discordId": "750426997414690816"
+      },
+      "expert_en_strategie_marketing_et_communication": {
+        "name": "[ESMC] Expert en stratégie marketing et communication",
+        "discordId": "790952665349750834"
+      },
+      "responsable_marketing_operationnel_et_communication": {
+        "name": "[RMOC] Responsable marketing opérationnel et communication",
+        "discordId": "790952808740159508"
+      },
+      "community_manager": {
+        "name": "[CM] Community Manager",
+        "discordId": "790952977937596458"
+      },
+      "ingenieur_responsable_pedagogique": {
+        "name": "[IRP] Ingénieur responsable pédagogique",
+        "discordId": "790954051948773376"
+      },
+      "formateur_enseignant": {
+        "name": "[F/E] Formateur / Enseignant",
+        "discordId": "790954160160899133"
+      },
+      "chef_de_projet_digital": {
+        "name": "[CPD] Chef de projet digital",
+        "discordId": "679316012780224513"
+      },
+      "product_manager": {
+        "name": "[PM] Product Manager",
+        "discordId": "762993724590129223"
+      },
+      "ux_designer": {
+        "name": "[UXD] UX Designer",
+        "discordId": "752055308594970624"
+      },
+      "debutant_sur_discord": {
+        "name": "Débutant sur Discord",
+        "discordId": "667286314802216962"
+      },
+      "informe": {
+        "name": "Informé",
+        "discordId": "663666710611755018"
+      },
+      "prep_apprentissage": {
+        "name": "[PA] Prep'Apprentissage",
+        "discordId": "804722783963185213"
+      },
+      "passeport_numerique": {
+        "name": "[PN] Passeport Numérique",
+        "discordId": "823199058234703922"
+      },
+      "mentor": {
+        "name": "[M] Mentor",
+        "discordId": "648991513023479809"
+      },
+      "diplome": {
+        "name": "Diplômé",
+        "discordId": "705042042480492544"
+      },
+      "developpeur_web_junior": {
+        "name": "(OLD) [DWJ] Développeur Web Junior",
+        "discordId": "646362171655323648"
+      },
+      "prep_android": {
+        "name": "(OLD) [PA] Prep'Android",
+        "discordId": "660482169139101727"
+      },
+      "prep_web": {
+        "name": "(OLD) [PW] Prep'Web",
+        "discordId": "646402911437324298"
+      },
+      "prep_full_stack": {
+        "name": "(OLD) [FS] Prep'Full-Stack",
+        "discordId": "698474572122685450"
+      },
+      "developpeur_full_stack": {
+        "name": "(OLD) [DFS] Développeur Full Stack",
+        "discordId": "698474572122685450"
+      },
+      "developpeur_d_application_front_end": {
+        "name": "(OLD) [DAFE] Développeur d'application - Front-End",
+        "discordId": "646364372045660181"
+      },
+      "sans_formation": {
+        "name": "Sans formation",
+        "discordId": "845283545676644363"
       }
     }
   }
