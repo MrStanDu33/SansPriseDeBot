@@ -51,7 +51,7 @@ describe('Logger', () => {
         'info',
       );
 
-      expect(spinner.id).toBeTruthy();
+      expect(spinner.isSpinning).toBe(true);
       expect(spinner.isEnabled).toBe(true);
     });
   });

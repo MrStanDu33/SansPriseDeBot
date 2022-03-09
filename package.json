@@ -41,7 +41,7 @@
     "json-refs": "^3.0.15",
     "node-cron": "^3.0.0",
     "node-json-db": "^1.4.1",
-    "ora": "^6.0.1",
+    "ora": "^6.1.0",
     "stack-trace": "*"
   },
   "devDependencies": {
