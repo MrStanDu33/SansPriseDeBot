@@ -41,14 +41,14 @@
     "json-refs": "^3.0.15",
     "node-cron": "^3.0.0",
     "node-json-db": "^1.4.1",
-    "ora": "^6.0.1",
+    "ora": "^6.1.0",
     "stack-trace": "*"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.10",
     "@dotenv/cli": "^2.0.0",
-    "@jest/globals": "27.5.0",
+    "@jest/globals": "27.5.1",
     "babel-eslint": "^10.1.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^8.7.0",
