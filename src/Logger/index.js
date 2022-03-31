@@ -330,7 +330,7 @@ export default {
    * @returns { string } - The year of the given date.
    */
   getYear(date) {
-    return date.getFullYear();
+    return `${date.getFullYear()}`;
   },
 
   /**

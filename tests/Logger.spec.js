@@ -231,37 +231,30 @@ describe('Logger', () => {
       it("should return today's year", () => {
         const todayDate = new Date();
 
-        expect(Logger.getYear(todayDate)).toEqual(todayDate.getFullYear());
+        expect(Logger.getYear(todayDate)).toEqual(
+          String(todayDate.getFullYear()),
+        );
       });
 
       it("should return given day's year", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
+        const date = new Date('25 March 2020');
 
-        expect(Logger.getYear(date)).toEqual(date.getFullYear());
+        expect(Logger.getYear(date)).toEqual('2020');
       });
     });
 
     describe('getMonth', () => {
       it("should return today's month", () => {
-        const todayDate = new Date(); // 2009-11-10
+        const todayDate = new Date();
         const month = todayDate.toLocaleString('default', { month: 'short' });
 
         expect(Logger.getMonth(todayDate)).toEqual(month);
       });
 
       it("should return given day's month", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
-        const month = date.toLocaleString('default', { month: 'short' });
+        const date = new Date('25 March 2020');
 
-        expect(Logger.getMonth(date)).toEqual(month);
+        expect(Logger.getMonth(date)).toEqual('Mar');
       });
     });
 
@@ -275,13 +268,11 @@ describe('Logger', () => {
       });
 
       it("should return given day's day", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
+        const dateWithLongDay = new Date('25 March 2020');
+        const dateWithShortDay = new Date('01 March 2020');
 
-        expect(Logger.getDay(date)).toEqual(`0${date.getDate()}`.slice(-2));
+        expect(Logger.getDay(dateWithLongDay)).toEqual('25');
+        expect(Logger.getDay(dateWithShortDay)).toEqual('01');
       });
     });
 
@@ -295,13 +286,11 @@ describe('Logger', () => {
       });
 
       it("should return given moment's hour", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
+        const dateWithLongHour = new Date('25 March 2020 15:16:17');
+        const dateWithShortHour = new Date('25 March 2020 01:02:03');
 
-        expect(Logger.getHours(date)).toEqual(`0${date.getHours()}`.slice(-2));
+        expect(Logger.getHours(dateWithLongHour)).toEqual('15');
+        expect(Logger.getHours(dateWithShortHour)).toEqual('01');
       });
     });
 
@@ -315,15 +304,11 @@ describe('Logger', () => {
       });
 
       it("should return given moment's minutes", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
+        const dateWithLongMinutes = new Date('25 March 2020 15:16:17');
+        const dateWithShortMinutes = new Date('25 March 2020 01:02:03');
 
-        expect(Logger.getMinutes(date)).toEqual(
-          `0${date.getMinutes()}`.slice(-2),
-        );
+        expect(Logger.getMinutes(dateWithLongMinutes)).toEqual('16');
+        expect(Logger.getMinutes(dateWithShortMinutes)).toEqual('02');
       });
     });
 
@@ -337,15 +322,11 @@ describe('Logger', () => {
       });
 
       it("should return given moment's seconds", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
-        );
+        const dateWithLongSeconds = new Date('25 March 2020 15:16:17');
+        const dateWithShortSeconds = new Date('25 March 2020 01:02:03');
 
-        expect(Logger.getSeconds(date)).toEqual(
-          `0${date.getSeconds()}`.slice(-2),
-        );
+        expect(Logger.getSeconds(dateWithLongSeconds)).toEqual('17');
+        expect(Logger.getSeconds(dateWithShortSeconds)).toEqual('03');
       });
     });
 
@@ -359,14 +340,14 @@ describe('Logger', () => {
       });
 
       it("should return given moment's milliseconds", () => {
-        const startDate = new Date(0).getTime();
-        const endDate = new Date().getTime();
-        const date = new Date(
-          startDate + Math.random() * (endDate - startDate),
+        const dateWithLongMilliseconds = new Date('25 March 2020 15:16:17.300');
+        const dateWithShortMilliseconds = new Date(
+          '25 March 2020 01:02:03.020',
         );
 
-        expect(Logger.getMilliseconds(date)).toEqual(
-          `00${date.getMilliseconds()}`.slice(-3),
+        expect(Logger.getMilliseconds(dateWithLongMilliseconds)).toEqual('300');
+        expect(Logger.getMilliseconds(dateWithShortMilliseconds)).toEqual(
+          '020',
         );
       });
     });
