@@ -1170,195 +1170,195 @@
     "roles": {
       "developpeur_d_application_python": {
         "name": "[DAPy] Développeur d'application - Python",
-        "discordId": "646364551855603735"
+        "roleId": "646364551855603735"
       },
       "developpeur_web": {
         "name": "[DW] Développeur Web",
-        "discordId": "654691713893531669"
+        "roleId": "654691713893531669"
       },
       "developpeur_salesforce": {
         "name": "[DSF] Développeur Salesforce",
-        "discordId": "646364040913879041"
+        "roleId": "646364040913879041"
       },
       "architecte_logiciel": {
         "name": "[AL] Architecte logiciel",
-        "discordId": "646363430575669248"
+        "roleId": "646363430575669248"
       },
       "developpeur_d_application_android": {
         "name": "[DAA] Développeur d'application - Android",
-        "discordId": "646364432271671298"
+        "roleId": "646364432271671298"
       },
       "developpeur_front_end": {
         "name": "[DFE] Développeur Front-End",
-        "discordId": "761183139283468298"
+        "roleId": "761183139283468298"
       },
       "developpeur_d_application_ios": {
         "name": "[DAI] Développeur d'application - iOS",
-        "discordId": "646364509119971388"
+        "roleId": "646364509119971388"
       },
       "developpeur_d_application_java": {
         "name": "[DAJ] Développeur d'application - Java",
-        "discordId": "646364729455017995"
+        "roleId": "646364729455017995"
       },
       "developpeur_d_application_php_symfony": {
         "name": "[DAP/S] Développeur d'application - PHP/Symfony",
-        "discordId": "646364680968863775"
+        "roleId": "646364680968863775"
       },
       "data_analyst": {
         "name": "[DA] Data Analyst",
-        "discordId": "696173744153952356"
+        "roleId": "696173744153952356"
       },
       "data_scientist": {
         "name": "[DS] Data Scientist",
-        "discordId": "710834984503738430"
+        "roleId": "710834984503738430"
       },
       "ingenieur_machine_learning": {
         "name": "[IML] Ingénieur Machine Learning",
-        "discordId": "710835047694860347"
+        "roleId": "710835047694860347"
       },
       "data_architect": {
         "name": "[DAr] Data Architect",
-        "discordId": "710835094084124693"
+        "roleId": "710835094084124693"
       },
       "ingenieur_ia": {
         "name": "[IIA] Ingénieur IA",
-        "discordId": "710835144990130270"
+        "roleId": "710835144990130270"
       },
       "gestionnaire_de_paie": {
         "name": "[GP] Gestionnaire de paie",
-        "discordId": "790950208519405606"
+        "roleId": "790950208519405606"
       },
       "charge_de_gestion_des_ressources_humaines": {
         "name": "[CGRH] Chargé de gestion des ressources humaines",
-        "discordId": "790950556277538866"
+        "roleId": "790950556277538866"
       },
       "manager_rh": {
         "name": "[MRH] Manager RH",
-        "discordId": "790950567437402144"
+        "roleId": "790950567437402144"
       },
       "responsable_learning_development": {
         "name": "[RLD] Responsable Learning & Development",
-        "discordId": "790951033320505415"
+        "roleId": "790951033320505415"
       },
       "conseiller_en_evolution_professionnelle": {
         "name": "[CEP] Conseiller en évolution professionnelle",
-        "discordId": "790951214992982016"
+        "roleId": "790951214992982016"
       },
       "createur_d_entreprise": {
         "name": "[CE] Créateur d'entreprise",
-        "discordId": "790951459520905236"
+        "roleId": "790951459520905236"
       },
       "entrepreneur": {
         "name": "[E] Entrepreneur",
-        "discordId": "790951568525754420"
+        "roleId": "790951568525754420"
       },
       "manager_operationnel": {
         "name": "[MO] Manager opérationnel",
-        "discordId": "790951670598074378"
+        "roleId": "790951670598074378"
       },
       "attache_commercial": {
         "name": "[AC] Attaché commercial",
-        "discordId": "790951788429836298"
+        "roleId": "790951788429836298"
       },
       "chef_de_projet_si": {
         "name": "[CPSI] Chef de projet SI",
-        "discordId": "790952109423853608"
+        "roleId": "790952109423853608"
       },
       "administrateur_infrastructure_et_reseaux": {
         "name": "[AIR] Administrateur infrastructure et réseaux",
-        "discordId": "648423968553828352"
+        "roleId": "648423968553828352"
       },
       "responsable_en_securite_des_systemes_d_information": {
         "name": "[RSSI] Responsable en sécurité des systèmes d'information",
-        "discordId": "790952210607374367"
+        "roleId": "790952210607374367"
       },
       "technicien_informatique": {
         "name": "[TI] Technicien informatique",
-        "discordId": "750426997414690816"
+        "roleId": "750426997414690816"
       },
       "expert_en_strategie_marketing_et_communication": {
         "name": "[ESMC] Expert en stratégie marketing et communication",
-        "discordId": "790952665349750834"
+        "roleId": "790952665349750834"
       },
       "responsable_marketing_operationnel_et_communication": {
         "name": "[RMOC] Responsable marketing opérationnel et communication",
-        "discordId": "790952808740159508"
+        "roleId": "790952808740159508"
       },
       "community_manager": {
         "name": "[CM] Community Manager",
-        "discordId": "790952977937596458"
+        "roleId": "790952977937596458"
       },
       "ingenieur_responsable_pedagogique": {
         "name": "[IRP] Ingénieur responsable pédagogique",
-        "discordId": "790954051948773376"
+        "roleId": "790954051948773376"
       },
       "formateur_enseignant": {
         "name": "[F/E] Formateur / Enseignant",
-        "discordId": "790954160160899133"
+        "roleId": "790954160160899133"
       },
       "chef_de_projet_digital": {
         "name": "[CPD] Chef de projet digital",
-        "discordId": "679316012780224513"
+        "roleId": "679316012780224513"
       },
       "product_manager": {
         "name": "[PM] Product Manager",
-        "discordId": "762993724590129223"
+        "roleId": "762993724590129223"
       },
       "ux_designer": {
         "name": "[UXD] UX Designer",
-        "discordId": "752055308594970624"
+        "roleId": "752055308594970624"
       },
       "debutant_sur_discord": {
         "name": "Débutant sur Discord",
-        "discordId": "667286314802216962"
+        "roleId": "667286314802216962"
       },
       "informe": {
         "name": "Informé",
-        "discordId": "663666710611755018"
+        "roleId": "663666710611755018"
       },
       "prep_apprentissage": {
         "name": "[PA] Prep'Apprentissage",
-        "discordId": "804722783963185213"
+        "roleId": "804722783963185213"
       },
       "passeport_numerique": {
         "name": "[PN] Passeport Numérique",
-        "discordId": "823199058234703922"
+        "roleId": "823199058234703922"
       },
       "mentor": {
         "name": "[M] Mentor",
-        "discordId": "648991513023479809"
+        "roleId": "648991513023479809"
       },
       "diplome": {
         "name": "Diplômé",
-        "discordId": "705042042480492544"
+        "roleId": "705042042480492544"
       },
       "developpeur_web_junior": {
         "name": "(OLD) [DWJ] Développeur Web Junior",
-        "discordId": "646362171655323648"
+        "roleId": "646362171655323648"
       },
       "prep_android": {
         "name": "(OLD) [PA] Prep'Android",
-        "discordId": "660482169139101727"
+        "roleId": "660482169139101727"
       },
       "prep_web": {
         "name": "(OLD) [PW] Prep'Web",
-        "discordId": "646402911437324298"
+        "roleId": "646402911437324298"
       },
       "prep_full_stack": {
         "name": "(OLD) [FS] Prep'Full-Stack",
-        "discordId": "698474572122685450"
+        "roleId": "698474572122685450"
       },
       "developpeur_full_stack": {
         "name": "(OLD) [DFS] Développeur Full Stack",
-        "discordId": "698474572122685450"
+        "roleId": "698474572122685450"
       },
       "developpeur_d_application_front_end": {
         "name": "(OLD) [DAFE] Développeur d'application - Front-End",
-        "discordId": "646364372045660181"
+        "roleId": "646364372045660181"
       },
       "sans_formation": {
         "name": "Sans formation",
-        "discordId": "845283545676644363"
+        "roleId": "845283545676644363"
       }
     }
   }

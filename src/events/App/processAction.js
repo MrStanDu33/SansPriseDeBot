@@ -3,10 +3,10 @@ import Store from '$src/Store';
 import { logs, formationRolesDecisionsTree } from '$src/Db';
 import { MessageActionRow, MessageButton } from 'discord.js';
 
-const askQuestion = async (channelId, action) => {
+const askQuestion = async (member, action) => {
   const { client } = Store;
 
-  const channel = client.channels.cache.get(channelId);
+  const channel = client.channels.cache.get(member.linkedChannel.id);
 
   const messageRows = [];
 
@@ -29,21 +29,44 @@ const askQuestion = async (channelId, action) => {
     );
   });
 
-  //  channel.send(`${i18n.l('WELCOME_MESSAGE', data.id)}`);
-  const message = await channel.send({
+  channel.send({
     content: action.question,
     components: messageRows,
   });
 };
 
-const addRole = (member, role) => {};
+const addRole = (member, role) => {
+  const roleToAdd = formationRolesDecisionsTree.getRef(role.role.$ref);
+
+  logs.reload();
+
+  const memberIndex = logs.getIndex('/app/followingMembers', member.id);
+  if (memberIndex === -1) return;
+  logs.push(`/app/followingMembers[${memberIndex}]/rolesToAdd[]`, roleToAdd);
+};
+
+const printMessage = (member, message) => {
+  const { client } = Store;
+
+  const channel = client.channels.cache.get(member.linkedChannel.id);
+
+  channel.send({
+    content: message.message,
+  });
+};
 
 export default (member, action) => {
   const actionToPerform = action.$ref
     ? formationRolesDecisionsTree.getRef(action.$ref)
     : action;
 
-  console.log(actionToPerform);
+  if (action.type === 'addRole') {
+    return addRole(member, actionToPerform);
+  }
+
+  if (action.type === 'printMessage') {
+    return printMessage(member, actionToPerform);
+  }
 
   if (action.type === 'question') {
     logs.reload();
@@ -54,11 +77,7 @@ export default (member, action) => {
       `/app/followingMembers[${memberIndex}]/currentProcess`,
       action.$ref ?? '/default',
     );
-    return askQuestion(member.linkedChannel.id, actionToPerform);
-  }
-
-  if (action.type === 'addRole') {
-    return addRole(member, actionToPerform);
+    return askQuestion(member, actionToPerform);
   }
 
   return false;

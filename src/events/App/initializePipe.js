@@ -81,6 +81,7 @@ export default async (member) => {
       name: channel.name,
     },
     currentProcess: '/default',
+    rolesToAdd: [],
   };
 
   logs.push('/app/followingMembers[]', memberData, true);
