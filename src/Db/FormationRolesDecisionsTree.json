@@ -1,5 +1,5 @@
 {
-  "$schema": "./rolesTree.schema.json",
+  "$schema": "./FormationRolesDecisionsTree.schema.json",
   "default": {
     "type": "question",
     "$ref": "#/definitions/questions/8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b"

@@ -29,8 +29,7 @@
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
     "start": "node --experimental-vm-modules --experimental-specifier-resolution=node index.js",
-    "dev": "nodemon --experimental-vm-modules --experimental-specifier-resolution=node --inspect index.js",
-    "build:json": "node --experimental-specifier-resolution=node bin/buildJson.js"
+    "dev": "nodemon --experimental-vm-modules --experimental-specifier-resolution=node --inspect index.js"
   },
   "dependencies": {
     "i18n": "^0.14.0",

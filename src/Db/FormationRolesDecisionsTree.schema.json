@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "RolesTree Schema",
+  "title": "Formation Roles Decisions Tree Schema",
   "description": "Tree of questions to ask to the user when he lands on the server and actions to perform by the bot",
   "additionalProperties": false,
   "type": "object",

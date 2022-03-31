@@ -23,6 +23,7 @@ export default {
     Logger.debug(`Listening "${event}" event`);
     this[`_${event}`].push(cb);
   },
+
   /**
    * @function emit - It calls all the callbacks associated with the emitted event
    *

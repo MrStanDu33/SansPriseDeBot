@@ -8,8 +8,8 @@
   "jest.jestCommandLine": "NODE_OPTIONS=--experimental-vm-modules ./node_modules/.bin/jest",
   "json.schemas": [
     {
-      "fileMatch": ["rolesTree.json", "rolesTree.raw.json"],
-      "url": "./rolesTree.schema.json"
+      "fileMatch": ["FormationRolesDecisionsTree.json"],
+      "url": "./FormationRolesDecisionsTree.schema.json"
     }
   ]
 }
