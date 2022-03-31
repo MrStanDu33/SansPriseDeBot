@@ -15,4 +15,8 @@ export default (loader) => {
   client.on('guildMemberRemove', (member) =>
     EventBus.emit('Discord_guildMemberRemove', member),
   );
+
+  client.on('interactionCreate', (interaction) =>
+    EventBus.emit('Discord_interactionCreate', interaction),
+  );
 };

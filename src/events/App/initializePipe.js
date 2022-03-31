@@ -1,12 +1,11 @@
 import { Permissions } from 'discord.js';
 import i18n from '$src/I18n';
-import { logs } from '$src/Db';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
+import { logs, formationRolesDecisionsTree } from '$src/Db';
 
-export default async (member) => {
-  if (process.env.DRY_RUN === 'true') return;
+const createChannel = async (member) => {
   const { client } = Store;
   const { guild } = member;
 
@@ -18,8 +17,28 @@ export default async (member) => {
     'info',
   );
 
-  try {
-    const channel = await guild.channels.create(
+  const channelPermissionOverwrites = [
+    {
+      id: guild.roles.everyone.id,
+      type: 'role',
+      deny: [Permissions.FLAGS.VIEW_CHANNEL],
+    },
+    {
+      id: member.id,
+      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+    },
+    {
+      id: client.user.id,
+      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+    },
+    {
+      id: process.env.DISCORD_DEBUG_ACCOUNT_ID,
+      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+    },
+  ];
+
+  const channel = await guild.channels
+    .create(
       `${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
         member.user.discriminator
       }`,
@@ -31,50 +50,42 @@ export default async (member) => {
           process.env.DISCORD_WELCOME_CHANNEL_CATEGORY_ID,
         ),
         reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
-        permissionOverwrites: [
-          {
-            id: guild.roles.everyone.id,
-            type: 'role',
-            deny: [Permissions.FLAGS.VIEW_CHANNEL],
-          },
-          {
-            id: member.id,
-            allow: [Permissions.FLAGS.VIEW_CHANNEL],
-          },
-          {
-            id: client.user.id,
-            allow: [Permissions.FLAGS.VIEW_CHANNEL],
-          },
-        ],
+        permissionOverwrites: channelPermissionOverwrites,
       },
-    );
+    )
+    .catch((error) => {
+      loader.fail();
+      Logger.error(new Error(error));
+    });
 
-    loader.succeed();
-    Logger.info(`Channel ${channel.name} successfully created !`);
+  loader.succeed();
+  Logger.info(`Channel ${channel.name} successfully created !`);
 
-    const memberData = {
-      guild: member.guild.id,
-      locale: member.user.locale || process.env.DEFAULT_LOCALE,
-      id: member.user.id,
-      username: member.user.tag,
-      followingAt: new Date().getTime(),
-      lastUpdateAt: new Date().getTime(),
-      linkedChannel: {
-        id: channel.id,
-        name: channel.name,
-      },
-      currentProcess: '?',
-    };
+  return channel;
+};
 
-    logs.push('/app/followingMembers[]', memberData, true);
+export default async (member) => {
+  if (process.env.DRY_RUN === 'true') return;
 
-    EventBus.emit('App_sendWelcomeMessage', memberData);
-  } catch (error) {
-    loader.fail();
-    Logger.error(
-      ` An error has occurred while creating welcome channel for ${member.user.tag} !`,
-      true,
-    );
-    throw new Error(error);
-  }
+  const channel = await createChannel(member);
+
+  const memberData = {
+    guild: member.guild.id,
+    locale: member.user.locale || process.env.DEFAULT_LOCALE,
+    id: member.user.id,
+    username: member.user.tag,
+    followingAt: new Date().getTime(),
+    lastUpdateAt: new Date().getTime(),
+    linkedChannel: {
+      id: channel.id,
+      name: channel.name,
+    },
+    currentProcess: '/default',
+  };
+
+  logs.push('/app/followingMembers[]', memberData, true);
+
+  const action = formationRolesDecisionsTree.getRef('/default');
+
+  EventBus.emit('App_processAction', memberData, action);
 };

@@ -6,7 +6,7 @@ import '$src/events/';
 import cron from 'node-cron';
 
 const App = {
-  async constructor() {
+  constructor() {
     this.Store = Store;
 
     Logger.info('Starting Discord.js client');
@@ -41,6 +41,7 @@ const App = {
   },
 
   setCronJobs() {
+    cron.schedule('* * * * *', () => EventBus.emit('App_timeoutUsers'));
     cron.schedule('* * * * *', () => EventBus.emit('App_processMissedMembers'));
   },
 };

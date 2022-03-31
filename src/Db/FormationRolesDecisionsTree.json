@@ -77,7 +77,7 @@
         "question": "Très bien ! Dans quel pôle de formation es-tu ?",
         "answers": [
           {
-            "icon": ":developpement:",
+            "icon": "developpement",
             "text": "Développement",
             "actions": {
               "57662076-aadd-405a-805b-c9f1b2330eb5": {
@@ -87,7 +87,7 @@
             }
           },
           {
-            "icon": ":data:",
+            "icon": "data",
             "text": "Data",
             "actions": {
               "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
@@ -97,7 +97,7 @@
             }
           },
           {
-            "icon": ":rh&g:",
+            "icon": "rh&g",
             "text": "Ressources humaines & Gestion",
             "actions": {
               "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
@@ -107,7 +107,7 @@
             }
           },
           {
-            "icon": ":business:",
+            "icon": "business",
             "text": "Business",
             "actions": {
               "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
@@ -117,7 +117,7 @@
             }
           },
           {
-            "icon": ":sys&r:",
+            "icon": "sys&r",
             "text": "Systèmes & Réseaux",
             "actions": {
               "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
@@ -127,7 +127,7 @@
             }
           },
           {
-            "icon": ":marketing-com:",
+            "icon": "marketing-com",
             "text": "Marketing & Communication",
             "actions": {
               "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
@@ -137,7 +137,7 @@
             }
           },
           {
-            "icon": ":pedagogie:",
+            "icon": "pedagogie",
             "text": "Pédagogie",
             "actions": {
               "656a9ee8-2280-4f1b-a48a-026e719ef812": {
@@ -147,7 +147,7 @@
             }
           },
           {
-            "icon": ":gdp:",
+            "icon": "gdp",
             "text": "Gestion de projet",
             "actions": {
               "ad733db1-073c-4d6d-9f84-c0554e425c14": {
@@ -157,7 +157,7 @@
             }
           },
           {
-            "icon": ":design:",
+            "icon": "design",
             "text": "Design",
             "actions": {
               "84a48f7b-8a78-427d-84b6-6549e232aa09": {
@@ -167,7 +167,7 @@
             }
           },
           {
-            "icon": ":autre:",
+            "icon": "autre",
             "text": "Autre",
             "actions": {
               "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
@@ -209,7 +209,7 @@
         "question": "Sur lequel de ces parcours es-tu ?",
         "answers": [
           {
-            "icon": ":dw:",
+            "icon": "dw",
             "text": "[DW] Développeur Web",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -229,7 +229,7 @@
             }
           },
           {
-            "icon": ":dfe:",
+            "icon": "computer",
             "text": "[DFE] Développeur Front-End",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -249,7 +249,7 @@
             }
           },
           {
-            "icon": ":daps:",
+            "icon": "daps",
             "text": "[DAP/S] Développeur d'application - PHP/Symfony",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -269,7 +269,7 @@
             }
           },
           {
-            "icon": ":daps:",
+            "icon": "daps",
             "text": "[DAP/S] Développeur d'application - PHP/Symfony",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -289,7 +289,7 @@
             }
           },
           {
-            "icon": ":al:",
+            "icon": "al",
             "text": "[AL] Architecte logiciel",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -309,7 +309,7 @@
             }
           },
           {
-            "icon": ":daa:",
+            "icon": "daa",
             "text": "[DAA] Développeur d'application - Android",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -329,7 +329,7 @@
             }
           },
           {
-            "icon": ":dapy:",
+            "icon": "dap",
             "text": "[DAPy] Développeur d'application - Python",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -349,7 +349,7 @@
             }
           },
           {
-            "icon": ":dai:",
+            "icon": "dai",
             "text": "[DAI] Développeur d'application - iOS",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -369,7 +369,7 @@
             }
           },
           {
-            "icon": ":daj:",
+            "icon": "daj",
             "text": "[DAJ] Développeur d'application - Java",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -389,7 +389,7 @@
             }
           },
           {
-            "icon": ":dsf:",
+            "icon": "dsf",
             "text": "[DSF] Développeur Salesforce",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
@@ -415,7 +415,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":dwj:",
+            "icon": "dwj",
             "text": "[DWJ] Développeur Web Junior",
             "actions": {
               "c06e41bd-e8b8-4252-9997-d35e46cff019": {
@@ -451,7 +451,7 @@
             }
           },
           {
-            "icon": ":pw:",
+            "icon": "pw",
             "text": "[PW] Prep'Web",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -471,7 +471,7 @@
             }
           },
           {
-            "icon": ":fs:",
+            "icon": "fs",
             "text": "[FS] Prep'Full Stack",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -491,7 +491,7 @@
             }
           },
           {
-            "icon": ":dfs:",
+            "icon": "dfs",
             "text": "[DFS] Développeur Full Stack",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -511,7 +511,7 @@
             }
           },
           {
-            "icon": ":dafe:",
+            "icon": "dafe",
             "text": "[DAFE] Développeur d'application - Front-End",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -531,7 +531,7 @@
             }
           },
           {
-            "icon": ":pa:",
+            "icon": "pa",
             "text": "[PA] Prep'Android",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -557,7 +557,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":da:",
+            "icon": "da",
             "text": "[DA] Data Analyst",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -577,7 +577,7 @@
             }
           },
           {
-            "icon": ":ds:",
+            "icon": "ds",
             "text": "[DS] Data Scientist",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -597,7 +597,7 @@
             }
           },
           {
-            "icon": ":iml:",
+            "icon": "iml",
             "text": "[IML] Ingénieur Machine Learning",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -617,7 +617,7 @@
             }
           },
           {
-            "icon": ":dar:",
+            "icon": "dar",
             "text": "[DAr] Data Architect",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -637,7 +637,7 @@
             }
           },
           {
-            "icon": ":iia:",
+            "icon": "iia",
             "text": "[IIA] Ingénieur IA",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -663,7 +663,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":gp:",
+            "icon": "gp",
             "text": "[GP] Gestionnaire de paie",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -683,7 +683,7 @@
             }
           },
           {
-            "icon": ":cgrh:",
+            "icon": "cgrh",
             "text": "[CGRH] Chargé de gestion des ressources humaines",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -703,7 +703,7 @@
             }
           },
           {
-            "icon": ":mrh:",
+            "icon": "mrh",
             "text": "[MRH] Manager RH",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -723,7 +723,7 @@
             }
           },
           {
-            "icon": ":rld:",
+            "icon": "rld",
             "text": "[RLD] Responsable Learning & Development",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -743,7 +743,7 @@
             }
           },
           {
-            "icon": ":cep:",
+            "icon": "cep",
             "text": "[CEP] Conseiller en évolution professionnelle",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -769,7 +769,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":ce:",
+            "icon": "ce",
             "text": "[CE] Créateur d'entreprise",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -789,7 +789,7 @@
             }
           },
           {
-            "icon": ":e:",
+            "icon": "e",
             "text": "[E] Entrepreneur",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -809,7 +809,7 @@
             }
           },
           {
-            "icon": ":mo:",
+            "icon": "mo",
             "text": "[MO] Manager opérationnel",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -829,7 +829,7 @@
             }
           },
           {
-            "icon": ":ac:",
+            "icon": "ac",
             "text": "[AC] Attaché commercial",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -855,7 +855,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":cpsi:",
+            "icon": "cpsi",
             "text": "[CPSI] Chef de projet SI",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -875,7 +875,7 @@
             }
           },
           {
-            "icon": ":air:",
+            "icon": "air",
             "text": "[AIR] Administrateur infrastructure et réseaux",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -895,7 +895,7 @@
             }
           },
           {
-            "icon": ":rssi:",
+            "icon": "rssi",
             "text": "[RSSI] Responsable en sécurité des systèmes d'information",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -915,7 +915,7 @@
             }
           },
           {
-            "icon": ":ti:",
+            "icon": "ti",
             "text": "[TI] Technicien informatique",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -941,7 +941,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":esmc:",
+            "icon": "esmc",
             "text": "[ESMC] Expert en stratégie marketing et communication",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -961,7 +961,7 @@
             }
           },
           {
-            "icon": ":rmoc:",
+            "icon": "rmoc",
             "text": "[RMOC] Responsable marketing opératinnel et communication",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -981,7 +981,7 @@
             }
           },
           {
-            "icon": ":cm:",
+            "icon": "cm",
             "text": "[CM] Community Manager",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1007,7 +1007,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":irp:",
+            "icon": "irp",
             "text": "[IRP] Ingénieur responsable pédagogique",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1027,7 +1027,7 @@
             }
           },
           {
-            "icon": ":fe:",
+            "icon": "fe",
             "text": "[F/E] Formateur / Enseignant",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1053,7 +1053,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":cpd:",
+            "icon": "cpd",
             "text": "[CPD] Chef de projet digital",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1073,7 +1073,7 @@
             }
           },
           {
-            "icon": ":pm:",
+            "icon": "pm",
             "text": "[PM] Product manager",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1099,7 +1099,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":uxd:",
+            "icon": "uxd",
             "text": "[UXD] UX Designer",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1125,7 +1125,7 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": ":pa:",
+            "icon": "pa",
             "text": "[PA] Prep'Apprentissage",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1145,7 +1145,7 @@
             }
           },
           {
-            "icon": ":pn:",
+            "icon": "pn",
             "text": "[PN] Passeport Numérique",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
