@@ -11,7 +11,7 @@
         "question": "Bonjour, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les icônes ci-dessous <:point_down:960899113942138980>",
         "answers": [
           {
-            "icon": "white_check_mark",
+            "icon": "✅",
             "text": "Oui",
             "actions": {
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
@@ -21,7 +21,7 @@
             }
           },
           {
-            "icon": "x",
+            "icon": "❌",
             "text": "Non",
             "actions": {
               "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
@@ -47,7 +47,7 @@
         "question": "Es-tu plus à l'aise avec la plateforme ?",
         "answers": [
           {
-            "icon": "white_check_mark",
+            "icon": "✅",
             "text": "Oui",
             "actions": {
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
@@ -57,7 +57,7 @@
             }
           },
           {
-            "icon": "x",
+            "icon": "❌",
             "text": "Non",
             "actions": {
               "a834da4d-7214-42be-b94c-d16db788aa6e": {
@@ -77,7 +77,7 @@
         "question": "Très bien ! Dans quel pôle de formation es-tu ?",
         "answers": [
           {
-            "icon": "computer",
+            "icon": "💻",
             "text": "Développement",
             "actions": {
               "57662076-aadd-405a-805b-c9f1b2330eb5": {
@@ -87,7 +87,7 @@
             }
           },
           {
-            "icon": "bar_chart",
+            "icon": "📊",
             "text": "Data",
             "actions": {
               "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
@@ -97,7 +97,7 @@
             }
           },
           {
-            "icon": "clipboard",
+            "icon": "📋",
             "text": "Ressources humaines & Gestion",
             "actions": {
               "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
@@ -107,7 +107,7 @@
             }
           },
           {
-            "icon": "moneybag",
+            "icon": "💰",
             "text": "Business",
             "actions": {
               "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
@@ -117,7 +117,7 @@
             }
           },
           {
-            "icon": "satellite_orbital",
+            "icon": "🛰️",
             "text": "Systèmes & Réseaux",
             "actions": {
               "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
@@ -127,7 +127,7 @@
             }
           },
           {
-            "icon": "satellite",
+            "icon": "📡",
             "text": "Marketing & Communication",
             "actions": {
               "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
@@ -137,7 +137,7 @@
             }
           },
           {
-            "icon": "jigsaw",
+            "icon": "🧩",
             "text": "Pédagogie",
             "actions": {
               "656a9ee8-2280-4f1b-a48a-026e719ef812": {
@@ -147,7 +147,7 @@
             }
           },
           {
-            "icon": "dividers",
+            "icon": "🗂️",
             "text": "Gestion de projet",
             "actions": {
               "ad733db1-073c-4d6d-9f84-c0554e425c14": {
@@ -157,7 +157,7 @@
             }
           },
           {
-            "icon": "art",
+            "icon": "🎨",
             "text": "Design",
             "actions": {
               "84a48f7b-8a78-427d-84b6-6549e232aa09": {
@@ -167,7 +167,7 @@
             }
           },
           {
-            "icon": "question",
+            "icon": "❓",
             "text": "Autre",
             "actions": {
               "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
@@ -183,7 +183,7 @@
         "question": "Est-ce que votre formation est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
         "answers": [
           {
-            "icon": "white_check_mark",
+            "icon": "✅",
             "text": "Oui",
             "actions": {
               "0b2e4439-725b-4931-b759-6b7b6743abc8": {
@@ -193,7 +193,7 @@
             }
           },
           {
-            "icon": "x",
+            "icon": "❌",
             "text": "Non",
             "actions": {
               "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
@@ -229,7 +229,7 @@
             }
           },
           {
-            "icon": "computer",
+            "icon": "💻",
             "text": "[DFE] Développeur Front-End",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
