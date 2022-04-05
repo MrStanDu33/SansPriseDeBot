@@ -8,10 +8,10 @@
     "questions": {
       "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b": {
         "type": "question",
-        "question": "Bonjour, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abords es-tu à l'aise avec Discord ? N'hésites pas à me répondre en cliquant sur les icônes ci dessous 👇",
+        "question": "Bonjour, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les icônes ci-dessous <:point_down:960899113942138980>",
         "answers": [
           {
-            "icon": "✔️",
+            "icon": "white_check_mark",
             "text": "Oui",
             "actions": {
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
@@ -21,7 +21,7 @@
             }
           },
           {
-            "icon": "❌",
+            "icon": "x",
             "text": "Non",
             "actions": {
               "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
@@ -32,7 +32,7 @@
               },
               "6978174d-3683-4954-bc62-3c28f1c8d303": {
                 "type": "printMessage",
-                "message": "Très bien ! Voici quelques tutos vidéos qui te permettrons d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après."
+                "message": "Très bien ! <:magic_wand:960899292447518750> Voici quelques tutos vidéos qui te permettront d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après. <:point_down:960899113942138980>"
               },
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
                 "type": "question",
@@ -47,7 +47,7 @@
         "question": "Es-tu plus à l'aise avec la plateforme ?",
         "answers": [
           {
-            "icon": "✔️",
+            "icon": "white_check_mark",
             "text": "Oui",
             "actions": {
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
@@ -57,12 +57,12 @@
             }
           },
           {
-            "icon": "❌",
+            "icon": "x",
             "text": "Non",
             "actions": {
               "a834da4d-7214-42be-b94c-d16db788aa6e": {
                 "type": "printMessage",
-                "message": "D'accord, je vais contacter l'administrateur afin qu'il puisse t'accompagné dans ton apprentissage."
+                "message": "D'accord, je vais contacter l'administrateur afin qu'il puisse t'accompagner dans ton apprentissage."
               },
               "8fd3deac-4003-4c0e-91a1-ae55b3f6d245": {
                 "type": "printMessage",
@@ -77,7 +77,7 @@
         "question": "Très bien ! Dans quel pôle de formation es-tu ?",
         "answers": [
           {
-            "icon": "developpement",
+            "icon": "computer",
             "text": "Développement",
             "actions": {
               "57662076-aadd-405a-805b-c9f1b2330eb5": {
@@ -87,7 +87,7 @@
             }
           },
           {
-            "icon": "data",
+            "icon": "bar_chart",
             "text": "Data",
             "actions": {
               "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
@@ -97,7 +97,7 @@
             }
           },
           {
-            "icon": "rh&g",
+            "icon": "clipboard",
             "text": "Ressources humaines & Gestion",
             "actions": {
               "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
@@ -107,7 +107,7 @@
             }
           },
           {
-            "icon": "business",
+            "icon": "moneybag",
             "text": "Business",
             "actions": {
               "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
@@ -117,7 +117,7 @@
             }
           },
           {
-            "icon": "sys&r",
+            "icon": "satellite_orbital",
             "text": "Systèmes & Réseaux",
             "actions": {
               "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
@@ -127,7 +127,7 @@
             }
           },
           {
-            "icon": "marketing-com",
+            "icon": "satellite",
             "text": "Marketing & Communication",
             "actions": {
               "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
@@ -137,7 +137,7 @@
             }
           },
           {
-            "icon": "pedagogie",
+            "icon": "jigsaw",
             "text": "Pédagogie",
             "actions": {
               "656a9ee8-2280-4f1b-a48a-026e719ef812": {
@@ -147,7 +147,7 @@
             }
           },
           {
-            "icon": "gdp",
+            "icon": "dividers",
             "text": "Gestion de projet",
             "actions": {
               "ad733db1-073c-4d6d-9f84-c0554e425c14": {
@@ -157,7 +157,7 @@
             }
           },
           {
-            "icon": "design",
+            "icon": "art",
             "text": "Design",
             "actions": {
               "84a48f7b-8a78-427d-84b6-6549e232aa09": {
@@ -167,7 +167,7 @@
             }
           },
           {
-            "icon": "autre",
+            "icon": "question",
             "text": "Autre",
             "actions": {
               "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
@@ -180,10 +180,10 @@
       },
       "57662076-aadd-405a-805b-c9f1b2330eb5": {
         "type": "question",
-        "question": "Est-ce que votre formation est encore proposée sur la page des parcours ?",
+        "question": "Est-ce que votre formation est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
         "answers": [
           {
-            "icon": "✔️",
+            "icon": "white_check_mark",
             "text": "Oui",
             "actions": {
               "0b2e4439-725b-4931-b759-6b7b6743abc8": {
@@ -193,7 +193,7 @@
             }
           },
           {
-            "icon": "❌",
+            "icon": "x",
             "text": "Non",
             "actions": {
               "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
@@ -206,7 +206,7 @@
       },
       "0b2e4439-725b-4931-b759-6b7b6743abc8": {
         "type": "question",
-        "question": "Sur lequel de ces parcours es-tu ?",
+        "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
         "answers": [
           {
             "icon": "dw",
@@ -220,11 +220,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -240,11 +240,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -260,11 +260,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -280,11 +280,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -300,11 +300,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -320,11 +320,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -340,11 +340,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -360,11 +360,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -380,11 +380,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -400,11 +400,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -420,7 +420,7 @@
             "actions": {
               "c06e41bd-e8b8-4252-9997-d35e46cff019": {
                 "type": "printMessage",
-                "message": "D'accord ! Par question de sécurité, peux-tu m'envoyer une capture d'écran de ton tableau de bord d'étudiant ?"
+                "message": "D'accord ! Pour une raison de sécurité, peux-tu m'envoyer une capture d'écran de ton tableau de bord d'étudiant ?"
               },
               "b682a4d2-6204-4e04-9c94-ada51af41a42": {
                 "type": "promptFile",
@@ -442,11 +442,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -462,11 +462,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -482,11 +482,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -502,11 +502,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -522,11 +522,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -542,11 +542,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -568,11 +568,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -588,11 +588,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -608,11 +608,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -628,11 +628,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -648,11 +648,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -674,11 +674,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -694,11 +694,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -714,11 +714,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -734,11 +734,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -754,11 +754,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -780,11 +780,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -800,11 +800,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -820,11 +820,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -840,11 +840,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -866,11 +866,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -886,11 +886,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -906,11 +906,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -926,11 +926,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -952,11 +952,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -972,11 +972,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -992,11 +992,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -1018,11 +1018,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -1038,11 +1038,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -1064,11 +1064,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -1084,11 +1084,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -1110,11 +1110,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
@@ -1136,11 +1136,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           },
@@ -1156,11 +1156,11 @@
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
-                "message": "Félicitations vous avez à présent accès à tout le serveur Sans prise de tech :spdt:. Profitez bien de cet outil !"
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
               },
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
-                "message": "Ce salon va dispraitre dans x minutes"
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
           }
