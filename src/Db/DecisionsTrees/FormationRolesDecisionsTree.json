@@ -1,5 +1,5 @@
 {
-  "$schema": "./FormationRolesDecisionsTree.schema.json",
+  "$schema": "./DecisionsTree.schema.json",
   "default": {
     "type": "question",
     "$ref": "#/definitions/questions/8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b"
@@ -8,7 +8,7 @@
     "questions": {
       "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b": {
         "type": "question",
-        "question": "Bonjour, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les icônes ci-dessous <:point_down:960899113942138980>",
+        "question": "Bonjour {{ member }} {{member}} {{ member}} {{member }}, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les icônes ci-dessous <:point_down:960899113942138980>",
         "answers": [
           {
             "icon": "✅",
@@ -218,13 +218,9 @@
                   "$ref": "#/definitions/roles/developpeur_web"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -238,13 +234,9 @@
                   "$ref": "#/definitions/roles/developpeur_front_end"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -258,13 +250,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_php_symfony"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -278,13 +266,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_php_symfony"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -298,13 +282,9 @@
                   "$ref": "#/definitions/roles/architecte_logiciel"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -318,13 +298,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_android"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -338,13 +314,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_python"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -358,13 +330,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_ios"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -378,13 +346,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_java"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -398,13 +362,9 @@
                   "$ref": "#/definitions/roles/developpeur_salesforce"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -440,13 +400,9 @@
                   "$ref": "#/definitions/roles/developpeur_web_junior"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -460,18 +416,13 @@
                   "$ref": "#/definitions/roles/prep_web"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
           {
-            "icon": "fs",
             "text": "[FS] Prep'Full Stack",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -480,13 +431,9 @@
                   "$ref": "#/definitions/roles/prep_full_stack"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -500,18 +447,13 @@
                   "$ref": "#/definitions/roles/developpeur_full_stack"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
           {
-            "icon": "dafe",
             "text": "[DAFE] Développeur d'application - Front-End",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -520,13 +462,9 @@
                   "$ref": "#/definitions/roles/developpeur_d_application_front_end"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -540,13 +478,9 @@
                   "$ref": "#/definitions/roles/prep_android"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -566,13 +500,9 @@
                   "$ref": "#/definitions/roles/data_analyst"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -586,13 +516,9 @@
                   "$ref": "#/definitions/roles/data_scientist"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -606,13 +532,9 @@
                   "$ref": "#/definitions/roles/ingenieur_machine_learning"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -626,13 +548,9 @@
                   "$ref": "#/definitions/roles/data_architect"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -646,13 +564,9 @@
                   "$ref": "#/definitions/roles/ingenieur_ia"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -672,13 +586,9 @@
                   "$ref": "#/definitions/roles/gestionnaire_de_paie"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -692,13 +602,9 @@
                   "$ref": "#/definitions/roles/charge_de_gestion_des_ressources_humaines"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -712,13 +618,9 @@
                   "$ref": "#/definitions/roles/manager_rh"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -732,13 +634,9 @@
                   "$ref": "#/definitions/roles/responsable_learning_development"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -752,13 +650,9 @@
                   "$ref": "#/definitions/roles/conseiller_en_evolution_professionnelle"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -778,13 +672,9 @@
                   "$ref": "#/definitions/roles/createur_d_entreprise"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -798,13 +688,9 @@
                   "$ref": "#/definitions/roles/entrepreneur"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -818,13 +704,9 @@
                   "$ref": "#/definitions/roles/manager_operationnel"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -838,13 +720,9 @@
                   "$ref": "#/definitions/roles/attache_commercial"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -864,13 +742,9 @@
                   "$ref": "#/definitions/roles/chef_de_projet_si"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -884,13 +758,9 @@
                   "$ref": "#/definitions/roles/administrateur_infrastructure_et_reseaux"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -904,13 +774,9 @@
                   "$ref": "#/definitions/roles/responsable_en_securite_des_systemes_d_information"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -924,13 +790,9 @@
                   "$ref": "#/definitions/roles/technicien_informatique"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -950,13 +812,9 @@
                   "$ref": "#/definitions/roles/expert_en_strategie_marketing_et_communication"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -970,13 +828,9 @@
                   "$ref": "#/definitions/roles/responsable_marketing_operationnel_et_communication"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -990,13 +844,9 @@
                   "$ref": "#/definitions/roles/community_manager"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -1016,13 +866,9 @@
                   "$ref": "#/definitions/roles/ingenieur_responsable_pedagogique"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -1036,13 +882,9 @@
                   "$ref": "#/definitions/roles/formateur_enseignant"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -1062,13 +904,9 @@
                   "$ref": "#/definitions/roles/chef_de_projet_digital"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -1082,13 +920,9 @@
                   "$ref": "#/definitions/roles/product_manager"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -1108,13 +942,9 @@
                   "$ref": "#/definitions/roles/ux_designer"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           }
@@ -1134,13 +964,9 @@
                   "$ref": "#/definitions/roles/passeport_numerique"
                 }
               },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
@@ -1154,6 +980,35 @@
                   "$ref": "#/definitions/roles/passeport_numerique"
                 }
               },
+              "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
+              }
+            }
+          }
+        ]
+      },
+      "bc174a0d-069a-4538-8148-8646e51e38f9": {
+        "type": "question",
+        "question": "Souhaitez-vous effectuer une action supplémentaire où arrêter le processus ?",
+        "answers": [
+          {
+            "icon": "✅",
+            "text": "Oui",
+            "actions": {
+              "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
+                "type": "GOTO",
+                "target": "RootDecisionTree"
+              },
+              "fda8d8da-2b5b-478d-8919-3c9db711ef60": {
+                "type": "applyRoles"
+              }
+            }
+          },
+          {
+            "icon": "❌",
+            "text": "Non",
+            "actions": {
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",
                 "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
@@ -1161,6 +1016,12 @@
               "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
                 "type": "printMessage",
                 "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              },
+              "fda8d8da-2b5b-478d-8919-3c9db711ef60": {
+                "type": "applyRoles"
+              },
+              "5685b447-2883-43f7-8750-7ac1ca810499": {
+                "type": "getOutOfPipe"
               }
             }
           }

@@ -3,7 +3,7 @@ import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
-import { logs, formationRolesDecisionsTree } from '$src/Db';
+import { logs, DecisionsTrees } from '$src/Db';
 
 const createChannel = async (member) => {
   const { client } = Store;
@@ -86,7 +86,7 @@ export default async (member) => {
 
   logs.push('/app/followingMembers[]', memberData, true);
 
-  const action = formationRolesDecisionsTree.getRef('/default');
+  const action = DecisionsTrees.FormationRolesDecisionsTree.getRef('/default');
 
   EventBus.emit('App_processAction', memberData, action);
 };

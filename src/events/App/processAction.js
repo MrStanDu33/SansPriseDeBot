@@ -1,10 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
 import Store from '$src/Store';
-import { logs, formationRolesDecisionsTree } from '$src/Db';
+import { logs, DecisionsTrees } from '$src/Db';
 import { MessageActionRow, MessageButton } from 'discord.js';
+import Message from '$src/Classes/Message';
 
 const askQuestion = async (member, action) => {
   const { client } = Store;
+
+  client.users.fetch(member.id);
 
   const channel = client.channels.cache.get(member.linkedChannel.id);
 
@@ -16,27 +19,31 @@ const askQuestion = async (member, action) => {
       messageRows.push(buttonsRow);
     }
     const buttonsRowIndexToPush = Math.ceil((index + 1) / 5) - 1;
+
+    const serverEmoji = client.emojis.cache.find(
+      (emoji) => emoji.name === answer.icon,
+    );
+
     messageRows[buttonsRowIndexToPush].addComponents(
       new MessageButton()
         .setCustomId(`${answer.text}||${uuidv4()}`)
         .setLabel(answer.text)
         .setStyle('PRIMARY')
-        .setEmoji(
-          channel.guild.emojis.cache.find(
-            (emoji) => emoji.name === answer.icon,
-          ),
-        ),
+        .setEmoji(serverEmoji || answer.icon),
     );
   });
-
   channel.send({
-    content: action.question,
+    content: new Message(action.question, {
+      member: 'test',
+    }).message,
     components: messageRows,
   });
 };
 
 const addRole = (member, role) => {
-  const roleToAdd = formationRolesDecisionsTree.getRef(role.role.$ref);
+  const roleToAdd = DecisionsTrees.FormationRolesDecisionsTree.getRef(
+    role.role.$ref,
+  );
 
   logs.reload();
 
@@ -56,8 +63,11 @@ const printMessage = (member, message) => {
 };
 
 export default (member, action) => {
+  const { client } = Store;
+
+  console.log(member);
   const actionToPerform = action.$ref
-    ? formationRolesDecisionsTree.getRef(action.$ref)
+    ? DecisionsTrees.FormationRolesDecisionsTree.getRef(action.$ref)
     : action;
 
   if (action.type === 'addRole') {
@@ -79,6 +89,10 @@ export default (member, action) => {
     );
     return askQuestion(member, actionToPerform);
   }
+
+  const { client } = Store;
+  const channel = client.channels.cache.get(member.linkedChannel.id);
+  channel.send(`No action performed, prompted for ${action.type}`);
 
   return false;
 };

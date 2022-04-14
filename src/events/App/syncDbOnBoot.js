@@ -19,7 +19,9 @@ const syncMissingMembersInWaitList = async () => {
     .filter((member) => {
       if (
         member.user.id !== '177873904788963328' &&
-        member.user.id !== '325591419097972737'
+        member.user.id !== '325591419097972737' &&
+        member.user.id !== '703865683594969158' &&
+        member.user.id !== '209656163736879105'
       )
         return false;
       if (member.user.bot) return false;
