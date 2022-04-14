@@ -1,11 +1,10 @@
 import EventBus from '$src/EventBus';
-import { logs, formationRolesDecisionsTree } from '$src/Db';
+import { logs, DecisionsTrees } from '$src/Db';
 
 const disableMessageButtons = (message, clickedButtonId) => {
-  const actionsRows = message.components;
-
-  actionsRows.map((actionsRow) =>
-    actionsRow.components.map((button) => {
+  const actionsRows = message.components.map((actionsRow) => ({
+    ...actionsRow,
+    components: actionsRow.components.map((button) => {
       // eslint-disable-next-line operator-linebreak
       const buttonStyle =
         button.customId === clickedButtonId ? 'SUCCESS' : 'SECONDARY';
@@ -15,7 +14,7 @@ const disableMessageButtons = (message, clickedButtonId) => {
 
       return button;
     }),
-  );
+  }));
 
   message.edit({ components: actionsRows });
 };
@@ -26,7 +25,7 @@ export default async (interaction) => {
   const followedMember = logs.getFollowedMember(interaction.user.id);
   if (followedMember === null) return;
 
-  const actualMemberProcess = formationRolesDecisionsTree.getRef(
+  const actualMemberProcess = DecisionsTrees.FormationRolesDecisionsTree.getRef(
     followedMember.currentProcess,
   );
 
