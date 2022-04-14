@@ -87,12 +87,12 @@
             }
           },
           {
-            "icon": "bar_chart",
+            "icon": "abacus",
             "text": "Data",
             "actions": {
               "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
                 "type": "question",
-                "$ref": "#/definitions/questions/680ebd5c-f4f0-409d-b84f-db0c7cacdc14"
+                "$ref": "#/definitions/questions/0bcd6b57-eaee-49f8-8d72-ee7c118c6b1d"
               }
             }
           },
@@ -107,7 +107,7 @@
             }
           },
           {
-            "icon": "moneybag",
+            "icon": "briefcase",
             "text": "Business",
             "actions": {
               "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
@@ -117,7 +117,7 @@
             }
           },
           {
-            "icon": "satellite_orbital",
+            "icon": "tools",
             "text": "Systèmes & Réseaux",
             "actions": {
               "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
@@ -127,7 +127,7 @@
             }
           },
           {
-            "icon": "satellite",
+            "icon": "loudspeaker",
             "text": "Marketing & Communication",
             "actions": {
               "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
@@ -137,7 +137,7 @@
             }
           },
           {
-            "icon": "jigsaw",
+            "icon": "books",
             "text": "Pédagogie",
             "actions": {
               "656a9ee8-2280-4f1b-a48a-026e719ef812": {
@@ -163,6 +163,16 @@
               "84a48f7b-8a78-427d-84b6-6549e232aa09": {
                 "type": "question",
                 "$ref": "#/definitions/questions/84a48f7b-8a78-427d-84b6-6549e232aa09"
+              }
+            }
+          },
+          {
+            "icon": "keyboard",
+            "text": "Bureautique",
+            "actions": {
+              "bb40e0e6-ae44-46bc-9467-8b1da510cfd8": {
+                "type": "question",
+                "$ref": "#/definitions/questions/bb40e0e6-ae44-46bc-9467-8b1da510cfd8"
               }
             }
           },
@@ -230,32 +240,12 @@
           },
           {
             "icon": "computer",
-            "text": "[DFE] Développeur Front-End",
+            "text": "[DAJS] Développeur d'applications - Javascript/React",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/developpeur_front_end"
-                }
-              },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
-              }
-            }
-          },
-          {
-            "icon": "daps",
-            "text": "[DAP/S] Développeur d'application - PHP/Symfony",
-            "actions": {
-              "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
-                "type": "addRole",
-                "role": {
-                  "$ref": "#/definitions/roles/developpeur_d_application_php_symfony"
+                  "$ref": "#/definitions/roles/developpeur_d_applications_javascript_react"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -552,7 +542,33 @@
           }
         ]
       },
-      "680ebd5c-f4f0-409d-b84f-db0c7cacdc14": {
+      "0bcd6b57-eaee-49f8-8d72-ee7c118c6b1d": {
+        "type": "question",
+        "question": "Est-ce que votre formation est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+        "answers": [
+          {
+            "icon": "white_check_mark",
+            "text": "Oui",
+            "actions": {
+              "e8a418c0-eeea-4951-ade8-91119c92fa0c": {
+                "type": "question",
+                "$ref": "#/definitions/questions/e8a418c0-eeea-4951-ade8-91119c92fa0c"
+              }
+            }
+          },
+          {
+            "icon": "x",
+            "text": "Non",
+            "actions": {
+              "32c57b42-a676-4b0d-8558-3e5c6ae1a4ac": {
+                "type": "question",
+                "$ref": "#/definitions/questions/32c57b42-a676-4b0d-8558-3e5c6ae1a4ac"
+              }
+            }
+          }
+        ]
+      },
+      "e8a418c0-eeea-4951-ade8-91119c92fa0c": {
         "type": "question",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
@@ -617,13 +633,13 @@
             }
           },
           {
-            "icon": "dar",
-            "text": "[DAr] Data Architect",
+            "icon": "iia",
+            "text": "[IIA] Ingénieur IA",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/data_architect"
+                  "$ref": "#/definitions/roles/ingenieur_ia"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -635,15 +651,21 @@
                 "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
               }
             }
-          },
+          }
+        ]
+      },
+      "32c57b42-a676-4b0d-8558-3e5c6ae1a4ac": {
+        "type": "question",
+        "question": "Sur quel parcours es-tu ?",
+        "answers": [
           {
-            "icon": "iia",
-            "text": "[IIA] Ingénieur IA",
+            "icon": "dar",
+            "text": "[DAr] Data Architect",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/ingenieur_ia"
+                  "$ref": "#/definitions/roles/data_architect"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -789,26 +811,6 @@
             }
           },
           {
-            "icon": "e",
-            "text": "[E] Entrepreneur",
-            "actions": {
-              "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
-                "type": "addRole",
-                "role": {
-                  "$ref": "#/definitions/roles/entrepreneur"
-                }
-              },
-              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
-                "type": "printMessage",
-                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
-              },
-              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
-                "type": "printMessage",
-                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
-              }
-            }
-          },
-          {
             "icon": "mo",
             "text": "[MO] Manager opérationnel",
             "actions": {
@@ -855,13 +857,13 @@
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": "cpsi",
-            "text": "[CPSI] Chef de projet SI",
+            "icon": "notebook",
+            "text": "[RPCSI] Responsable de Projet Cybersécurité et SI",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/chef_de_projet_si"
+                  "$ref": "#/definitions/roles/responsable_de_projet_cybersecurite_et_si"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -875,13 +877,13 @@
             }
           },
           {
-            "icon": "air",
-            "text": "[AIR] Administrateur infrastructure et réseaux",
+            "icon": "cloud",
+            "text": "[ASR] Administrateur systèmes et réseaux",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/administrateur_infrastructure_et_reseaux"
+                  "$ref": "#/definitions/roles/administrateur_systemes_et_reseaux"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -1028,12 +1030,12 @@
           },
           {
             "icon": "fe",
-            "text": "[F/E] Formateur / Enseignant",
+            "text": "[FRPP] Formateur responsable de projets pédagogiques",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/formateur_enseignant"
+                  "$ref": "#/definitions/roles/formateur_responsable_de_projets_pedagogiques"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -1131,7 +1133,7 @@
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/passeport_numerique"
+                  "$ref": "#/definitions/roles/prep_apprentissage"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -1152,6 +1154,26 @@
                 "type": "addRole",
                 "role": {
                   "$ref": "#/definitions/roles/passeport_numerique"
+                }
+              },
+              "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
+                "type": "printMessage",
+                "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
+              },
+              "8317e2ef-0050-49fa-9775-1f19e2b363b2": {
+                "type": "printMessage",
+                "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+              }
+            }
+          },
+          {
+            "icon": "fog",
+            "text": "Sans formation",
+            "actions": {
+              "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                "type": "addRole",
+                "role": {
+                  "$ref": "#/definitions/roles/sans_formation"
                 }
               },
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
@@ -1248,10 +1270,6 @@
         "name": "[CE] Créateur d'entreprise",
         "roleId": "790951459520905236"
       },
-      "entrepreneur": {
-        "name": "[E] Entrepreneur",
-        "roleId": "790951568525754420"
-      },
       "manager_operationnel": {
         "name": "[MO] Manager opérationnel",
         "roleId": "790951670598074378"
@@ -1260,12 +1278,12 @@
         "name": "[AC] Attaché commercial",
         "roleId": "790951788429836298"
       },
-      "chef_de_projet_si": {
-        "name": "[CPSI] Chef de projet SI",
+      "responsable_de_projet_cybersecurite_et_si": {
+        "name": "[RPCSI] Responsable de Projets Cybersécurité et SI",
         "roleId": "790952109423853608"
       },
-      "administrateur_infrastructure_et_reseaux": {
-        "name": "[AIR] Administrateur infrastructure et réseaux",
+      "administrateur_systemes_et_reseaux": {
+        "name": "[ASR] Administrateur systèmes et réseaux",
         "roleId": "648423968553828352"
       },
       "responsable_en_securite_des_systemes_d_information": {
@@ -1292,8 +1310,8 @@
         "name": "[IRP] Ingénieur responsable pédagogique",
         "roleId": "790954051948773376"
       },
-      "formateur_enseignant": {
-        "name": "[F/E] Formateur / Enseignant",
+      "formateur_responsable_de_projets_pedagogiques": {
+        "name": "[FRPP] Formateur responsable de projets pédagogiques",
         "roleId": "790954160160899133"
       },
       "chef_de_projet_digital": {
