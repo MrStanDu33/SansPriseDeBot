@@ -1,9 +1,6 @@
 import { Client, Intents } from 'discord.js';
 import { jest } from '@jest/globals';
 
-jest.retryTimes(4);
-jest.setTimeout(30000);
-
 describe('Discord.js', () => {
   describe('Auth', () => {
     it('Should have environment variables set', () => {
@@ -18,7 +15,7 @@ describe('Discord.js', () => {
       expect(DefaultWelcomeChannelCategoryId).toMatch(/[\d]{18}/);
     });
 
-    it('Should be able to connect to Discord API', async () => {
+    it('Should be able to connect to Discord API', () => {
       const clientConnected = jest.fn();
 
       const client = new Client({
@@ -26,14 +23,14 @@ describe('Discord.js', () => {
           Intents.FLAGS.GUILDS,
           Intents.FLAGS.GUILD_MEMBERS,
           Intents.FLAGS.GUILD_WEBHOOKS,
+          Intents.FLAGS.GUILD_MESSAGES,
         ],
       });
 
       client.on('ready', clientConnected);
-
-      await client.login(process.env.DISCORD_BOT_TOKEN);
-
-      expect(clientConnected).toHaveBeenCalled();
+      client.login(process.env.DISCORD_BOT_TOKEN).then(() => {
+        expect(clientConnected).toHaveBeenCalled();
+      });
     });
   });
 });

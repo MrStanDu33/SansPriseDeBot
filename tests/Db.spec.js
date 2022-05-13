@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
-import { logs, formationRolesDecisionsTree } from '$src/Db';
+import { logs, DecisionsTrees } from '$src/Db';
 
 describe('Db', () => {
   it('Should have roles tree configuration file', () => {
-    const filePath = 'src/Db';
+    const filePath = 'src/Db/DecisionsTrees';
     const formationRolesDecisionsTreePath = `${filePath}/FormationRolesDecisionsTree.json`;
 
     const formationRolesDecisionsTreeFileExists = fs.existsSync(
@@ -26,7 +26,7 @@ describe('Db', () => {
   });
 
   it('Should load roles tree', () => {
-    expect(formationRolesDecisionsTree).toBeTruthy();
+    expect(DecisionsTrees.FormationRolesDecisionsTree).toBeTruthy();
   });
 
   it('Should load json storage', () => {
