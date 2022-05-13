@@ -90,7 +90,6 @@ export default (member, action) => {
     return askQuestion(member, actionToPerform);
   }
 
-  const { client } = Store;
   const channel = client.channels.cache.get(member.linkedChannel.id);
   channel.send(`No action performed, prompted for ${action.type}`);
 
