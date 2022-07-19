@@ -34,7 +34,7 @@
   "dependencies": {
     "chalk": "5.0.1",
     "cli-spinners": "^2.6.1",
-    "discord.js": "^13.6.0",
+    "discord.js": "^14.0.2",
     "dotenv": "^16.0.0",
     "i18n": "^0.14.2",
     "json-refs": "^3.0.15",
