@@ -8,7 +8,7 @@
     "questions": {
       "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b": {
         "type": "question",
-        "question": "Bonjour {{ member }} {{member}} {{ member}} {{member }}, je suis SansPriseDeBot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les icônes ci-dessous <:point_down:960899113942138980>",
+        "question": "Bonjour <@{{ memberId }}>, je suis Sans prise de bot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les boutons ci-dessous <:point_down:960899113942138980>",
         "answers": [
           {
             "icon": "✅",
@@ -235,13 +235,13 @@
             }
           },
           {
-            "icon": "computer",
+            "icon": "🖥️",
             "text": "[DAJS] Développeur d'applications - Javascript/React",
             "actions": {
               "82766e7a-d8e6-4934-bd4f-3e34c7850144": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/developpeur_d_applications_javascript_react"
+                  "$ref": "#/definitions/roles/developpeur_front_end"
                 }
               },
               "bc174a0d-069a-4538-8148-8646e51e38f9": {
@@ -1042,7 +1042,7 @@
         "answers": [
           {
             "icon": "✅",
-            "text": "Oui",
+            "text": "Terminer",
             "actions": {
               "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
                 "type": "GOTO",
@@ -1054,8 +1054,8 @@
             }
           },
           {
-            "icon": "❌",
-            "text": "Non",
+            "icon": "➡️",
+            "text": "Continuer",
             "actions": {
               "ecf69be0-7707-4b16-82d5-85c4b0f0c7e0": {
                 "type": "printMessage",

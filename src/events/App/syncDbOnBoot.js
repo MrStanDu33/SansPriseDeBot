@@ -15,15 +15,12 @@ const syncMissingMembersInWaitList = async () => {
   const guild = await Store.client.guilds.fetch(process.env.DISCORD_SERVER_ID);
   const members = await guild.members.fetch();
 
+  const rawMembersToForceInclude = process.env.DISCORD_MEMBERS_TO_ONBOARD;
+  const membersToForceInclude = rawMembersToForceInclude.split(',') || [];
+
   members
     .filter((member) => {
-      if (
-        member.user.id !== '177873904788963328' &&
-        member.user.id !== '325591419097972737' &&
-        member.user.id !== '703865683594969158' &&
-        member.user.id !== '209656163736879105'
-      )
-        return false;
+      if (!membersToForceInclude.includes(member.user.id)) return false;
       if (member.user.bot) return false;
       if (member.user.system) return false;
 
@@ -52,6 +49,7 @@ export default async () => {
   Logger.info('Start syncing Db');
 
   syncMissingMembersInWaitList();
+  // TODO: syncLeftFollowedMembers
 
   Logger.info('End of Db syncing');
 };

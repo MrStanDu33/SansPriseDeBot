@@ -17,24 +17,26 @@ export default (member) => {
     'info',
   );
 
-  const followingChannels = logs.getData('/app/followingChannels');
-  const followingChannel = followingChannels.find(
-    (ch) => ch.linkedMemberId === member.user.id,
+  const followingMembers = logs.getData('/app/followingMembers');
+  const followingMember = followingMembers.find(
+    (ch) => ch.id === member.user.id,
   );
 
-  const followingChannelIndex = logs.getIndex(
-    '/app/followingChannels',
-    followingChannel.id,
+  const followingMemberIndex = logs.getIndex(
+    '/app/followingMembers',
+    followingMember.id,
   );
 
-  const channel = client.channels.cache.get(followingChannel.id);
+  const channel = client.channels.cache.get(followingMember.linkedChannel.id);
 
   channel
     .delete()
     .then(() => {
       loader.succeed();
-      Logger.info(`Channel ${followingChannel.name} successfully deleted !`);
-      logs.delete(`/app/followingChannels[${followingChannelIndex}]`);
+      Logger.info(
+        `Channel ${followingMember.linkedChannel.name} successfully deleted !`,
+      );
+      logs.delete(`/app/followingMembers[${followingMemberIndex}]`);
     })
     .catch((error) => {
       loader.fail();

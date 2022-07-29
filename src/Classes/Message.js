@@ -6,9 +6,9 @@ export default class Message {
     // replace interpolation with variable
     this.message = message;
 
-    const availableInterpolations = message.match(
-      /({{[^a-z_]?[a-z_]+[^a-z_]?}})/gim,
-    );
+    // eslint-disable-next-line operator-linebreak
+    const availableInterpolations =
+      message.match(/({{[^a-z_]?[a-z_]+[^a-z_]?}})/gim) ?? [];
 
     availableInterpolations.forEach((availableInterpolation) => {
       const interpolationName = availableInterpolation.replace(/[ {}]+/g, '');

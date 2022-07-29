@@ -7,8 +7,6 @@ import Message from '$src/Classes/Message';
 const askQuestion = async (member, action) => {
   const { client } = Store;
 
-  client.users.fetch(member.id);
-
   const channel = client.channels.cache.get(member.linkedChannel.id);
 
   const messageRows = [];
@@ -32,10 +30,13 @@ const askQuestion = async (member, action) => {
         .setEmoji(serverEmoji || answer.icon),
     );
   });
+
+  const { message } = new Message(action.question, {
+    memberId: member.id,
+  });
+
   channel.send({
-    content: new Message(action.question, {
-      member: 'test',
-    }).message,
+    content: message,
     components: messageRows,
   });
 };
@@ -65,7 +66,6 @@ const printMessage = (member, message) => {
 export default (member, action) => {
   const { client } = Store;
 
-  console.log(member);
   const actionToPerform = action.$ref
     ? DecisionsTrees.FormationRolesDecisionsTree.getRef(action.$ref)
     : action;
