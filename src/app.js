@@ -1,4 +1,4 @@
-import { Client, Intents } from 'discord.js';
+import { Client, IntentsBitField } from 'discord.js';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
@@ -12,13 +12,15 @@ const App = {
     Logger.info('Starting Discord.js client');
     if (!this.Store.client) {
       // TODO: Review discord Intents for more security
+      const intents = new IntentsBitField();
+      intents.add(
+        IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildMembers,
+        IntentsBitField.Flags.GuildWebhooks,
+        IntentsBitField.Flags.GuildMessages,
+      );
       this.Store.client = new Client({
-        intents: [
-          Intents.FLAGS.GUILDS,
-          Intents.FLAGS.GUILD_MEMBERS,
-          Intents.FLAGS.GUILD_WEBHOOKS,
-          Intents.FLAGS.GUILD_MESSAGES,
-        ],
+        intents,
       });
     }
     this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
@@ -37,6 +39,10 @@ const App = {
       EventBus.emit('App_syncDbOnBoot');
 
       this.setCronJobs();
+    });
+
+    Store.client.on('shardError', (error) => {
+      console.error('A websocket connection encountered an error:', error);
     });
   },
 

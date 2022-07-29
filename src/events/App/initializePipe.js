@@ -1,4 +1,4 @@
-import { Permissions } from 'discord.js';
+import { PermissionsBitField, ChannelType } from 'discord.js';
 import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
@@ -16,43 +16,43 @@ const createChannel = async (member) => {
     `Creating welcome channel for ${member.user.tag}`,
     'info',
   );
+  const permissions = new PermissionsBitField();
+  permissions.add(PermissionsBitField.Flags.ViewChannel);
 
   const channelPermissionOverwrites = [
     {
       id: guild.roles.everyone.id,
       type: 'role',
-      deny: [Permissions.FLAGS.VIEW_CHANNEL],
+      deny: permissions,
     },
     {
       id: member.id,
-      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+      allow: permissions,
     },
     {
       id: client.user.id,
-      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+      allow: permissions,
     },
     {
       id: process.env.DISCORD_DEBUG_ACCOUNT_ID,
-      allow: [Permissions.FLAGS.VIEW_CHANNEL],
+      allow: permissions,
     },
   ];
 
   const channel = await guild.channels
-    .create(
-      `${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
+    .create({
+      name: `${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
         member.user.discriminator
       }`,
-      {
-        type: 'text',
-        topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
-        nsfw: false,
-        parent: client.channels.cache.get(
-          process.env.DISCORD_WELCOME_CHANNEL_CATEGORY_ID,
-        ),
-        reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
-        permissionOverwrites: channelPermissionOverwrites,
-      },
-    )
+      type: ChannelType.GuildText,
+      topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
+      nsfw: false,
+      parent: client.channels.cache.get(
+        process.env.DISCORD_WELCOME_CHANNEL_CATEGORY_ID,
+      ),
+      reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
+      permissionOverwrites: channelPermissionOverwrites,
+    })
     .catch((error) => {
       loader.fail();
       Logger.error(new Error(error));

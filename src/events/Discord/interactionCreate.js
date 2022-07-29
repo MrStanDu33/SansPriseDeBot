@@ -1,22 +1,29 @@
+import { ButtonBuilder, ButtonStyle, ActionRowBuilder } from 'discord.js';
 import EventBus from '$src/EventBus';
 import { logs, DecisionsTrees } from '$src/Db';
 
-const disableMessageButtons = (message, clickedButtonId) => {
-  const actionsRows = message.components.map((actionsRow) => ({
-    ...actionsRow,
-    components: actionsRow.components.map((button) => {
-      // eslint-disable-next-line operator-linebreak
-      const buttonStyle =
-        button.customId === clickedButtonId ? 'SUCCESS' : 'SECONDARY';
-      button.setStyle(buttonStyle);
+const disableMessageButtons = async (message, clickedButtonId) => {
+  const newActionRowEmbeds = message.components.map((oldActionRow) => {
+    const updatedActionRow = new ActionRowBuilder();
 
-      button.setDisabled(true);
+    updatedActionRow.addComponents(
+      oldActionRow.components.map((buttonComponent) => {
+        const newButton = ButtonBuilder.from(buttonComponent);
 
-      return button;
-    }),
-  }));
+        // eslint-disable-next-line operator-linebreak
+        const buttonStyle =
+          buttonComponent.customId === clickedButtonId
+            ? ButtonStyle.Primary
+            : ButtonStyle.Secondary;
+        newButton.setStyle(buttonStyle);
+        newButton.setDisabled(true);
+        return newButton;
+      }),
+    );
+    return updatedActionRow;
+  });
 
-  message.edit({ components: actionsRows });
+  message.edit({ components: newActionRowEmbeds });
 };
 
 export default async (interaction) => {

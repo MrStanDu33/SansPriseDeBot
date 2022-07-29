@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import Store from '$src/Store';
 import { logs, DecisionsTrees } from '$src/Db';
-import { MessageActionRow, MessageButton } from 'discord.js';
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import Message from '$src/Classes/Message';
 
 const askQuestion = async (member, action) => {
@@ -13,7 +13,7 @@ const askQuestion = async (member, action) => {
 
   action.answers.forEach((answer, index) => {
     if (index % 5 === 0) {
-      const buttonsRow = new MessageActionRow();
+      const buttonsRow = new ActionRowBuilder();
       messageRows.push(buttonsRow);
     }
     const buttonsRowIndexToPush = Math.ceil((index + 1) / 5) - 1;
@@ -23,11 +23,11 @@ const askQuestion = async (member, action) => {
     );
 
     messageRows[buttonsRowIndexToPush].addComponents(
-      new MessageButton()
+      new ButtonBuilder()
         .setCustomId(`${answer.text}||${uuidv4()}`)
         .setLabel(answer.text)
-        .setStyle('PRIMARY')
-        .setEmoji(serverEmoji || answer.icon),
+        .setStyle(ButtonStyle.Primary)
+        .setEmoji(serverEmoji?.id || answer.icon),
     );
   });
 
