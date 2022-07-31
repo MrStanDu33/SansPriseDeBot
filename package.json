@@ -12,7 +12,7 @@
     "url": "https://github.com/MrStanDu33/SansPriseDeBot"
   },
   "engines": {
-    "node": ">=16.13.1"
+    "node": ">=18.7.0"
   },
   "engineStrict": true,
   "main": "index.js",
@@ -34,7 +34,7 @@
   "dependencies": {
     "chalk": "5.0.1",
     "cli-spinners": "^2.7.0",
-    "discord.js": "^14.1.1",
+    "discord.js": "^14.1.2",
     "dotenv": "^16.0.1",
     "i18n": "^0.15.0",
     "json-refs": "^3.0.15",
