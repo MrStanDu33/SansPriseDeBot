@@ -22,13 +22,15 @@ const askQuestion = async (member, action) => {
       (emoji) => emoji.name === answer.icon,
     );
 
-    messageRows[buttonsRowIndexToPush].addComponents(
-      new ButtonBuilder()
-        .setCustomId(`${answer.text}||${uuidv4()}`)
-        .setLabel(answer.text)
-        .setStyle(ButtonStyle.Primary)
-        .setEmoji(serverEmoji?.id || answer.icon),
-    );
+    const button = new ButtonBuilder()
+      .setCustomId(`${answer.text}||${uuidv4()}`)
+      .setLabel(answer.text)
+      .setStyle(ButtonStyle.Primary);
+
+    const emoji = serverEmoji?.id || answer.icon;
+    if (emoji) button.setEmoji(emoji);
+
+    messageRows[buttonsRowIndexToPush].addComponents(button);
   });
 
   const { message } = new Message(action.question, {

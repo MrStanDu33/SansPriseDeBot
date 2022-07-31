@@ -417,6 +417,7 @@
             }
           },
           {
+            "icon": "❔",
             "text": "[FS] Prep'Full Stack",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -448,6 +449,7 @@
             }
           },
           {
+            "icon": "❔",
             "text": "[DAFE] Développeur d'application - Front-End",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -987,7 +989,7 @@
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
                 "type": "addRole",
                 "role": {
-                  "$ref": "#/definitions/roles/clea_numérique"
+                  "$ref": "#/definitions/roles/clea_numerique"
                 }
               },
               "bc174a0d-069a-4538-8148-8646e51e38f9": {
