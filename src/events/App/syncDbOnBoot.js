@@ -16,7 +16,7 @@ const syncMissingMembersInWaitList = async () => {
   const members = await guild.members.fetch();
 
   const rawMembersToForceInclude = process.env.DISCORD_MEMBERS_TO_ONBOARD;
-  const membersToForceInclude = rawMembersToForceInclude.split(',') || [];
+  const membersToForceInclude = rawMembersToForceInclude?.split(',') || [];
 
   members
     .filter((member) => {
