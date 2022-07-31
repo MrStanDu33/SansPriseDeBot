@@ -110,7 +110,7 @@ describe('Logger', () => {
     describe('error', () => {
       it('should print error to console and log file', () => {
         Logger.error('test');
-        Logger.error('test', true);
+        Logger.error(true, 'test');
 
         expect(writeFileMock).toHaveBeenCalledTimes(2);
         expect(consoleLogMock).toHaveBeenCalled();
@@ -163,7 +163,7 @@ describe('Logger', () => {
     describe('errorToConsole', () => {
       it('should print error to console', () => {
         Logger.errorToConsole('test');
-        Logger.errorToConsole('test', true);
+        Logger.errorToConsole(true, 'test');
         expect(consoleLogMock).toHaveBeenCalled();
         expect(consoleErrorMock).toHaveBeenCalled();
       });

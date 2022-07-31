@@ -91,7 +91,7 @@ export default {
     const spinnerInstance = ora({
       ...spinnerSettings,
       spinner: cliSpinners[spinnerSettings.spinner],
-      text: message,
+      text: message + os.EOL,
     }).start();
 
     const methodName = `${logType}ToFile`;
@@ -139,7 +139,9 @@ export default {
   /**
    * @function error - Prints given error messages to the console and to log file in error mode.
    *
-   * @param { ...string } error - Error messages to be logged.
+   * @param { ...<boolean|string> } [ error ] - Error messages to be logged.
+   * If the first parameter is a boolean and there is at least two parameters,
+   * reported error is shown as fatal.
    *
    * @returns { void }
    */
@@ -195,17 +197,18 @@ export default {
    * if last given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param { ...string } error - Error messages to be logged.
+   * @param { ...<boolean|string> } [ error ] - Error messages to be logged.
+   * If the first parameter is a boolean and there is at least two parameters,
+   * reported error is shown as fatal.
    *
    * @returns { void }
    */
   errorToConsole(...error) {
-    const fatal = error.length > 1 ? error.splice(-1)[0] : false;
+    const fatal = error.length > 1 && error[0] === true && error.shift();
+    const method = fatal ? 'error' : 'log';
+    const flag = fatal ? 'fatal' : 'error';
     // eslint-disable-next-line no-console
-    console[fatal ? 'error' : 'log'](
-      `${this.prefixes.console.error}`,
-      ...error,
-    );
+    console[method](`${this.prefixes.console[flag]}`, ...error);
   },
 
   /**
@@ -313,6 +316,7 @@ export default {
       info: chalk.greenBright('[INFO] '),
       warn: chalk.yellowBright('[WARN] '),
       error: chalk.redBright('[ERROR]'),
+      fatal: chalk.red.bold('[FATAL]'),
     },
     file: {
       debug: '[DEBUG]',
