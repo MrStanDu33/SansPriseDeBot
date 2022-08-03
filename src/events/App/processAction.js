@@ -108,7 +108,7 @@ export default (member, action) => {
 
   switch (action.type) {
     case 'applyRoles': {
-      return applyRoles(member, actionToPerform);
+      return applyRoles(member);
     }
     case 'addRole': {
       return addRole(member, actionToPerform);

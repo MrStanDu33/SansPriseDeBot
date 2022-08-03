@@ -1,9 +1,5 @@
 export default class Message {
   constructor(message, interpolations) {
-    // get all interpolations
-    // get all variables
-    // for each interpolation that exists in variables
-    // replace interpolation with variable
     this.message = message;
 
     // eslint-disable-next-line operator-linebreak
