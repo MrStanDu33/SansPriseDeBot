@@ -1,3 +1,10 @@
+describe('Discord.js', () => {
+  describe('fallback test', () => {
+    it('Should be true', () => {
+      expect(true).toBe(true);
+    });
+  });
+});
 /*
 import { Client, IntentsBitField } from 'discord.js';
 import { jest } from '@jest/globals';
