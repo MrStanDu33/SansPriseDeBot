@@ -42,7 +42,7 @@
     "node-json-db": "^1.6.0",
     "ora": "^6.1.2",
     "stack-trace": "*",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.18.9",
