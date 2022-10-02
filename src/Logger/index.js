@@ -435,7 +435,7 @@ export default {
     const seconds = this.getSeconds(date);
     const milliseconds = this.getMilliseconds(date);
 
-    // prints date & time in YYYY Mmm - DD HH:MM:SS,MS format
+    // prints date & time in YYYY Mmm DD - HH:MM:SS,MS format
     return `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
   },
 
