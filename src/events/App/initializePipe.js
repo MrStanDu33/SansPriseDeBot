@@ -1,14 +1,19 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { PermissionsBitField, ChannelType } from 'discord.js';
 import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
-import { logs, DecisionsTrees } from '$src/Db';
+import models from '$src/Models';
+
+const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
 
 const createChannel = async (member) => {
   const { client } = Store;
   const { guild } = member;
-
   i18n.setLocale(member.user.locale || process.env.DEFAULT_LOCALE);
 
   const loader = Logger.loader(
@@ -69,24 +74,28 @@ export default async (member) => {
 
   const channel = await createChannel(member);
 
-  const memberData = {
-    guild: member.guild.id,
+  const decisionsTree = await DecisionsTree.findOne({
+    where: { name: 'FormationRoles' },
+  });
+
+  const defaultAction = await Action.findOne({
+    where: { decisionsTreeId: decisionsTree.id },
+  });
+
+  const memberData = await FollowedMember.create({
+    guildId: member.guild.id,
     locale: member.user.locale || process.env.DEFAULT_LOCALE,
-    id: member.user.id,
+    memberId: member.user.id,
     username: member.user.tag,
-    followingAt: new Date().getTime(),
-    lastUpdateAt: new Date().getTime(),
-    linkedChannel: {
-      id: channel.id,
-      name: channel.name,
-    },
-    currentProcess: '/default',
+    CurrentActionId: null,
     rolesToAdd: [],
-  };
+  });
 
-  logs.push('/app/followingMembers[]', memberData, true);
+  await LinkedChannel.create({
+    discordId: channel.id,
+    name: channel.name,
+    FollowedMemberId: memberData.id,
+  });
 
-  const action = DecisionsTrees.FormationRolesDecisionsTree.getRef('/default');
-
-  EventBus.emit('App_processAction', memberData, action);
+  EventBus.emit('App_processAction', memberData.id, defaultAction.id);
 };

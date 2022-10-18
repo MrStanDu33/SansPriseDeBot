@@ -1,6 +1,12 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { ButtonBuilder, ButtonStyle, ActionRowBuilder } from 'discord.js';
 import EventBus from '$src/EventBus';
-import { logs, DecisionsTrees } from '$src/Db';
+import models from '$src/Models';
+
+const { FollowedMember, Action, ActionQuestion, ActionQuestionAnswer } = models;
 
 const disableMessageButtons = async (message, clickedButtonId) => {
   const newActionRowEmbeds = message.components.map((oldActionRow) => {
@@ -29,14 +35,31 @@ const disableMessageButtons = async (message, clickedButtonId) => {
 export default async (interaction) => {
   if (!interaction.isButton()) return;
 
-  const followedMember = logs.getFollowedMember(interaction.user.id);
+  const followedMember = await FollowedMember.findOne({
+    where: { memberId: interaction.user.id },
+    include: [
+      {
+        model: Action,
+        include: [
+          {
+            model: ActionQuestion,
+            as: 'Question',
+            include: [
+              {
+                model: ActionQuestionAnswer,
+                as: 'Answers',
+                include: Action,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+
   if (followedMember === null) return;
 
-  const actualMemberProcess = DecisionsTrees.FormationRolesDecisionsTree.getRef(
-    followedMember.currentProcess,
-  );
-
-  const selectedAnswer = actualMemberProcess.answers.find(
+  const selectedAnswer = followedMember.Action.Question.Answers.find(
     (answer) => answer.text === interaction.customId.split('||')[0],
   );
 
@@ -47,10 +70,7 @@ export default async (interaction) => {
   const reply = await interaction.reply({ content: '...', fetchReply: true });
   await reply.delete();
 
-  Object.keys(selectedAnswer.actions).forEach((action) => {
-    if (Object.hasOwnProperty.call(selectedAnswer.actions, action)) {
-      const actionToPerform = selectedAnswer.actions[action];
-      EventBus.emit('App_processAction', followedMember, actionToPerform);
-    }
+  selectedAnswer.Actions.forEach((action) => {
+    EventBus.emit('App_processAction', followedMember.id, action.id);
   });
 };
