@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { Client, IntentsBitField } from 'discord.js';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
@@ -42,7 +46,7 @@ const App = {
     });
 
     Store.client.on('shardError', (error) => {
-      console.error('A websocket connection encountered an error:', error);
+      Logger.error(true, 'A websocket connection encountered an error:', error);
     });
   },
 

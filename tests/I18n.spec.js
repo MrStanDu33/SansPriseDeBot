@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import i18n from '$src/I18n';
 import path from 'path';
 import fs from 'fs';

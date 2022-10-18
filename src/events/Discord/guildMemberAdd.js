@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import EventBus from '$src/EventBus';
 import Logger from '$src/Logger';
 

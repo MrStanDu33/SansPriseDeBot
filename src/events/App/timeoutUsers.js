@@ -1,4 +1,9 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { logs } from '$src/Db';
+import Logger from '$src/Logger/index';
 
 const timeoutInDays = 1;
 
@@ -14,6 +19,7 @@ export default () => {
   );
 
   membersToTimeout.forEach((member) => {
-    console.log('userToTimeout', member);
+    // TODO: add timeout process
+    Logger.info('userToTimeout', member);
   });
 };

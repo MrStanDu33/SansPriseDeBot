@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import Store from '$src/Store';
 
 describe('Store', () => {

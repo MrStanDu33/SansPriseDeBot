@@ -1,0 +1,33 @@
+{
+  "tags": {
+    "dictionaries": ["jsdoc"]
+  },
+  "source": {
+    "include": ["./src", "README.md"],
+    "includePattern": ".js$"
+  },
+  "plugins": ["plugins/markdown", "node_modules/better-docs/typedef-import"],
+  "opts": {
+    "encoding": "utf8",
+    "template": "node_modules/better-docs",
+    "destination": "docs/",
+    "readme": "README.md",
+    "recurse": true
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "search": true,
+    "better-docs": {
+      "name": "Sans prise de bot code documentation",
+      "title": "Sans prise de bot code documentation",
+      "hideGenerator": true,
+      "navLinks": [
+        {
+          "label": "Github",
+          "href": "https://github.com/MrStanDu33/SansPriseDeBot"
+        }
+      ]
+    }
+  }
+}

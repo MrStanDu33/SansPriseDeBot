@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { logs } from '$src/Db';
 import Logger from '$src/Logger/index';
 import Store from '$src/Store';

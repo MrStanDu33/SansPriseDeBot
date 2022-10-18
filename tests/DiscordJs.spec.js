@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { Client, IntentsBitField } from 'discord.js';
 import { jest } from '@jest/globals';
 

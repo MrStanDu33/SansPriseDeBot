@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { jest } from '@jest/globals';
 import EventBus from '$src/EventBus';
 

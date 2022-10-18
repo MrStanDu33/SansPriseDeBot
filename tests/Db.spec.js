@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import fs from 'fs';
 import path from 'path';
 import { logs, DecisionsTrees } from '$src/Db';

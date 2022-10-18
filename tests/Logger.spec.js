@@ -1,3 +1,7 @@
+/**
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 // eslint-disable-next-line import/no-unresolved
 import { PassThrough } from 'node:stream';
 import { jest } from '@jest/globals';
