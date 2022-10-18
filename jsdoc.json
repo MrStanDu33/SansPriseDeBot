@@ -1,12 +1,17 @@
 {
   "tags": {
-    "dictionaries": ["jsdoc"]
+    "dictionaries": ["jsdoc"],
+    "allowUnknownTags": ["category", "subcategory"]
   },
   "source": {
-    "include": ["./src", "README.md"],
+    "include": ["./src", "./index.js", "./bin", "README.md"],
     "includePattern": ".js$"
   },
-  "plugins": ["plugins/markdown", "node_modules/better-docs/typedef-import"],
+  "plugins": [
+    "plugins/markdown",
+    "node_modules/better-docs/typedef-import",
+    "node_modules/better-docs/category"
+  ],
   "opts": {
     "encoding": "utf8",
     "template": "node_modules/better-docs",

@@ -26,7 +26,7 @@ module.exports = {
     ],
     'jsdoc/check-property-names': 2,
     'jsdoc/check-syntax': 2,
-    'jsdoc/check-tag-names': [2, { definedTags: ['category'] }],
+    'jsdoc/check-tag-names': [2, { definedTags: ['category', 'subcategory'] }],
     'jsdoc/check-types': 2,
     'jsdoc/check-values': 2,
     'jsdoc/empty-tags': 2,
@@ -122,11 +122,13 @@ module.exports = {
     ],
     'jsdoc/valid-types': 2,
   },
+  ignorePatterns: ['docs', 'node_modules'],
   settings: {
     'import/resolver': {
       alias: [['$src', './src']],
     },
     jsdoc: {
+      mode: 'typescript',
       tagNamePreference: {
         param: 'param',
         returns: 'returns',

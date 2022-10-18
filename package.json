@@ -21,7 +21,7 @@
   "license": "GPL-3.0-or-later",
   "private": "true",
   "scripts": {
-    "lint": "eslint . --ext .js --ignore-pattern node_modules/",
+    "lint": "eslint . --ext .js",
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest --forceExit",
     "test:debug": "node --experimental-vm-modules --inspect-brk ./node_modules/.bin/jest --runInBand --watch",
     "test:watch": "node --experimental-vm-modules ./node_modules/.bin/jest --watch --forceExit",
