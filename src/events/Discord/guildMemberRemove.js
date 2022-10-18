@@ -1,12 +1,15 @@
 /**
+ * @file Handle "user left" event from discord by removing member from pipe.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-import { logs } from '$src/Db';
 import Logger from '$src/Logger/index';
 import Store from '$src/Store';
+import models from '$src/Models';
 
-export default (member) => {
+const { LinkedChannel, FollowedMember } = models;
+
+export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
   /*
    * TODO: Detect on boot diff between channels on db and users on server.
@@ -21,27 +24,24 @@ export default (member) => {
     'info',
   );
 
-  const followingMembers = logs.getData('/app/followingMembers');
-  const followingMember = followingMembers.find(
-    (ch) => ch.id === member.user.id,
+  const followedMember = await FollowedMember.findOne({
+    where: { memberId: member.user.id },
+    include: [LinkedChannel],
+  });
+
+  const channel = client.channels.cache.get(
+    followedMember.LinkedChannel.discordId,
   );
 
-  const followingMemberIndex = logs.getIndex(
-    '/app/followingMembers',
-    followingMember.id,
-  );
-
-  const channel = client.channels.cache.get(followingMember.linkedChannel.id);
-
-  channel
+  await channel
     .delete()
     .then(() => {
       loader.succeed();
       Logger.info(
-        `Channel ${followingMember.linkedChannel.name} successfully deleted !`,
+        `Channel ${followedMember.LinkedChannel.name} successfully deleted !`,
       );
-      logs.delete(`/app/followingMembers[${followingMemberIndex}]`);
     })
+    .then(() => followedMember.delete())
     .catch((error) => {
       loader.fail();
       Logger.error(
