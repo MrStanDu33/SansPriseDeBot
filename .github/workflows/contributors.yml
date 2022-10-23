@@ -1,0 +1,36 @@
+name: Contributors
+on:
+  push:
+    branches: [main, develop]
+jobs:
+  update-contributors-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wow-actions/contributors-list@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          round: false
+          truncate: 0
+          affiliation: all
+          userNameHeight: 19
+          itemTemplate: >
+            <g transform="translate({{ x }}, {{ y }})">
+              <a xlink:href="{{{ url }}}" class="contributor-link" target="_blank" rel="nofollow sponsored" title="{{{ name }}}" id="{{{ name }}}">
+                <image width="{{ width }}" height="{{ height }}" xlink:href="{{{ avatar }}}" />
+                <text x="32" y="74" text-anchor="middle" alignment-baseline="middle" font-size="10">{{{ name }}}</text>
+              </a>
+            </g>
+          commitMessage: 'action: update README contributors'
+          svgPath: CONTRIBUTORS.svg
+  update-contributors-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: wow-actions/update-contributors@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          include_bots: false
+          affiliation: all
+          commit_message: 'action: update package contributors'
