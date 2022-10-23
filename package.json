@@ -71,5 +71,27 @@
   },
   "_moduleAliases": {
     "$src": "src"
-  }
+  },
+  "contributors": [
+    {
+      "name": "MrStanDu33",
+      "email": "",
+      "url": "https://github.com/MrStanDu33"
+    },
+    {
+      "name": "alexandrel63",
+      "email": "",
+      "url": "https://github.com/alexandrel63"
+    },
+    {
+      "name": "Kwaay",
+      "email": "benoit.dum74@gmail.com",
+      "url": "https://github.com/Kwaay"
+    },
+    {
+      "name": "snyk-bot",
+      "email": "snyk-bot@snyk.io",
+      "url": "https://github.com/snyk-bot"
+    }
+  ]
 }
