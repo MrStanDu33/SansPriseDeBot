@@ -3,25 +3,18 @@ on:
   push:
     branches: [main, develop]
 jobs:
-  update-contributors-readme:
+  update-contributors-read:
     runs-on: ubuntu-latest
     steps:
-      - uses: wow-actions/contributors-list@v1
+      - uses: actions/checkout@v2
+      - uses: Maanuj-Vora/List-Contributors@0.1.6
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          round: false
-          truncate: 0
-          affiliation: all
-          userNameHeight: 19
-          itemTemplate: >
-            <g transform="translate({{ x }}, {{ y }})">
-              <a xlink:href="{{{ url }}}" class="contributor-link" target="_blank" rel="nofollow sponsored" title="{{{ name }}}" id="{{{ name }}}">
-                <image width="{{ width }}" height="{{ height }}" xlink:href="{{{ avatar }}}" />
-                <text x="32" y="74" text-anchor="middle" alignment-baseline="middle" font-size="10">{{{ name }}}</text>
-              </a>
-            </g>
-          commitMessage: 'action: update README contributors'
-          svgPath: CONTRIBUTORS.svg
+          REPO_NAME: '${{github.repository}}'
+          ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          CONTRIBUTOR: '## Contributors'
+          FILEPATH: '/README.md'
+          FONT_SIZE: 19
+          COMMIT_MESSAGE: 'action: update README contributors'
   update-contributors-package:
     runs-on: ubuntu-latest
     steps:
