@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 /**
+ * @file Test i18n configuration.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 

@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 /**
+ * @file Test discord.js bot authentication.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 

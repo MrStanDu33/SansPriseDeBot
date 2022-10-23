@@ -1,4 +1,5 @@
 /**
+ * @file App startup file.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 

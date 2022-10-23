@@ -1,4 +1,5 @@
 /**
+ * @file Custom logger class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -10,58 +11,15 @@ import chalk from 'chalk';
 import { get } from 'stack-trace';
 import cliSpinners from 'cli-spinners';
 
-/**
- * @typedef Spinner
- *
- * @property { ?number }  interval - Interval between each frame.
- * @property { string[] } frames   - List frames that composes the animated spinner.
- */
-
-/**
- * @typedef { 'black'
- * | 'red'
- * | 'green'
- * | 'yellow'
- * | 'blue'
- * | 'magenta'
- * | 'cyan'
- * | 'white'
- * | 'gray' } Color
- */
-
-/**
- * @typedef SpinnerSettings
- *
- * @param { string }           [text]                    - Text to display after the spinner.
- * @param { string }           [prefixText]              - Text or a function that returns text to
- *                                                       display before the spinner. No prefix text will be displayed if set to an empty string.
- * @param { string | Spinner } [spinner = 'dots']        - Name of one of the provided spinners.
- *                                                       See [`example.js`](https://github.com/BendingBender/ora/blob/main/example.js) in Logger repo
- *                                                       if you want to test out different spinners. On Windows, it will always use the line spinner
- *                                                       as the Windows command-line doesn't have proper Unicode support.
- * @param { Color }            [color = 'cyan']          - Color of the spinner.
- * @param { boolean }          [hideCursor = true]       - Set to `false` to stop Ora from hiding the cursor.
- * @param { number }           [indent = 0]              - Indent the spinner with the given number of spaces.
- * @param { number }           [interval]                - Interval between each frame. Spinners provide their own
- *                                                       recommended interval, so you don't really need to specify Logger.
- * @param { object }           [stream = process.stderr] - Stream to write the output.
- * @param { boolean }          [isEnabled]               - Force enable/disable the spinner. If not specified, the spinner
- *                                                       will be enabled if the `stream` is being run inside a TTY context (not spawned or piped) and/or
- *                                                       not in a CI environment. Note that `false` doesn't mean it won't output anything. It just means
- *                                                       it won't output the spinner, colors, and other ansi escape codes. It will still log text.
- * @param { boolean }          [isSilent = false]        - Disable the spinner and all log text. All output is
- *                                                       suppressed and `isEnabled` will be considered `false`.
- * @param { boolean }          [discardStdin = true]     - Discard stdin input (except Ctrl+C) while running if
- *                                                       it's TTY. Logger prevents the spinner from twitching on input, outputting broken lines on `Enter`
- *                                                       key presses, and prevents buffering of input while the spinner is running. Logger has no effect on
- *                                                       Windows as there's no good way to implement discarding stdin properly there.
- */
+/** @typedef { import('ora').Color } Color */
+/** @typedef { import('ora').Options } SpinnerSettings */
+/** @typedef { import('ora').Ora } Loader */
 
 /**
  * @class
  * @description Logger library.
  *
- * @hideconstructor
+ * @category Libraries
  */
 class Logger {
   /**
@@ -76,7 +34,7 @@ class Logger {
    *
    * @throws  { Error }                                         - Thrown if argument is not valid.
    *
-   * @returns { object }                                        - The spinner instance.
+   * @returns { Loader }                                        - The spinner instance.
    */
   static loader(spinnerSettings, message, logType) {
     if (typeof message !== 'string' || message.length === 0) {
@@ -104,7 +62,10 @@ class Logger {
 
     const spinnerInstance = ora({
       ...spinnerSettings,
-      spinner: cliSpinners[spinnerSettings.spinner],
+      spinner:
+        typeof spinnerSettings.spinner === 'string'
+          ? cliSpinners[spinnerSettings.spinner]
+          : spinnerSettings.spinner,
       text: message + os.EOL,
     }).start();
 
@@ -164,8 +125,8 @@ class Logger {
    * in fatal mode.
    *
    * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error.0   - If set to true, log error as fatal.
-   * @param   { ...string } error.1   - Error messages to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { ...string } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    */
@@ -230,8 +191,8 @@ class Logger {
    * in fatal mode.
    *
    * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error.0   - If set to true, log error as fatal.
-   * @param   { ...string } error.1   - Error messages to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { ...string } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    */
@@ -339,8 +300,8 @@ class Logger {
    * in fatal mode.
    *
    * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error.0   - If set to true, log error as fatal.
-   * @param   { ...string } error.1   - Error messages to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { ...string } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    */

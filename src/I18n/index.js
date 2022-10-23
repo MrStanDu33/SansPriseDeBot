@@ -1,10 +1,18 @@
 /**
+ * @file I18n initialization and configuration.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
 import { I18n } from 'i18n';
 import path from 'path';
 
+/**
+ * @description I18n library.
+ *
+ * @category Libraries
+ *
+ * @module I18n
+ */
 const i18n = new I18n();
 
 i18n.configure({
@@ -13,7 +21,8 @@ i18n.configure({
   defaultLocale: process.env.DEFAULT_LOCALE,
   retryInDefaultLocale: false,
 });
-// eslint-disable-next-line no-underscore-dangle
-i18n.l = i18n.__;
+
+// @ts-ignore
+i18n.l = i18n.__; // eslint-disable-line no-underscore-dangle
 
 export default i18n;

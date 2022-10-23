@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 /**
+ * @file Test EventBus class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -9,7 +12,7 @@ describe('EventBus', () => {
   let APP_DEBUG;
   beforeEach(() => {
     APP_DEBUG = process.env.APP_DEBUG;
-    process.env.APP_DEBUG = false;
+    process.env.APP_DEBUG = 'false';
   });
 
   afterEach(() => {

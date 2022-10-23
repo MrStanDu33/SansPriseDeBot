@@ -1,4 +1,5 @@
 /**
+ * @file Custom event bus.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -9,6 +10,8 @@ import Logger from '$src/Logger';
  * @description EventBus library.
  *
  * @hideconstructor
+ *
+ * @category Libraries
  */
 class EventBus {
   /**
@@ -16,12 +19,10 @@ class EventBus {
    *
    * @description It adds a callback to the event listener list.
    *
-   * @param   { string }   event - The name of the event you want to listen to.
-   * @param   { Function } cb    - The callback function that will be called when the event is emitted.
+   * @param { string }   event - The name of the event you want to listen to.
+   * @param { Function } cb    - The callback function that will be called when the event is emitted.
    *
-   * @throws  { Error }          - Thrown if argument is not valid.
-   *
-   * @returns { void }
+   * @throws  { Error } Thrown if argument is not valid.
    */
   static on(event, cb) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
@@ -43,12 +44,10 @@ class EventBus {
    *
    * @description It calls all the callbacks associated with the emitted event.
    *
-   * @param   { string } event - The name of the event to emit.
-   * @param   { any }    args  - The arguments passed to callbacks.
+   * @param { string } event - The name of the event to emit.
+   * @param { any }    args  - The arguments passed to callbacks.
    *
-   * @throws  { Error }                                         - Thrown if argument is not valid.
-   *
-   * @returns {void}
+   * @throws { Error } Thrown if argument is not valid.
    */
   static emit(event, ...args) {
     if (!event || typeof event !== 'string' || event.length <= 0) {

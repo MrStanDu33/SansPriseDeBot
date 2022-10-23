@@ -9,6 +9,17 @@ import models from '$src/Models';
 
 const { LinkedChannel, FollowedMember } = models;
 
+/** @typedef { import('discord.js').GuildMember } Member */
+
+/**
+ * @description Function that is called when a member leaves the server.
+ * If member was not followed by the bot, nothing happens.
+ * Else, it removes the member welcome channel and removes member from the followed members list.
+ *
+ * @param   { Member }        member - Member that left the server.
+ *
+ * @returns { Promise<void> }
+ */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
   /*
@@ -18,6 +29,8 @@ export default async (member) => {
   const { client } = Store;
 
   Logger.info(`A member just left ! (${member.user.tag})`);
+
+  // TODO: Move rest of code in getUserOutOfPipe event.
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
     `Deleting welcome channel for ${member.user.tag}`,
@@ -28,6 +41,8 @@ export default async (member) => {
     where: { memberId: member.user.id },
     include: [LinkedChannel],
   });
+
+  if (followedMember === null) return;
 
   const channel = client.channels.cache.get(
     followedMember.LinkedChannel.discordId,
@@ -41,7 +56,7 @@ export default async (member) => {
         `Channel ${followedMember.LinkedChannel.name} successfully deleted !`,
       );
     })
-    .then(() => followedMember.delete())
+    .then(followedMember.delete)
     .catch((error) => {
       loader.fail();
       Logger.error(

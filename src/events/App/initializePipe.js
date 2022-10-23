@@ -1,4 +1,5 @@
 /**
+ * @file Initialize pipe for followed member.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -9,8 +10,19 @@ import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
 import models from '$src/Models';
 
+/** @typedef { import('discord.js').GuildMember } Member */
+/** @typedef { import('discord.js').GuildChannel } Channel */
+
 const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
 
+/**
+ * @description It creates a channel in the welcome category, with the name of the user, and
+ * with the topic of the channel being the welcome message.
+ *
+ * @param   { Member }           member - The member that joined the server.
+ *
+ * @returns { Promise<Channel> }        - The channel object instance.
+ */
 const createChannel = async (member) => {
   const { client } = Store;
   const { guild } = member;
@@ -21,26 +33,23 @@ const createChannel = async (member) => {
     `Creating welcome channel for ${member.user.tag}`,
     'info',
   );
-  const permissions = new PermissionsBitField();
-  permissions.add(PermissionsBitField.Flags.ViewChannel);
 
   const channelPermissionOverwrites = [
     {
       id: guild.roles.everyone.id,
-      type: 'role',
-      deny: permissions,
+      deny: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: member.id,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: client.user.id,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: process.env.DISCORD_DEBUG_ACCOUNT_ID,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
   ];
 
@@ -63,12 +72,21 @@ const createChannel = async (member) => {
       Logger.error(new Error(error));
     });
 
+  if (!channel) throw new Error('Unable to create welcome channel');
+
   loader.succeed();
   Logger.info(`Channel ${channel.name} successfully created !`);
 
   return channel;
 };
 
+/**
+ * @description Initialize pipe by creating a channel for the member and process action.
+ *
+ * @param   { Member }        member - Member to process.
+ *
+ * @returns { Promise<void> }
+ */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
 

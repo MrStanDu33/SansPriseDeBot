@@ -38,7 +38,7 @@ module.exports = {
       {
         noZeroLineText: true,
         noSingleLineBlocks: true,
-        singleLineTags: ['lends', 'typedef', 'member'],
+        singleLineTags: ['lends', 'typedef', 'member', 'type'],
         noMultilineBlocks: true,
         minimumLengthForMultiline: 80,
       },

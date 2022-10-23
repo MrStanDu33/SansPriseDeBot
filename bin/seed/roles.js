@@ -1,5 +1,14 @@
 /**
+ * @file Seed discord server roles in database.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
+/**
+ * @module Seed:roles
+ *
+ * @category Binaries
+ *
+ * @subcategory Seed
  */
 
 import Logger from '$src/Logger/index';
@@ -202,6 +211,11 @@ const rolesList = [
   },
 ];
 
+/**
+ * @description Save all roles in database.
+ *
+ * @returns { Promise<void> }
+ */
 const main = async () => {
   Logger.info('Start seeding roles in database');
   const models = (await import('$src/Models')).default;

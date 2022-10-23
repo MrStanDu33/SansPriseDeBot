@@ -1,4 +1,5 @@
 /**
+ * @file App initialization.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -9,7 +10,15 @@ import EventBus from '$src/EventBus';
 import '$src/events/';
 import cron from 'node-cron';
 
-const App = {
+/**
+ * @class App
+ */
+class App {
+  /**
+   * @description Creates app and initialize Discord bot.
+   *
+   * @category App
+   */
   constructor() {
     this.Store = Store;
 
@@ -42,19 +51,24 @@ const App = {
       EventBus.emit('Discord_ready', loader);
       EventBus.emit('App_syncDbOnBoot');
 
-      this.setCronJobs();
+      App.setCronJobs();
     });
 
     Store.client.on('shardError', (error) => {
       Logger.error(true, 'A websocket connection encountered an error:', error);
     });
-  },
+  }
 
-  setCronJobs() {
+  /**
+   * @description It sets up cron jobs.
+   * - One to timeout unresponsive users.
+   * - One to process members missed by the bot in waiting list.
+   */
+  static setCronJobs() {
     cron.schedule('* * * * *', () => EventBus.emit('App_timeoutUsers'));
     cron.schedule('* * * * *', () => EventBus.emit('App_processMissedMembers'));
-  },
-};
+  }
+}
 
 export default App;
 

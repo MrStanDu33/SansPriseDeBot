@@ -1,10 +1,27 @@
 /**
+ * @file Sequelize model for followed members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
 import { DataTypes } from '@sequelize/core';
 
+/** @typedef { import('@sequelize/core').Sequelize } Sequelize */
+/** @typedef { import('@sequelize/core').Model } Model */
+/** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
+
+/**
+ * @category Models
+ *
+ * @description FollowedMembers model initializer.
+ *
+ * @param   { Sequelize }        instance - Sequelize instance linked to database.
+ *
+ * @returns { ModelConstructor }          - Instantiated followed member model.
+ */
 export default (instance) =>
+  /**
+   * @returns { Model } - Instantiated followed member model.
+   */
   instance.define('FollowedMember', {
     guildId: {
       type: DataTypes.STRING(20),

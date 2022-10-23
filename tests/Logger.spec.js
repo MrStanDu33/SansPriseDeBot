@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 /**
+ * @file Test Logger class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -40,9 +43,15 @@ describe('Logger', () => {
 
     it('calls start', async () => {
       const stream = new PassThrough();
-      stream.clearLine = () => {};
-      stream.cursorTo = () => {};
-      stream.moveCursor = () => {};
+
+      /**
+       * @description Prevent terminal refresh.
+       */
+      const terminalCallback = () => {};
+
+      stream.clearLine = terminalCallback;
+      stream.cursorTo = terminalCallback;
+      stream.moveCursor = terminalCallback;
 
       const spinner = Logger.loader(
         {

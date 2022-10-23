@@ -1,4 +1,5 @@
 /**
+ * @file Custom message interpolator class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -11,8 +12,8 @@ class Message {
    * @constructs Message
    * @description Replaces mustaches interpolations with corresponding given values.
    *
-   * @param { string } message        - The message containing mustaches.
-   * @param { object } interpolations - Map of available interpolations variables.
+   * @param { string }                          message        - The message containing mustaches.
+   * @param { Object<string, (number|string)> } interpolations - Map of available interpolations variables.
    */
   constructor(message, interpolations) {
     this.message = message;
@@ -29,7 +30,7 @@ class Message {
 
       this.message = this.message.replaceAll(
         availableInterpolation,
-        interpolations[interpolationName],
+        String(interpolations[interpolationName]),
       );
     });
   }

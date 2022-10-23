@@ -1,5 +1,8 @@
 /**
+ * @file Sequelize models manager and relation configurator.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models
  */
 
 import { readdirSync } from 'fs';

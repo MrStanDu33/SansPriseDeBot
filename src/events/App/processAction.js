@@ -1,4 +1,5 @@
 /**
+ * @file Process needed action for followed member.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -21,7 +22,16 @@ const {
   RolesToAddToMember,
 } = models;
 
-const askQuestion = async (member, action) => {
+/** @typedef { import('$src/Models/Role').default } Role */
+
+/**
+ * @description Display question and buttons linked to question's answers
+ * in the channel linked to the concerned member.
+ *
+ * @param { FollowedMember } member - Followed member to ask action to.
+ * @param { Action }         action - Question to ask to member.
+ */
+const askQuestion = (member, action) => {
   const { client } = Store;
 
   const channel = client.channels.cache.get(member.LinkedChannel.discordId);
@@ -60,6 +70,12 @@ const askQuestion = async (member, action) => {
   });
 };
 
+/**
+ * @description Add given role to list of roles to add to the member.
+ *
+ * @param { FollowedMember } member - Followed member to add role to.
+ * @param { Action }         role   - Role to add to member.
+ */
 const addRole = async (member, role) => {
   await RolesToAddToMember.create({
     FollowedMemberId: member.id,
@@ -67,6 +83,12 @@ const addRole = async (member, role) => {
   });
 };
 
+/**
+ * @description Display message in the channel linked to the concerned member.
+ *
+ * @param { FollowedMember } member  - Followed member to add role to.
+ * @param { Action }         message - Message to print in the channel.
+ */
 const printMessage = (member, message) => {
   const { client } = Store;
 
@@ -77,6 +99,11 @@ const printMessage = (member, message) => {
   });
 };
 
+/**
+ * @description Apply roles from roles waitlist to member.
+ *
+ * @param { FollowedMember } member - Followed member to add roles to.
+ */
 const applyRoles = async (member) => {
   const { client } = Store;
 
@@ -119,6 +146,16 @@ const applyRoles = async (member) => {
   }
 };
 
+/**
+ * @description Get action to process for member and process it.
+ *
+ * @param   { number }                  memberId - Followed member id to process action to.
+ * @param   { number }                  actionId - Action id to process.
+ *
+ * @returns { Promise<boolean | void> }          - Returns false if action is not in list of
+ *                                               allowed actions. Returns undefined if
+ *                                               action was done.
+ */
 export default async (memberId, actionId) => {
   const { client } = Store;
 

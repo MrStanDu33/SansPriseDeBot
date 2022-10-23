@@ -1,4 +1,7 @@
+// @ts-nocheck
+
 /**
+ * @file Test global store.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 

@@ -1,4 +1,5 @@
 /**
+ * @file Sequelize connection manager.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
@@ -12,6 +13,12 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: 'mysql',
+    /**
+     * @description Function that is called every time a query is executed to log queries
+     *              if APP_DEBUG is set to true.
+     *
+     * @param { string } msg - Sequelize query to log.
+     */
     logging: (msg) => {
       if (process.env.APP_DEBUG === 'true') Logger.debug(msg);
     },
