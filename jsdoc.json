@@ -1,38 +1,51 @@
 {
   "tags": {
-    "dictionaries": ["jsdoc"],
-    "allowUnknownTags": ["category", "subcategory"]
+    "dictionaries": ["jsdoc"]
   },
   "source": {
-    "include": ["./src", "./index.js", "./bin", "README.md"],
-    "includePattern": ".js$"
+    "include": ["./src", "./tests", "./index.js", "./bin", "README.md"],
+    "includePattern": ".js$",
+    "excludePattern": "(node_modules/|docs)"
   },
-  "plugins": [
-    "plugins/markdown",
-    "node_modules/better-docs/typedef-import",
-    "node_modules/better-docs/category"
-  ],
+  "plugins": ["plugins/markdown", "node_modules/better-docs/typedef-import"],
   "opts": {
     "encoding": "utf8",
-    "template": "node_modules/better-docs",
+    "template": "node_modules/clean-jsdoc-theme",
     "destination": "docs/",
     "readme": "README.md",
-    "recurse": true
+    "recurse": true,
+    "theme_opts": {
+      "default_theme": "dark"
+    }
+  },
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
+  },
+  "theme_opts": {
+    "homepageTitle": "Sans prise de bot code documentation",
+    "title": "Sans prise de bot code documentation",
+    "menu": [
+      {
+        "title": "Github",
+        "link": "https://github.com/MrStanDu33/SansPriseDeBot",
+        "target": "_blank"
+      }
+    ],
+    "sections": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces",
+      "Global"
+    ]
   },
   "templates": {
-    "cleverLinks": true,
-    "monospaceLinks": true,
-    "search": true,
-    "better-docs": {
-      "name": "Sans prise de bot code documentation",
-      "title": "Sans prise de bot code documentation",
-      "hideGenerator": true,
-      "navLinks": [
-        {
-          "label": "Github",
-          "href": "https://github.com/MrStanDu33/SansPriseDeBot"
-        }
-      ]
-    }
+    "cleverLinks": false,
+    "monospaceLinks": false
   }
 }
