@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es6",
+    "module": "es2022",
+    "target": "es2022",
     "sourceMap": true,
     "baseUrl": ".",
+    "checkJs": true,
+    "moduleResolution": "node",
     "paths": {
       "$src/*": ["./src/*"]
     }

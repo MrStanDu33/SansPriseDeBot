@@ -1,15 +1,35 @@
+/**
+ * @file Custom event bus.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import Logger from '$src/Logger';
 
-export default {
+/**
+ * @class
+ * @description EventBus library.
+ *
+ * @hideconstructor
+ *
+ * @exports Libraries/EventBus
+ */
+class EventBus {
   /**
-   * @function on - It adds a callback to the event listener list.
+   * @static
    *
-   * @param { string } event - The name of the event you want to listen to.
-   * @param { Function } cb - The callback function that will be called when the event is emitted.
+   * @description It adds a callback to the event listener list.
    *
-   * @returns { void }
+   * @param { string }   event - The name of the event you want to listen to.
+   * @param { Function } cb    - The callback function that will be called when the event is emitted.
+   *
+   * @throws  { Error } Thrown if argument is not valid.
+   *
+   * @example
+   * EventBus.on('mySuperEvent', (payload) => {
+   *   console.log('mySuperEvent was fired', payload);
+   * });
    */
-  on(event, cb) {
+  static on(event, cb) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
       throw new Error('please provide an event name');
     }
@@ -22,17 +42,26 @@ export default {
 
     Logger.debug(`Listening "${event}" event`);
     this[`_${event}`].push(cb);
-  },
+  }
 
   /**
-   * @function emit - It calls all the callbacks associated with the emitted event
+   * @static
+   *
+   * @description It calls all the callbacks associated with the emitted event.
    *
    * @param { string } event - The name of the event to emit.
-   * @param { any } args - The arguments passed to callbacks.
+   * @param { any }    args  - The arguments passed to callbacks.
    *
-   * @returns {void}
+   * @throws { Error } Thrown if argument is not valid.
+   *
+   * @example
+   * EventBus.emit('mySuperEvent', {
+   *   name: 'payload',
+   *   type: 'message',
+   *   quantity: 12,
+   * });
    */
-  emit(event, ...args) {
+  static emit(event, ...args) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
       throw new Error('please provide an event name');
     }
@@ -40,5 +69,7 @@ export default {
 
     this[`_${event}`].forEach((cb) => cb(...args));
     Logger.debug(`Event "${event}" dispatched`);
-  },
-};
+  }
+}
+
+export default EventBus;

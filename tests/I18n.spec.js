@@ -1,3 +1,9 @@
+/**
+ * @file Test i18n configuration.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+// @ts-nocheck
+
 import i18n from '$src/I18n';
 import path from 'path';
 import fs from 'fs';

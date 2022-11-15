@@ -1,18 +1,52 @@
+/**
+ * @file Process needed action for followed member.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { v4 as uuidv4 } from 'uuid';
 import Store from '$src/Store';
-import { logs, DecisionsTrees } from '$src/Db';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import Message from '$src/Classes/Message';
 import Logger from '$src/Logger';
+import models from '$src/Models';
 
+const {
+  Action,
+  ActionAddRole,
+  ActionGoto,
+  ActionPrintMessage,
+  ActionQuestion,
+  ActionQuestionAnswer,
+  FollowedMember,
+  Role,
+  RolesToAddToMember,
+} = models;
+
+/** @typedef { import('$src/Models/Role').default } Role */
+
+/**
+ * @description Display question and buttons linked to question's answers
+ * in the channel linked to the concerned member.
+ *
+ * @param   { FollowedMember } member - Followed member to ask action to.
+ * @param   { Action }         action - Question to ask to member.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ * const action = await Action.findOne({ where: { decisionsTreeId: 1 } });
+ *
+ * await askQuestion(member, action);
+ */
 const askQuestion = async (member, action) => {
   const { client } = Store;
 
-  const channel = client.channels.cache.get(member.linkedChannel.id);
+  const channel = client.channels.cache.get(member.LinkedChannel.discordId);
 
   const messageRows = [];
 
-  action.answers.forEach((answer, index) => {
+  action.Answers.forEach((answer, index) => {
     if (index % 5 === 0) {
       const buttonsRow = new ActionRowBuilder();
       messageRows.push(buttonsRow);
@@ -35,49 +69,95 @@ const askQuestion = async (member, action) => {
   });
 
   const { message } = new Message(action.question, {
-    memberId: member.id,
+    memberId: member.memberId,
   });
 
-  channel.send({
+  await channel.send({
     content: message,
     components: messageRows,
   });
 };
 
-const addRole = (member, role) => {
-  const roleToAdd = DecisionsTrees.FormationRolesDecisionsTree.getRef(
-    role.role.$ref,
-  );
-
-  logs.reload();
-
-  const memberIndex = logs.getIndex('/app/followingMembers', member.id);
-  if (memberIndex === -1) return;
-  logs.push(`/app/followingMembers[${memberIndex}]/rolesToAdd[]`, roleToAdd);
+/**
+ * @description Add given role to list of roles to add to the member.
+ *
+ * @param   { FollowedMember } member - Followed member to add role to.
+ * @param   { Action }         role   - Role to add to member.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const role = await guild.roles.fetch('654691713893531669');
+ *
+ * await printMessage(member, role);
+ */
+const addRole = async (member, role) => {
+  await RolesToAddToMember.create({
+    FollowedMemberId: member.id,
+    RoleId: role.Role.id,
+  });
 };
 
-const printMessage = (member, message) => {
+/**
+ * @description Display message in the channel linked to the concerned member.
+ *
+ * @param   { FollowedMember } member  - Followed member to add role to.
+ * @param   { Action }         message - Message to print in the channel.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ * const message = new Message('Hello there 👋 have a nice {{ time }}', { time: 'day' });
+ *
+ * await printMessage(member, message);
+ */
+const printMessage = async (member, message) => {
   const { client } = Store;
 
-  const channel = client.channels.cache.get(member.linkedChannel.id);
+  const channel = client.channels.cache.get(member.LinkedChannel.discordId);
 
-  channel.send({
+  await channel.send({
     content: message.message,
   });
 };
 
+/**
+ * @description Apply roles from roles waitlist to member.
+ *
+ * @param   { FollowedMember } member - Followed member to add roles to.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * await applyRoles(member);
+ */
 const applyRoles = async (member) => {
   const { client } = Store;
 
   const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
-  const user = await guild.members.fetch(member.id);
+  const user = await guild.members.fetch(member.memberId);
 
-  const rolesToAdd = member.rolesToAdd || [];
+  const rolesToAdd = await RolesToAddToMember.findAll({
+    where: {
+      FollowedMemberId: member.id,
+    },
+    include: Role,
+  });
 
-  const roles = rolesToAdd.map((roleToAdd) => ({
-    role: guild.roles.fetch(roleToAdd.roleId),
-    roleToAdd,
-  }));
+  await guild.roles.fetch(rolesToAdd[0].Role.discordId);
+
+  const roles = rolesToAdd.map((roleToAdd) => {
+    return {
+      role: guild.roles.fetch(roleToAdd.Role.discordId),
+      roleToAdd,
+    };
+  });
 
   try {
     await Promise.all(roles.map(({ role: promise }) => promise));
@@ -88,7 +168,7 @@ const applyRoles = async (member) => {
       const fetchedRole = await role;
       if (fetchedRole === null) {
         throw Error(
-          `Unable to fetch role ${roleToAdd.name}-${roleToAdd.roleId}`,
+          `Unable to fetch role ${roleToAdd.Role.name}-${roleToAdd.Role.roleId}`,
         );
       }
       user.roles.add(fetchedRole);
@@ -99,37 +179,79 @@ const applyRoles = async (member) => {
   }
 };
 
-export default (member, action) => {
+/**
+ * @description Get action to process for member and process it.
+ *
+ * @event module:Libraries/EventBus#App_processAction
+ *
+ * @param   { number }                  memberId - Followed member id to process action to.
+ * @param   { number }                  actionId - Action id to process.
+ *
+ * @returns { Promise<boolean | void> }          - Returns false if action is not in list of
+ *                                               allowed actions. Returns undefined if
+ *                                               action was done.
+ *
+ * @example
+ * EventBus.emit('App_processAction');
+ */
+export default async (memberId, actionId) => {
   const { client } = Store;
 
-  const actionToPerform = action.$ref
-    ? DecisionsTrees.FormationRolesDecisionsTree.getRef(action.$ref)
-    : action;
+  const member = await FollowedMember.findOne({
+    where: { id: memberId },
+    include: { all: true },
+  });
 
-  switch (action.type) {
+  member.CurrentActionId = actionId;
+  await member.save();
+
+  const actionToPerform = await Action.findOne({
+    where: { id: actionId },
+    include: [
+      {
+        model: ActionAddRole,
+        as: 'AddRole',
+        include: Role,
+      },
+      {
+        model: ActionGoto,
+        include: Action,
+        as: 'Goto',
+      },
+      {
+        model: ActionPrintMessage,
+        as: 'PrintMessage',
+      },
+      {
+        model: ActionQuestion,
+        as: 'Question',
+        include: [
+          {
+            model: ActionQuestionAnswer,
+            as: 'Answers',
+            include: Action,
+          },
+        ],
+      },
+    ],
+  });
+
+  switch (actionToPerform.type) {
     case 'applyRoles': {
       return applyRoles(member);
     }
     case 'addRole': {
-      return addRole(member, actionToPerform);
+      return addRole(member, actionToPerform.AddRole);
     }
     case 'printMessage': {
-      return printMessage(member, actionToPerform);
+      return printMessage(member, actionToPerform.PrintMessage);
     }
     case 'question': {
-      logs.reload();
-
-      const memberIndex = logs.getIndex('/app/followingMembers', member.id);
-      if (memberIndex === -1) return null;
-      logs.push(
-        `/app/followingMembers[${memberIndex}]/currentProcess`,
-        action.$ref ?? '/default',
-      );
-      return askQuestion(member, actionToPerform);
+      return askQuestion(member, actionToPerform.Question);
     }
     default: {
-      const channel = client.channels.cache.get(member.linkedChannel.id);
-      channel.send(`No action performed, prompted for ${action.type}`);
+      const channel = client.channels.cache.get(member.LinkedChannel.discordId);
+      channel.send(`No action performed, prompted for ${actionToPerform.type}`);
     }
   }
 

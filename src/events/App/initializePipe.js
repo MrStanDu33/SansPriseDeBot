@@ -1,14 +1,37 @@
+/**
+ * @file Initialize pipe for followed member.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+
 import { PermissionsBitField, ChannelType } from 'discord.js';
 import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
-import { logs, DecisionsTrees } from '$src/Db';
+import models from '$src/Models';
 
+/** @typedef { import('discord.js').GuildMember } Member */
+/** @typedef { import('discord.js').GuildChannel } Channel */
+
+const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
+
+/**
+ * @description It creates a channel in the welcome category, with the name of the user, and
+ * with the topic of the channel being the welcome message.
+ *
+ * @param   { Member }           member - The member that joined the server.
+ *
+ * @returns { Promise<Channel> }        - The channel object instance.
+ *
+ * @example
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const member = await guild.members.fetch('691583992587354112');
+ *
+ * await createChannel(member);
+ */
 const createChannel = async (member) => {
   const { client } = Store;
   const { guild } = member;
-
   i18n.setLocale(member.user.locale || process.env.DEFAULT_LOCALE);
 
   const loader = Logger.loader(
@@ -16,26 +39,23 @@ const createChannel = async (member) => {
     `Creating welcome channel for ${member.user.tag}`,
     'info',
   );
-  const permissions = new PermissionsBitField();
-  permissions.add(PermissionsBitField.Flags.ViewChannel);
 
   const channelPermissionOverwrites = [
     {
       id: guild.roles.everyone.id,
-      type: 'role',
-      deny: permissions,
+      deny: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: member.id,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: client.user.id,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
     {
       id: process.env.DISCORD_DEBUG_ACCOUNT_ID,
-      allow: permissions,
+      allow: [PermissionsBitField.Flags.ViewChannel],
     },
   ];
 
@@ -58,35 +78,55 @@ const createChannel = async (member) => {
       Logger.error(new Error(error));
     });
 
+  if (!channel) throw new Error('Unable to create welcome channel');
+
   loader.succeed();
   Logger.info(`Channel ${channel.name} successfully created !`);
 
   return channel;
 };
 
+/**
+ * @description Initialize pipe by creating a channel for the member and process action.
+ *
+ * @event module:Libraries/EventBus#App_initializePipe
+ *
+ * @param   { Member }        member - Member to process.
+ *
+ * @returns { Promise<void> }
+ *
+ * @fires module:Libraries/EventBus#App_processAction
+ *
+ * @example
+ * EventBus.emit('App_processAction');
+ */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
 
   const channel = await createChannel(member);
 
-  const memberData = {
-    guild: member.guild.id,
+  const decisionsTree = await DecisionsTree.findOne({
+    where: { name: 'FormationRoles' },
+  });
+
+  const defaultAction = await Action.findOne({
+    where: { decisionsTreeId: decisionsTree.id },
+  });
+
+  const memberData = await FollowedMember.create({
+    guildId: member.guild.id,
     locale: member.user.locale || process.env.DEFAULT_LOCALE,
-    id: member.user.id,
+    memberId: member.user.id,
     username: member.user.tag,
-    followingAt: new Date().getTime(),
-    lastUpdateAt: new Date().getTime(),
-    linkedChannel: {
-      id: channel.id,
-      name: channel.name,
-    },
-    currentProcess: '/default',
+    CurrentActionId: null,
     rolesToAdd: [],
-  };
+  });
 
-  logs.push('/app/followingMembers[]', memberData, true);
+  await LinkedChannel.create({
+    discordId: channel.id,
+    name: channel.name,
+    FollowedMemberId: memberData.id,
+  });
 
-  const action = DecisionsTrees.FormationRolesDecisionsTree.getRef('/default');
-
-  EventBus.emit('App_processAction', memberData, action);
+  EventBus.emit('App_processAction', memberData.id, defaultAction.id);
 };

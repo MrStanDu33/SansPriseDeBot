@@ -1,3 +1,9 @@
+/**
+ * @file Test global store.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
+// @ts-nocheck
+
 import Store from '$src/Store';
 
 describe('Store', () => {
