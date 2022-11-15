@@ -3,6 +3,8 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
+import Logger from '$src/Logger';
+
 /**
  * @class
  * @description Message manager.
@@ -16,7 +18,7 @@ class Message {
    * @param { Object<string, (number|string)> } interpolations - Map of available interpolations variables.
    *
    * @example
-   * const message = new Message(
+   * const { message } = new Message(
    *   'This is a {{ adjective }} message !',
    *   { adjective: 'nice' },
    * );
@@ -30,9 +32,10 @@ class Message {
 
     availableInterpolations.forEach((availableInterpolation) => {
       const interpolationName = availableInterpolation.replace(
-        /([^a-z_]||[ {}])+/g,
+        /([^a-zA-Z_]||[ {}])+/g,
         '',
       );
+
       if (!interpolations[interpolationName]) return;
 
       this.message = this.message.replaceAll(
