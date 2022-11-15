@@ -1,14 +1,8 @@
 /**
  * @file Seed default formation decision tree actions in database.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
- */
-
-/**
- * @module Seed:actions
  *
- * @category Binaries
- *
- * @subcategory Seed
+ * @category Binary
  */
 
 /** @typedef { import('$src/Models/Action').default } Action */
@@ -19,12 +13,18 @@ import Dotenv from 'dotenv';
 
 Dotenv.config();
 
+// TODO: Refactor to static class
+
 /**
+ * @function execute
  * @description Execute a given command, used to compile formation decisionsTree.
  *
  * @param   { string }          command - Command to execute.
  *
  * @returns { Promise<object> }         - Command result.
+ *
+ * @example
+ * const result = await execute('ls -la ./');
  */
 const execute = (command) =>
   new Promise((resolve, reject) => {
@@ -36,21 +36,7 @@ const execute = (command) =>
   });
 
 /**
- * @description It saves the action to the database and returns true.
- *
- * @param   { object }           action           - The action to store in the database.
- * @param   { number | null }    [parentAnswerId] - Id of parent answer for when action
- *                                                is due when answer selected.
- *
- * @returns { Promise<boolean> }                  - Return true when action done.
- */
-const processAction = async (action, parentAnswerId = null) => {
-  // eslint-disable-next-line no-use-before-define
-  await saveAction(action, parentAnswerId);
-  return true;
-};
-
-/**
+ * @function saveAction
  * @description Save action to database and create sub-action model instance if needed.
  *
  * @param   { object }          action           - The action to store in database.
@@ -58,6 +44,44 @@ const processAction = async (action, parentAnswerId = null) => {
  *                                               is due when answer selected.
  *
  * @returns { Promise<Action> }                  - The created action.
+ *
+ * @example
+ * const action = {
+ *   type: "question",
+ *   question: "Hello 👋 This is a question",
+ *   answers: [
+ *     {
+ *       icon: "✅",
+ *       text: "Answer A",
+ *       actions: {
+ *         "6978174d-3683-4954-bc62-3c28f1c8d302": {
+ *           type: "printMessage",
+ *           message: "Nice !",
+ *         },
+ *       }
+ *     },
+ *     {
+ *       icon: "❌",
+ *       text: "Answer B",
+ *       actions: {
+ *         "e90bae0a-be8e-4e7b-9e18-8ad6e8e37470": {
+ *           type: "addRole",
+ *           role: {
+ *            name: "my super role",
+ *            roleId: "667286314802216962",
+ *           }
+ *         },
+ *         "6978174d-3683-4954-bc62-3c28f1c8d303": {
+ *           type: "printMessage",
+ *           message: "Nice !",
+ *         },
+ *       },
+ *     },
+ *   ],
+ * };
+ * const parentAnswerId = 15;
+ *
+ * saveAction(action, parentAnswerId);
  */
 const saveAction = async (action, parentAnswerId = null) => {
   const models = (await import('$src/Models')).default;
@@ -71,17 +95,14 @@ const saveAction = async (action, parentAnswerId = null) => {
     ActionQuestionAnswer,
     Role,
   } = models;
-
   const decisionsTree = await DecisionsTree.findOne({
     where: { name: 'FormationRoles' },
   });
-
   const createdAction = await Action.create({
     DecisionsTreeId: decisionsTree.id,
     type: action.type,
     ActionQuestionAnswerId: parentAnswerId,
   });
-
   switch (action.type) {
     case 'addRole': {
       const role = await Role.findOne({
@@ -127,7 +148,7 @@ const saveAction = async (action, parentAnswerId = null) => {
           if ({}.hasOwnProperty.call(answer.actions, childActionIdentifier)) {
             const childAction = answer.actions[childActionIdentifier];
             // eslint-disable-next-line no-await-in-loop
-            await processAction(childAction, createdAnswer.id);
+            await saveAction(childAction, createdAnswer.id);
           }
         }
       }
@@ -142,11 +163,15 @@ const saveAction = async (action, parentAnswerId = null) => {
 };
 
 /**
+ * @function main
  * @description It loads the JSON file, resolves all the json references,
  * and then save the action in database.
  *
  * @returns { Promise<boolean | void> } - Undefined if an error occurred or
  *                                      true if actions were seeded successfully.
+ *
+ * @example
+ * $ npm run seed:actions
  */
 const main = async () => {
   const Logger = (await import('$src/Logger')).default;
@@ -157,7 +182,7 @@ const main = async () => {
     return Logger.error(true, 'Cannot load Decisions Tree json file');
 
   const decisionsTree = await execute(`json-refs resolve ${process.argv[2]}`);
-  await processAction(decisionsTree.default);
+  await saveAction(decisionsTree.default);
 
   Logger.info('Successfully seeded actions in database');
 

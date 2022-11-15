@@ -1,11 +1,9 @@
-// @ts-nocheck
-
 /**
  * @file Test Logger class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
+// @ts-nocheck
 
-// eslint-disable-next-line import/no-unresolved
 import { PassThrough } from 'node:stream';
 import { jest } from '@jest/globals';
 import Logger from '$src/Logger';
@@ -45,6 +43,7 @@ describe('Logger', () => {
       const stream = new PassThrough();
 
       /**
+       * @function terminalCallback
        * @description Prevent terminal refresh.
        */
       const terminalCallback = () => {};

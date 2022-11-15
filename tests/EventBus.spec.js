@@ -1,9 +1,8 @@
-// @ts-nocheck
-
 /**
  * @file Test EventBus class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
+// @ts-nocheck
 
 import { jest } from '@jest/globals';
 import EventBus from '$src/EventBus';

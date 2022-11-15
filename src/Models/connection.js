@@ -1,6 +1,8 @@
 /**
  * @file Sequelize connection manager.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models/connection
  */
 
 import { Sequelize } from '@sequelize/core';

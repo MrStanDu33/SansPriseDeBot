@@ -12,7 +12,14 @@ import Logger from '$src/Logger';
  * @description Function that is called when a new member joins the server.
  * It fires event called `App_initializePipe`.
  *
+ * @event module:Libraries/EventBus#Discord_guildMemberAdd
+ *
  * @param { Member } member - Member that just joined the server.
+ *
+ * @fires module:Libraries/EventBus#App_initializePipe
+ *
+ * @example
+ * EventBus.emit('Discord_guildMemberAdd');
  */
 export default (member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;

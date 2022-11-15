@@ -14,6 +14,13 @@ class Message {
    *
    * @param { string }                          message        - The message containing mustaches.
    * @param { Object<string, (number|string)> } interpolations - Map of available interpolations variables.
+   *
+   * @example
+   * const message = new Message(
+   *   'This is a {{ adjective }} message !',
+   *   { adjective: 'nice' },
+   * );
+   * console.log(message); // 'This is a nice message !'
    */
   constructor(message, interpolations) {
     this.message = message;

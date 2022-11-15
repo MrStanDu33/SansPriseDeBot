@@ -1,20 +1,16 @@
 /**
  * @file Seed discord server roles in database.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
- */
-
-/**
- * @module Seed:roles
  *
- * @category Binaries
- *
- * @subcategory Seed
+ * @category Binary
  */
 
 import Logger from '$src/Logger/index';
 import Dotenv from 'dotenv';
 
 Dotenv.config();
+
+// TODO: Refactor to static class
 
 const rolesList = [
   {
@@ -212,9 +208,13 @@ const rolesList = [
 ];
 
 /**
+ * @function main
  * @description Save all roles in database.
  *
  * @returns { Promise<void> }
+ *
+ * @example
+ * $ npm run seed:roles
  */
 const main = async () => {
   Logger.info('Start seeding roles in database');

@@ -117,10 +117,11 @@ module.exports = {
           constructs: { lines: 'never' },
           returns: { lines: 'any' },
           file: { lines: 'any' },
+          fires: { lines: 'any' },
         },
       },
     ],
-    'jsdoc/valid-types': 2,
+    'jsdoc/valid-types': 1,
   },
   ignorePatterns: ['docs', 'node_modules'],
   settings: {

@@ -22,6 +22,12 @@ const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
  * @param   { Member }           member - The member that joined the server.
  *
  * @returns { Promise<Channel> }        - The channel object instance.
+ *
+ * @example
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const member = await guild.members.fetch('691583992587354112');
+ *
+ * await createChannel(member);
  */
 const createChannel = async (member) => {
   const { client } = Store;
@@ -83,9 +89,16 @@ const createChannel = async (member) => {
 /**
  * @description Initialize pipe by creating a channel for the member and process action.
  *
+ * @event module:Libraries/EventBus#App_initializePipe
+ *
  * @param   { Member }        member - Member to process.
  *
  * @returns { Promise<void> }
+ *
+ * @fires module:Libraries/EventBus#App_processAction
+ *
+ * @example
+ * EventBus.emit('App_processAction');
  */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;

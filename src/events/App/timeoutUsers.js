@@ -17,16 +17,23 @@ const timeoutInDays = 1;
  * @description Function that is get all unresponsive members to timeout
  * and fires event called `App_getUserOutOfPipe`.
  *
+ * @event module:Libraries/EventBus#App_timeoutUsers
+ *
  * @returns { Promise<void> }
+ *
+ * @example
+ * EventBus.emit('App_timeoutUsers');
  */
 export default async () => {
-  const membersToTimeout = await FollowedMember.findOne({
+  const membersToTimeout = await FollowedMember.findAll({
     where: {
       lastUpdateAt: {
-        [Op.gt]: new Date(Date.now() - timeoutInDays * 24 * 3600 * 1000),
+        [Op.lt]: new Date(Date.now() - timeoutInDays * 24 * 3600 * 1000),
       },
     },
   });
+
+  if (membersToTimeout === null) return;
 
   membersToTimeout.forEach((/** @type {Member} */ member) => {
     // TODO: add timeout process and fire getUserOutOfPipe event

@@ -16,9 +16,14 @@ const { LinkedChannel, FollowedMember } = models;
  * If member was not followed by the bot, nothing happens.
  * Else, it removes the member welcome channel and removes member from the followed members list.
  *
+ * @event module:Libraries/EventBus#Discord_guildMemberRemove
+ *
  * @param   { Member }        member - Member that left the server.
  *
  * @returns { Promise<void> }
+ *
+ * @example
+ * EventBus.emit('Discord_guildMemberRemove');
  */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;

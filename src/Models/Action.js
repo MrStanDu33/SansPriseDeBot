@@ -1,6 +1,8 @@
 /**
  * @file Sequelize model for actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models/Action
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -10,18 +12,26 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @category Models
- *
  * @description Action model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
  * @returns { ModelConstructor }          - Instantiated action model.
+ *
+ * @example
+ * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
+ *   host: 'DB_HOST',
+ *   dialect: 'mysql',
+ * });
+ *
+ * const ActionsModel = ActionsModelBuilder(instance);
  */
-export default (instance) =>
+const ActionsModelBuilder = (instance) =>
   instance.define('Action', {
     type: {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
   });
+
+export default ActionsModelBuilder;

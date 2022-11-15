@@ -28,10 +28,18 @@ const {
  * @description Display question and buttons linked to question's answers
  * in the channel linked to the concerned member.
  *
- * @param { FollowedMember } member - Followed member to ask action to.
- * @param { Action }         action - Question to ask to member.
+ * @param   { FollowedMember } member - Followed member to ask action to.
+ * @param   { Action }         action - Question to ask to member.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ * const action = await Action.findOne({ where: { decisionsTreeId: 1 } });
+ *
+ * await askQuestion(member, action);
  */
-const askQuestion = (member, action) => {
+const askQuestion = async (member, action) => {
   const { client } = Store;
 
   const channel = client.channels.cache.get(member.LinkedChannel.discordId);
@@ -64,7 +72,7 @@ const askQuestion = (member, action) => {
     memberId: member.memberId,
   });
 
-  channel.send({
+  await channel.send({
     content: message,
     components: messageRows,
   });
@@ -73,8 +81,18 @@ const askQuestion = (member, action) => {
 /**
  * @description Add given role to list of roles to add to the member.
  *
- * @param { FollowedMember } member - Followed member to add role to.
- * @param { Action }         role   - Role to add to member.
+ * @param   { FollowedMember } member - Followed member to add role to.
+ * @param   { Action }         role   - Role to add to member.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const role = await guild.roles.fetch('654691713893531669');
+ *
+ * await printMessage(member, role);
  */
 const addRole = async (member, role) => {
   await RolesToAddToMember.create({
@@ -86,15 +104,23 @@ const addRole = async (member, role) => {
 /**
  * @description Display message in the channel linked to the concerned member.
  *
- * @param { FollowedMember } member  - Followed member to add role to.
- * @param { Action }         message - Message to print in the channel.
+ * @param   { FollowedMember } member  - Followed member to add role to.
+ * @param   { Action }         message - Message to print in the channel.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ * const message = new Message('Hello there 👋 have a nice {{ time }}', { time: 'day' });
+ *
+ * await printMessage(member, message);
  */
-const printMessage = (member, message) => {
+const printMessage = async (member, message) => {
   const { client } = Store;
 
   const channel = client.channels.cache.get(member.LinkedChannel.discordId);
 
-  channel.send({
+  await channel.send({
     content: message.message,
   });
 };
@@ -102,7 +128,14 @@ const printMessage = (member, message) => {
 /**
  * @description Apply roles from roles waitlist to member.
  *
- * @param { FollowedMember } member - Followed member to add roles to.
+ * @param   { FollowedMember } member - Followed member to add roles to.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * await applyRoles(member);
  */
 const applyRoles = async (member) => {
   const { client } = Store;
@@ -149,12 +182,17 @@ const applyRoles = async (member) => {
 /**
  * @description Get action to process for member and process it.
  *
+ * @event module:Libraries/EventBus#App_processAction
+ *
  * @param   { number }                  memberId - Followed member id to process action to.
  * @param   { number }                  actionId - Action id to process.
  *
  * @returns { Promise<boolean | void> }          - Returns false if action is not in list of
  *                                               allowed actions. Returns undefined if
  *                                               action was done.
+ *
+ * @example
+ * EventBus.emit('App_processAction');
  */
 export default async (memberId, actionId) => {
   const { client } = Store;

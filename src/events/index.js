@@ -16,6 +16,8 @@ const eventFilesLocations = ['App', 'Discord'];
  * - The file name is not `index.js`, aka this file name.
  * - The file name ends with `.js` extension.
  *
+ * @memberof module:Libraries/EventBus
+ *
  * @param   { string }  file - The name of the file being checked.
  * @returns { boolean }      - Wether the file must be imported or ignored.
  */
@@ -30,6 +32,8 @@ const eventFilesFilter = (file) => {
 /**
  * @description It imports the file, gets the file name,
  * and then register the event to the EventBus.
+ *
+ * @memberof module:Libraries/EventBus
  *
  * @param   { string }           eventFilesLocation - This is the folder name where
  *                                                  the event files are located.

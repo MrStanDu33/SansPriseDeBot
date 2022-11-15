@@ -11,13 +11,18 @@ import '$src/events/';
 import cron from 'node-cron';
 
 /**
- * @class App
+ * @class
+ * @description App instance.
  */
 class App {
   /**
    * @description Creates app and initialize Discord bot.
    *
-   * @category App
+   * @fires module:Libraries/EventBus#Discord_ready
+   * @fires module:Libraries/EventBus#App_syncDbOnBoot
+   *
+   * @example
+   * new App();
    */
   constructor() {
     this.Store = Store;
@@ -46,7 +51,7 @@ class App {
 
     Store.client.on('ready', () => {
       // const channel = Store.client.channels.cache.get('646359583895322645');
-      // channel.send('Test de Julien à nouveau');
+      // channel.send('Test de ~~Julien~~ <@209656163736879105> à nouveau');
 
       EventBus.emit('Discord_ready', loader);
       EventBus.emit('App_syncDbOnBoot');
@@ -63,24 +68,19 @@ class App {
    * @description It sets up cron jobs.
    * - One to timeout unresponsive users.
    * - One to process members missed by the bot in waiting list.
+   *
+   * @fires module:Libraries/EventBus#App_timeoutUsers
+   * @fires module:Libraries/EventBus#App_processAwaitingMembers
+   *
+   * @example
+   * App.setCronJobs();
    */
   static setCronJobs() {
     cron.schedule('* * * * *', () => EventBus.emit('App_timeoutUsers'));
-    cron.schedule('* * * * *', () => EventBus.emit('App_processMissedMembers'));
+    cron.schedule('* * * * *', () =>
+      EventBus.emit('App_processAwaitingMembers'),
+    );
   }
 }
 
 export default App;
-
-process.once('SIGUSR2', () => {
-  Logger.info('Stopping Discord.js client');
-  const loader = Logger.loader(
-    { spinner: 'aesthetic', color: 'cyan' },
-    'Disconnecting Discord bot to Discord ...',
-    'info',
-  );
-  Store.client.destroy();
-  loader.succeed();
-  Logger.info('Discord bot successfully disconnected');
-  process.kill(process.pid, 'SIGUSR2');
-});

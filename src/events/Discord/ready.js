@@ -14,7 +14,16 @@ import EventBus from '$src/EventBus';
  * @description Function called when the bot is connected to discord.
  * It emits events expected to be ran on bot connection.
  *
+ * @event module:Libraries/EventBus#Discord_ready
+ *
  * @param { Loader } loader - Loader to stop as bot is logged.
+ *
+ * @fires module:Libraries/EventBus#Discord_guildMemberAdd
+ * @fires module:Libraries/EventBus#Discord_guildMemberRemove
+ * @fires module:Libraries/EventBus#Discord_interactionCreate
+ *
+ * @example
+ * EventBus.emit('Discord_ready');
  */
 export default async (loader) => {
   const { client } = Store;

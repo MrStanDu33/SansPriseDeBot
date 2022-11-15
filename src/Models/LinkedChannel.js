@@ -1,6 +1,8 @@
 /**
  * @file Sequelize model for channels linked to a member.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models/LinkedChannel
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -10,15 +12,21 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @category Models
- *
  * @description LinkedChannels model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
  * @returns { ModelConstructor }          - Instantiated linked channel model.
+ *
+ * @example
+ * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
+ *   host: 'DB_HOST',
+ *   dialect: 'mysql',
+ * });
+ *
+ * const LinkedChannelsModel = LinkedChannelsModelBuilder(instance);
  */
-export default (instance) =>
+const LinkedChannelsModelBuilder = (instance) =>
   instance.define('LinkedChannel', {
     discordId: {
       type: DataTypes.STRING(20),
@@ -31,3 +39,5 @@ export default (instance) =>
       unique: true,
     },
   });
+
+export default LinkedChannelsModelBuilder;

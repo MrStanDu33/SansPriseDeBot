@@ -19,6 +19,15 @@ const { FollowedMember, Action, ActionQuestion, ActionQuestionAnswer } = models;
  *
  * @param { Message } message         - The message that was sent by the bot.
  * @param { string }  clickedButtonId - The id of the button that was clicked.
+ *
+ * @example
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const channel = await guild.channels.fetch('646359583895322645');
+ * const message = await channel.messages.fetch('1042073991935955054'); // message with buttons
+ *
+ * const clickedButtonId = 'Yes||f59fc0a4-e351-4eaf-acfd-f3ed72dd7233' // id of clicked button.
+ *
+ * await disableMessageButtons(messages, clickedButtonId);
  */
 const disableMessageButtons = async (message, clickedButtonId) => {
   const newActionRowEmbeds = message.components.map((oldActionRow) => {
@@ -54,9 +63,16 @@ const disableMessageButtons = async (message, clickedButtonId) => {
  * then temporarily replies with `...` and then delete the answer.
  * Finally, it tells bot to process answer's actions.
  *
+ * @event module:Libraries/EventBus#Discord_interactionCreate
+ *
  * @param   { Interaction }   interaction - Interaction.
  *
  * @returns { Promise<void> }
+ *
+ * @fires module:Libraries/EventBus#App_processAction
+ *
+ * @example
+ * EventBus.emit('Discord_interactionCreate');
  */
 export default async (interaction) => {
   if (!interaction.isButton()) return;

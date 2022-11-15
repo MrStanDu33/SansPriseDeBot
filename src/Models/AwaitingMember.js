@@ -1,6 +1,8 @@
 /**
  * @file Sequelize model for awaiting members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models/AwaitingMember
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -10,15 +12,21 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @category Models
- *
  * @description AwaitingMembers model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
  * @returns { ModelConstructor }          - Instantiated awaiting member model.
+ *
+ * @example
+ * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
+ *   host: 'DB_HOST',
+ *   dialect: 'mysql',
+ * });
+ *
+ * const AwaitingMembersModel = AwaitingMembersModelBuilder(instance);
  */
-export default (instance) =>
+const AwaitingMembersModelBuilder = (instance) =>
   instance.define('AwaitingMember', {
     memberId: {
       type: DataTypes.STRING(20),
@@ -43,3 +51,5 @@ export default (instance) =>
       allowNull: false,
     },
   });
+
+export default AwaitingMembersModelBuilder;

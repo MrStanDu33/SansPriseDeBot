@@ -36,6 +36,14 @@ const ACTIVITY_LEVEL_ROLES = {
  * @param   { Role[] } roles - A collection of member roles.
  *
  * @returns { number }       - The user's priority.
+ *
+ * @example
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const member = await guild.members.fetch('691583992587354112');
+ *
+ * const userPriority = getUserPriority(member.roles);
+ *
+ * console.log(userPriority); // A number with a value that gets higher as user gets more active.
  */
 const getUserPriority = (roles) => {
   if (roles.includes(ACTIVITY_LEVEL_ROLES.level50.role)) {
@@ -62,6 +70,9 @@ const getUserPriority = (roles) => {
  * then creates an awaiting member for each of them.
  *
  * @returns { Promise<void> }
+ *
+ * @example
+ * await syncMissingMembersInWaitList();
  */
 const syncMissingMembersInWaitList = async () => {
   const guild = await Store.client.guilds
@@ -117,7 +128,12 @@ const syncMissingMembersInWaitList = async () => {
  * Every members in server that have no roles and are not followed by the bot will be followed.
  * Every members followed by the bot that are no longer in the server will be removed from database.
  *
+ * @event module:Libraries/EventBus#App_syncDbOnBoot
+ *
  * @returns { Promise<void> }
+ *
+ * @example
+ * EventBus.emit('App_syncDbOnBoot');
  */
 export default async () => {
   Logger.info('Start syncing Db');

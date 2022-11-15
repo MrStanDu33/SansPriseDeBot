@@ -9,9 +9,7 @@ import path from 'path';
 /**
  * @description I18n library.
  *
- * @category Libraries
- *
- * @module I18n
+ * @exports Libraries/I18n
  */
 const i18n = new I18n();
 

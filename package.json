@@ -32,7 +32,8 @@
     "dev": "nodemon --experimental-vm-modules --experimental-specifier-resolution=node --inspect index.js",
     "seed:roles": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/roles.js",
     "seed:actions": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/actions.js ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json",
-    "doc": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json",
+    "docs:watch": "npx nodemon --exec 'npm run docs' --watch . --ignore ./docs/"
   },
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.10",

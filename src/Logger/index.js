@@ -19,7 +19,9 @@ import cliSpinners from 'cli-spinners';
  * @class
  * @description Logger library.
  *
- * @category Libraries
+ * @hideconstructor
+ *
+ * @exports Libraries/Logger
  */
 class Logger {
   /**
@@ -29,12 +31,22 @@ class Logger {
    * the spinner. It also logs the message to the console using the given logType.
    *
    * @param   { SpinnerSettings }               spinnerSettings - A spinner configuration.
-   * @param   { string }                        message         - The message to print while the loader is spinning.
+   * @param   { any }                           message         - The message to print while the loader is spinning.
    * @param   { 'debug'|'info'|'warn'|'error' } logType         - The type of log to print to the console.
    *
    * @throws  { Error }                                         - Thrown if argument is not valid.
    *
    * @returns { Loader }                                        - The spinner instance.
+   *
+   * @example
+   * // create a new loader ...
+   * const loader = Logger.loader({ spinner: 'aesthetic', color: 'cyan' }, 'This is a loading message', info);
+   *
+   * // stop loader and mark it as done
+   * loader.succeed();
+   *
+   * // stop loader and mark it as failed
+   * loader.fail();
    */
   static loader(spinnerSettings, message, logType) {
     if (typeof message !== 'string' || message.length === 0) {
@@ -80,9 +92,12 @@ class Logger {
    *
    * @description Prints given debug messages to the console and to log file in debug mode.
    *
-   * @param   { ...string } debug - Debug messages to be logged.
+   * @param   { ...any } debug - Debug messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.debug('This is a debug message', 12, false);
    */
   static debug(...debug) {
     Logger.debugToConsole(...debug);
@@ -94,9 +109,12 @@ class Logger {
    *
    * @description Prints given info messages to the console and to log file in info mode.
    *
-   * @param   { ...string } info - Info messages to be logged.
+   * @param   { ...any } info - Info messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.info('This is an info message', false, 20);
    */
   static info(...info) {
     Logger.infoToConsole(...info);
@@ -108,9 +126,12 @@ class Logger {
    *
    * @description Prints given warning messages to the console and to log file in warning mode.
    *
-   * @param   { ...string } warn - Warning messages to be logged.
+   * @param   { ...any } warn - Warning messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.warn('This is a warn message', true, 42);
    */
   static warn(...warn) {
     Logger.warnToConsole(...warn);
@@ -124,11 +145,16 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
-   * @param   { ...string } error[].1 - Error messages to be logged.
+   * @param   { * }       [ error ] - Data to be logged.
+   * @param   { boolean } error[].0 - If set to true, log error as fatal.
+   * @param   { ...any }  error[].1 - Error messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.error('This is an error message', 45, false);
+   *
+   * Logger.error(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console nor file
    */
   static error(...error) {
     Logger.errorToConsole(...error);
@@ -142,14 +168,17 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the console.
    *
-   * @param   { ...string } debug - Debug messages to be logged.
+   * @param   { ...any } debug - Debug messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.debugToConsole('This is a debug message', 12, false);
    */
   static debugToConsole(...debug) {
     if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
-    console.log(`${Logger.prefixes.console.debug} |`, ...debug);
+    console.log(`${Logger.#prefixes.console.debug} |`, ...debug);
   }
 
   /**
@@ -157,13 +186,16 @@ class Logger {
    *
    * @description Prints given info messages to the console in log mode.
    *
-   * @param   { ...string } info - Info messages to be logged.
+   * @param   { ...any } info - Info messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.infoToConsole('This is an info message', false, 20);
    */
   static infoToConsole(...info) {
     // eslint-disable-next-line no-console
-    console.log(`${Logger.prefixes.console.info} |`, ...info);
+    console.log(`${Logger.#prefixes.console.info} |`, ...info);
   }
 
   /**
@@ -173,14 +205,17 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the console.
    *
-   * @param   { ...string } warn - Warning messages to be logged.
+   * @param   { ...any } warn - Warning messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.warnToConsole('This is a warn message', true, 42);
    */
   static warnToConsole(...warn) {
     if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
-    console.warn(`${Logger.prefixes.console.warn} |`, ...warn);
+    console.warn(`${Logger.#prefixes.console.warn} |`, ...warn);
   }
 
   /**
@@ -190,18 +225,23 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
-   * @param   { ...string } error[].1 - Error messages to be logged.
+   * @param   { * }       [ error ] - Data to be logged.
+   * @param   { boolean } error[].0 - If set to true, log error as fatal.
+   * @param   { ...any }  error[].1 - Error messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.errorToConsole('This is an error message', 45, false);
+   *
+   * Logger.errorToConsole(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console
    */
   static errorToConsole(...error) {
     const fatal = error.length > 1 && error[0] === true && error.shift();
     const method = fatal ? 'error' : 'log';
     const flag = fatal ? 'fatal' : 'error';
     // eslint-disable-next-line no-console
-    console[method](`${Logger.prefixes.console[flag]}`, ...error);
+    console[method](`${Logger.#prefixes.console[flag]}`, ...error);
   }
 
   /**
@@ -213,8 +253,11 @@ class Logger {
    * @param   { ...string } data - Datas to write into the log file.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.writeToLogFile('this is an example message to log');
    */
-  static writeToLogFile(...data) {
+  static #writeToLogFile(...data) {
     fs.writeFile(
       process.env.APP_DEBUG_FILE,
       data + os.EOL,
@@ -233,17 +276,20 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the log file.
    *
-   * @param   { ...string } debug - Debug messages to be logged.
+   * @param   { ...any } debug - Debug messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.debugToFile('This is a debug message', 12, false);
    */
   static debugToFile(...debug) {
     if (process.env.APP_DEBUG === 'false') return;
     debug.forEach((debugData) => {
-      Logger.writeToLogFile(
-        `${Logger.getDateTime()} | ${
-          Logger.prefixes.file.debug
-        } | ${Logger.getCaller()} | ${debugData}`,
+      Logger.#writeToLogFile(
+        `${Logger.#getDateTime()} | ${
+          Logger.#prefixes.file.debug
+        } | ${Logger.#getCaller()} | ${debugData}`,
       );
     });
   }
@@ -254,16 +300,19 @@ class Logger {
    * @description Writes given info messages to the log file.
    * It will automatically prefix info messages with date-time and caller.
    *
-   * @param   { ...string } info - Info messages to be logged.
+   * @param   { ...any } info - Info messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.infoToFile('This is an info message', false, 20);
    */
   static infoToFile(...info) {
     info.forEach((infoData) => {
-      Logger.writeToLogFile(
-        `${Logger.getDateTime()} | ${
-          Logger.prefixes.file.info
-        } | ${Logger.getCaller()} | ${infoData}`,
+      Logger.#writeToLogFile(
+        `${Logger.#getDateTime()} | ${
+          Logger.#prefixes.file.info
+        } | ${Logger.#getCaller()} | ${infoData}`,
       );
     });
   }
@@ -276,17 +325,20 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the log file.
    *
-   * @param   { ...string } warn - Warning messages to be logged.
+   * @param   { ...any } warn - Warning messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.warnToFile('This is a warn message', true, 42);
    */
   static warnToFile(...warn) {
     if (process.env.APP_DEBUG === 'false') return;
     warn.forEach((warnData) => {
-      Logger.writeToLogFile(
-        `${Logger.getDateTime()} | ${
-          Logger.prefixes.file.warn
-        } | ${Logger.getCaller()} | ${warnData}`,
+      Logger.#writeToLogFile(
+        `${Logger.#getDateTime()} | ${
+          Logger.#prefixes.file.warn
+        } | ${Logger.#getCaller()} | ${warnData}`,
       );
     });
   }
@@ -299,25 +351,49 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }         [ error ] - Data to be logged.
-   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
-   * @param   { ...string } error[].1 - Error messages to be logged.
+   * @param   { * }       [ error ] - Data to be logged.
+   * @param   { boolean } error[].0 - If set to true, log error as fatal.
+   * @param   { ...any }  error[].1 - Error messages to be logged.
    *
    * @returns { void }
+   *
+   * @example
+   * Logger.errorToFile('This is an error message', 45, false);
+   *
+   * Logger.errorToFile(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be written in file
    */
   static errorToFile(...error) {
-    error.forEach((errorData) => {
-      if (errorData === true) return;
+    error.forEach((errorData, index) => {
+      if (errorData === true && index === 0) return;
 
-      Logger.writeToLogFile(
-        `${Logger.getDateTime()} | ${
-          Logger.prefixes.file.error
-        } | ${Logger.getCaller()} | ${errorData}`,
+      Logger.#writeToLogFile(
+        `${Logger.#getDateTime()} | ${
+          Logger.#prefixes.file.error
+        } | ${Logger.#getCaller()} | ${errorData}`,
       );
     });
   }
 
-  static prefixes = {
+  /**
+   * @static
+   *
+   * @property { object } prefixes               - List of prefixes to use for logging.
+   *
+   * @property { object } prefixes.console       - List of prefixes to use for console logging.
+   * @property { string } prefixes.console.debug - Colored prefix for debug messages in console.
+   * @property { string } prefixes.console.info  - Colored prefix for info messages in console.
+   * @property { string } prefixes.console.warn  - Colored prefix for warnings in console.
+   * @property { string } prefixes.console.error - Colored prefix for errors in console.
+   * @property { string } prefixes.console.fatal - Colored prefix for fatal errors in console.
+   *
+   * @property { object } prefixes.file          - List of prefixes to use for log file logging.
+   * @property { string } prefixes.file.debug    - Prefix for debug messages in log file.
+   * @property { string } prefixes.file.info     - Prefix for info messages in log file.
+   * @property { string } prefixes.file.warn     - Prefix for warnings in log file.
+   * @property { string } prefixes.file.error    - Prefix for errors in log file.
+   * @property { string } prefixes.file.fatal    - Prefix for fatal errors in log file.
+   */
+  static #prefixes = {
     console: {
       debug: chalk.blueBright('[DEBUG]'),
       info: chalk.greenBright('[INFO] '),
@@ -341,8 +417,14 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The year of the given date.
+   *
+   * @example
+   * const date = new Date('2018-09-22T15:12:00.154');
+   * const year = Logger.#getYear(date);
+   *
+   * console.log(year); // '2018'
    */
-  static getYear(date) {
+  static #getYear(date) {
     return `${date.getFullYear()}`;
   }
 
@@ -354,8 +436,14 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The month of the given date.
+   *
+   * @example
+   * const date = new Date('2018-09-22T15:12:00.154');
+   * const month = Logger.#getMonth(date);
+   *
+   * console.log(month); // 'Sep'
    */
-  static getMonth(date) {
+  static #getMonth(date) {
     return [
       'Jan',
       'Feb',
@@ -380,8 +468,17 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The day of the given date.
+   *
+   * @example
+   * const date1 = new Date('2018-09-22T15:12:25.154');
+   * const date2 = new Date('2018-09-02T15:12:25.154');
+   * const day1 = Logger.#getDay(date1);
+   * const day2 = Logger.#getDay(date2);
+   *
+   * console.log(day1); // '22'
+   * console.log(day2); // '02'
    */
-  static getDay(date) {
+  static #getDay(date) {
     return `0${date.getDate()}`.slice(-2);
   }
 
@@ -393,8 +490,17 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The hour of the given date.
+   *
+   * @example
+   * const date1 = new Date('2018-09-22T15:12:25.154');
+   * const date2 = new Date('2018-09-22T05:12:25.154');
+   * const hour1 = Logger.#getHours(date1);
+   * const hour2 = Logger.#getHours(date2);
+   *
+   * console.log(hour1); // '15'
+   * console.log(hour2); // '05'
    */
-  static getHours(date) {
+  static #getHours(date) {
     return `0${date.getHours()}`.slice(-2);
   }
 
@@ -406,8 +512,17 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The minute of the given date.
+   *
+   * @example
+   * const date1 = new Date('2018-09-22T15:12:25.154');
+   * const date2 = new Date('2018-09-22T15:02:25.154');
+   * const minute1 = Logger.#getMinutes(date1);
+   * const minute2 = Logger.#getMinutes(date2);
+   *
+   * console.log(minute1); // '12'
+   * console.log(minute2); // '02'
    */
-  static getMinutes(date) {
+  static #getMinutes(date) {
     return `0${date.getMinutes()}`.slice(-2);
   }
 
@@ -419,8 +534,17 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The second of the given date.
+   *
+   * @example
+   * const date1 = new Date('2018-09-22T15:12:25.154');
+   * const date2 = new Date('2018-09-22T15:12:05.154');
+   * const second1 = Logger.#getSeconds(date1);
+   * const second = Logger.#getSeconds(date2);
+   *
+   * console.log(second1); // '25'
+   * console.log(second2); // '05'
    */
-  static getSeconds(date) {
+  static #getSeconds(date) {
     return `0${date.getSeconds()}`.slice(-2);
   }
 
@@ -432,8 +556,17 @@ class Logger {
    * @param   { Date }   date - Date to be parsed.
    *
    * @returns { string }      - The milliseconds of the given date.
+   *
+   * @example
+   * const date1 = new Date('2018-09-22T15:12:25.154');
+   * const date2 = new Date('2018-09-22T15:12:25.001');
+   * const milliSecond1 = Logger.#getMilliSeconds(date1);
+   * const milliSecond = Logger.#getMilliSeconds(date2);
+   *
+   * console.log(milliSecond1); // '154'
+   * console.log(milliSecond2); // '001'
    */
-  static getMilliseconds(date) {
+  static #getMilliseconds(date) {
     return `00${date.getMilliseconds()}`.slice(-3);
   }
 
@@ -443,18 +576,24 @@ class Logger {
    * @description Get the date-time of given date.
    *
    * @returns { string } - The data-time of the given date.
+   *
+   * @example
+   * const date = new Date('2018-09-22T15:12:25.154');
+   * const dateTime = Logger.#getDateTime(date);
+   *
+   * console.log(dateTime); // '2018 Sep 22 - 15:12:25,154'
    */
-  static getDateTime() {
+  static #getDateTime() {
     const date = new Date();
 
-    const year = Logger.getYear(date);
-    const month = Logger.getMonth(date);
-    const day = Logger.getDay(date);
+    const year = Logger.#getYear(date);
+    const month = Logger.#getMonth(date);
+    const day = Logger.#getDay(date);
 
-    const hours = Logger.getHours(date);
-    const minutes = Logger.getMinutes(date);
-    const seconds = Logger.getSeconds(date);
-    const milliseconds = Logger.getMilliseconds(date);
+    const hours = Logger.#getHours(date);
+    const minutes = Logger.#getMinutes(date);
+    const seconds = Logger.#getSeconds(date);
+    const milliseconds = Logger.#getMilliseconds(date);
 
     // prints date & time in YYYY Mmm DD - HH:MM:SS,MS format
     return `${year} ${month} ${day} - ${hours}:${minutes}:${seconds},${milliseconds}`;
@@ -467,8 +606,17 @@ class Logger {
    *
    * @returns { string } - The filename and line number of the caller or
    *                     'unknown' if the caller was not found.
+   *
+   * @example
+   * // file.js
+   * function main () {
+   *   const caller = Logger.#getCaller();
+   *   console.log(caller); // '                file.js:2'
+   * }
+   *
+   * main();
    */
-  static getCaller() {
+  static #getCaller() {
     const source = get()[5].getFileName();
 
     if (source) {

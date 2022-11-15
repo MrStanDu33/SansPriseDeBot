@@ -1,6 +1,8 @@
 /**
  * @file Sequelize model for followed members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ *
+ * @module Models/FollowedMember
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -10,15 +12,21 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @category Models
- *
  * @description FollowedMembers model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
  * @returns { ModelConstructor }          - Instantiated followed member model.
+ *
+ * @example
+ * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
+ *   host: 'DB_HOST',
+ *   dialect: 'mysql',
+ * });
+ *
+ * const FollowedMembersModel = FollowedMembersModelBuilder(instance);
  */
-export default (instance) =>
+const FollowedMembersModelBuilder = (instance) =>
   /**
    * @returns { Model } - Instantiated followed member model.
    */
@@ -48,11 +56,4 @@ export default (instance) =>
     },
   });
 
-/* {
-  "rolesToAdd": [
-    {
-      "name": "[DW] Développeur Web",
-      "roleId": "654691713893531669"
-    }
-  ]
-} */
+export default FollowedMembersModelBuilder;

@@ -6,9 +6,7 @@
 /**
  * @description Store library.
  *
- * @category Libraries
- *
- * @module Store
+ * @exports Libraries/Store
  */
 const Store = new Proxy(
   {},
@@ -23,6 +21,11 @@ const Store = new Proxy(
      * @returns { undefined | any}        - Return whatever data has been stored
      *                                    or undefined if given key does not
      *                                    exist in store.
+     *
+     * @example
+     * const mySuperVariable = Store.mySuperKey;
+     *
+     * console.log(mySuperVariable); // whatever data has been stored.
      */
     get(target, key) {
       if (!Reflect.has(target, `_${key}`)) {
@@ -41,6 +44,9 @@ const Store = new Proxy(
      *
      * @returns { boolean }        - Return true if data was successfully stored
      *                             or false if an error occurred.
+     *
+     * @example
+     * Store.mySuperKey = 'This is a nice value';
      */
     set(target, key, value) {
       return Reflect.set(target, `_${key}`, value);

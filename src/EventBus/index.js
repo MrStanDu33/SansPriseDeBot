@@ -11,7 +11,7 @@ import Logger from '$src/Logger';
  *
  * @hideconstructor
  *
- * @category Libraries
+ * @exports Libraries/EventBus
  */
 class EventBus {
   /**
@@ -23,6 +23,11 @@ class EventBus {
    * @param { Function } cb    - The callback function that will be called when the event is emitted.
    *
    * @throws  { Error } Thrown if argument is not valid.
+   *
+   * @example
+   * EventBus.on('mySuperEvent', (payload) => {
+   *   console.log('mySuperEvent was fired', payload);
+   * });
    */
   static on(event, cb) {
     if (!event || typeof event !== 'string' || event.length <= 0) {
@@ -48,6 +53,13 @@ class EventBus {
    * @param { any }    args  - The arguments passed to callbacks.
    *
    * @throws { Error } Thrown if argument is not valid.
+   *
+   * @example
+   * EventBus.emit('mySuperEvent', {
+   *   name: 'payload',
+   *   type: 'message',
+   *   quantity: 12,
+   * });
    */
   static emit(event, ...args) {
     if (!event || typeof event !== 'string' || event.length <= 0) {

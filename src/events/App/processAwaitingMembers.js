@@ -17,7 +17,14 @@ const AWAITING_MEMBERS_BATCH_SIZE = 10;
  * It takes at max 10 members from the database, remove them from wait list
  * and insert them in pipe.
  *
+ * @event module:Libraries/EventBus#App_processAwaitingMembers
+ *
  * @returns { Promise<void> }
+ *
+ * @fires module:Libraries/EventBus#App_initializePipe
+ *
+ * @example
+ * EventBus.emit('App_processAwaitingMembers');
  */
 export default async () => {
   Logger.info('Start processing missed members');
@@ -37,6 +44,6 @@ export default async () => {
     EventBus.emit('App_initializePipe', guildMember);
   });
 
-  await promises.all(promises);
+  await Promise.all(promises);
   Logger.info('Finished processing missed members');
 };
