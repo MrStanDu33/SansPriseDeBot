@@ -73,8 +73,13 @@ db.ActionQuestion.hasMany(db.ActionQuestionAnswer, {
 });
 db.ActionQuestionAnswer.belongsTo(db.ActionQuestion);
 
-db.ActionQuestionAnswer.hasMany(db.Action, { constraints: false });
-db.Action.belongsTo(db.ActionQuestionAnswer, { constraints: false });
+db.ActionQuestionAnswer.belongsToMany(db.Action, {
+  as: 'Actions',
+  through: 'Action_Question_Answers_has_Actions',
+});
+db.Action.belongsToMany(db.ActionQuestionAnswer, {
+  through: 'Action_Question_Answers_has_Actions',
+});
 
 db.Action.hasOne(db.ActionGoto, {
   ...cascadeHooks,
@@ -103,19 +108,43 @@ db.Action.hasOne(db.ActionAddRole, {
 });
 db.ActionAddRole.belongsTo(db.Action);
 
+db.Action.hasOne(db.ActionPromptFile, {
+  ...cascadeHooks,
+  as: 'PromptFile',
+  foreignKey: 'ActionId',
+});
+db.ActionPromptFile.belongsTo(db.Action);
+
+db.ActionPromptFile.belongsToMany(db.Action, {
+  as: 'Actions',
+  through: 'Action_PromptFiles_has_Actions',
+});
+db.Action.belongsToMany(db.ActionPromptFile, {
+  through: 'Action_PromptFiles_has_Actions',
+});
+
+db.ActionPromptFile.belongsToMany(db.MimeType, {
+  as: 'MimeTypes',
+  through: 'Action_PromptFiles_has_MimeTypes',
+});
+db.MimeType.belongsToMany(db.ActionPromptFile, {
+  through: 'Action_PromptFiles_has_MimeTypes',
+});
+
 db.Role.hasOne(db.ActionAddRole, cascadeHooks);
 db.ActionAddRole.belongsTo(db.Role);
 
-db.Action.hasOne(db.FollowedMember);
+db.Action.hasOne(db.FollowedMember, {
+  foreignKey: 'CurrentActionId',
+});
 db.FollowedMember.belongsTo(db.Action, {
   foreignKey: 'CurrentActionId',
-  ...cascadeHooks,
 });
 
-db.FollowedMember.hasMany(db.RolesToAddToMember);
+db.FollowedMember.hasMany(db.RolesToAddToMember, cascadeHooks);
 db.RolesToAddToMember.belongsTo(db.FollowedMember);
 
-db.Role.hasMany(db.RolesToAddToMember);
+db.Role.hasMany(db.RolesToAddToMember, cascadeHooks);
 db.RolesToAddToMember.belongsTo(db.Role);
 
 const loaderSync = Logger.loader(
@@ -125,7 +154,7 @@ const loaderSync = Logger.loader(
 );
 
 await instance
-  .sync()
+  .sync({ alter: true })
   .catch((error) => Logger.error(true, 'Unable to sync database:', error));
 Logger.info('Database synced successfully.');
 

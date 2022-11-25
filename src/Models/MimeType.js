@@ -1,8 +1,8 @@
 /**
- * @file Sequelize model for `Question` actions.
+ * @file Sequelize model for MIME types.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  *
- * @module Models/Action/Question
+ * @module Models/MimeType
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -12,11 +12,11 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @description PrintMessage actions model initializer.
+ * @description MimeTypes model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated question action answers model.
+ * @returns { ModelConstructor }          - Instantiated MIME types model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,18 +24,15 @@ import { DataTypes } from '@sequelize/core';
  *   dialect: 'mysql',
  * });
  *
- * const ActionQuestionsModel = ActionQuestionsModelBuilder(instance);
+ * const MimeTypesModel = MimeTypesModelBuilder(instance);
  */
-const ActionQuestionsModelBuilder = (instance) =>
-  instance.define('Action_Question', {
-    question: {
-      type: DataTypes.TEXT('long'),
+const MimeTypesModelBuilder = (instance) =>
+  instance.define('MimeType', {
+    name: {
+      type: DataTypes.STRING(255),
       allowNull: false,
-    },
-    uuid: {
-      type: DataTypes.TEXT(),
-      allowNull: false,
+      unique: true,
     },
   });
 
-export default ActionQuestionsModelBuilder;
+export default MimeTypesModelBuilder;

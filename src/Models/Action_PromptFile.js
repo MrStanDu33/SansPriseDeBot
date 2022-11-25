@@ -1,8 +1,8 @@
 /**
- * @file Sequelize model for `Question` actions.
+ * @file Sequelize model for `PromptFile` actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  *
- * @module Models/Action/Question
+ * @module Models/Action/PromptFile
  */
 
 import { DataTypes } from '@sequelize/core';
@@ -12,11 +12,11 @@ import { DataTypes } from '@sequelize/core';
 /** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
 
 /**
- * @description PrintMessage actions model initializer.
+ * @description PromptFile actions model initializer.
  *
  * @param   { Sequelize }        instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated question action answers model.
+ * @returns { ModelConstructor }          - Instantiated promptFile action model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,18 +24,14 @@ import { DataTypes } from '@sequelize/core';
  *   dialect: 'mysql',
  * });
  *
- * const ActionQuestionsModel = ActionQuestionsModelBuilder(instance);
+ * const ActionPromptFileModel = ActionPromptFileModelBuilder(instance);
  */
-const ActionQuestionsModelBuilder = (instance) =>
-  instance.define('Action_Question', {
-    question: {
-      type: DataTypes.TEXT('long'),
-      allowNull: false,
-    },
-    uuid: {
-      type: DataTypes.TEXT(),
+const ActionPromptFileModelBuilder = (instance) =>
+  instance.define('Action_PromptFile', {
+    errorMessage: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
 
-export default ActionQuestionsModelBuilder;
+export default ActionPromptFileModelBuilder;

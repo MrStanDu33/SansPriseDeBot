@@ -8,6 +8,7 @@
     "questions": {
       "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b": {
         "type": "question",
+        "uuid": "8aa15baa-04f2-4ca7-9dad-0d5fce4a0b6b",
         "question": "Bonjour <@{{ memberId }}>, je suis Sans prise de bot, le robot qui a pour mission de t'accompagner sur ce serveur. Tout d'abord es-tu à l'aise avec Discord ? N'hésite pas à me répondre en cliquant sur les boutons ci-dessous <:point_down:960899113942138980>",
         "answers": [
           {
@@ -42,38 +43,9 @@
           }
         ]
       },
-      "485fa472-21cb-43bc-8cfb-37a30cbf7437": {
-        "type": "question",
-        "question": "Es-tu plus à l'aise avec la plateforme ?",
-        "answers": [
-          {
-            "icon": "✅",
-            "text": "Oui",
-            "actions": {
-              "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
-                "type": "question",
-                "$ref": "#/definitions/questions/a9c626f3-1d8f-4852-8f07-277b36e42aa6"
-              }
-            }
-          },
-          {
-            "icon": "❌",
-            "text": "Non",
-            "actions": {
-              "a834da4d-7214-42be-b94c-d16db788aa6e": {
-                "type": "printMessage",
-                "message": "D'accord, je vais contacter l'administrateur afin qu'il puisse t'accompagner dans ton apprentissage."
-              },
-              "8fd3deac-4003-4c0e-91a1-ae55b3f6d245": {
-                "type": "printMessage",
-                "message": "<@209656163736879105>"
-              }
-            }
-          }
-        ]
-      },
       "a9c626f3-1d8f-4852-8f07-277b36e42aa6": {
         "type": "question",
+        "uuid": "a9c626f3-1d8f-4852-8f07-277b36e42aa6",
         "question": "Très bien ! Dans quel pôle de formation es-tu ?",
         "answers": [
           {
@@ -190,6 +162,7 @@
       },
       "57662076-aadd-405a-805b-c9f1b2330eb5": {
         "type": "question",
+        "uuid": "57662076-aadd-405a-805b-c9f1b2330eb5",
         "question": "Est-ce que votre formation est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
         "answers": [
           {
@@ -216,6 +189,7 @@
       },
       "0b2e4439-725b-4931-b759-6b7b6743abc8": {
         "type": "question",
+        "uuid": "0b2e4439-725b-4931-b759-6b7b6743abc8",
         "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
         "answers": [
           {
@@ -366,6 +340,7 @@
       },
       "306a718b-ebdd-4f4c-8510-f1b513f74ede": {
         "type": "question",
+        "uuid": "306a718b-ebdd-4f4c-8510-f1b513f74ede",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -384,24 +359,27 @@
                   "image/jpeg",
                   "image/png",
                   "image/tiff",
-                  "image/webp"
+                  "image/webp",
+                  "application/pdf"
                 ],
-                "errorMessage": "Le fichier doit être une image."
-              },
-              "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
-                "type": "addRole",
-                "role": {
-                  "$ref": "#/definitions/roles/developpeur_web_junior"
+                "errorMessage": "Le fichier doit être une image.",
+                "actions": {
+                  "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
+                    "type": "addRole",
+                    "role": {
+                      "$ref": "#/definitions/roles/developpeur_web_junior"
+                    }
+                  },
+                  "bc174a0d-069a-4538-8148-8646e51e38f9": {
+                    "type": "question",
+                    "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
+                  }
                 }
-              },
-              "bc174a0d-069a-4538-8148-8646e51e38f9": {
-                "type": "question",
-                "$ref": "#/definitions/questions/bc174a0d-069a-4538-8148-8646e51e38f9"
               }
             }
           },
           {
-            "icon": "pw",
+            "icon": "❔",
             "text": "[PW] Prep'Web",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -433,7 +411,7 @@
             }
           },
           {
-            "icon": "dfs",
+            "icon": "❔",
             "text": "[DFS] Développeur Full Stack",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -465,7 +443,7 @@
             }
           },
           {
-            "icon": "pa",
+            "icon": "❔",
             "text": "[PA] Prep'Android",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -484,6 +462,7 @@
       },
       "0bcd6b57-eaee-49f8-8d72-ee7c118c6b1d": {
         "type": "question",
+        "uuid": "0bcd6b57-eaee-49f8-8d72-ee7c118c6b1d",
         "question": "Est-ce que votre formation est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
         "answers": [
           {
@@ -510,6 +489,7 @@
       },
       "e8a418c0-eeea-4951-ade8-91119c92fa0c": {
         "type": "question",
+        "uuid": "e8a418c0-eeea-4951-ade8-91119c92fa0c",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -580,6 +560,7 @@
       },
       "32c57b42-a676-4b0d-8558-3e5c6ae1a4ac": {
         "type": "question",
+        "uuid": "32c57b42-a676-4b0d-8558-3e5c6ae1a4ac",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -602,6 +583,7 @@
       },
       "8653f9da-dc43-46cd-b090-b3fff0ece8e0": {
         "type": "question",
+        "uuid": "8653f9da-dc43-46cd-b090-b3fff0ece8e0",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -688,6 +670,7 @@
       },
       "d6beff29-5f30-42b6-b8d2-ef8247da5461": {
         "type": "question",
+        "uuid": "d6beff29-5f30-42b6-b8d2-ef8247da5461",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -742,6 +725,7 @@
       },
       "35e62fd9-431d-4dbd-a2e9-21dc6401c961": {
         "type": "question",
+        "uuid": "35e62fd9-431d-4dbd-a2e9-21dc6401c961",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -812,6 +796,7 @@
       },
       "13f55b1b-a9ef-45bf-9791-25a0a2b10135": {
         "type": "question",
+        "uuid": "13f55b1b-a9ef-45bf-9791-25a0a2b10135",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -866,6 +851,7 @@
       },
       "656a9ee8-2280-4f1b-a48a-026e719ef812": {
         "type": "question",
+        "uuid": "656a9ee8-2280-4f1b-a48a-026e719ef812",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -904,6 +890,7 @@
       },
       "ad733db1-073c-4d6d-9f84-c0554e425c14": {
         "type": "question",
+        "uuid": "ad733db1-073c-4d6d-9f84-c0554e425c14",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -942,6 +929,7 @@
       },
       "84a48f7b-8a78-427d-84b6-6549e232aa09": {
         "type": "question",
+        "uuid": "84a48f7b-8a78-427d-84b6-6549e232aa09",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -964,6 +952,7 @@
       },
       "bb40e0e6-ae44-46bc-9467-8b1da510cfd8": {
         "type": "question",
+        "uuid": "bb40e0e6-ae44-46bc-9467-8b1da510cfd8",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
@@ -1002,10 +991,11 @@
       },
       "b363ffc6-62ad-4fd8-945b-6946e50c426b": {
         "type": "question",
+        "uuid": "b363ffc6-62ad-4fd8-945b-6946e50c426b",
         "question": "Sur quel parcours es-tu ?",
         "answers": [
           {
-            "icon": "pa",
+            "icon": "❔",
             "text": "[PA] Prep'Apprentissage",
             "actions": {
               "10bb612f-b63d-46ee-8cfb-121f28a98ef1": {
@@ -1040,6 +1030,7 @@
       },
       "bc174a0d-069a-4538-8148-8646e51e38f9": {
         "type": "question",
+        "uuid": "bc174a0d-069a-4538-8148-8646e51e38f9",
         "question": "Souhaitez-vous effectuer une action supplémentaire où arrêter le processus ?",
         "answers": [
           {
