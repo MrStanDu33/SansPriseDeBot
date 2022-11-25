@@ -133,7 +133,7 @@ const syncMissingMembersInWaitList = async () => {
  * @returns { Promise<void> }
  *
  * @example
- * EventBus.emit('App_syncDbOnBoot');
+ * await EventBus.emit({ event: 'App_syncDbOnBoot' });
  */
 export default async () => {
   Logger.info('Start syncing Db');

@@ -36,6 +36,7 @@ class App {
         IntentsBitField.Flags.GuildMembers,
         IntentsBitField.Flags.GuildWebhooks,
         IntentsBitField.Flags.GuildMessages,
+        IntentsBitField.Flags.MessageContent,
       );
       this.Store.client = new Client({
         intents,
@@ -49,12 +50,12 @@ class App {
       'info',
     );
 
-    Store.client.on('ready', () => {
+    Store.client.on('ready', async () => {
       // const channel = Store.client.channels.cache.get('646359583895322645');
-      // channel.send('Test de ~~Julien~~ <@209656163736879105> à nouveau');
+      // channel.send('On me parle ?');
 
-      EventBus.emit('Discord_ready', loader);
-      EventBus.emit('App_syncDbOnBoot');
+      await EventBus.emit({ event: 'Discord_ready', args: [loader] });
+      await EventBus.emit({ event: 'App_syncDbOnBoot' });
 
       App.setCronJobs();
     });
@@ -76,9 +77,11 @@ class App {
    * App.setCronJobs();
    */
   static setCronJobs() {
-    cron.schedule('* * * * *', () => EventBus.emit('App_timeoutUsers'));
     cron.schedule('* * * * *', () =>
-      EventBus.emit('App_processAwaitingMembers'),
+      EventBus.emit({ event: 'App_timeoutUsers' }),
+    );
+    cron.schedule('* * * * *', () =>
+      EventBus.emit({ event: 'App_processAwaitingMembers' }),
     );
   }
 }

@@ -49,6 +49,13 @@ const FollowedMembersModelBuilder = (instance) =>
       allowNull: false,
       unique: true,
     },
+    inProcess: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    needUploadFile: {
+      type: DataTypes.BOOLEAN,
+    },
     lastUpdateAt: {
       type: DataTypes.DATE,
       allowNull: false,

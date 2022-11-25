@@ -19,11 +19,11 @@ import Logger from '$src/Logger';
  * @fires module:Libraries/EventBus#App_initializePipe
  *
  * @example
- * EventBus.emit('Discord_guildMemberAdd');
+ * await EventBus.emit({ event: 'Discord_guildMemberAdd' });
  */
 export default (member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;
 
   Logger.info(`New member just came ! (${member.user.tag})`);
-  EventBus.emit('App_initializePipe', member);
+  EventBus.emit({ event: 'App_initializePipe', args: [member] });
 };

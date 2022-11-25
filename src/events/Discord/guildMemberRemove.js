@@ -4,8 +4,8 @@
  */
 
 import Logger from '$src/Logger/index';
-import Store from '$src/Store';
 import models from '$src/Models';
+import EventBus from '$src/EventBus';
 
 const { LinkedChannel, FollowedMember } = models;
 
@@ -23,22 +23,20 @@ const { LinkedChannel, FollowedMember } = models;
  * @returns { Promise<void> }
  *
  * @example
- * EventBus.emit('Discord_guildMemberRemove');
+ * await EventBus.emit({ event: 'Discord_guildMemberRemove' });
  */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
-  /*
+  /**
    * TODO: Detect on boot diff between channels on db and users on server.
-   * if so => delete channel and record !
+   * If so => delete channel and record !
    */
-  const { client } = Store;
-
   Logger.info(`A member just left ! (${member.user.tag})`);
 
   // TODO: Move rest of code in getUserOutOfPipe event.
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
-    `Deleting welcome channel for ${member.user.tag}`,
+    `Deleting welcome channel and user data for ${member.user.tag}`,
     'info',
   );
 
@@ -49,25 +47,28 @@ export default async (member) => {
 
   if (followedMember === null) return;
 
-  const channel = client.channels.cache.get(
-    followedMember.LinkedChannel.discordId,
-  );
-
-  await channel
-    .delete()
-    .then(() => {
-      loader.succeed();
-      Logger.info(
-        `Channel ${followedMember.LinkedChannel.name} successfully deleted !`,
+  try {
+    await EventBus.emit({
+      event: 'App_getOutOfPipe',
+      args: [followedMember],
+    }).catch(() => {
+      throw new Error(
+        `An error has occurred while deleting welcome channel for ${member.user.tag}!`,
       );
-    })
-    .then(followedMember.delete)
-    .catch((error) => {
-      loader.fail();
-      Logger.error(
-        ` An error has occurred while deleting welcome channel for ${member.user.tag}!`,
-        true,
-      );
-      throw new Error(error);
     });
+
+    await followedMember.destroy().catch(() => {
+      throw new Error(
+        `An error has occurred while deleting user ${member.user.tag} from database !`,
+      );
+    });
+
+    loader.succeed();
+
+    Logger.info(`${followedMember.username}'s data successfully deleted !`);
+  } catch (error) {
+    loader.fail();
+    Logger.error(error.message, true);
+    throw new Error(error);
+  }
 };
