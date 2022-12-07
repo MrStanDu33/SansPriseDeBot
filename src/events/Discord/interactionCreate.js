@@ -4,14 +4,36 @@
  */
 
 import { ButtonBuilder, ButtonStyle, ActionRowBuilder } from 'discord.js';
+import Store from '$src/Store';
 import EventBus from '$src/EventBus';
 import models from '$src/Models';
 import Logger from '$src/Logger';
 
-const { FollowedMember, Action, ActionQuestion, ActionQuestionAnswer } = models;
+const {
+  FollowedMember,
+  Action,
+  ActionQuestion,
+  ActionQuestionAnswer,
+  LinkedChannel,
+  ActionPromptFile,
+  ActionPromptFileHasAction,
+} = models;
 
 /** @typedef { import('discord.js').Interaction } Interaction */
 /** @typedef { import('discord.js').Message } Message */
+
+/**
+ * @description Returns a promise that resolves after a given amount of time.
+ * Used to add time between two actions.
+ *
+ * @param   {number}    timeoutDuration - The amount of time to wait in miliseconds.
+ *
+ * @returns { Promise }                 Timeout promise.
+ */
+const timeoutBeforeAction = (timeoutDuration) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, timeoutDuration);
+  });
 
 /**
  * @description It takes the original message and the Id of button pressed,
@@ -57,24 +79,29 @@ const disableMessageButtons = async (message, clickedButtonId) => {
 };
 
 const processUserAnswer = async (interaction) => {
-  const followedMember = await FollowedMember.findOne({
-    where: { memberId: interaction.user.id },
+  const linkedChannel = await LinkedChannel.findOne({
+    where: { discordId: interaction.channelId },
     include: [
       {
-        model: Action,
+        model: FollowedMember,
         include: [
           {
-            model: ActionQuestion,
-            as: 'Question',
+            model: Action,
             include: [
               {
-                model: ActionQuestionAnswer,
-                as: 'Answers',
-                include: {
-                  model: Action,
-                  as: 'Actions',
-                  through: 'Action_Question_Answers_has_Actions',
-                },
+                model: ActionQuestion,
+                as: 'Question',
+                include: [
+                  {
+                    model: ActionQuestionAnswer,
+                    as: 'Answers',
+                    include: {
+                      model: Action,
+                      as: 'Actions',
+                      through: 'Action_Question_Answers_has_Actions',
+                    },
+                  },
+                ],
               },
             ],
           },
@@ -83,12 +110,13 @@ const processUserAnswer = async (interaction) => {
     ],
   });
 
-  if (followedMember === null) return;
+  if (linkedChannel.FollowedMember === null) return;
 
-  const selectedAnswer = followedMember.Action.Question.Answers.find(
-    (/** @type { object } */ answer) =>
-      answer.text === interaction.customId.split('||')[1],
-  );
+  const selectedAnswer =
+    linkedChannel.FollowedMember.Action.Question.Answers.find(
+      (/** @type { object } */ answer) =>
+        answer.id === Number(interaction.customId.split('||')[1]),
+    );
 
   if (selectedAnswer === undefined) return;
 
@@ -102,8 +130,78 @@ const processUserAnswer = async (interaction) => {
     // eslint-disable-next-line no-await-in-loop
     await EventBus.emit({
       event: 'App_processAction',
-      args: [followedMember.id, action.id],
+      args: [linkedChannel.FollowedMember.id, action.id],
     });
+
+    // eslint-disable-next-line no-await-in-loop
+    await timeoutBeforeAction(1000);
+  }
+};
+
+const processStaffFileValidation = async (interaction, guild) => {
+  const linkedChannel = await LinkedChannel.findOne({
+    where: { discordId: interaction.channelId },
+    include: [
+      {
+        model: FollowedMember,
+        include: [
+          {
+            model: Action,
+            include: [
+              {
+                model: ActionPromptFile,
+                as: 'PromptFile',
+                include: [{ model: ActionPromptFileHasAction, as: 'Actions' }],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+
+  disableMessageButtons(interaction.message, interaction.customId);
+
+  const staffDecision = interaction.customId.split('||')[1];
+  const channel = await guild.channels.fetch(linkedChannel.discordId);
+
+  switch (staffDecision) {
+    case 'approve': {
+      linkedChannel.FollowedMember.needUploadFile = null;
+      linkedChannel.FollowedMember.save();
+
+      await channel.send(
+        `Félicitations <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a accepté le fichier, vous pouvez continuer.`,
+      );
+
+      // eslint-disable-next-line no-restricted-syntax
+      for (const action of linkedChannel.FollowedMember.Action.PromptFile
+        .Actions) {
+        // eslint-disable-next-line no-await-in-loop
+        await EventBus.emit({
+          event: 'App_processAction',
+          args: [linkedChannel.FollowedMember.id, action.ActionId],
+        });
+
+        // eslint-disable-next-line no-await-in-loop
+        await timeoutBeforeAction(1000);
+      }
+      break;
+    }
+    case 'reject': {
+      linkedChannel.FollowedMember.needUploadFile = true;
+      linkedChannel.FollowedMember.save();
+
+      await channel.send(
+        `Hello <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.`,
+      );
+      break;
+    }
+    default: {
+      Logger.warn(
+        `Unable to determine action to do with request ${staffDecision}`,
+      );
+    }
   }
 };
 
@@ -117,27 +215,35 @@ const processUserAnswer = async (interaction) => {
  *
  * @event module:Libraries/EventBus#Discord_interactionCreate
  *
- * @param   { Interaction } interaction - Interaction.
+ * @param   { Interaction }   interaction - Interaction.
  *
- * @returns { void }
+ * @returns { Promise<void> }
  *
  * @fires module:Libraries/EventBus#App_processAction
  *
  * @example
  * await EventBus.emit({ event: 'Discord_interactionCreate' });
  */
-export default (interaction) => {
+export default async (interaction) => {
+  const { client } = Store;
   if (!interaction.isButton()) return;
 
   // TODO: check if button for answer question by member or approve file by staff (prefix buttonId)
 
   const interactionDetails = interaction.customId.split('||');
 
+  const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+  const member = await guild.members.fetch(interaction.user.id);
+  const staffRole = await guild.roles.fetch(process.env.DISCORD_STAFF_ROLE_ID);
+  const memberIsStaff = member.roles.cache.find((role) => role === staffRole);
+
   switch (interactionDetails[0]) {
-    case '': {
+    case 'STAFF-ACTION-APPROVE-FILE': {
+      if (!memberIsStaff) return;
+      processStaffFileValidation(interaction, guild);
       break;
     }
-    case 'FOLLOWED-MEMBER-ANSWER-QUESTION': {
+    case 'FOLLOWED-MEMBER-ANSWER': {
       processUserAnswer(interaction);
       break;
     }

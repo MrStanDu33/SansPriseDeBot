@@ -14,6 +14,19 @@ const { Action, ActionPromptFile, MimeType, LinkedChannel, FollowedMember } =
 /** @typedef { import('discord.js').Message } Message */
 
 /**
+ * @description Returns a promise that resolves after a given amount of time.
+ * Used to add time between two actions.
+ *
+ * @param   {number}    timeoutDuration - The amount of time to wait in miliseconds.
+ *
+ * @returns { Promise }                 Timeout promise.
+ */
+const timeoutBeforeAction = (timeoutDuration) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, timeoutDuration);
+  });
+
+/**
  * @description Function that check file sent by member.
  *
  * @param   { Message }       message       - Message that was created.
@@ -49,24 +62,26 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
   linkedChannel.FollowedMember.needUploadFile = false;
   linkedChannel.FollowedMember.save();
 
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
+  // eslint-disable-next-line no-await-in-loop
+  await timeoutBeforeAction(1000);
 
   await message.channel.send('***⚠️ ⚠️ __Staff seulement__ ⚠️ ⚠️***');
 
-  const button = new ButtonBuilder()
-    .setCustomId(
-      `STAFF-ACTION-APPROVE-FILE||${
-        linkedChannel.FollowedMember.id
-      }||${uuidv4()}`,
-    )
+  const buttonApprove = new ButtonBuilder()
+    .setCustomId(`STAFF-ACTION-APPROVE-FILE||approve||${uuidv4()}`)
     .setLabel('Approuver le document')
-    .setStyle(ButtonStyle.Primary)
+    .setStyle(ButtonStyle.Success)
     .setEmoji('✅');
 
+  const buttonReject = new ButtonBuilder()
+    .setCustomId(`STAFF-ACTION-APPROVE-FILE||reject||${uuidv4()}`)
+    .setLabel('Rejeter le document')
+    .setStyle(ButtonStyle.Danger)
+    .setEmoji('🗑️');
+
   const component = new ActionRowBuilder();
-  component.addComponents(button);
+  component.addComponents(buttonApprove);
+  component.addComponents(buttonReject);
 
   await message.channel.send({
     content: '\nSouhaitez-vous approuver le document ?',
@@ -90,6 +105,7 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
  * await EventBus.emit({ event: 'Discord_messageCreate' });
  */
 export default async (message) => {
+  console.log(message.content === '!spdb beta process-me');
   if (message.author.id === process.env.DISCORD_BOT_ID) return; // ignore bot messages
   const { client } = Store;
 

@@ -51,8 +51,9 @@ class App {
     );
 
     Store.client.on('ready', async () => {
-      // const channel = Store.client.channels.cache.get('646359583895322645');
-      // channel.send('On me parle ?');
+      const channel = Store.client.channels.cache.get('646359583895322645');
+      channel.send('<@460467545863094272>');
+      channel.send('https://tenor.com/view/test-gif-25697164');
 
       await EventBus.emit({ event: 'Discord_ready', args: [loader] });
       await EventBus.emit({ event: 'App_syncDbOnBoot' });

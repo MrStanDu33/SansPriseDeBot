@@ -27,11 +27,17 @@ import { DataTypes } from '@sequelize/core';
  * const ActionsModel = ActionsModelBuilder(instance);
  */
 const ActionsModelBuilder = (instance) =>
-  instance.define('Action', {
-    type: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
+  instance.define(
+    'Action',
+    {
+      type: {
+        type: DataTypes.STRING(255),
+        allowNull: false,
+      },
     },
-  });
+    {
+      tableName: 'Action',
+    },
+  );
 
 export default ActionsModelBuilder;

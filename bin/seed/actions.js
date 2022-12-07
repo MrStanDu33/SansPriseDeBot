@@ -98,6 +98,7 @@ const saveAction = async (
     ActionGoto,
     ActionPrintMessage,
     ActionPromptFile,
+    ActionPromptFileHasAction,
     ActionQuestion,
     ActionQuestionAnswer,
     MimeType,
@@ -141,7 +142,11 @@ const saveAction = async (
         const actionPromptFile = await ActionPromptFile.findOne({
           where: { id: parentPromptFileId },
         });
-        await actionPromptFile.addAction(addRole.ActionId);
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: addRole.ActionId,
+        });
       }
 
       break;
@@ -174,7 +179,11 @@ const saveAction = async (
         const actionPromptFile = await ActionPromptFile.findOne({
           where: { id: parentPromptFileId },
         });
-        await actionPromptFile.addAction(goto.ActionId);
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: goto.ActionId,
+        });
       }
       break;
     }
@@ -206,7 +215,11 @@ const saveAction = async (
         const actionPromptFile = await ActionPromptFile.findOne({
           where: { id: parentPromptFileId },
         });
-        await actionPromptFile.addAction(printMessage.ActionId);
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: printMessage.ActionId,
+        });
       }
       break;
     }
@@ -245,7 +258,11 @@ const saveAction = async (
         const actionPromptFile = await ActionPromptFile.findOne({
           where: { id: parentPromptFileId },
         });
-        await actionPromptFile.addAction(promptFile.ActionId);
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: promptFile.ActionId,
+        });
       }
       // eslint-disable-next-line no-restricted-syntax
       for (const childActionIdentifier in action.actions) {
@@ -285,13 +302,6 @@ const saveAction = async (
           await actionQuestionAnswer.save();
         }
 
-        if (parentPromptFileId !== null) {
-          const actionPromptFile = await ActionPromptFile.findOne({
-            where: { id: parentPromptFileId },
-          });
-          await actionPromptFile.addAction(question.ActionId);
-        }
-
         // eslint-disable-next-line no-restricted-syntax
         for (const answer of action.answers) {
           // eslint-disable-next-line no-await-in-loop
@@ -310,6 +320,17 @@ const saveAction = async (
             }
           }
         }
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: question.ActionId,
+        });
       }
       break;
     }
@@ -331,7 +352,11 @@ const saveAction = async (
         const actionPromptFile = await ActionPromptFile.findOne({
           where: { id: parentPromptFileId },
         });
-        await actionPromptFile.addAction(createdAction.id);
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: createdAction.id,
+        });
       }
       break;
     }

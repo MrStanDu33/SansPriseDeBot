@@ -113,15 +113,21 @@ db.Action.hasOne(db.ActionPromptFile, {
   as: 'PromptFile',
   foreignKey: 'ActionId',
 });
-db.ActionPromptFile.belongsTo(db.Action);
+db.ActionPromptFile.belongsTo(db.Action, {
+  as: 'Action',
+});
 
-db.ActionPromptFile.belongsToMany(db.Action, {
+db.ActionPromptFile.hasMany(db.ActionPromptFileHasAction, {
+  ...cascadeHooks,
   as: 'Actions',
-  through: 'Action_PromptFiles_has_Actions',
 });
-db.Action.belongsToMany(db.ActionPromptFile, {
-  through: 'Action_PromptFiles_has_Actions',
+db.ActionPromptFileHasAction.belongsTo(db.ActionPromptFile);
+
+db.Action.hasMany(db.ActionPromptFileHasAction, {
+  ...cascadeHooks,
+  as: 'Actions',
 });
+db.ActionPromptFileHasAction.belongsTo(db.Action);
 
 db.ActionPromptFile.belongsToMany(db.MimeType, {
   as: 'MimeTypes',
@@ -154,7 +160,7 @@ const loaderSync = Logger.loader(
 );
 
 await instance
-  .sync({ alter: true })
+  .sync()
   .catch((error) => Logger.error(true, 'Unable to sync database:', error));
 Logger.info('Database synced successfully.');
 

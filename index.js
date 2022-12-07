@@ -8,6 +8,8 @@ import App from '$src/Classes/App';
 import Logger from '$src/Logger';
 import Store from '$src/Store';
 
+Error.stackTraceLimit = Infinity;
+
 // eslint-disable-next-line no-new
 new App();
 

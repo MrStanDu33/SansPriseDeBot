@@ -17,6 +17,7 @@ const {
   ActionGoto,
   ActionPrintMessage,
   ActionPromptFile,
+  ActionPromptFileHasAction,
   ActionQuestion,
   ActionQuestionAnswer,
   FollowedMember,
@@ -163,9 +164,7 @@ const askQuestion = async (member, action) => {
     );
 
     const button = new ButtonBuilder()
-      .setCustomId(
-        `FOLLOWED-MEMBER-ANSWER-QUESTION||${answer.text}||${uuidv4()}`,
-      )
+      .setCustomId(`FOLLOWED-MEMBER-ANSWER||${answer.id}||${uuidv4()}`)
       .setLabel(answer.text)
       .setStyle(ButtonStyle.Primary);
 
@@ -254,7 +253,10 @@ export default async (memberId, actionId) => {
       {
         model: ActionPromptFile,
         as: 'PromptFile',
-        include: { model: Action, as: 'Actions' },
+        include: {
+          model: ActionPromptFileHasAction,
+          as: 'Actions',
+        },
       },
       {
         model: ActionQuestion,
@@ -293,7 +295,7 @@ export default async (memberId, actionId) => {
       break;
     }
     case 'promptFile': {
-      await promptFile(member, actionToPerform);
+      await promptFile(member);
       break;
     }
     case 'getOutOfPipe': {
