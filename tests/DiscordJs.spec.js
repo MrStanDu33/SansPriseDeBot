@@ -13,7 +13,7 @@ describe('Discord.js', () => {
       const {
         DISCORD_BOT_TOKEN: DiscordBotToken,
         DISCORD_SERVER_ID: DiscordServerId,
-        DISCORD_WELCOME_CHANNEL_CATEGORY_ID: DefaultWelcomeChannelCategoryId,
+        DISCORD_BOT_CHANNELS_CATEGORY: DefaultWelcomeChannelCategoryId,
       } = process.env;
 
       expect(DiscordBotToken).toBeTruthy();

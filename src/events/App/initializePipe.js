@@ -68,7 +68,7 @@ const createChannel = async (member) => {
       topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
       nsfw: false,
       parent: client.channels.cache.get(
-        process.env.DISCORD_WELCOME_CHANNEL_CATEGORY_ID,
+        process.env.DISCORD_BOT_CHANNELS_CATEGORY,
       ),
       reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
       permissionOverwrites: channelPermissionOverwrites,
@@ -98,7 +98,7 @@ const createChannel = async (member) => {
  * @fires module:Libraries/EventBus#App_processAction
  *
  * @example
- * EventBus.emit('App_processAction');
+ * await EventBus.emit({ event: 'App_processAction' });
  */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
@@ -120,6 +120,7 @@ export default async (member) => {
     username: member.user.tag,
     CurrentActionId: null,
     rolesToAdd: [],
+    inProcess: true,
   });
 
   await LinkedChannel.create({
@@ -128,5 +129,8 @@ export default async (member) => {
     FollowedMemberId: memberData.id,
   });
 
-  EventBus.emit('App_processAction', memberData.id, defaultAction.id);
+  await EventBus.emit({
+    event: 'App_processAction',
+    args: [memberData.id, defaultAction.id],
+  });
 };

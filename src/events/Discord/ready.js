@@ -21,9 +21,10 @@ import EventBus from '$src/EventBus';
  * @fires module:Libraries/EventBus#Discord_guildMemberAdd
  * @fires module:Libraries/EventBus#Discord_guildMemberRemove
  * @fires module:Libraries/EventBus#Discord_interactionCreate
+ * @fires module:Libraries/EventBus#Discord_messageCreate
  *
  * @example
- * EventBus.emit('Discord_ready');
+ * await EventBus.emit({ event: 'Discord_ready' });
  */
 export default async (loader) => {
   const { client } = Store;
@@ -40,14 +41,18 @@ export default async (loader) => {
   Logger.info(`Logged in as ${Store.client.user.tag}!`);
 
   client.on('guildMemberAdd', (member) =>
-    EventBus.emit('Discord_guildMemberAdd', member),
+    EventBus.emit({ event: 'Discord_guildMemberAdd', args: [member] }),
   );
 
   client.on('guildMemberRemove', (member) =>
-    EventBus.emit('Discord_guildMemberRemove', member),
+    EventBus.emit({ event: 'Discord_guildMemberRemove', args: [member] }),
   );
 
   client.on('interactionCreate', (interaction) =>
-    EventBus.emit('Discord_interactionCreate', interaction),
+    EventBus.emit({ event: 'Discord_interactionCreate', args: [interaction] }),
+  );
+
+  client.on('messageCreate', (message) =>
+    EventBus.emit({ event: 'Discord_messageCreate', args: [message] }),
   );
 };

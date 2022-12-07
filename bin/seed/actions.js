@@ -39,11 +39,13 @@ const execute = (command) =>
  * @function saveAction
  * @description Save action to database and create sub-action model instance if needed.
  *
- * @param   { object }          action           - The action to store in database.
- * @param   { number }          [parentAnswerId] - Id of parent answer for when action
- *                                               is due when answer selected.
+ * @param   { object }           action               - The action to store in database.
+ * @param   { number }           [parentAnswerId]     - Id of parent answer for when action
+ *                                                    is due when answer selected.
+ * @param   { number }           [parentPromptFileId] - Id of parent PromptFile action for
+ *                                                    when action is due when file is uploaded.
  *
- * @returns { Promise<Action> }                  - The created action.
+ * @returns { Promise<boolean> }                      - The created action.
  *
  * @example
  * const action = {
@@ -81,9 +83,13 @@ const execute = (command) =>
  * };
  * const parentAnswerId = 15;
  *
- * saveAction(action, parentAnswerId);
+ * saveAction(action, parentAnswerId, null);
  */
-const saveAction = async (action, parentAnswerId = null) => {
+const saveAction = async (
+  action,
+  parentAnswerId = null,
+  parentPromptFileId = null,
+) => {
   const models = (await import('$src/Models')).default;
   const {
     DecisionsTree,
@@ -91,66 +97,266 @@ const saveAction = async (action, parentAnswerId = null) => {
     ActionAddRole,
     ActionGoto,
     ActionPrintMessage,
+    ActionPromptFile,
+    ActionPromptFileHasAction,
     ActionQuestion,
     ActionQuestionAnswer,
+    MimeType,
     Role,
   } = models;
   const decisionsTree = await DecisionsTree.findOne({
     where: { name: 'FormationRoles' },
   });
-  const createdAction = await Action.create({
-    DecisionsTreeId: decisionsTree.id,
-    type: action.type,
-    ActionQuestionAnswerId: parentAnswerId,
-  });
+
   switch (action.type) {
     case 'addRole': {
+      // TODO: findOrCreate
       const role = await Role.findOne({
         where: { discordId: action.role.roleId },
       });
 
-      await ActionAddRole.create({
-        ActionId: createdAction.id,
-        RoleId: role.id,
+      const [addRole, created] = await ActionAddRole.findOrCreate({
+        where: {
+          RoleId: role.id,
+        },
       });
+
+      if (created) {
+        const createdAction = await Action.create({
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
+        });
+
+        addRole.ActionId = createdAction.id;
+        await addRole.save();
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+        await actionQuestionAnswer.addAction(addRole.ActionId);
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: addRole.ActionId,
+        });
+      }
+
       break;
     }
     case 'GOTO': {
-      await ActionGoto.create({
-        ActionId: createdAction.id,
-        TargetActionId: 1,
+      const [goto, created] = await ActionGoto.findOrCreate({
+        where: {
+          TargetActionId: 1,
+        },
       });
+
+      if (created) {
+        const createdAction = await Action.create({
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
+        });
+
+        goto.ActionId = createdAction.id;
+        await goto.save();
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+        await actionQuestionAnswer.addAction(goto.ActionId);
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: goto.ActionId,
+        });
+      }
       break;
     }
     case 'printMessage': {
-      await ActionPrintMessage.create({
-        ActionId: createdAction.id,
-        message: action.message,
+      const [printMessage, created] = await ActionPrintMessage.findOrCreate({
+        where: {
+          message: action.message,
+        },
       });
+
+      if (created) {
+        const createdAction = await Action.create({
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
+        });
+
+        printMessage.ActionId = createdAction.id;
+        await printMessage.save();
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+        await actionQuestionAnswer.addAction(printMessage.ActionId);
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: printMessage.ActionId,
+        });
+      }
+      break;
+    }
+    case 'promptFile': {
+      const promptFile = await ActionPromptFile.create({
+        errorMessage: action.errorMessage,
+      });
+
+      const createdAction = await Action.create({
+        type: action.type,
+        DecisionsTreeId: decisionsTree.id,
+      });
+
+      promptFile.ActionId = createdAction.id;
+      await promptFile.save();
+
+      // eslint-disable-next-line no-restricted-syntax
+      for (const mimeType of action.allowedMimeTypes) {
+        // eslint-disable-next-line no-await-in-loop
+        const [createdMimeType] = await MimeType.findOrCreate({
+          where: {
+            name: mimeType,
+          },
+        });
+        promptFile.addMimeType(createdMimeType);
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+        await actionQuestionAnswer.addAction(promptFile.ActionId);
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: promptFile.ActionId,
+        });
+      }
+      // eslint-disable-next-line no-restricted-syntax
+      for (const childActionIdentifier in action.actions) {
+        if ({}.hasOwnProperty.call(action.actions, childActionIdentifier)) {
+          const childAction = action.actions[childActionIdentifier];
+          // eslint-disable-next-line no-await-in-loop
+          await saveAction(childAction, null, promptFile.id);
+        }
+      }
       break;
     }
     case 'question': {
-      const createdQuestion = await ActionQuestion.create({
-        ActionId: createdAction.id,
-        question: action.question,
+      const [question, created] = await ActionQuestion.findOrCreate({
+        where: {
+          uuid: action.uuid,
+        },
+        defaults: {
+          uuid: action.uuid,
+          question: action.question,
+        },
       });
 
-      // eslint-disable-next-line no-restricted-syntax
-      for (const answer of action.answers) {
-        // eslint-disable-next-line no-await-in-loop
-        const createdAnswer = await ActionQuestionAnswer.create({
-          ActionQuestionId: createdQuestion.id,
-          icon: answer.icon,
-          text: answer.text,
+      if (created) {
+        const createdAction = await Action.create({
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
         });
+
+        question.ActionId = createdAction.id;
+        await question.save();
+
+        if (parentAnswerId !== null) {
+          const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+            where: { id: parentAnswerId },
+          });
+          await actionQuestionAnswer.addAction(question.ActionId);
+          await actionQuestionAnswer.save();
+        }
+
         // eslint-disable-next-line no-restricted-syntax
-        for (const childActionIdentifier in answer.actions) {
-          if ({}.hasOwnProperty.call(answer.actions, childActionIdentifier)) {
-            const childAction = answer.actions[childActionIdentifier];
-            // eslint-disable-next-line no-await-in-loop
-            await saveAction(childAction, createdAnswer.id);
+        for (const answer of action.answers) {
+          // eslint-disable-next-line no-await-in-loop
+          const createdAnswer = await ActionQuestionAnswer.create({
+            ActionQuestionId: question.id,
+            icon: answer.icon,
+            text: answer.text,
+          });
+
+          // eslint-disable-next-line no-restricted-syntax
+          for (const childActionIdentifier in answer.actions) {
+            if ({}.hasOwnProperty.call(answer.actions, childActionIdentifier)) {
+              const childAction = answer.actions[childActionIdentifier];
+              // eslint-disable-next-line no-await-in-loop
+              await saveAction(childAction, createdAnswer.id);
+            }
           }
         }
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: question.ActionId,
+        });
+      }
+      break;
+    }
+    case 'applyRoles':
+    case 'getOutOfPipe': {
+      const createdAction = await Action.create({
+        type: action.type,
+        DecisionsTreeId: decisionsTree.id,
+      });
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+        await actionQuestionAnswer.addAction(createdAction.id);
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: createdAction.id,
+        });
       }
       break;
     }
@@ -158,8 +364,7 @@ const saveAction = async (action, parentAnswerId = null) => {
       break;
     }
   }
-
-  return createdAction;
+  return true;
 };
 
 /**
@@ -181,12 +386,14 @@ const main = async () => {
   if (!fs.existsSync(process.argv[2]))
     return Logger.error(true, 'Cannot load Decisions Tree json file');
 
-  const decisionsTree = await execute(`json-refs resolve ${process.argv[2]}`);
-  await saveAction(decisionsTree.default);
+  const decisionsTree = await execute(
+    `json-refs resolve ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json`,
+  );
+  await saveAction(JSON.parse(decisionsTree).default);
 
   Logger.info('Successfully seeded actions in database');
 
   return true;
 };
 
-main();
+await main();

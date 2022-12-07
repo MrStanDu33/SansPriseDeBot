@@ -32,6 +32,10 @@ const ActionQuestionsModelBuilder = (instance) =>
       type: DataTypes.TEXT('long'),
       allowNull: false,
     },
+    uuid: {
+      type: DataTypes.TEXT(),
+      allowNull: false,
+    },
   });
 
 export default ActionQuestionsModelBuilder;

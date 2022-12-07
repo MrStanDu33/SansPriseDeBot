@@ -22,7 +22,7 @@ const timeoutInDays = 1;
  * @returns { Promise<void> }
  *
  * @example
- * EventBus.emit('App_timeoutUsers');
+ * await EventBus.emit({ event: 'App_timeoutUsers' });
  */
 export default async () => {
   const membersToTimeout = await FollowedMember.findAll({

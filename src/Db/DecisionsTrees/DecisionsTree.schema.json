@@ -69,6 +69,9 @@
         "question": {
           "type": "string"
         },
+        "uuid": {
+          "type": "string"
+        },
         "answers": {
           "type": "array",
           "items": { "$ref": "#/definitions/answer" },
@@ -76,7 +79,7 @@
           "uniqueItems": true
         }
       },
-      "required": ["type", "question", "answers"],
+      "required": ["type", "question", "answers", "uuid"],
       "additionalProperties": false
     },
     "action": {
@@ -163,9 +166,13 @@
             },
             "errorMessage": {
               "type": "string"
+            },
+            "actions": {
+              "type": "object",
+              "properties": { "$ref": "#/definitions/action" }
             }
           },
-          "required": ["type", "allowedMimeTypes", "errorMessage"],
+          "required": ["type", "allowedMimeTypes", "errorMessage", "actions"],
           "additionalProperties": false
         },
         {

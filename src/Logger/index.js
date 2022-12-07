@@ -213,7 +213,6 @@ class Logger {
    * Logger.warnToConsole('This is a warn message', true, 42);
    */
   static warnToConsole(...warn) {
-    if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
     console.warn(`${Logger.#prefixes.console.warn} |`, ...warn);
   }
@@ -333,7 +332,6 @@ class Logger {
    * Logger.warnToFile('This is a warn message', true, 42);
    */
   static warnToFile(...warn) {
-    if (process.env.APP_DEBUG === 'false') return;
     warn.forEach((warnData) => {
       Logger.#writeToLogFile(
         `${Logger.#getDateTime()} | ${

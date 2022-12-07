@@ -24,7 +24,7 @@ const AWAITING_MEMBERS_BATCH_SIZE = 10;
  * @fires module:Libraries/EventBus#App_initializePipe
  *
  * @example
- * EventBus.emit('App_processAwaitingMembers');
+ * await EventBus.emit({ event: 'App_processAwaitingMembers' });
  */
 export default async () => {
   Logger.info('Start processing missed members');
@@ -41,7 +41,7 @@ export default async () => {
     );
     const guildMember = await guild.members.fetch(member.memberId);
 
-    EventBus.emit('App_initializePipe', guildMember);
+    await EventBus.emit({ event: 'App_initializePipe', args: [guildMember] });
   });
 
   await Promise.all(promises);
