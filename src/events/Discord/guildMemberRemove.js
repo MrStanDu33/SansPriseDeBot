@@ -27,6 +27,13 @@ const { LinkedChannel, FollowedMember } = models;
  */
 export default async (member) => {
   if (process.env.DRY_RUN === 'true') return;
+
+  const membersWhitelist =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST.split(',');
+  const whitelistEnabled = membersWhitelist.length !== 0;
+
+  if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
+
   /**
    * TODO: Detect on boot diff between channels on db and users on server.
    * If so => delete channel and record !

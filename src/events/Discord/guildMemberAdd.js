@@ -24,6 +24,12 @@ import Logger from '$src/Logger';
 export default (member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;
 
+  const membersWhitelist =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST.split(',');
+  const whitelistEnabled = membersWhitelist.length !== 0;
+
+  if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
+
   Logger.info(`New member just came ! (${member.user.tag})`);
   EventBus.emit({ event: 'App_initializePipe', args: [member] });
 };

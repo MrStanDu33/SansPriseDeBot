@@ -5,6 +5,7 @@
 
 import models from '$src/Models';
 import Store from '$src/Store';
+import Logger from '$src/Logger';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
@@ -105,7 +106,10 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
  * await EventBus.emit({ event: 'Discord_messageCreate' });
  */
 export default async (message) => {
-  console.log(message.content === '!spdb beta process-me');
+  Logger.info(
+    '!spdb beta progress message ===',
+    message.content === '!spdb beta process-me',
+  );
   if (message.author.id === process.env.DISCORD_BOT_ID) return; // ignore bot messages
   const { client } = Store;
 

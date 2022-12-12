@@ -53,10 +53,6 @@ const createChannel = async (member) => {
       id: client.user.id,
       allow: [PermissionsBitField.Flags.ViewChannel],
     },
-    {
-      id: process.env.DISCORD_DEBUG_ACCOUNT_ID,
-      allow: [PermissionsBitField.Flags.ViewChannel],
-    },
   ];
 
   const channel = await guild.channels
