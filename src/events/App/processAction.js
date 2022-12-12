@@ -235,7 +235,6 @@ const timeoutBeforeAction = (timeoutDuration) =>
  * await EventBus.emit({ event: 'App_processAction', args: [ 12, 15 ] });
  */
 export default async (memberId, actionId) => {
-  Logger.error('CALLED WITH', actionId);
   const { client } = Store;
 
   const member = await FollowedMember.findOne({

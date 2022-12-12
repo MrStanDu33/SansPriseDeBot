@@ -120,17 +120,13 @@ const processUserAnswer = async (interaction) => {
 
   if (selectedAnswer === undefined) return;
 
-  Logger.error(JSON.stringify(selectedAnswer));
-
   disableMessageButtons(interaction.message, interaction.customId);
 
   const reply = await interaction.reply({ content: '...', fetchReply: true });
   await reply.delete();
 
-  Logger.error(JSON.stringify(selectedAnswer.AnswerActions));
   // eslint-disable-next-line no-restricted-syntax
   for (const action of selectedAnswer.AnswerActions) {
-    Logger.warn(action);
     // eslint-disable-next-line no-await-in-loop
     await EventBus.emit({
       event: 'App_processAction',
@@ -177,9 +173,6 @@ const processStaffFileValidation = async (interaction, guild) => {
       await channel.send(
         `Félicitations <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a accepté le fichier, vous pouvez continuer.`,
       );
-
-      Logger.error('TEST', linkedChannel.FollowedMember.Action.PromptFile);
-      Logger.error('TEST2', linkedChannel.FollowedMember);
 
       // eslint-disable-next-line no-restricted-syntax
       for (const action of linkedChannel.FollowedMember.Action.PromptFile
