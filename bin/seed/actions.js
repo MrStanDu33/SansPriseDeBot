@@ -7,45 +7,29 @@
 
 /** @typedef { import('$src/Models/Action').default } Action */
 
-import childProcess from 'child_process';
 import fs from 'fs';
 import Dotenv from 'dotenv';
+import $RefParser from '@apidevtools/json-schema-ref-parser';
 
 Dotenv.config();
 
 // TODO: Refactor to static class
 
 /**
- * @function execute
- * @description Execute a given command, used to compile formation decisionsTree.
- *
- * @param   { string }          command - Command to execute.
- *
- * @returns { Promise<object> }         - Command result.
- *
- * @example
- * const result = await execute('ls -la ./');
- */
-const execute = (command) =>
-  new Promise((resolve, reject) => {
-    childProcess.exec(command, (error, standardOutput, standardError) => {
-      if (error) return reject();
-      if (standardError) return reject(standardError);
-      return resolve(standardOutput);
-    });
-  });
-
-/**
  * @function saveAction
  * @description Save action to database and create sub-action model instance if needed.
  *
- * @param   { object }           action               - The action to store in database.
- * @param   { number }           [parentAnswerId]     - Id of parent answer for when action
- *                                                    is due when answer selected.
- * @param   { number }           [parentPromptFileId] - Id of parent PromptFile action for
- *                                                    when action is due when file is uploaded.
+ * @param   { object }           settings                      - The action to store in database.
+ * @param   { object }           settings.action               - The action to store in database.
+ * @param   { number }           [settings.parentAnswerId]     - Id of parent answer for when action
+ *                                                             is due when answer selected.
+ * @param   { number }           [settings.parentPromptFileId] - Id of parent PromptFile action
+ *                                                             for when action is due when file
+ *                                                             is uploaded.
+ * @param   { $RefParser.$Refs } settings.json                 - Decisions tree used to resolve
+ *                                                             JSON refs.
  *
- * @returns { Promise<boolean> }                      - The created action.
+ * @returns { Promise<boolean> }                               - The created action.
  *
  * @example
  * const action = {
@@ -83,13 +67,14 @@ const execute = (command) =>
  * };
  * const parentAnswerId = 15;
  *
- * saveAction(action, parentAnswerId, null);
+ * saveAction({action, parentAnswerId, parentPromptFileId: null, json: {}});
  */
-const saveAction = async (
+const saveAction = async ({
   action,
   parentAnswerId = null,
   parentPromptFileId = null,
-) => {
+  json,
+}) => {
   const models = (await import('$src/Models')).default;
   const {
     DecisionsTree,
@@ -101,6 +86,7 @@ const saveAction = async (
     ActionPromptFileHasAction,
     ActionQuestion,
     ActionQuestionAnswer,
+    ActionQuestionAnswersHasAction,
     MimeType,
     Role,
   } = models;
@@ -108,8 +94,17 @@ const saveAction = async (
     where: { name: 'FormationRoles' },
   });
 
+  if (action.$ref !== undefined) {
+    // eslint-disable-next-line no-param-reassign
+    action = json.get(action.$ref);
+  }
+
   switch (action.type) {
     case 'addRole': {
+      if (action.role.$ref !== undefined) {
+        // eslint-disable-next-line no-param-reassign
+        action.role = json.get(action.role.$ref);
+      }
       // TODO: findOrCreate
       const role = await Role.findOne({
         where: { discordId: action.role.roleId },
@@ -135,7 +130,11 @@ const saveAction = async (
         const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
           where: { id: parentAnswerId },
         });
-        await actionQuestionAnswer.addAction(addRole.ActionId);
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: addRole.ActionId,
+        });
       }
 
       if (parentPromptFileId !== null) {
@@ -208,7 +207,11 @@ const saveAction = async (
         const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
           where: { id: parentAnswerId },
         });
-        await actionQuestionAnswer.addAction(printMessage.ActionId);
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: printMessage.ActionId,
+        });
       }
 
       if (parentPromptFileId !== null) {
@@ -251,7 +254,11 @@ const saveAction = async (
         const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
           where: { id: parentAnswerId },
         });
-        await actionQuestionAnswer.addAction(promptFile.ActionId);
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: promptFile.ActionId,
+        });
       }
 
       if (parentPromptFileId !== null) {
@@ -269,7 +276,12 @@ const saveAction = async (
         if ({}.hasOwnProperty.call(action.actions, childActionIdentifier)) {
           const childAction = action.actions[childActionIdentifier];
           // eslint-disable-next-line no-await-in-loop
-          await saveAction(childAction, null, promptFile.id);
+          await saveAction({
+            action: childAction,
+            parentAnswerId: null,
+            parentPromptFileId: promptFile.id,
+            json,
+          });
         }
       }
       break;
@@ -294,14 +306,6 @@ const saveAction = async (
         question.ActionId = createdAction.id;
         await question.save();
 
-        if (parentAnswerId !== null) {
-          const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
-            where: { id: parentAnswerId },
-          });
-          await actionQuestionAnswer.addAction(question.ActionId);
-          await actionQuestionAnswer.save();
-        }
-
         // eslint-disable-next-line no-restricted-syntax
         for (const answer of action.answers) {
           // eslint-disable-next-line no-await-in-loop
@@ -314,12 +318,32 @@ const saveAction = async (
           // eslint-disable-next-line no-restricted-syntax
           for (const childActionIdentifier in answer.actions) {
             if ({}.hasOwnProperty.call(answer.actions, childActionIdentifier)) {
-              const childAction = answer.actions[childActionIdentifier];
+              let childAction = answer.actions[childActionIdentifier];
+
+              if (childAction.$ref !== undefined) {
+                childAction = json.get(childAction.$ref);
+              }
               // eslint-disable-next-line no-await-in-loop
-              await saveAction(childAction, createdAnswer.id);
+              await saveAction({
+                action: childAction,
+                parentAnswerId: createdAnswer.id,
+                parentPromptFileId: null,
+                json,
+              });
             }
           }
         }
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: question.ActionId,
+        });
       }
 
       if (parentPromptFileId !== null) {
@@ -345,7 +369,11 @@ const saveAction = async (
         const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
           where: { id: parentAnswerId },
         });
-        await actionQuestionAnswer.addAction(createdAction.id);
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: createdAction.id,
+        });
       }
 
       if (parentPromptFileId !== null) {
@@ -386,10 +414,17 @@ const main = async () => {
   if (!fs.existsSync(process.argv[2]))
     return Logger.error(true, 'Cannot load Decisions Tree json file');
 
-  const decisionsTree = await execute(
-    `json-refs resolve ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json`,
+  const decisionsTree = fs
+    .readFileSync('./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json')
+    .toString();
+  const $refs = await $RefParser.resolve(
+    './src/Db/DecisionsTrees/FormationRolesDecisionsTree.json',
   );
-  await saveAction(JSON.parse(decisionsTree).default);
+
+  await saveAction({
+    action: JSON.parse(decisionsTree).default,
+    json: $refs,
+  });
 
   Logger.info('Successfully seeded actions in database');
 

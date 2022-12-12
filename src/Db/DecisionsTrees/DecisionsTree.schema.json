@@ -6,20 +6,37 @@
   "type": "object",
   "properties": {
     "default": {
-      "$ref": "#/definitions/action"
+      "$ref": "#/definition/question"
     },
     "$schema": {
       "type": "string",
       "description": "JSON Schema path/url for this file"
     },
-    "definitions": {
+    "definition": {
       "type": "object",
       "properties": {
         "questions": {
           "type": "object",
           "patternProperties": {
-            "[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}": {
-              "$ref": "#/definitions/question"
+            "^[a-z0-9-]+$": {
+              "oneOf": [
+                {
+                  "properties": {
+                    "type": {
+                      "enum": ["question"]
+                    }
+                  },
+                  "$ref": "#/definition/question"
+                },
+                {
+                  "type": "object",
+                  "patternProperties": {
+                    "^[a-z0-9-]+$": {
+                      "$ref": "#/definition/question"
+                    }
+                  }
+                }
+              ]
             }
           },
           "properties": {
@@ -30,7 +47,9 @@
               },
               "answers": {
                 "type": "array",
-                "items": { "$ref": "#/definitions/answer" }
+                "items": {
+                  "$ref": "#/definition/answer"
+                }
               }
             },
             "required": ["question", "answers"],
@@ -58,7 +77,7 @@
     }
   },
   "required": ["default", "$schema"],
-  "definitions": {
+  "definition": {
     "question": {
       "type": "object",
       "description": "Question to ask to user",
@@ -74,7 +93,9 @@
         },
         "answers": {
           "type": "array",
-          "items": { "$ref": "#/definitions/answer" },
+          "items": {
+            "$ref": "#/definition/answer"
+          },
           "minItems": 1,
           "uniqueItems": true
         }
@@ -94,7 +115,7 @@
             },
             "$ref": {
               "type": "string",
-              "pattern": "^#/definitions/questions/[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$"
+              "pattern": "^#/definition/questions/[a-z0-9/-]+$"
             }
           },
           "required": ["type", "$ref"],
@@ -111,7 +132,9 @@
             },
             "answers": {
               "type": "array",
-              "items": { "$ref": "#/definitions/answer" },
+              "items": {
+                "$ref": "#/definition/answer"
+              },
               "minItems": 1,
               "uniqueItems": true
             }
@@ -130,7 +153,7 @@
               "properties": {
                 "$ref": {
                   "type": "string",
-                  "pattern": "^#/definitions/roles/[a-z_]+$"
+                  "pattern": "^#/definition/roles/[a-z_/]+$"
                 }
               }
             }
@@ -169,7 +192,9 @@
             },
             "actions": {
               "type": "object",
-              "properties": { "$ref": "#/definitions/action" }
+              "properties": {
+                "$ref": "#/definition/action"
+              }
             }
           },
           "required": ["type", "allowedMimeTypes", "errorMessage", "actions"],
@@ -179,7 +204,17 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["promptForAnotherAction"]
+              "enum": ["applyRoles"]
+            }
+          },
+          "required": ["type"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["getOutOfPipe"]
             }
           },
           "required": ["type"],
@@ -199,10 +234,10 @@
         "actions": {
           "type": "object",
           "patternProperties": {
-            "[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}": {
+            "^[a-z0-9-]+$": {
               "anyOf": [
                 {
-                  "$ref": "#/definitions/action"
+                  "$ref": "#/definition/action"
                 }
               ]
             }
@@ -210,7 +245,7 @@
           "additionalProperties": false
         }
       },
-      "required": ["icon", "text", "actions"],
+      "required": ["text", "actions"],
       "additionalItems": false
     }
   }

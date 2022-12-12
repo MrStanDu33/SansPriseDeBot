@@ -73,13 +73,17 @@ db.ActionQuestion.hasMany(db.ActionQuestionAnswer, {
 });
 db.ActionQuestionAnswer.belongsTo(db.ActionQuestion);
 
-db.ActionQuestionAnswer.belongsToMany(db.Action, {
-  as: 'Actions',
-  through: 'Action_Question_Answers_has_Actions',
+db.ActionQuestionAnswer.hasMany(db.ActionQuestionAnswersHasAction, {
+  ...cascadeHooks,
+  as: 'AnswerActions',
 });
-db.Action.belongsToMany(db.ActionQuestionAnswer, {
-  through: 'Action_Question_Answers_has_Actions',
+db.ActionQuestionAnswersHasAction.belongsTo(db.ActionQuestionAnswer);
+
+db.Action.hasMany(db.ActionQuestionAnswersHasAction, {
+  ...cascadeHooks,
+  as: 'AnswerActions',
 });
+db.ActionQuestionAnswersHasAction.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionGoto, {
   ...cascadeHooks,
@@ -131,10 +135,10 @@ db.ActionPromptFileHasAction.belongsTo(db.Action);
 
 db.ActionPromptFile.belongsToMany(db.MimeType, {
   as: 'MimeTypes',
-  through: 'Action_PromptFiles_has_MimeTypes',
+  through: 'Action_PromptFiles_Has_MimeTypes',
 });
 db.MimeType.belongsToMany(db.ActionPromptFile, {
-  through: 'Action_PromptFiles_has_MimeTypes',
+  through: 'Action_PromptFiles_Has_MimeTypes',
 });
 
 db.Role.hasOne(db.ActionAddRole, cascadeHooks);

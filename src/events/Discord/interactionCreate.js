@@ -14,6 +14,7 @@ const {
   Action,
   ActionQuestion,
   ActionQuestionAnswer,
+  ActionQuestionAnswersHasAction,
   LinkedChannel,
   ActionPromptFile,
   ActionPromptFileHasAction,
@@ -96,9 +97,8 @@ const processUserAnswer = async (interaction) => {
                     model: ActionQuestionAnswer,
                     as: 'Answers',
                     include: {
-                      model: Action,
-                      as: 'Actions',
-                      through: 'Action_Question_Answers_has_Actions',
+                      model: ActionQuestionAnswersHasAction,
+                      as: 'AnswerActions',
                     },
                   },
                 ],
@@ -120,17 +120,21 @@ const processUserAnswer = async (interaction) => {
 
   if (selectedAnswer === undefined) return;
 
+  Logger.error(JSON.stringify(selectedAnswer));
+
   disableMessageButtons(interaction.message, interaction.customId);
 
   const reply = await interaction.reply({ content: '...', fetchReply: true });
   await reply.delete();
 
+  Logger.error(JSON.stringify(selectedAnswer.AnswerActions));
   // eslint-disable-next-line no-restricted-syntax
-  for (const action of selectedAnswer.Actions) {
+  for (const action of selectedAnswer.AnswerActions) {
+    Logger.warn(action);
     // eslint-disable-next-line no-await-in-loop
     await EventBus.emit({
       event: 'App_processAction',
-      args: [linkedChannel.FollowedMember.id, action.id],
+      args: [linkedChannel.FollowedMember.id, action.ActionId],
     });
 
     // eslint-disable-next-line no-await-in-loop
@@ -173,6 +177,9 @@ const processStaffFileValidation = async (interaction, guild) => {
       await channel.send(
         `Félicitations <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a accepté le fichier, vous pouvez continuer.`,
       );
+
+      Logger.error('TEST', linkedChannel.FollowedMember.Action.PromptFile);
+      Logger.error('TEST2', linkedChannel.FollowedMember);
 
       // eslint-disable-next-line no-restricted-syntax
       for (const action of linkedChannel.FollowedMember.Action.PromptFile
@@ -239,7 +246,14 @@ export default async (interaction) => {
 
   switch (interactionDetails[0]) {
     case 'STAFF-ACTION-APPROVE-FILE': {
-      if (!memberIsStaff) return;
+      if (!memberIsStaff) {
+        interaction.reply({
+          content:
+            'Cette action est reservée aux membres du staff.\nCes derniers valideront le processus sous peu, veuillez patienter.',
+          ephemeral: true,
+        });
+        return;
+      }
       processStaffFileValidation(interaction, guild);
       break;
     }

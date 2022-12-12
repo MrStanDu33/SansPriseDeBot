@@ -20,6 +20,7 @@ const {
   ActionPromptFileHasAction,
   ActionQuestion,
   ActionQuestionAnswer,
+  ActionQuestionAnswersHasAction,
   FollowedMember,
   Role,
   RolesToAddToMember,
@@ -234,6 +235,7 @@ const timeoutBeforeAction = (timeoutDuration) =>
  * await EventBus.emit({ event: 'App_processAction', args: [ 12, 15 ] });
  */
 export default async (memberId, actionId) => {
+  Logger.error('CALLED WITH', actionId);
   const { client } = Store;
 
   const member = await FollowedMember.findOne({
@@ -265,7 +267,10 @@ export default async (memberId, actionId) => {
           {
             model: ActionQuestionAnswer,
             as: 'Answers',
-            include: { model: Action, as: 'Actions' },
+            include: {
+              model: ActionQuestionAnswersHasAction,
+              as: 'AnswerActions',
+            },
           },
         ],
       },

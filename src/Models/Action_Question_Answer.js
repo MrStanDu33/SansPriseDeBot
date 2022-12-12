@@ -30,7 +30,7 @@ const ActionQuestionAnswersModelBuilder = (instance) =>
   instance.define('Action_Question_Answer', {
     icon: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     text: {
       type: DataTypes.TEXT,
