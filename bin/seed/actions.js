@@ -416,8 +416,10 @@ const saveAction = async ({
     case 'applyRoles':
     case 'getOutOfPipe': {
       const createdAction = await Action.findOrCreate({
-        type: action.type,
-        DecisionsTreeId: decisionsTree.id,
+        where: {
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
+        },
       });
 
       if (parentAnswerId !== null) {
