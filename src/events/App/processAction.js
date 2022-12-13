@@ -148,7 +148,9 @@ const removeRole = async (member, role) => {
  */
 const removeAllRoles = async (member) => {
   await RolesToAddToMember.destroy({
-    FollowedMemberId: member.id,
+    where: {
+      FollowedMemberId: member.id,
+    },
   });
 };
 
