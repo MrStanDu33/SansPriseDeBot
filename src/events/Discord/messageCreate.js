@@ -6,13 +6,14 @@
 import models from '$src/Models';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
+import Message from '$src/Classes/Message';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 
 const { Action, ActionPromptFile, MimeType, LinkedChannel, FollowedMember } =
   models;
 
-/** @typedef { import('discord.js').Message } Message */
+/** @typedef { import('discord.js').Message } DiscordMessage */
 
 /**
  * @description Returns a promise that resolves after a given amount of time.
@@ -30,34 +31,44 @@ const timeoutBeforeAction = (timeoutDuration) =>
 /**
  * @description Function that check file sent by member.
  *
- * @param   { Message }       message       - Message that was created.
- * @param   { LinkedChannel } linkedChannel - Channel that contains the message.
+ * @param   { DiscordMessage } memberMessage - Message that was created.
+ * @param   { LinkedChannel }  linkedChannel - Channel that contains the message.
  * @returns { Promise<void> }
  *
  * @example
  * await processPromptFileAnswer()
  */
-const processPromptFileAnswer = async (message, linkedChannel) => {
+const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
   const expectedMimeTypes =
     linkedChannel.FollowedMember.Action.PromptFile.MimeTypes.map(
       ({ name }) => name,
     );
 
-  const attachment = message.attachments.first();
+  const attachment = memberMessage.attachments.first();
 
   if (
     attachment === undefined ||
     !expectedMimeTypes.includes(attachment.contentType)
   ) {
-    await message.channel.send(
+    const { message } = new Message(
       linkedChannel.FollowedMember.Action.PromptFile.errorMessage,
+      {
+        memberId: linkedChannel.FollowedMember.memberId,
+      },
     );
+
+    await memberMessage.channel.send(message);
     return;
   }
 
-  await message.channel.send(
+  const { message } = new Message(
     linkedChannel.FollowedMember.Action.PromptFile.pendingMessage,
+    {
+      memberId: linkedChannel.FollowedMember.memberId,
+    },
   );
+
+  await memberMessage.channel.send(message);
 
   // eslint-disable-next-line no-param-reassign
   linkedChannel.FollowedMember.needUploadFile = false;
@@ -66,7 +77,7 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
   // eslint-disable-next-line no-await-in-loop
   await timeoutBeforeAction(1000);
 
-  await message.channel.send('***⚠️ ⚠️ __Staff seulement__ ⚠️ ⚠️***');
+  await memberMessage.channel.send('***⚠️ ⚠️ __Staff seulement__ ⚠️ ⚠️***');
 
   const buttonApprove = new ButtonBuilder()
     .setCustomId(`STAFF-ACTION-APPROVE-FILE||approve||${uuidv4()}`)
@@ -84,13 +95,13 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
   component.addComponents(buttonApprove);
   component.addComponents(buttonReject);
 
-  await message.channel.send({
+  await memberMessage.channel.send({
     content: '\nSouhaitez-vous approuver le document ?',
     // @ts-ignore
     components: [component],
   });
 
-  await message.channel.send('***⚠️ ⚠️ __Staff seulement__ ⚠️ ⚠️***');
+  await memberMessage.channel.send('***⚠️ ⚠️ __Staff seulement__ ⚠️ ⚠️***');
 };
 
 /**
@@ -98,7 +109,7 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
  *
  * @event module:Libraries/EventBus#Discord_messageCreate
  *
- * @param { Message } message - Message that was created.
+ * @param { DiscordMessage } message - Message that was created.
  *
  * @fires module:Libraries/EventBus#App_initializePipe
  *

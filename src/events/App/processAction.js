@@ -14,6 +14,7 @@ import EventBus from '$src/EventBus';
 const {
   Action,
   ActionAddRole,
+  ActionRemoveRole,
   ActionGoto,
   ActionPrintMessage,
   ActionPromptFile,
@@ -123,8 +124,10 @@ const addRole = async (member, role) => {
  */
 const removeRole = async (member, role) => {
   await RolesToAddToMember.destroy({
-    FollowedMemberId: member.id,
-    RoleId: role.AddRole.Role.id,
+    where: {
+      FollowedMemberId: member.id,
+      RoleId: role.RemoveRole.Role.id,
+    },
   });
 };
 
@@ -285,13 +288,11 @@ export default async (memberId, actionId) => {
     include: { all: true },
   });
 
-  member.CurrentActionId = actionId;
-  await member.save();
-
   const actionToPerform = await Action.findOne({
     where: { id: actionId },
     include: [
       { model: ActionAddRole, as: 'AddRole', include: Role },
+      { model: ActionRemoveRole, as: 'RemoveRole', include: Role },
       { model: ActionGoto, include: Action, as: 'Goto' },
       { model: ActionPrintMessage, as: 'PrintMessage' },
       {
@@ -318,6 +319,11 @@ export default async (memberId, actionId) => {
       },
     ],
   });
+
+  if (['promptFile', 'question'].includes(actionToPerform?.type)) {
+    member.CurrentActionId = actionId;
+    await member.save();
+  }
 
   Logger.info(
     `processing action ${actionToPerform.type} for member ${member.username}`,

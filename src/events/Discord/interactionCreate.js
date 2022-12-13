@@ -8,6 +8,7 @@ import Store from '$src/Store';
 import EventBus from '$src/EventBus';
 import models from '$src/Models';
 import Logger from '$src/Logger';
+import Message from '$src/Classes/Message';
 
 const {
   FollowedMember,
@@ -21,7 +22,7 @@ const {
 } = models;
 
 /** @typedef { import('discord.js').Interaction } Interaction */
-/** @typedef { import('discord.js').Message } Message */
+/** @typedef { import('discord.js').Message } DiscordMessage */
 
 /**
  * @description Returns a promise that resolves after a given amount of time.
@@ -41,8 +42,8 @@ const timeoutBeforeAction = (timeoutDuration) =>
  * and then disables all the buttons in the message.
  * The button that has an Id matching given button Id gets a specific color.
  *
- * @param { Message } message         - The message that was sent by the bot.
- * @param { string }  clickedButtonId - The id of the button that was clicked.
+ * @param { DiscordMessage } message         - The message that was sent by the bot.
+ * @param { string }         clickedButtonId - The id of the button that was clicked.
  *
  * @example
  * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
@@ -173,9 +174,14 @@ const processStaffFileValidation = async (interaction, guild) => {
       linkedChannel.FollowedMember.needUploadFile = null;
       linkedChannel.FollowedMember.save();
 
-      await channel.send(
+      const { message } = new Message(
         linkedChannel.FollowedMember.Action.PromptFile.approvedMessage,
+        {
+          memberId: linkedChannel.FollowedMember.memberId,
+        },
       );
+
+      await channel.send(message);
 
       // eslint-disable-next-line no-restricted-syntax
       for (const action of linkedChannel.FollowedMember.Action.PromptFile
@@ -195,9 +201,14 @@ const processStaffFileValidation = async (interaction, guild) => {
       linkedChannel.FollowedMember.needUploadFile = true;
       linkedChannel.FollowedMember.save();
 
-      await channel.send(
+      const { message } = new Message(
         linkedChannel.FollowedMember.Action.PromptFile.rejectedMessage,
+        {
+          memberId: linkedChannel.FollowedMember.memberId,
+        },
       );
+
+      await channel.send(message);
       break;
     }
     default: {

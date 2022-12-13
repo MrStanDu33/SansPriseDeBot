@@ -415,7 +415,7 @@ const saveAction = async ({
     case 'removeAllRoles':
     case 'applyRoles':
     case 'getOutOfPipe': {
-      const createdAction = await Action.findOrCreate({
+      const [createdAction] = await Action.findOrCreate({
         where: {
           type: action.type,
           DecisionsTreeId: decisionsTree.id,
