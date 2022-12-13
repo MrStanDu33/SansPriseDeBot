@@ -32,6 +32,18 @@ const ActionPromptFileModelBuilder = (instance) =>
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    pendingMessage: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    approvedMessage: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    rejectedMessage: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
   });
 
 export default ActionPromptFileModelBuilder;

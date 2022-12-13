@@ -55,9 +55,9 @@ const processPromptFileAnswer = async (message, linkedChannel) => {
     return;
   }
 
-  await message.channel.send(`
-    Merci de ton message, le <@&${process.env.DISCORD_STAFF_ROLE_ID}> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait
-  `);
+  await message.channel.send(
+    linkedChannel.FollowedMember.Action.PromptFile.pendingMessage,
+  );
 
   // eslint-disable-next-line no-param-reassign
   linkedChannel.FollowedMember.needUploadFile = false;

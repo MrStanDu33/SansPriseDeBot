@@ -280,6 +280,9 @@ const saveAction = async ({
     case 'promptFile': {
       const promptFile = await ActionPromptFile.create({
         errorMessage: action.errorMessage,
+        pendingMessage: action.pendingMessage,
+        approvedMessage: action.approvedMessage,
+        rejectedMessage: action.rejectedMessage,
       });
 
       const createdAction = await Action.create({

@@ -238,9 +238,8 @@ const askQuestion = async (member, action) => {
  *
  * @example
  * const member = await FollowedMember.findOne({ where { id: 12 }});
- * const action = await Action.findOne({ where: { decisionsTreeId: 1 } });
  *
- * await promptFile(member, action);
+ * await promptFile(member);
  */
 const promptFile = async (member) => {
   // eslint-disable-next-line no-param-reassign

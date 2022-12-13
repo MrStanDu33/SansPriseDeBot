@@ -174,7 +174,7 @@ const processStaffFileValidation = async (interaction, guild) => {
       linkedChannel.FollowedMember.save();
 
       await channel.send(
-        `Félicitations <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a accepté le fichier, vous pouvez continuer.`,
+        linkedChannel.FollowedMember.Action.PromptFile.approvedMessage,
       );
 
       // eslint-disable-next-line no-restricted-syntax
@@ -196,7 +196,7 @@ const processStaffFileValidation = async (interaction, guild) => {
       linkedChannel.FollowedMember.save();
 
       await channel.send(
-        `Hello <@${linkedChannel.FollowedMember.memberId}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.`,
+        linkedChannel.FollowedMember.Action.PromptFile.rejectedMessage,
       );
       break;
     }
