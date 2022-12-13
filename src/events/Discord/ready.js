@@ -55,4 +55,14 @@ export default async (loader) => {
   client.on('messageCreate', (message) =>
     EventBus.emit({ event: 'Discord_messageCreate', args: [message] }),
   );
+
+  client.application.commands
+    .create({
+      name: 'ping',
+      description: 'Test for bot status',
+    })
+    .then(() => {
+      Logger.info('Command `/ping` successfully registered');
+    })
+    .catch(Logger.error);
 };
