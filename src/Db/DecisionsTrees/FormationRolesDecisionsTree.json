@@ -73,6 +73,12 @@
                 "student-academie-developpement": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-developpement"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
                 }
               }
             },
@@ -83,6 +89,12 @@
                 "student-academie-data": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-data"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
                 }
               }
             },
@@ -93,6 +105,12 @@
                 "student-academie-marketing-communication": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-marketing-communication"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
                 }
               }
             },
@@ -103,6 +121,12 @@
                 "student-academie-business": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-business"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
                 }
               }
             },
@@ -113,6 +137,12 @@
                 "student-academie-systemes-reseaux": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-systemes-reseaux"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
                 }
               }
             },
@@ -123,6 +153,12 @@
                 "student-academie-pedagogie": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-pedagogie"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
                 }
               }
             },
@@ -133,6 +169,12 @@
                 "student-academie-gestion-projet": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-gestion-projet"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
                 }
               }
             },
@@ -143,6 +185,12 @@
                 "student-academie-rh-gestion": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-rh-gestion"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
                 }
               }
             },
@@ -153,6 +201,12 @@
                 "student-academie-bureautique": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-bureautique"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
                 }
               }
             },
@@ -163,6 +217,12 @@
                 "student-academie-supply-chain": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-supply-chain"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
                 }
               }
             },
@@ -173,6 +233,12 @@
                 "student-academie-cybersecurite": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-cybersecurite"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
                 }
               }
             },
@@ -183,6 +249,12 @@
                 "student-academie-design": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-design"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
                 }
               }
             },
@@ -193,6 +265,22 @@
                 "student-academie-autre": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/academie-autre"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-plateforme": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/plateforme"
                 }
               }
             }
@@ -201,7 +289,7 @@
         "academie-developpement": {
           "type": "question",
           "uuid": "students-academie-developpement",
-          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/18-developpement>*",
           "answers": [
             {
               "icon": "✅",
@@ -220,6 +308,22 @@
                 "anciennes-formations-developpement": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/anciennes-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -409,6 +513,16 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
+                }
+              }
             }
           ]
         },
@@ -506,6 +620,16 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
+                }
+              }
             }
           ]
         },
@@ -588,13 +712,29 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
         "academie-marketing-communication": {
           "type": "question",
           "uuid": "students-academie-marketing-communication",
-          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/14-marketing_et_communication>*",
           "answers": [
             {
               "icon": "✅",
@@ -613,6 +753,22 @@
                 "anciennes-formations-marketing-communication": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/anciennes-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -667,6 +823,16 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
+                }
+              }
             }
           ]
         },
@@ -702,6 +868,16 @@
                 "diplome": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
                 }
               }
             }
@@ -756,6 +932,22 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
@@ -808,13 +1000,29 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
         "academie-pedagogie": {
           "type": "question",
           "uuid": "students-academie_pedagogie",
-          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/15-pedagogie>*",
           "answers": [
             {
               "icon": "✅",
@@ -833,6 +1041,22 @@
                 "anciennes-formations-pedagogie": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/anciennes-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -872,6 +1096,16 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
+                }
+              }
             }
           ]
         },
@@ -892,6 +1126,16 @@
                 "diplome": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
                 }
               }
             }
@@ -931,13 +1175,29 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
         "academie-rh-gestion": {
           "type": "question",
           "uuid": "students-academie-rh-gestion",
-          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/32-rh_et_gestion>*",
           "answers": [
             {
               "icon": "✅",
@@ -956,6 +1216,22 @@
                 "anciennes-formations-rh-gestion": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/anciennes-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -993,6 +1269,16 @@
                 "diplome": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
                 }
               }
             }
@@ -1047,6 +1333,16 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
+                }
+              }
             }
           ]
         },
@@ -1084,6 +1380,22 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
@@ -1104,6 +1416,22 @@
                 "diplome": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -1128,6 +1456,22 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
@@ -1150,6 +1494,22 @@
                   "$ref": "#/definition/questions/students/diplome"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         },
@@ -1170,6 +1530,22 @@
                 "diplome": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -1200,6 +1576,9 @@
                     "application/pdf"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1222,6 +1601,19 @@
                 "student-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/students/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-all-roles": {
+                  "type": "removeAllRoles"
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
                 }
               }
             }
@@ -1251,6 +1643,22 @@
                   "$ref": "#/definition/questions/mentors/mentor-oc"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/diplome"
+                  }
+                },
+                "student-diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
             }
           ]
         }
@@ -1259,7 +1667,7 @@
         "mentor-oc-sans-formation": {
           "type": "question",
           "uuid": "mentors-mentor-oc-sans-formation",
-          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
+          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***Capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
           "answers": [
             {
               "icon": "✅",
@@ -1280,6 +1688,9 @@
                     "image/webp"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1320,13 +1731,23 @@
                   "type": "getOutOfPipe"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-plateforme": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/plateforme"
+                }
+              }
             }
           ]
         },
         "mentor-oc": {
           "type": "question",
           "uuid": "mentors-mentor-oc",
-          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
+          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***Capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
           "answers": [
             {
               "icon": "✅",
@@ -1347,6 +1768,9 @@
                     "image/webp"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1381,6 +1805,16 @@
                   "type": "getOutOfPipe"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/autre-formation"
+                }
+              }
             }
           ]
         },
@@ -1397,6 +1831,12 @@
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-developpement"
                 }
+              },
+              "add-role": {
+                "type": "addRole",
+                "role": {
+                  "$ref": "#/definition/roles/academie/academie_developpement"
+                }
               }
             },
             {
@@ -1406,6 +1846,12 @@
                 "student-academie-data": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-data"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
                 }
               }
             },
@@ -1416,6 +1862,12 @@
                 "student-academie-marketing-communication": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-marketing-communication"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
                 }
               }
             },
@@ -1426,6 +1878,12 @@
                 "student-academie-business": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-business"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
                 }
               }
             },
@@ -1436,6 +1894,12 @@
                 "student-academie-systemes-reseaux": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-systemes-reseaux"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
                 }
               }
             },
@@ -1446,6 +1910,12 @@
                 "student-academie-pedagogie": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-pedagogie"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
                 }
               }
             },
@@ -1456,6 +1926,12 @@
                 "student-academie-gestion-projet": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-gestion-projet"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
                 }
               }
             },
@@ -1466,6 +1942,12 @@
                 "student-academie-rh-gestion": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-rh-gestion"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
                 }
               }
             },
@@ -1476,6 +1958,12 @@
                 "student-academie-bureautique": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-bureautique"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
                 }
               }
             },
@@ -1486,6 +1974,12 @@
                 "student-academie-supply-chain": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-supply-chain"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
                 }
               }
             },
@@ -1496,6 +1990,12 @@
                 "student-academie-cybersecurite": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-cybersecurite"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
                 }
               }
             },
@@ -1506,6 +2006,12 @@
                 "student-academie-design": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-design"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
                 }
               }
             },
@@ -1516,6 +2022,28 @@
                 "student-academie-autre": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-autre"
+                },
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/mentor"
+                  }
+                },
+                "mentor-oc": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/mentor-oc"
                 }
               }
             }
@@ -1524,7 +2052,7 @@
         "academie-developpement": {
           "type": "question",
           "uuid": "mentors-academie-developpement",
-          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/18-developpement>*",
           "answers": [
             {
               "icon": "✅",
@@ -1543,6 +2071,22 @@
                 "anciennes-formations-developpement": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/anciennes-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -1728,6 +2272,16 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-developpement"
+                }
+              }
             }
           ]
         },
@@ -1825,6 +2379,16 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-developpement"
+                }
+              }
             }
           ]
         },
@@ -1907,13 +2471,29 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
         "academie-marketing-communication": {
           "type": "question",
           "uuid": "mentors-academie-marketing-communication",
-          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/14-marketing_et_communication>*",
           "answers": [
             {
               "icon": "✅",
@@ -1932,6 +2512,22 @@
                 "anciennes-formations-marketing-communication": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/anciennes-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -1986,6 +2582,16 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
+                }
+              }
             }
           ]
         },
@@ -2021,6 +2627,16 @@
                 "mentor-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
                 }
               }
             }
@@ -2075,6 +2691,22 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
@@ -2127,13 +2759,29 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
         "academie-pedagogie": {
           "type": "question",
           "uuid": "mentors-academie_pedagogie",
-          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/15-pedagogie>*",
           "answers": [
             {
               "icon": "✅",
@@ -2152,6 +2800,22 @@
                 "anciennes-formations-pedagogie": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/anciennes-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -2191,6 +2855,16 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
+                }
+              }
             }
           ]
         },
@@ -2211,6 +2885,16 @@
                 "mentor-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
                 }
               }
             }
@@ -2250,13 +2934,29 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
         "academie-rh-gestion": {
           "type": "question",
           "uuid": "mentors-academie-rh-gestion",
-          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/32-rh_et_gestion>*",
           "answers": [
             {
               "icon": "✅",
@@ -2275,6 +2975,22 @@
                 "anciennes-formations-rh-gestion": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/anciennes-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -2312,6 +3028,16 @@
                 "mentor-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
                 }
               }
             }
@@ -2366,6 +3092,16 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
+                }
+              }
             }
           ]
         },
@@ -2403,6 +3139,22 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
@@ -2423,6 +3175,22 @@
                 "mentor-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -2447,6 +3215,22 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
@@ -2469,6 +3253,22 @@
                   "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
             }
           ]
         },
@@ -2489,6 +3289,22 @@
                 "mentor-autre-formation": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
                 }
               }
             }
@@ -2528,6 +3344,19 @@
                   "type": "getOutOfPipe"
                 }
               }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-all-roles": {
+                  "type": "removeAllRoles"
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
             }
           ]
         }
@@ -2543,7 +3372,7 @@
           "name": "Académie Data",
           "roleId": "1047167135786487868"
         },
-        "academie_marketin_communication": {
+        "academie_marketing_communication": {
           "name": "Académie Marketing  & Communication",
           "roleId": "1047173493533442148"
         },

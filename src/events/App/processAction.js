@@ -106,6 +106,50 @@ const addRole = async (member, role) => {
 };
 
 /**
+ * @description Remove given role to list of roles to add to the member.
+ *
+ * @param   { FollowedMember } member - Followed member to remove role to.
+ * @param   { Action }         role   - Role to remove to member.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const role = await guild.roles.fetch('654691713893531669');
+ *
+ * await printMessage(member, role);
+ */
+const removeRole = async (member, role) => {
+  await RolesToAddToMember.destroy({
+    FollowedMemberId: member.id,
+    RoleId: role.AddRole.Role.id,
+  });
+};
+
+/**
+ * @description Remove all roles to list of roles to add to the member.
+ *
+ * @param   { FollowedMember } member - Followed member to remove role to.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const member = await FollowedMember.findOne({ where { id: 12 }});
+ *
+ * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ * const role = await guild.roles.fetch('654691713893531669');
+ *
+ * await printMessage(member, role);
+ */
+const removeAllRoles = async (member) => {
+  await RolesToAddToMember.destroy({
+    FollowedMemberId: member.id,
+  });
+};
+
+/**
  * @description Display message in the channel linked to the concerned member.
  *
  * @param   { FollowedMember } member - Followed member to print message to.
@@ -287,6 +331,14 @@ export default async (memberId, actionId) => {
     }
     case 'addRole': {
       await addRole(member, actionToPerform);
+      break;
+    }
+    case 'removeRole': {
+      await removeRole(member, actionToPerform);
+      break;
+    }
+    case 'removeAllRoles': {
+      await removeAllRoles(member);
       break;
     }
     case 'printMessage': {
