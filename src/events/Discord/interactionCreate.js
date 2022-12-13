@@ -162,6 +162,9 @@ const processStaffFileValidation = async (interaction, guild) => {
 
   disableMessageButtons(interaction.message, interaction.customId);
 
+  const reply = await interaction.reply({ content: '...', fetchReply: true });
+  await reply.delete();
+
   const staffDecision = interaction.customId.split('||')[1];
   const channel = await guild.channels.fetch(linkedChannel.discordId);
 
@@ -226,36 +229,46 @@ const processStaffFileValidation = async (interaction, guild) => {
  */
 export default async (interaction) => {
   const { client } = Store;
-  if (!interaction.isButton()) return;
+  if (!interaction.isButton() && !interaction.isCommand()) return;
 
   // TODO: check if button for answer question by member or approve file by staff (prefix buttonId)
-
-  const interactionDetails = interaction.customId.split('||');
 
   const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
   const member = await guild.members.fetch(interaction.user.id);
   const staffRole = await guild.roles.fetch(process.env.DISCORD_STAFF_ROLE_ID);
   const memberIsStaff = member.roles.cache.find((role) => role === staffRole);
 
-  switch (interactionDetails[0]) {
-    case 'STAFF-ACTION-APPROVE-FILE': {
-      if (!memberIsStaff) {
-        interaction.reply({
-          content:
-            'Cette action est reservée aux membres du staff.\nCes derniers valideront le processus sous peu, veuillez patienter.',
-          ephemeral: true,
-        });
-        return;
+  if (interaction.isButton()) {
+    const interactionDetails = interaction.customId.split('||');
+
+    switch (interactionDetails[0]) {
+      case 'STAFF-ACTION-APPROVE-FILE': {
+        if (!memberIsStaff) {
+          interaction.reply({
+            content:
+              'Cette action est reservée aux membres du staff.\nCes derniers valideront le processus sous peu, veuillez patienter.',
+            ephemeral: true,
+          });
+          return;
+        }
+        processStaffFileValidation(interaction, guild);
+        break;
       }
-      processStaffFileValidation(interaction, guild);
-      break;
+      case 'FOLLOWED-MEMBER-ANSWER': {
+        processUserAnswer(interaction);
+        break;
+      }
+      default: {
+        Logger.warn('Button was pressed but unexpected can not be handled');
+      }
     }
-    case 'FOLLOWED-MEMBER-ANSWER': {
-      processUserAnswer(interaction);
-      break;
-    }
-    default: {
-      Logger.warn('Button was pressed but unexpected can not be handled');
-    }
+    return;
+  }
+  if (interaction.isCommand()) {
+    if (!memberIsStaff) return;
+    Logger.error(interaction);
+    interaction.reply({
+      content: 'PONG 🕹️',
+    });
   }
 };
