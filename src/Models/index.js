@@ -112,6 +112,13 @@ db.Action.hasOne(db.ActionAddRole, {
 });
 db.ActionAddRole.belongsTo(db.Action);
 
+db.Action.hasOne(db.ActionRemoveRole, {
+  ...cascadeHooks,
+  as: 'RemoveRole',
+  foreignKey: 'ActionId',
+});
+db.ActionRemoveRole.belongsTo(db.Action);
+
 db.Action.hasOne(db.ActionPromptFile, {
   ...cascadeHooks,
   as: 'PromptFile',
@@ -143,6 +150,9 @@ db.MimeType.belongsToMany(db.ActionPromptFile, {
 
 db.Role.hasOne(db.ActionAddRole, cascadeHooks);
 db.ActionAddRole.belongsTo(db.Role);
+
+db.Role.hasOne(db.ActionRemoveRole, cascadeHooks);
+db.ActionRemoveRole.belongsTo(db.Role);
 
 db.Action.hasOne(db.FollowedMember, {
   foreignKey: 'CurrentActionId',

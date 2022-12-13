@@ -80,6 +80,7 @@ const saveAction = async ({
     DecisionsTree,
     Action,
     ActionAddRole,
+    ActionRemoveRole,
     ActionGoto,
     ActionPrintMessage,
     ActionPromptFile,
@@ -145,6 +146,56 @@ const saveAction = async ({
         await ActionPromptFileHasAction.create({
           ActionPromptFileId: actionPromptFile.id,
           ActionId: addRole.ActionId,
+        });
+      }
+
+      break;
+    }
+    case 'removeRole': {
+      if (action.role.$ref !== undefined) {
+        // eslint-disable-next-line no-param-reassign
+        action.role = json.get(action.role.$ref);
+      }
+      // TODO: findOrCreate
+      const role = await Role.findOne({
+        where: { discordId: action.role.roleId },
+      });
+
+      const [removeRole, created] = await ActionRemoveRole.findOrCreate({
+        where: {
+          RoleId: role.id,
+        },
+      });
+
+      if (created) {
+        const createdAction = await Action.create({
+          type: action.type,
+          DecisionsTreeId: decisionsTree.id,
+        });
+
+        removeRole.ActionId = createdAction.id;
+        await removeRole.save();
+      }
+
+      if (parentAnswerId !== null) {
+        const actionQuestionAnswer = await ActionQuestionAnswer.findOne({
+          where: { id: parentAnswerId },
+        });
+
+        await ActionQuestionAnswersHasAction.create({
+          ActionQuestionAnswerId: actionQuestionAnswer.id,
+          ActionId: removeRole.ActionId,
+        });
+      }
+
+      if (parentPromptFileId !== null) {
+        const actionPromptFile = await ActionPromptFile.findOne({
+          where: { id: parentPromptFileId },
+        });
+
+        await ActionPromptFileHasAction.create({
+          ActionPromptFileId: actionPromptFile.id,
+          ActionId: removeRole.ActionId,
         });
       }
 
@@ -358,9 +409,10 @@ const saveAction = async ({
       }
       break;
     }
+    case 'removeAllRoles':
     case 'applyRoles':
     case 'getOutOfPipe': {
-      const createdAction = await Action.create({
+      const createdAction = await Action.findOrCreate({
         type: action.type,
         DecisionsTreeId: decisionsTree.id,
       });
