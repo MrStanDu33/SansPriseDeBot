@@ -240,7 +240,7 @@ class Logger {
     const method = fatal ? 'error' : 'log';
     const flag = fatal ? 'fatal' : 'error';
     // eslint-disable-next-line no-console
-    console[method](`${Logger.#prefixes.console[flag]}`, ...error);
+    console[method](`${Logger.#prefixes.console[flag]} |`, ...error);
   }
 
   /**
