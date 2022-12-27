@@ -34,13 +34,8 @@ export default async (member) => {
 
   if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
 
-  /**
-   * TODO: Detect on boot diff between channels on db and users on server.
-   * If so => delete channel and record !
-   */
   Logger.info(`A member just left ! (${member.user.tag})`);
 
-  // TODO: Move rest of code in getUserOutOfPipe event.
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
     `Deleting welcome channel and user data for ${member.user.tag}`,

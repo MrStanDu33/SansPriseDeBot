@@ -73,7 +73,6 @@ class EventBus {
     }
     if (this[`_${event}`] === undefined) return;
 
-    // TODO: Add sync/async condition
     // eslint-disable-next-line no-restricted-syntax
     for (const callback of this[`_${event}`]) {
       if (async === false) {
