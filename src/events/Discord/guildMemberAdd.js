@@ -24,9 +24,10 @@ import Logger from '$src/Logger';
 export default (member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;
 
+  const whitelistEnabled =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST_ACTIVE === 'true';
   const membersWhitelist =
     process.env.DISCORD_TEST_MEMBERS_WHITELIST.split(',');
-  const whitelistEnabled = membersWhitelist.length !== 0;
 
   if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
 
