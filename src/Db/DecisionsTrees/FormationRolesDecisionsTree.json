@@ -135,13 +135,13 @@
                 "add-role-academie-icone": {
                   "type": "addRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_marketing_icone"
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
                   }
                 },
                 "add-role-academie-couleur": {
                   "type": "addRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_marketing_couleur"
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
                   }
                 },
                 "student-academie-marketing-communication": {
@@ -2222,13 +2222,13 @@
                 "add-role-academie-icone": {
                   "type": "addRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_marketing_icone"
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
                   }
                 },
                 "add-role-academie-couleur": {
                   "type": "addRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_marketing_couleur"
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
                   }
                 },
                 "student-academie-marketing-communication": {
