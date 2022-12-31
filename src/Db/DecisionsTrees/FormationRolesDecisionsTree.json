@@ -1417,13 +1417,13 @@
                 "remove-role-academie-icone": {
                   "type": "removeRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_gestion_icone"
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
                   }
                 },
                 "remove-role-academie-couleur": {
                   "type": "removeRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_gestion_couleur"
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
                   }
                 },
                 "student-academie": {
@@ -3506,13 +3506,13 @@
                 "remove-role-academie-icone": {
                   "type": "removeRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_gestion_icone"
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
                   }
                 },
                 "remove-role-academie-couleur": {
                   "type": "removeRole",
                   "role": {
-                    "$ref": "#/definition/roles/academie/academie_gestion_couleur"
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
                   }
                 },
                 "mentor-academie": {
