@@ -70,15 +70,27 @@
               "icon": "🖥",
               "text": "Académie Développement",
               "actions": {
-                "student-academie-developpement": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-developpement"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_developpement"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
                 }
               }
             },
@@ -86,15 +98,27 @@
               "icon": "📉",
               "text": "Académie Data",
               "actions": {
-                "student-academie-data": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-data"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_data"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "student-academie-data": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-data"
                 }
               }
             },
@@ -102,15 +126,27 @@
               "icon": "📣",
               "text": "Académie Marketing & Communication",
               "actions": {
-                "student-academie-marketing-communication": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-marketing-communication"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_marketing_communication"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_couleur"
+                  }
+                },
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
                 }
               }
             },
@@ -118,15 +154,27 @@
               "icon": "💼",
               "text": "Académie Business",
               "actions": {
-                "student-academie-business": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-business"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_business"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "student-academie-business": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-business"
                 }
               }
             },
@@ -134,15 +182,27 @@
               "icon": "🌐",
               "text": "Académie Systèmes & Réseaux",
               "actions": {
-                "student-academie-systemes-reseaux": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-systemes-reseaux"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "student-academie-systemes-reseaux": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-systemes-reseaux"
                 }
               }
             },
@@ -150,15 +210,27 @@
               "icon": "📚",
               "text": "Académie Pédagogie",
               "actions": {
-                "student-academie-pedagogie": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-pedagogie"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_pedagogie"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
                 }
               }
             },
@@ -166,15 +238,27 @@
               "icon": "📝",
               "text": "Académie Gestion de projet",
               "actions": {
-                "student-academie-gestion-projet": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-gestion-projet"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_gestion_projet"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
+                  }
+                },
+                "student-academie-gestion-projet": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-gestion-projet"
                 }
               }
             },
@@ -182,15 +266,27 @@
               "icon": "👷‍♂️",
               "text": "Académie RH & Gestion",
               "actions": {
-                "student-academie-rh-gestion": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-rh-gestion"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_rh_gestion"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
                 }
               }
             },
@@ -198,15 +294,27 @@
               "icon": "🖱",
               "text": "Académie Bureautique",
               "actions": {
-                "student-academie-bureautique": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-bureautique"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_bureautique"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "student-academie-bureautique": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-bureautique"
                 }
               }
             },
@@ -214,15 +322,27 @@
               "icon": "📦",
               "text": "Académie Supply Chain",
               "actions": {
-                "student-academie-supply-chain": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-supply-chain"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_supply_chain"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "student-academie-supply-chain": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-supply-chain"
                 }
               }
             },
@@ -230,15 +350,27 @@
               "icon": "🔐",
               "text": "Académie Cybersécurité",
               "actions": {
-                "student-academie-cybersecurite": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-cybersecurite"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_cybersecurite"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "student-academie-cybersecurite": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-cybersecurite"
                 }
               }
             },
@@ -246,15 +378,27 @@
               "icon": "🎨",
               "text": "Académie Design",
               "actions": {
-                "student-academie-design": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-design"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_design"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "student-academie-design": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-design"
                 }
               }
             },
@@ -262,15 +406,27 @@
               "icon": "❓",
               "text": "Autre",
               "actions": {
-                "student-academie-autre": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/students/academie-autre"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_autre"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "student-academie-autre": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-autre"
                 }
               }
             },
@@ -315,10 +471,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
                   }
                 },
                 "student-academie": {
@@ -717,10 +885,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
                   }
                 },
                 "student-academie": {
@@ -760,10 +940,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
                   }
                 },
                 "student-academie": {
@@ -937,10 +1129,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
                   }
                 },
                 "student-academie": {
@@ -1005,10 +1209,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
                   }
                 },
                 "student-academie": {
@@ -1048,10 +1264,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
                   }
                 },
                 "student-academie": {
@@ -1180,10 +1408,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_couleur"
                   }
                 },
                 "student-academie": {
@@ -1223,10 +1463,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
                   }
                 },
                 "student-academie": {
@@ -1385,10 +1637,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
                   }
                 },
                 "student-academie": {
@@ -1423,10 +1687,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
                   }
                 },
                 "student-academie": {
@@ -1461,10 +1737,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
                   }
                 },
                 "student-academie": {
@@ -1499,10 +1787,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
                   }
                 },
                 "student-academie": {
@@ -1537,10 +1837,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
                   }
                 },
                 "student-academie": {
@@ -1576,9 +1888,9 @@
                     "application/pdf"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
-                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
                   "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
-                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1606,7 +1918,7 @@
             },
             {
               "icon": "⬅",
-              "text": "Revenir en arrière",
+              "text": "Revenir en arrière (réinitialiser tout)",
               "actions": {
                 "remove-all-roles": {
                   "type": "removeAllRoles"
@@ -1688,9 +2000,9 @@
                     "image/webp"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
-                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
                   "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
-                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1710,7 +2022,25 @@
               "icon": "❌",
               "text": "Non",
               "actions": {
-                "add-role": {
+                "add-role-academie-autre": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "add-role-sans-formation": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/formations/sans_formation"
@@ -1722,7 +2052,7 @@
                 },
                 "print-message-role": {
                   "type": "printMessage",
-                  "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
                 },
                 "apply-roles": {
                   "type": "applyRoles"
@@ -1768,9 +2098,9 @@
                     "image/webp"
                   ],
                   "errorMessage": "Le fichier doit être une image ou un document pdf.",
-                  "pendingMessage": "Merci de ton message, le <&@891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
                   "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
-                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de revoyer un fichier.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
                   "actions": {
                     "add-role": {
                       "type": "addRole",
@@ -1796,7 +2126,7 @@
                 },
                 "print-message-role": {
                   "type": "printMessage",
-                  "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
                 },
                 "apply-roles": {
                   "type": "applyRoles"
@@ -1827,15 +2157,27 @@
               "icon": "🖥",
               "text": "Académie Développement",
               "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
                 "student-academie-developpement": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-developpement"
-                }
-              },
-              "add-role": {
-                "type": "addRole",
-                "role": {
-                  "$ref": "#/definition/roles/academie/academie_developpement"
                 }
               }
             },
@@ -1843,15 +2185,27 @@
               "icon": "📉",
               "text": "Académie Data",
               "actions": {
-                "student-academie-data": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-data"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_data"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "student-academie-data": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-data"
                 }
               }
             },
@@ -1859,15 +2213,27 @@
               "icon": "📣",
               "text": "Académie Marketing & Communication",
               "actions": {
-                "student-academie-marketing-communication": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_marketing_communication"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_couleur"
+                  }
+                },
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
                 }
               }
             },
@@ -1875,15 +2241,27 @@
               "icon": "💼",
               "text": "Académie Business",
               "actions": {
-                "student-academie-business": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-business"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_business"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "student-academie-business": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-business"
                 }
               }
             },
@@ -1891,15 +2269,27 @@
               "icon": "🌐",
               "text": "Académie Systèmes & Réseaux",
               "actions": {
-                "student-academie-systemes-reseaux": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-systemes-reseaux"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "student-academie-systemes-reseaux": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-systemes-reseaux"
                 }
               }
             },
@@ -1907,15 +2297,27 @@
               "icon": "📚",
               "text": "Académie Pédagogie",
               "actions": {
-                "student-academie-pedagogie": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_pedagogie"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
                 }
               }
             },
@@ -1923,15 +2325,27 @@
               "icon": "📝",
               "text": "Académie Gestion de projet",
               "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
                 "student-academie-gestion-projet": {
                   "type": "question",
                   "$ref": "#/definition/questions/mentors/academie-gestion-projet"
-                },
-                "add-role": {
-                  "type": "addRole",
-                  "role": {
-                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
-                  }
                 }
               }
             },
@@ -1939,15 +2353,27 @@
               "icon": "👷‍♂️",
               "text": "Académie RH & Gestion",
               "actions": {
-                "student-academie-rh-gestion": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_rh_gestion"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
                 }
               }
             },
@@ -1955,15 +2381,27 @@
               "icon": "🖱",
               "text": "Académie Bureautique",
               "actions": {
-                "student-academie-bureautique": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-bureautique"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_bureautique"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "student-academie-bureautique": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-bureautique"
                 }
               }
             },
@@ -1971,15 +2409,27 @@
               "icon": "📦",
               "text": "Académie Supply Chain",
               "actions": {
-                "student-academie-supply-chain": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-supply-chain"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_supply_chain"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "student-academie-supply-chain": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-supply-chain"
                 }
               }
             },
@@ -1987,15 +2437,27 @@
               "icon": "🔐",
               "text": "Académie Cybersécurité",
               "actions": {
-                "student-academie-cybersecurite": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-cybersecurite"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_cybersecurite"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "student-academie-cybersecurite": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-cybersecurite"
                 }
               }
             },
@@ -2003,15 +2465,27 @@
               "icon": "🎨",
               "text": "Académie Design",
               "actions": {
-                "student-academie-design": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-design"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_design"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "student-academie-design": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-design"
                 }
               }
             },
@@ -2019,15 +2493,27 @@
               "icon": "❓",
               "text": "Autre",
               "actions": {
-                "student-academie-autre": {
-                  "type": "question",
-                  "$ref": "#/definition/questions/mentors/academie-autre"
-                },
-                "add-role": {
+                "add-role-academie": {
                   "type": "addRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_autre"
                   }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "student-academie-autre": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-autre"
                 }
               }
             },
@@ -2078,10 +2564,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2476,10 +2974,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2519,10 +3029,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2696,10 +3218,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2764,10 +3298,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2807,10 +3353,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2939,10 +3497,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -2982,10 +3552,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3144,10 +3726,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3182,10 +3776,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3220,10 +3826,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3258,10 +3876,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3296,10 +3926,22 @@
               "icon": "⬅",
               "text": "Revenir en arrière",
               "actions": {
-                "remove-role": {
+                "remove-role-academie": {
                   "type": "removeRole",
                   "role": {
                     "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
                   }
                 },
                 "mentor-academie": {
@@ -3335,7 +3977,7 @@
                 },
                 "print-message-suppression": {
                   "type": "printMessage",
-                  "message": "Les rôles vous ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans X minutes"
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
                 },
                 "aplly-roles": {
                   "type": "applyRoles"
@@ -3347,7 +3989,7 @@
             },
             {
               "icon": "⬅",
-              "text": "Revenir en arrière",
+              "text": "Revenir en arrière (réinitialiser tout)",
               "actions": {
                 "remove-all-roles": {
                   "type": "removeAllRoles"
@@ -3368,53 +4010,157 @@
           "name": "Académie Développement",
           "roleId": "1047172832083333130"
         },
+        "academie_developpement_icone": {
+          "name": "Développement",
+          "roleId": "1058794074548736063"
+        },
+        "academie_developpement_couleur": {
+          "name": "Bleu clair",
+          "roleId": "1058796353729335407"
+        },
         "academie_data": {
           "name": "Académie Data",
           "roleId": "1047167135786487868"
         },
+        "academie_data_icone": {
+          "name": "Data",
+          "roleId": "1058794296943317053"
+        },
+        "academie_data_couleur": {
+          "name": "Vert clair",
+          "roleId": "1058796454333915217"
+        },
         "academie_marketing_communication": {
-          "name": "Académie Marketing  & Communication",
+          "name": "Académie Marketing & Communication",
           "roleId": "1047173493533442148"
+        },
+        "academie_marketing_communication_icone": {
+          "name": "Marketing & Communication",
+          "roleId": "1058794402673336390"
+        },
+        "academie_marketing_communication_couleur": {
+          "name": "Bleu ciel",
+          "roleId": "1058796460524716102"
         },
         "academie_business": {
           "name": "Académie Business",
           "roleId": "1047173231578189864"
         },
+        "academie_business_icone": {
+          "name": "Business",
+          "roleId": "1058795026949349466"
+        },
+        "academie_business_couleur": {
+          "name": "Vert",
+          "roleId": "1058796626296188979"
+        },
         "academie_systemes_reseaux": {
           "name": "Académie Systèmes et Réseaux",
           "roleId": "1047173395348979742"
+        },
+        "academie_systemes_reseaux_icone": {
+          "name": "Systèmes et Réseaux",
+          "roleId": "1058795129923702804"
+        },
+        "academie_systemes_reseaux_couleur": {
+          "name": "Bleu",
+          "roleId": "1058796654247022712"
         },
         "academie_pedagogie": {
           "name": "Académie Pédagogie",
           "roleId": "1047173741920141332"
         },
+        "academie_pedagogie_icone": {
+          "name": "Pédagogie",
+          "roleId": "1058795292218109953"
+        },
+        "academie_pedagogie_couleur": {
+          "name": "Saumon",
+          "roleId": "1058796659296968754"
+        },
         "academie_gestion_projet": {
           "name": "Académie Gestion de projet",
           "roleId": "1047173908459163748"
+        },
+        "academie_gestion_projet_icone": {
+          "name": "Gestion de projet",
+          "roleId": "1058795389916020836"
+        },
+        "academie_gestion_projet_couleur": {
+          "name": "Vert pomme",
+          "roleId": "1058796663784886304"
         },
         "academie_rh_gestion": {
           "name": "Académie RH & Gestion",
           "roleId": "1047173126204694538"
         },
+        "academie_rh_gestion_icone": {
+          "name": "RH & Gestion",
+          "roleId": "1058795584791789688"
+        },
+        "academie_rh_gestion_couleur": {
+          "name": "Bleu foncé",
+          "roleId": "1058796901367025794"
+        },
         "academie_bureautique": {
           "name": "Académie Bureautique",
           "roleId": "1047174399540854804"
+        },
+        "academie_bureautique_icone": {
+          "name": "Bureautique",
+          "roleId": "1058795669013418065"
+        },
+        "academie_bureautique_couleur": {
+          "name": "Bleu gris",
+          "roleId": "1058796908413472828"
         },
         "academie_supply_chain": {
           "name": "Académie Supply Chain",
           "roleId": "1047922637780820029"
         },
+        "academie_supply_chain_icone": {
+          "name": "Supply Chain",
+          "roleId": "1058795682695217152"
+        },
+        "academie_supply_chain_couleur": {
+          "name": "Orange",
+          "roleId": "1058796914885263360"
+        },
         "academie_cybersecurite": {
           "name": "Académie Cybersécurité",
           "roleId": "1047179287138148352"
+        },
+        "academie_cybersecurite_icone": {
+          "name": "Cybersécurité",
+          "roleId": "1058795942830149662"
+        },
+        "academie_cybersecurite_couleur": {
+          "name": "Rose",
+          "roleId": "1058797224647204914"
         },
         "academie_design": {
           "name": "Académie Design",
           "roleId": "1047174066395676752"
         },
+        "academie_design_icone": {
+          "name": "Design",
+          "roleId": "1058795950296010772"
+        },
+        "academie_design_couleur": {
+          "name": "Rouge",
+          "roleId": "1058797340963635270"
+        },
         "academie_autre": {
           "name": "Académie Autre",
           "roleId": "1047174263049834597"
+        },
+        "academie_autre_icone": {
+          "name": "Autre",
+          "roleId": "1058796087516876861"
+        },
+        "academie_autre_couleur": {
+          "name": "Gris",
+          "roleId": "1058797418004631642"
         }
       },
       "formations": {

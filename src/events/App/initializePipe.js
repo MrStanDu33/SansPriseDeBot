@@ -15,6 +15,18 @@ import models from '$src/Models';
 
 const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
 
+const ROLES_IDS_TO_KEEP = [
+  '849789213167058985', // Actif | Niveau 1
+  '849789381220892693', // Actif | Niveau 5
+  '849789452162301982', // Actif | Niveau 10
+  '849789508349722664', // Actif | Niveau 25
+  '849789583221981185', // Actif | Niveau 50
+  '892430779978752041', // Moderator
+  '891323492711153725', // Sans prise de staff
+  '714410506395451453', // Server Booster
+  '1047783162694078534', // Béta Test
+];
+
 /**
  * @description It creates a channel in the welcome category, with the name of the user, and
  * with the topic of the channel being the welcome message.
@@ -91,7 +103,8 @@ const createChannel = async (member) => {
  *
  * @event module:Libraries/EventBus#App_initializePipe
  *
- * @param   { Member }        member - Member to process.
+ * @param   { Member }        member     - Member to process.
+ * @param   { boolean }       isNewComer - Wether this event is called for a new member.
  *
  * @returns { Promise<void> }
  *
@@ -100,10 +113,20 @@ const createChannel = async (member) => {
  * @example
  * await EventBus.emit({ event: 'App_processAction' });
  */
-export default async (member) => {
+export default async (member, isNewComer = true) => {
   if (process.env.DRY_RUN === 'true') return;
 
   const channel = await createChannel(member);
+
+  const memberRolesIdsToRemove = member.roles.cache
+    .map(({ id }) => id)
+    .filter(
+      (roleId) =>
+        !ROLES_IDS_TO_KEEP.includes(roleId) &&
+        roleId !== member.guild.roles.everyone.id,
+    );
+
+  await member.roles.remove(memberRolesIdsToRemove);
 
   const decisionsTree = await DecisionsTree.findOne({
     where: { name: 'FormationRoles' },
@@ -121,6 +144,8 @@ export default async (member) => {
     CurrentActionId: null,
     rolesToAdd: [],
     inProcess: true,
+    warnsForInactivity: 0,
+    isNewComer,
   });
 
   await LinkedChannel.create({

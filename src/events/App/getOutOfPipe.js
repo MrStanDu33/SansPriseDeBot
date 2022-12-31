@@ -34,7 +34,7 @@ export default async (member) => {
 
   const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
 
-  if (member.LinkedChannel !== null) {
+  if (member.LinkedChannel !== null && member.LinkedChannel !== undefined) {
     const channelName = member.LinkedChannel.name;
     try {
       await guild.channels.fetch(member.LinkedChannel.discordId);
@@ -53,7 +53,10 @@ export default async (member) => {
     }
   }
 
-  // eslint-disable-next-line no-param-reassign
+  /* eslint-disable no-param-reassign */
   member.inProcess = false;
+  member.isNewComer = false;
+  member.warnsForInactivity = 0;
+  /* eslint-enable no-param-reassign */
   member.save();
 };

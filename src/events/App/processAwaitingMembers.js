@@ -8,9 +8,9 @@ import EventBus from '$src/EventBus';
 import Store from '$src/Store';
 import models from '$src/Models';
 
-const { AwaitingMember } = models;
+const { AwaitingMember, FollowedMember } = models;
 
-const AWAITING_MEMBERS_BATCH_SIZE = 10;
+const MAX_AWAITING_MEMBERS_BATCH_SIZE = 20;
 
 /**
  * @description Function that process awaiting member.
@@ -28,20 +28,48 @@ const AWAITING_MEMBERS_BATCH_SIZE = 10;
  */
 export default async () => {
   Logger.info('Start processing missed members');
-
-  const awaitingMembersToProcess = await AwaitingMember.findAll({
-    limit: AWAITING_MEMBERS_BATCH_SIZE,
+  // TODO: Delete this after all users has been synced
+  const historicalMembersInProcess = await FollowedMember.findAll({
+    where: {
+      inProcess: true,
+      isNewComer: false,
+    },
   });
+  const awaitingMembersToProcess = await AwaitingMember.findAll({
+    limit: MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length,
+  });
+  Logger.error(
+    `count of members actually in process: ${historicalMembersInProcess.length}`,
+  );
+  Logger.error(
+    `places left: ${
+      MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length
+    }`,
+  );
 
   const promises = awaitingMembersToProcess.map(async (member) => {
-    member.destroy();
+    Logger.info(`Starting processing awaiting member: ${member.username}`);
 
-    const guild = await Store.client.guilds.fetch(
-      process.env.DISCORD_SERVER_ID,
-    );
-    const guildMember = await guild.members.fetch(member.memberId);
+    try {
+      const guild = await Store.client.guilds.fetch(
+        process.env.DISCORD_SERVER_ID,
+      );
+      const guildMember = await guild.members.fetch(member.memberId);
 
-    await EventBus.emit({ event: 'App_initializePipe', args: [guildMember] });
+      // TODO: delete this after all users has been synced (and newComer property in model)
+      const isNewComer = false;
+      await EventBus.emit({
+        event: 'App_initializePipe',
+        args: [guildMember, isNewComer],
+      });
+    } catch (error) {
+      Logger.warn(
+        `Unable to process awaiting member ${member.username}`,
+        error,
+      );
+    } finally {
+      member.destroy();
+    }
   });
 
   await Promise.all(promises);

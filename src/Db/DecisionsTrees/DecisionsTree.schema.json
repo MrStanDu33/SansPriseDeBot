@@ -165,6 +165,35 @@
           "properties": {
             "type": {
               "type": "string",
+              "enum": ["removeRole"]
+            },
+            "role": {
+              "type": "object",
+              "properties": {
+                "$ref": {
+                  "type": "string",
+                  "pattern": "^#/definition/roles/[a-z_/]+$"
+                }
+              }
+            }
+          },
+          "required": ["type", "role"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["removeAllRoles"]
+            }
+          },
+          "required": ["type"],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "type": "string",
               "enum": ["printMessage"]
             },
             "message": {
@@ -190,6 +219,15 @@
             "errorMessage": {
               "type": "string"
             },
+            "pendingMessage": {
+              "type": "string"
+            },
+            "approvedMessage": {
+              "type": "string"
+            },
+            "rejectedMessage": {
+              "type": "string"
+            },
             "actions": {
               "type": "object",
               "properties": {
@@ -197,7 +235,15 @@
               }
             }
           },
-          "required": ["type", "allowedMimeTypes", "errorMessage", "actions"],
+          "required": [
+            "type",
+            "allowedMimeTypes",
+            "errorMessage",
+            "pendingMessage",
+            "approvedMessage",
+            "rejectedMessage",
+            "actions"
+          ],
           "additionalProperties": false
         },
         {

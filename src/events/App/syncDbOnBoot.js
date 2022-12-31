@@ -3,14 +3,15 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-/** @typedef { import('discord.js').Collection } Collection */
+/** @typedef { import('discord.js').GuildMember } GuildMember */
 /** @typedef { import('discord.js').Role } Role */
 
 import Logger from '$src/Logger';
 import Store from '$src/Store';
+import EventBus from '$src/EventBus';
 import models from '$src/Models';
 
-const { AwaitingMember, FollowedMember } = models;
+const { AwaitingMember, FollowedMember, LinkedChannel } = models;
 
 const ACTIVITY_LEVEL_ROLES = {
   level1: {
@@ -65,37 +66,23 @@ const getUserPriority = (roles) => {
 };
 
 /**
- * @description It fetches all the members of the server but bots / system users,
- * keeps only the ones that are not already followed by the bot or awaiting, and
- * then creates an awaiting member for each of them.
+ * @description Creates an awaiting member for each given members.
+ *
+ * @param   { GuildMember[] } members - Discord member to add to waitlist.
  *
  * @returns { Promise<void> }
  *
  * @example
- * await syncMissingMembersInWaitList();
+ * const guild = await Store.client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+ *
+ * const membersOnServer = await guild.members
+ *   .fetch()
+ *   .map(([id, member]) => member);
+ *
+ * await syncMissingMembersInWaitList(membersOnServer);
  */
-const syncMissingMembersInWaitList = async () => {
-  const guild = await Store.client.guilds
-    .fetch(process.env.DISCORD_SERVER_ID)
-    .catch(Logger.error);
-  const guildMembers = await guild.members.fetch().catch(Logger.error);
-
-  const rawMembersToForceInclude = process.env.DISCORD_MEMBERS_TO_FORCE_ONBOARD;
-  const membersToForceInclude = rawMembersToForceInclude?.split(',') || [];
-
-  const members = guildMembers.filter((member) => {
-    if (membersToForceInclude.includes(member.user.id)) return true;
-    if (member.user.bot) return false;
-    if (member.user.system) return false;
-
-    // if (member._roles.length !== 0) return false;
-    // return true;
-
-    // TODO: remove this return and enable public members to be processed
-    return false;
-  });
-
-  members.each(async (member) => {
+const syncMissingMembersInWaitList = async (members) => {
+  members.forEach(async (member) => {
     try {
       const isMemberFollowed = await FollowedMember.findOne({
         where: { memberId: member.user.id },
@@ -105,21 +92,60 @@ const syncMissingMembersInWaitList = async () => {
         where: { memberId: member.user.id },
       });
 
-      if (isMemberFollowed !== null || isMemberAwaiting !== null) return false;
+      if (isMemberFollowed !== null || isMemberAwaiting !== null) return;
+
+      const memberRolesIds = member.roles.cache
+        .map(({ id }) => id)
+        .filter((roleId) => roleId !== member.guild.roles.everyone.id);
 
       await AwaitingMember.create({
         // eslint-disable-next-line no-underscore-dangle
-        existingRoles: JSON.stringify(member._roles),
+        existingRoles: JSON.stringify(memberRolesIds),
         locale: member.user.locale || process.env.DEFAULT_LOCALE,
         memberId: member.user.id,
         username: member.user.tag,
         // eslint-disable-next-line no-underscore-dangle
-        priority: getUserPriority(member._roles),
+        priority: getUserPriority([...member.roles.cache.values()]),
       });
     } catch (error) {
       Logger.error(error);
     }
-    return true;
+  });
+};
+
+/**
+ * @description It fetches all the members of the server but bots / system users,
+ * keeps only the ones that are not already followed by the bot or awaiting, and
+ * then creates an awaiting member for each of them.
+ *
+ * @param   { (FollowedMember|AwaitingMember)[] } followedMembers - Discord member to untrack.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * const followedMembers = await FollowedMember.findAll();
+ *
+ * await syncFollowedMembersThatHaveLeft(followedMembers);
+ */
+const syncFollowedMembersThatHaveLeft = async (followedMembers) => {
+  followedMembers.forEach(async (member) => {
+    const loader = Logger.loader(
+      { spinner: 'dots10', color: 'cyan' },
+      `Deleting welcome channel and user data for ${member.username}`,
+      'info',
+    );
+
+    await EventBus.emit({ event: 'App_getOutOfPipe', args: [member] });
+
+    await member.destroy().catch(() => {
+      throw new Error(
+        `An error has occurred while deleting user ${member.username} from database !`,
+      );
+    });
+
+    loader.succeed();
+
+    Logger.info(`${member.username}'s data successfully deleted !`);
   });
 };
 
@@ -138,7 +164,9 @@ const syncMissingMembersInWaitList = async () => {
 export default async () => {
   Logger.info('Start syncing Db');
 
-  const guild = await Store.client.guilds.fetch(process.env.DISCORD_SERVER_ID);
+  const guild = await Store.client.guilds
+    .fetch(process.env.DISCORD_SERVER_ID)
+    .catch(Logger.error);
 
   // eslint-disable-next-line no-restricted-syntax
   for (const activityLevelRoleKey of Object.keys(ACTIVITY_LEVEL_ROLES)) {
@@ -148,8 +176,60 @@ export default async () => {
     roleToFetch.role = role;
   }
 
-  await syncMissingMembersInWaitList();
-  // TODO: syncLeftFollowedMembers
+  const membersOnServer = await guild.members.fetch().catch(Logger.error);
+  const membersIdsOnServer = [...membersOnServer].map((member) => member[0]);
+
+  const followedMembers = await FollowedMember.findAll({
+    include: [LinkedChannel],
+  }).catch(Logger.error);
+  const awaitingMembers = await AwaitingMember.findAll().catch(Logger.error);
+
+  const membersTracked = [...followedMembers, ...awaitingMembers];
+  const membersIdsTracked = membersTracked.map(({ memberId }) => memberId);
+
+  const discordTestMembersWhitelistActive =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST_ACTIVE === 'true';
+  const discordTestMembersWhitelist =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST?.split(',') || [];
+
+  const discordMembersToFollow = [...membersOnServer]
+    // eslint-disable-next-line no-unused-vars
+    .map(([_id, member]) => member)
+    .filter((member) => !membersIdsTracked.includes(member.user.id))
+    .filter((member) => {
+      if (member.user.bot) return false;
+      if (member.user.system) return false;
+
+      if (
+        discordTestMembersWhitelistActive &&
+        !discordTestMembersWhitelist.includes(member.user.id)
+      )
+        return false;
+      return true;
+    });
+
+  const followedMembersToUnfollow = [...membersTracked].filter(
+    (member) => !membersIdsOnServer.includes(member.memberId),
+  );
+
+  Logger.info(
+    `${discordMembersToFollow.length} members has joined the server while bot was off and are not tracked, adding them to waiting list...`,
+  );
+  Logger.debug(
+    'List of all members to follow: ',
+    JSON.stringify(discordMembersToFollow.map(({ user }) => user)),
+  );
+
+  Logger.info(
+    `${followedMembersToUnfollow.length} members has left the server while bot was off and are not tracked, untracking them ...`,
+  );
+  Logger.debug(
+    'List of all members to untrack: ',
+    JSON.stringify(followedMembersToUnfollow),
+  );
+
+  await syncMissingMembersInWaitList(discordMembersToFollow);
+  await syncFollowedMembersThatHaveLeft(followedMembersToUnfollow);
 
   Logger.info('End of Db syncing');
 };

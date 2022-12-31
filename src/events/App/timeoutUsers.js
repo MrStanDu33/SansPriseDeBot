@@ -3,15 +3,161 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-import Logger from '$src/Logger/index';
+import Logger from '$src/Logger';
+import EventBus from '$src/EventBus';
+import Store from '$src/Store';
 import models from '$src/Models';
 import { Op } from '@sequelize/core';
 
 const { FollowedMember } = models;
 
-/** @typedef { import('$src/Models/FollowedMember').default } Member */
+const TIMEOUT_IN_DAYS = 5;
+// TODO: Insert channel's link.
+const ONE_DAY_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
 
-const timeoutInDays = 1;
+Tu as malheureusement pas encore répondu à mes questions.
+Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Tu peux retrouver notre conversation ici: <LINK>
+
+Au plaisir de te revoir 👋`;
+// TODO: Insert channel's link.
+const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+
+Tu as malheureusement toujours pas répondu à mes questions.
+Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Si tu n'y réponds pas dans les prochains jours, tu risque d'être ejecté du serveur.
+
+Tu peux retrouver notre conversation pour la continuer ici: <LINK>
+
+Au plaisir de te revoir 👋`;
+// TODO: Insert channel's link.
+const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+
+Tu as malheureusement toujours pas répondu à mes questions.
+Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Si nous n'avons pas de réponse de ta part à mes questions, nous seront dans l'obligation de t'éjecter du serveur.
+
+Tu peux retrouver notre conversation pour la continuer ici: <LINK>
+
+Au plaisir de te revoir 👋`;
+const TIMEOUT_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+
+Malheureusement, tu n'as pas pris le temps de répondre à mes questions.
+Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, j'ai pris la décision de te retirer du serveur.
+
+Si tu souhaites rejoindre notre serveur, pas de soucis ! Tu peux le rejoindre en passant par ce lien : <https://discord.gg/spdt>.
+Au plaisir de te revoir 👋`;
+
+const sendTimeoutWarningMessage = async (member, message) => {
+  const loader = Logger.loader(
+    { spinner: 'dots10', color: 'cyan' },
+    `Sending warning before timeout message for ${member.username}...`,
+    'info',
+  );
+
+  const guild = await Store.client.guilds
+    .fetch(process.env.DISCORD_SERVER_ID)
+    .catch(Logger.error);
+
+  const discordMember = await guild.members
+    .fetch(member.memberId)
+    .catch(Logger.error);
+
+  await discordMember.send(message).catch(Logger.error);
+
+  // eslint-disable-next-line no-param-reassign
+  member.warnsForInactivity += 1;
+  await member.save();
+
+  loader.succeed();
+  Logger.info(`'Timeout message sent successfully for ${member.username} !`);
+};
+
+const timeoutMember = async (member) => {
+  const dataLoader = Logger.loader(
+    { spinner: 'dots10', color: 'cyan' },
+    `Processing timeout kick for ${member.username}...`,
+    'info',
+  );
+
+  const guild = await Store.client.guilds
+    .fetch(process.env.DISCORD_SERVER_ID)
+    .catch(Logger.error);
+
+  dataLoader.succeed();
+  Logger.info(`${member.username}'s data successfully deleted !`);
+
+  const kickLoader = Logger.loader(
+    { spinner: 'dots10', color: 'cyan' },
+    `Kicking ${member.username} from server ...`,
+    'info',
+  );
+
+  const discordMember = await guild.members
+    .fetch(member.memberId)
+    .catch(Logger.error);
+
+  await discordMember.send(TIMEOUT_MESSAGE);
+  await discordMember
+    .kick(`Kick pour non-réponse au workflow d'entrée`)
+    .catch(Logger.error);
+
+  kickLoader.succeed();
+  Logger.info(`${member.username} successfully kicked of server !`);
+};
+
+const getInactiveMembers = async () => {
+  const membersToWarnAfterOneDayInactivity = await FollowedMember.findAll({
+    where: {
+      inProcess: true,
+      warnsForInactivity: 0,
+      lastUpdateAt: {
+        [Op.lt]: new Date(Date.now() - 1 * 24 * 3600 * 1000),
+      },
+    },
+  });
+
+  const membersToWarnHalfTimeBeforeTimeout = await FollowedMember.findAll({
+    where: {
+      inProcess: true,
+      warnsForInactivity: 1,
+      lastUpdateAt: {
+        [Op.lt]: new Date(
+          Date.now() - (TIMEOUT_IN_DAYS / 2) * 24 * 3600 * 1000,
+        ),
+      },
+    },
+  });
+
+  const membersToWarnLastDayBeforeTimeout = await FollowedMember.findAll({
+    where: {
+      inProcess: true,
+      warnsForInactivity: 2,
+      lastUpdateAt: {
+        [Op.lt]: new Date(
+          Date.now() - (TIMEOUT_IN_DAYS - 1) * 24 * 3600 * 1000,
+        ),
+      },
+    },
+  });
+
+  const membersToTimeout = await FollowedMember.findAll({
+    where: {
+      inProcess: true,
+      warnsForInactivity: 3,
+      lastUpdateAt: {
+        [Op.lt]: new Date(Date.now() - TIMEOUT_IN_DAYS * 24 * 3600 * 1000),
+      },
+    },
+  });
+
+  return {
+    membersToWarnAfterOneDayInactivity,
+    membersToWarnHalfTimeBeforeTimeout,
+    membersToWarnLastDayBeforeTimeout,
+    membersToTimeout,
+  };
+};
 
 /**
  * @description Function that is get all unresponsive members to timeout
@@ -25,18 +171,59 @@ const timeoutInDays = 1;
  * await EventBus.emit({ event: 'App_timeoutUsers' });
  */
 export default async () => {
-  const membersToTimeout = await FollowedMember.findAll({
-    where: {
-      lastUpdateAt: {
-        [Op.lt]: new Date(Date.now() - timeoutInDays * 24 * 3600 * 1000),
-      },
-    },
-  });
+  /* eslint-disable no-await-in-loop,no-restricted-syntax */
+  const {
+    membersToWarnAfterOneDayInactivity,
+    membersToWarnHalfTimeBeforeTimeout,
+    membersToWarnLastDayBeforeTimeout,
+    membersToTimeout,
+  } = await getInactiveMembers();
 
-  if (membersToTimeout === null) return;
+  if (membersToWarnAfterOneDayInactivity.length !== 0) {
+    Logger.info('Start warning members after one day of inactivity');
+    for (const member of membersToWarnAfterOneDayInactivity) {
+      await sendTimeoutWarningMessage(member, ONE_DAY_INACTIVITY_MESSAGE);
+    }
+    Logger.info('Finished warning members after one day of inactivity');
+  }
 
-  membersToTimeout.forEach((/** @type {Member} */ member) => {
-    // TODO: add timeout process and fire getUserOutOfPipe event
-    Logger.info('userToTimeout', member);
-  });
+  // ---
+  if (membersToWarnHalfTimeBeforeTimeout.length !== 0) {
+    Logger.info(
+      'Start warning members after half time remaining before timeout',
+    );
+    for (const member of membersToWarnHalfTimeBeforeTimeout) {
+      await sendTimeoutWarningMessage(
+        member,
+        HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
+      );
+    }
+    Logger.info(
+      'Finished warning members after half time remaining before timeout',
+    );
+  }
+
+  // ---
+
+  if (membersToWarnLastDayBeforeTimeout.length !== 0) {
+    Logger.info('Start warning members one day before timeout');
+    for (const member of membersToWarnLastDayBeforeTimeout) {
+      await sendTimeoutWarningMessage(
+        member,
+        LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
+      );
+    }
+    Logger.info('Finished warning members one day before timeout');
+  }
+
+  // ---
+
+  if (membersToTimeout.length !== 0) {
+    Logger.info('Start timing out members');
+    for (const member of membersToTimeout) {
+      await timeoutMember(member);
+    }
+    Logger.info('Finished timing out members');
+  }
+  /* eslint-enable no-await-in-loop,no-restricted-syntax */
 };

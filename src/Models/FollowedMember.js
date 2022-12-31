@@ -61,6 +61,15 @@ const FollowedMembersModelBuilder = (instance) =>
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    isNewComer: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+    },
+    warnsForInactivity: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 
 export default FollowedMembersModelBuilder;
