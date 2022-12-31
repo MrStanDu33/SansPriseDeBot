@@ -38,10 +38,10 @@ export default async () => {
   const awaitingMembersToProcess = await AwaitingMember.findAll({
     limit: MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length,
   });
-  Logger.error(
+  Logger.warn(
     `count of members actually in process: ${historicalMembersInProcess.length}`,
   );
-  Logger.error(
+  Logger.warn(
     `places left: ${
       MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length
     }`,
