@@ -117,10 +117,6 @@ const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
  * await EventBus.emit({ event: 'Discord_messageCreate' });
  */
 export default async (message) => {
-  Logger.info(
-    '!spdb beta progress message ===',
-    message.content === '!spdb beta process-me',
-  );
   if (message.author.id === process.env.DISCORD_BOT_ID) return; // ignore bot messages
   const { client } = Store;
 
