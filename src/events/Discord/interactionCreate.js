@@ -277,7 +277,7 @@ export default async (interaction) => {
   }
   if (interaction.isCommand()) {
     if (!memberIsStaff) return;
-    Logger.error(interaction);
+    // TODO: Ony answer to /ping commands
     interaction.reply({
       content: 'PONG 🕹️',
     });
