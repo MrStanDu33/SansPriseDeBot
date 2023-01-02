@@ -13,39 +13,39 @@ const { FollowedMember } = models;
 
 const TIMEOUT_IN_DAYS = 5;
 // TODO: Insert channel's link.
-const ONE_DAY_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
-Tu as malheureusement pas encore répondu à mes questions.
-Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Tu n'as malheureusement pas encore répondu à mes questions.
+Dans le souhait de proposer l'expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
 Tu peux retrouver notre conversation ici: <LINK>
 
 Au plaisir de te revoir 👋`;
 // TODO: Insert channel's link.
-const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
-Tu as malheureusement toujours pas répondu à mes questions.
-Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Tu n'as malheureusement toujours pas répondu à mes questions.
+Dans le souhait de proposer l'expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
 Si tu n'y réponds pas dans les prochains jours, tu risque d'être ejecté du serveur.
 
 Tu peux retrouver notre conversation pour la continuer ici: <LINK>
 
 Au plaisir de te revoir 👋`;
 // TODO: Insert channel's link.
-const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
-Tu as malheureusement toujours pas répondu à mes questions.
-Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
+Tu n'as malheureusement toujours pas répondu à mes questions.
+Dans le souhait de proposer l'expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
 Si nous n'avons pas de réponse de ta part à mes questions, nous seront dans l'obligation de t'éjecter du serveur.
 
 Tu peux retrouver notre conversation pour la continuer ici: <LINK>
 
 Au plaisir de te revoir 👋`;
-const TIMEOUT_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const TIMEOUT_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
 Malheureusement, tu n'as pas pris le temps de répondre à mes questions.
-Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, j'ai pris la décision de te retirer du serveur.
+Pour des raisons de limitation technique de la plateforme Discord, j'étais dans l'obligation de te retirer du serveur.
 
-Si tu souhaites rejoindre notre serveur, pas de soucis ! Tu peux le rejoindre en passant par ce lien : <https://discord.gg/spdt>.
+Si tu souhaites rejoindre à nouveau notre serveur, pas de soucis ! Tu peux le rejoindre en passant par ce lien : <https://discord.gg/spdt>.
 Au plaisir de te revoir 👋`;
 
 const sendTimeoutWarningMessage = async (member, message) => {
