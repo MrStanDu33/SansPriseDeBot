@@ -36,6 +36,7 @@ export default async () => {
     },
   });
   const awaitingMembersToProcess = await AwaitingMember.findAll({
+    order: [['priority', 'DESC']],
     limit: MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length,
   });
   Logger.warn(
