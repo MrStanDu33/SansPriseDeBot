@@ -2615,6 +2615,10 @@
                   "role": {
                     "$ref": "#/definition/roles/formations/integrateur_web"
                   }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
                 }
               }
             },
