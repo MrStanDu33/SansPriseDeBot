@@ -9,6 +9,12 @@
         "icon": "✅",
         "text": "Oui",
         "actions": {
+          "add-role-apparence": {
+            "type": "addRole",
+            "role": {
+              "$ref": "#/definition/roles/apparence"
+            }
+          },
           "student-plateforme": {
             "type": "question",
             "$ref": "#/definition/questions/students/plateforme"
@@ -19,6 +25,12 @@
         "icon": "❌",
         "text": "Non",
         "actions": {
+          "add-role-apparence": {
+            "type": "addRole",
+            "role": {
+              "$ref": "#/definition/roles/apparence"
+            }
+          },
           "print-message": {
             "type": "printMessage",
             "message": "Très bien ! <:magic_wand:960899292447518750> Voici quelques ressources qui te permettront d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après. <:point_down:960899113942138980>\n\nhttps://support.discord.com/hc/fr/articles/360045138571-Guide-de-Discord-pour-d%C3%A9butants"
@@ -4368,6 +4380,10 @@
           "name": "Sans formation",
           "roleId": "845283545676644363"
         }
+      },
+      "apparence": {
+        "name": "Apparence",
+        "roleId": "1058796174494150757"
       },
       "diplome": {
         "name": "Diplômé",
