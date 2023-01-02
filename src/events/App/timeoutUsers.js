@@ -4,43 +4,43 @@
  */
 
 import Logger from '$src/Logger';
-import EventBus from '$src/EventBus';
 import Store from '$src/Store';
 import models from '$src/Models';
+import Message from '$src/Classes/Message';
 import { Op } from '@sequelize/core';
 
-const { FollowedMember } = models;
+const { FollowedMember, LinkedChannel } = models;
 
 const TIMEOUT_IN_DAYS = 5;
 // TODO: Insert channel's link.
-const ONE_DAY_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
 
 Tu as malheureusement pas encore répondu à mes questions.
 Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
-Tu peux retrouver notre conversation ici: <LINK>
+Tu peux retrouver notre conversation ici: <#{{ channelId }}>
 
 Au plaisir de te revoir 👋`;
 // TODO: Insert channel's link.
-const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
 
 Tu as malheureusement toujours pas répondu à mes questions.
 Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
 Si tu n'y réponds pas dans les prochains jours, tu risque d'être ejecté du serveur.
 
-Tu peux retrouver notre conversation pour la continuer ici: <LINK>
+Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>
 
 Au plaisir de te revoir 👋`;
 // TODO: Insert channel's link.
-const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
 
 Tu as malheureusement toujours pas répondu à mes questions.
 Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, je t'invite à y répondre afin de pouvoir débloquer toutes les fonctionnalités du serveur.
 Si nous n'avons pas de réponse de ta part à mes questions, nous seront dans l'obligation de t'éjecter du serveur.
 
-Tu peux retrouver notre conversation pour la continuer ici: <LINK>
+Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>
 
 Au plaisir de te revoir 👋`;
-const TIMEOUT_MESSAGE = `Hello, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
+const TIMEOUT_MESSAGE = `Bonjour, je suis Sans prise de bot, le bot du serveur Sans prise de tech.
 
 Malheureusement, tu n'as pas pris le temps de répondre à mes questions.
 Dans le souhait de proposer une expérience la plus agréable à tous nos utilisateurs, j'ai pris la décision de te retirer du serveur.
@@ -48,7 +48,7 @@ Dans le souhait de proposer une expérience la plus agréable à tous nos utilis
 Si tu souhaites rejoindre notre serveur, pas de soucis ! Tu peux le rejoindre en passant par ce lien : <https://discord.gg/spdt>.
 Au plaisir de te revoir 👋`;
 
-const sendTimeoutWarningMessage = async (member, message) => {
+const sendTimeoutWarningMessage = async (member, rawMessage) => {
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
     `Sending warning before timeout message for ${member.username}...`,
@@ -63,6 +63,10 @@ const sendTimeoutWarningMessage = async (member, message) => {
     .fetch(member.memberId)
     .catch(Logger.error);
 
+  const { message } = new Message(rawMessage, {
+    channelId: member.LinkedChannel.discordId,
+  });
+
   await discordMember.send(message).catch(Logger.error);
 
   // eslint-disable-next-line no-param-reassign
@@ -70,7 +74,7 @@ const sendTimeoutWarningMessage = async (member, message) => {
   await member.save();
 
   loader.succeed();
-  Logger.info(`'Timeout message sent successfully for ${member.username} !`);
+  Logger.info(`Timeout message sent successfully for ${member.username} !`);
 };
 
 const timeoutMember = async (member) => {
@@ -115,6 +119,7 @@ const getInactiveMembers = async () => {
         [Op.lt]: new Date(Date.now() - 1 * 24 * 3600 * 1000),
       },
     },
+    include: [{ model: LinkedChannel }],
   });
 
   const membersToWarnHalfTimeBeforeTimeout = await FollowedMember.findAll({
@@ -127,6 +132,7 @@ const getInactiveMembers = async () => {
         ),
       },
     },
+    include: [{ model: LinkedChannel }],
   });
 
   const membersToWarnLastDayBeforeTimeout = await FollowedMember.findAll({
@@ -139,6 +145,7 @@ const getInactiveMembers = async () => {
         ),
       },
     },
+    include: [{ model: LinkedChannel }],
   });
 
   const membersToTimeout = await FollowedMember.findAll({
@@ -149,6 +156,7 @@ const getInactiveMembers = async () => {
         [Op.lt]: new Date(Date.now() - TIMEOUT_IN_DAYS * 24 * 3600 * 1000),
       },
     },
+    include: [{ model: LinkedChannel }],
   });
 
   return {

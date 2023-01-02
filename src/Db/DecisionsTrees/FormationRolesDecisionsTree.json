@@ -21,7 +21,7 @@
         "actions": {
           "print-message": {
             "type": "printMessage",
-            "message": "Très bien ! <:magic_wand:960899292447518750> Voici quelques tutos vidéos qui te permettront d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après. <:point_down:960899113942138980>"
+            "message": "Très bien ! <:magic_wand:960899292447518750> Voici quelques ressources qui te permettront d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après. <:point_down:960899113942138980>\n\nhttps://support.discord.com/hc/fr/articles/360045138571-Guide-de-Discord-pour-d%C3%A9butants"
           },
           "student-plateforme": {
             "type": "question",
