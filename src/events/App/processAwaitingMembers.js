@@ -10,8 +10,6 @@ import models from '$src/Models';
 
 const { AwaitingMember, FollowedMember } = models;
 
-const MAX_AWAITING_MEMBERS_BATCH_SIZE = 20;
-
 /**
  * @description Function that process awaiting member.
  * It takes at max 10 members from the database, remove them from wait list
@@ -37,14 +35,17 @@ export default async () => {
   });
   const awaitingMembersToProcess = await AwaitingMember.findAll({
     order: [['priority', 'DESC']],
-    limit: MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length,
+    limit:
+      Number(process.env.MAX_AWAITING_MEMBERS_BATCH_SIZE) -
+      historicalMembersInProcess.length,
   });
   Logger.warn(
     `count of members actually in process: ${historicalMembersInProcess.length}`,
   );
   Logger.warn(
     `places left: ${
-      MAX_AWAITING_MEMBERS_BATCH_SIZE - historicalMembersInProcess.length
+      Number(process.env.MAX_AWAITING_MEMBERS_BATCH_SIZE) -
+      historicalMembersInProcess.length
     }`,
   );
 
