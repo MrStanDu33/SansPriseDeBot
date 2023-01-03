@@ -52,6 +52,10 @@ const createChannel = async (member) => {
     'info',
   );
 
+  const followedMember = await FollowedMember.findOne({
+    where: { memberId: member.id },
+  });
+
   const channelPermissionOverwrites = [
     {
       id: guild.roles.everyone.id,
@@ -80,7 +84,9 @@ const createChannel = async (member) => {
       topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
       nsfw: false,
       parent: client.channels.cache.get(
-        process.env.DISCORD_BOT_CHANNELS_CATEGORY,
+        followedMember.isNewComer
+          ? process.env.DISCORD_BOT_CHANNELS_CATEGORY_NEW_MEMBERS
+          : process.env.DISCORD_BOT_CHANNELS_CATEGORY_AWAITING_MEMBERS,
       ),
       reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
       permissionOverwrites: channelPermissionOverwrites,
