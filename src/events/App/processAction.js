@@ -198,6 +198,10 @@ const printMessage = async (member, action) => {
 const askQuestion = async (member, action) => {
   const { client } = Store;
 
+  Logger.info(
+    `Asking member ${member.username} the question "${action.Question.question}"`,
+  );
+
   const channel = client.channels.cache.get(member.LinkedChannel.discordId);
 
   const messageRows = [];

@@ -121,6 +121,10 @@ const processUserAnswer = async (interaction) => {
 
   if (selectedAnswer === undefined) return;
 
+  Logger.info(
+    `Member ${linkedChannel.FollowedMember.username} answered ${selectedAnswer.text} to the question ${linkedChannel.FollowedMember.Action}`,
+  );
+
   disableMessageButtons(interaction.message, interaction.customId);
 
   const reply = await interaction.reply({ content: '...', fetchReply: true });
