@@ -122,8 +122,6 @@ const createChannel = async (member) => {
 export default async (member, isNewComer = true) => {
   if (process.env.DRY_RUN === 'true') return;
 
-  const channel = await createChannel(member);
-
   const memberRolesIdsToRemove = member.roles.cache
     .map(({ id }) => id)
     .filter(
@@ -153,6 +151,8 @@ export default async (member, isNewComer = true) => {
     warnsForInactivity: 0,
     isNewComer,
   });
+
+  const channel = await createChannel(member);
 
   await LinkedChannel.create({
     discordId: channel.id,
