@@ -328,6 +328,8 @@ export default async (memberId, actionId) => {
 
   if (['promptFile', 'question'].includes(actionToPerform?.type)) {
     member.CurrentActionId = actionId;
+    member.warnsForInactivity = 0;
+    member.lastUpdateAt = Date.now();
     await member.save();
   }
 
