@@ -49,17 +49,21 @@ export default async () => {
     }`,
   );
 
-  const promises = awaitingMembersToProcess.map(async (member) => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const member of awaitingMembersToProcess) {
     Logger.info(`Starting processing awaiting member: ${member.username}`);
 
     try {
+      // eslint-disable-next-line no-await-in-loop
       const guild = await Store.client.guilds.fetch(
         process.env.DISCORD_SERVER_ID,
       );
+      // eslint-disable-next-line no-await-in-loop
       const guildMember = await guild.members.fetch(member.memberId);
 
       // TODO: delete this after all users has been synced (and newComer property in model)
       const isNewComer = false;
+      // eslint-disable-next-line no-await-in-loop
       await EventBus.emit({
         event: 'App_initializePipe',
         args: [guildMember, isNewComer],
@@ -72,8 +76,7 @@ export default async () => {
     } finally {
       member.destroy();
     }
-  });
+  }
 
-  await Promise.all(promises);
   Logger.info('Finished processing missed members');
 };
