@@ -56,6 +56,9 @@ const cascadeHooks = {
 db.FollowedMember.hasOne(db.LinkedChannel, cascadeHooks);
 db.LinkedChannel.belongsTo(db.FollowedMember);
 
+db.Category.hasMany(db.LinkedChannel, cascadeHooks);
+db.LinkedChannel.belongsTo(db.Category);
+
 db.DecisionsTree.hasMany(db.Action, cascadeHooks);
 db.Action.belongsTo(db.DecisionsTree);
 

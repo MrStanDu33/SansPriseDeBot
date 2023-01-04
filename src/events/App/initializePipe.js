@@ -13,7 +13,8 @@ import models from '$src/Models';
 /** @typedef { import('discord.js').GuildMember } Member */
 /** @typedef { import('discord.js').GuildChannel } Channel */
 
-const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
+const { LinkedChannel, Category, FollowedMember, DecisionsTree, Action } =
+  models;
 
 const ROLES_IDS_TO_KEEP = [
   '849789213167058985', // Actif | Niveau 1
@@ -31,9 +32,9 @@ const ROLES_IDS_TO_KEEP = [
  * @description It creates a channel in the welcome category, with the name of the user, and
  * with the topic of the channel being the welcome message.
  *
- * @param   { Member }           member - The member that joined the server.
+ * @param   { Member }                 member - The member that joined the server.
  *
- * @returns { Promise<Channel> }        - The channel object instance.
+ * @returns { Promise<Channel|false> }        - The channel object instance.
  *
  * @example
  * const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
@@ -51,10 +52,6 @@ const createChannel = async (member) => {
     `Creating welcome channel for ${member.user.tag}`,
     'info',
   );
-
-  const followedMember = await FollowedMember.findOne({
-    where: { memberId: member.id },
-  });
 
   const channelPermissionOverwrites = [
     {
@@ -75,6 +72,43 @@ const createChannel = async (member) => {
     },
   ];
 
+  let categoryToCreateChannelInto = (
+    await Category.findAll({
+      include: LinkedChannel,
+    })
+  ).find((category) => category.LinkedChannels.length < 50);
+
+  if (categoryToCreateChannelInto === null) {
+    const createdCategory = await guild.channels
+      .create({
+        name: process.env.DISCORD_BOT_CHANNELS_CATEGORIES_NAME,
+        type: ChannelType.GuildCategory,
+        position: Number(process.env.DISCORD_BOT_CHANNELS_CATEGORIES_POSITION),
+        permissionOverwrites: [
+          {
+            id: guild.roles.everyone.id,
+            deny: [PermissionsBitField.Flags.ViewChannel],
+          },
+          {
+            id: client.user.id,
+            allow: [PermissionsBitField.Flags.ViewChannel],
+          },
+          {
+            id: process.env.DISCORD_STAFF_ROLE_ID,
+            allow: [PermissionsBitField.Flags.ViewChannel],
+          },
+        ],
+      })
+      .catch(Logger.error);
+
+    if (!createChannel) return false;
+
+    categoryToCreateChannelInto = await Category.create({
+      // @ts-ignore
+      discordId: createdCategory.id,
+    }).catch(Logger.error);
+  }
+
   const channel = await guild.channels
     .create({
       name: `${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
@@ -83,11 +117,7 @@ const createChannel = async (member) => {
       type: ChannelType.GuildText,
       topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
       nsfw: false,
-      parent: client.channels.cache.get(
-        followedMember.isNewComer
-          ? process.env.DISCORD_BOT_CHANNELS_CATEGORY_NEW_MEMBERS
-          : process.env.DISCORD_BOT_CHANNELS_CATEGORY_AWAITING_MEMBERS,
-      ),
+      parent: categoryToCreateChannelInto.discordId,
       reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
       permissionOverwrites: channelPermissionOverwrites,
     })
@@ -151,6 +181,11 @@ export default async (member, isNewComer = true) => {
     warnsForInactivity: 0,
     isNewComer,
   });
+
+  const categoryToCreateChannelInto = await Category.findAll({
+    include: LinkedChannel,
+  });
+  console.log(categoryToCreateChannelInto);
 
   const channel = await createChannel(member);
 
