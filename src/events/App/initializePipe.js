@@ -115,7 +115,7 @@ const createChannel = async (member, category) => {
  */
 export default async (member, isNewComer = true) => {
   const { client } = Store;
-  const { guild } = client;
+  const { guild } = client.guilds.fetch(process.env.DISCORD_SERVER_ID);
 
   if (process.env.DRY_RUN === 'true') return;
 
