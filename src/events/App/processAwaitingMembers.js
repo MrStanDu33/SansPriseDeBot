@@ -33,11 +33,14 @@ export default async () => {
       isNewComer: false,
     },
   });
+
+  const limit =
+    Number(process.env.MAX_AWAITING_MEMBERS_BATCH_SIZE) -
+    historicalMembersInProcess.length;
+
   const awaitingMembersToProcess = await AwaitingMember.findAll({
     order: [['priority', 'DESC']],
-    limit:
-      Number(process.env.MAX_AWAITING_MEMBERS_BATCH_SIZE) -
-      historicalMembersInProcess.length,
+    limit: limit < 0 ? 0 : limit,
   });
   Logger.warn(
     `count of members actually in process: ${historicalMembersInProcess.length}`,
