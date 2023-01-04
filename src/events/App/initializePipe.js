@@ -155,7 +155,7 @@ export default async (member, isNewComer = true) => {
     })
   ).find((category) => category.LinkedChannels.length < 50);
 
-  if (categoryToCreateChannelInto === null) {
+  if (categoryToCreateChannelInto === undefined) {
     const createdCategory = await guild.channels
       .create({
         name: process.env.DISCORD_BOT_CHANNELS_CATEGORIES_NAME,
