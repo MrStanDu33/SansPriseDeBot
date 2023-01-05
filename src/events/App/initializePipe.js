@@ -154,6 +154,7 @@ export default async (member, isNewComer = true) => {
     .filter(
       ({ name }) => name === process.env.DISCORD_BOT_CHANNELS_CATEGORIES_NAME,
     )
+    .sort((a, b) => a.position - b.position)
     .find(({ children }) => [...children.cache].length < 50);
 
   if (categoryToCreateChannelInto === undefined) {
