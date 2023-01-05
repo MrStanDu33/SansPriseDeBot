@@ -12,9 +12,9 @@ import models from '$src/Models';
 
 /** @typedef { import('discord.js').GuildMember } Member */
 /** @typedef { import('discord.js').GuildChannel } Channel */
+/** @typedef { import('discord.js').CategoryChannel } Category */
 
-const { LinkedChannel, Category, FollowedMember, DecisionsTree, Action } =
-  models;
+const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
 
 const ROLES_IDS_TO_KEEP = [
   '849789213167058985', // Actif | Niveau 1
@@ -33,7 +33,7 @@ const ROLES_IDS_TO_KEEP = [
  * with the topic of the channel being the welcome message.
  *
  * @param   { Member }           member   - The member that joined the server.
- * @param   { Category }         category - Category we create the channel in.
+ * @param   { Category }         category - Discord category to create channel into.
  *
  * @returns { Promise<Channel> }          - The channel object instance.
  *
@@ -81,7 +81,7 @@ const createChannel = async (member, category) => {
       type: ChannelType.GuildText,
       topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
       nsfw: false,
-      parent: category.discordId,
+      parent: category.id,
       reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
       permissionOverwrites: channelPermissionOverwrites,
     })
@@ -149,14 +149,15 @@ export default async (member, isNewComer = true) => {
     isNewComer,
   });
 
-  let categoryToCreateChannelInto = (
-    await Category.findAll({
-      include: LinkedChannel,
-    })
-  ).find((category) => category.LinkedChannels.length < 50);
+  let categoryToCreateChannelInto = (await guild.channels.fetch())
+    .filter(({ type }) => type === ChannelType.GuildCategory)
+    .filter(
+      ({ name }) => name === process.env.DISCORD_BOT_CHANNELS_CATEGORIES_NAME,
+    )
+    .find(({ children }) => [...children.cache].length < 50);
 
   if (categoryToCreateChannelInto === undefined) {
-    const createdCategory = await guild.channels
+    categoryToCreateChannelInto = await guild.channels
       .create({
         name: process.env.DISCORD_BOT_CHANNELS_CATEGORIES_NAME,
         type: ChannelType.GuildCategory,
@@ -177,11 +178,6 @@ export default async (member, isNewComer = true) => {
         ],
       })
       .catch(Logger.error);
-
-    categoryToCreateChannelInto = await Category.create({
-      // @ts-ignore
-      discordId: createdCategory.id,
-    }).catch(Logger.error);
   }
 
   const channel = await createChannel(member, categoryToCreateChannelInto);
@@ -190,7 +186,6 @@ export default async (member, isNewComer = true) => {
     discordId: channel.id,
     name: channel.name,
     FollowedMemberId: memberData.id,
-    CategoryId: categoryToCreateChannelInto.id,
   });
 
   await EventBus.emit({

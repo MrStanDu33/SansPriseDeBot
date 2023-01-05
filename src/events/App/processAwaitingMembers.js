@@ -70,6 +70,7 @@ export default async () => {
       await EventBus.emit({
         event: 'App_initializePipe',
         args: [guildMember, isNewComer],
+        async: false,
       });
     } catch (error) {
       Logger.warn(
@@ -77,7 +78,8 @@ export default async () => {
         error,
       );
     } finally {
-      member.destroy();
+      // eslint-disable-next-line no-await-in-loop
+      await member.destroy();
     }
   }
 

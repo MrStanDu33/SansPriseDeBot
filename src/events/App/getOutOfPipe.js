@@ -7,7 +7,7 @@ import Logger from '$src/Logger';
 import models from '$src/Models';
 import Store from '$src/Store';
 
-const { FollowedMember, Category } = models;
+const { FollowedMember } = models;
 
 /**
  * @description Get user out of pipe by deleting linked channel
@@ -47,9 +47,6 @@ export default async (member) => {
       );
 
       if ([...channelToDelete.parent.children.cache].length === 0) {
-        await Category.destroy({
-          where: { discordId: channelToDelete.parentId },
-        });
         await channelToDelete.parent.delete();
         Logger.info(`Parent category successfully deleted`);
       }
