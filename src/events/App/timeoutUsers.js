@@ -12,7 +12,6 @@ import { Op } from '@sequelize/core';
 const { FollowedMember, LinkedChannel } = models;
 
 const TIMEOUT_IN_DAYS = 5;
-// TODO: Insert channel's link.
 const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
 Tu n'as malheureusement pas encore répondu à mes questions.
@@ -20,7 +19,6 @@ Dans le souhait de proposer l'expérience la plus agréable à tous nos utilisat
 Tu peux retrouver notre conversation ici: <#{{ channelId }}>
 
 Au plaisir de te revoir 👋`;
-// TODO: Insert channel's link.
 const HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
 Tu n'as malheureusement toujours pas répondu à mes questions.
@@ -30,7 +28,6 @@ Si tu n'y réponds pas dans les prochains jours, tu risque d'être ejecté du se
 Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>
 
 Au plaisir de te revoir 👋`;
-// TODO: Insert channel's link.
 const LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE = `Bonjour, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
 Tu n'as malheureusement toujours pas répondu à mes questions.
@@ -67,7 +64,14 @@ const sendTimeoutWarningMessage = async (member, rawMessage) => {
     channelId: member.LinkedChannel.discordId,
   });
 
-  await discordMember.send(message).catch(Logger.error);
+  await discordMember
+    .send(message)
+    .catch((error) =>
+      Logger.warn(
+        `Unable to send timeout message to ${member.username}`,
+        error,
+      ),
+    );
 
   // eslint-disable-next-line no-param-reassign
   member.warnsForInactivity += 1;
@@ -101,7 +105,14 @@ const timeoutMember = async (member) => {
     .fetch(member.memberId)
     .catch(Logger.error);
 
-  await discordMember.send(TIMEOUT_MESSAGE);
+  await discordMember
+    .send(TIMEOUT_MESSAGE)
+    .catch((error) =>
+      Logger.warn(
+        `Unable to send timeout message to ${member.username}`,
+        error,
+      ),
+    );
   await discordMember
     .kick(`Kick pour non-réponse au workflow d'entrée`)
     .catch(Logger.error);
