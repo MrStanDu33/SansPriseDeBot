@@ -57,7 +57,7 @@
     "@jest/globals": "29.1.2",
     "@types/jest": "^29.2.0",
     "babel-eslint": "^10.1.0",
-    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-module-resolver": "^5.0.0",
     "better-docs": "^2.7.2",
     "clean-jsdoc-theme": "^4.1.8",
     "eslint": "^8.24.0",
