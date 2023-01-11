@@ -47,6 +47,10 @@ const sendTimeoutWarningMessage = async (member, message) => {
     'info',
   );
 
+  // eslint-disable-next-line no-param-reassign
+  member.warnsForInactivity += 1;
+  await member.save();
+
   const { message: dmMessage } = new Message(message, {
     memberId: member.memberId,
   });
@@ -68,18 +72,11 @@ const sendTimeoutWarningMessage = async (member, message) => {
 
   await memberChannel.send(dmMessage).catch(Logger.error);
 
-  try {
-    const discordMember = await guild.members.fetch(member.memberId);
-
-    await discordMember.send(dmMessage);
-    await discordMember.send(channelLinkMessage);
-  } catch (error) {
-    Logger.warn(`Unable to send timeout message to ${member.username}`, error);
-  }
-
-  // eslint-disable-next-line no-param-reassign
-  member.warnsForInactivity += 1;
-  await member.save();
+  const discordMember = await guild.members
+    .fetch(member.memberId)
+    .catch(Logger.error);
+  await discordMember.send(dmMessage).catch(Logger.error);
+  await discordMember.send(channelLinkMessage).catch(Logger.error);
 
   loader.succeed();
   Logger.info(`Timeout message sent successfully for ${member.username} !`);
