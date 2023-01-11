@@ -75,7 +75,8 @@ const applyRoles = async (member) => {
           `Unable to fetch role ${roleToAdd.Role.name}-${roleToAdd.Role.roleId}`,
         );
       }
-      user.roles.add(fetchedRole);
+      await roleToAdd.destroy().catch(Logger.error);
+      user.roles.add(fetchedRole).catch(Logger.error);
     }
     /* eslint-enable no-restricted-syntax,no-await-in-loop */
   } catch (error) {
