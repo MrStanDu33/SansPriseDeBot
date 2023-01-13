@@ -74,10 +74,13 @@ class App {
    * App.setCronJobs();
    */
   static setCronJobs() {
-    cron.schedule('* * * * *', () =>
+    const timeoutBatchFrequency = `*/${process.env.TIMEOUT_BATCH_FREQUENCY} * * * *`;
+    cron.schedule(timeoutBatchFrequency, () =>
       EventBus.emit({ event: 'App_timeoutUsers' }),
     );
-    cron.schedule('* * * * *', () =>
+
+    const awaitingMembersBatchFrequency = `*/${process.env.AWAITING_MEMBERS_BATCH_FREQUENCY} * * * *`;
+    cron.schedule(awaitingMembersBatchFrequency, () =>
       EventBus.emit({ event: 'App_processAwaitingMembers' }),
     );
   }

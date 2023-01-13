@@ -132,6 +132,7 @@ const getInactiveMembers = async () => {
       },
     },
     include: [{ model: LinkedChannel }],
+    limit: Number(process.env.MAX_TIMEOUT_BATCH_SIZE),
   });
 
   const membersToWarnHalfTimeBeforeTimeout = await FollowedMember.findAll({
@@ -145,6 +146,7 @@ const getInactiveMembers = async () => {
       },
     },
     include: [{ model: LinkedChannel }],
+    limit: Number(process.env.MAX_TIMEOUT_BATCH_SIZE),
   });
 
   const membersToWarnLastDayBeforeTimeout = await FollowedMember.findAll({
@@ -158,6 +160,7 @@ const getInactiveMembers = async () => {
       },
     },
     include: [{ model: LinkedChannel }],
+    limit: Number(process.env.MAX_TIMEOUT_BATCH_SIZE),
   });
 
   const membersToTimeout = await FollowedMember.findAll({
@@ -169,6 +172,7 @@ const getInactiveMembers = async () => {
       },
     },
     include: [{ model: LinkedChannel }],
+    limit: Number(process.env.MAX_TIMEOUT_BATCH_SIZE),
   });
 
   return {
@@ -179,6 +183,63 @@ const getInactiveMembers = async () => {
   };
 };
 
+const warnMemberAfterOneDayOfInactivity = async (members) => {
+  if (members.length !== 0) {
+    Logger.info('Start warning members after one day of inactivity');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const member of members) {
+      // eslint-disable-next-line no-await-in-loop
+      await sendTimeoutWarningMessage(member, ONE_DAY_INACTIVITY_MESSAGE);
+    }
+    Logger.info('Finished warning members after one day of inactivity');
+  }
+};
+
+const warnMembersHalfTimeBeforeTimeout = async (members) => {
+  if (members.length !== 0) {
+    Logger.info(
+      'Start warning members after half time remaining before timeout',
+    );
+    // eslint-disable-next-line no-restricted-syntax
+    for (const member of members) {
+      // eslint-disable-next-line no-await-in-loop
+      await sendTimeoutWarningMessage(
+        member,
+        HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
+      );
+    }
+    Logger.info(
+      'Finished warning members after half time remaining before timeout',
+    );
+  }
+};
+
+const warnMembersLastDayBeforeTimeout = async (members) => {
+  if (members.length !== 0) {
+    Logger.info('Start warning members one day before timeout');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const member of members) {
+      // eslint-disable-next-line no-await-in-loop
+      await sendTimeoutWarningMessage(
+        member,
+        LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
+      );
+    }
+    Logger.info('Finished warning members one day before timeout');
+  }
+};
+
+const timeoutMembers = async (members) => {
+  if (members.length !== 0) {
+    Logger.info('Start timing out members');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const member of members) {
+      // eslint-disable-next-line no-await-in-loop
+      await timeoutMember(member);
+    }
+    Logger.info('Finished timing out members');
+  }
+};
 /**
  * @description Function that is get all unresponsive members to timeout
  * and fires event called `App_getUserOutOfPipe`.
@@ -199,51 +260,8 @@ export default async () => {
     membersToTimeout,
   } = await getInactiveMembers();
 
-  if (membersToWarnAfterOneDayInactivity.length !== 0) {
-    Logger.info('Start warning members after one day of inactivity');
-    for (const member of membersToWarnAfterOneDayInactivity) {
-      await sendTimeoutWarningMessage(member, ONE_DAY_INACTIVITY_MESSAGE);
-    }
-    Logger.info('Finished warning members after one day of inactivity');
-  }
-
-  // ---
-  if (membersToWarnHalfTimeBeforeTimeout.length !== 0) {
-    Logger.info(
-      'Start warning members after half time remaining before timeout',
-    );
-    for (const member of membersToWarnHalfTimeBeforeTimeout) {
-      await sendTimeoutWarningMessage(
-        member,
-        HALF_TIME_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
-      );
-    }
-    Logger.info(
-      'Finished warning members after half time remaining before timeout',
-    );
-  }
-
-  // ---
-
-  if (membersToWarnLastDayBeforeTimeout.length !== 0) {
-    Logger.info('Start warning members one day before timeout');
-    for (const member of membersToWarnLastDayBeforeTimeout) {
-      await sendTimeoutWarningMessage(
-        member,
-        LAST_DAY_BEFORE_TIMEOUT_INACTIVITY_MESSAGE,
-      );
-    }
-    Logger.info('Finished warning members one day before timeout');
-  }
-
-  // ---
-
-  if (membersToTimeout.length !== 0) {
-    Logger.info('Start timing out members');
-    for (const member of membersToTimeout) {
-      await timeoutMember(member);
-    }
-    Logger.info('Finished timing out members');
-  }
-  /* eslint-enable no-await-in-loop,no-restricted-syntax */
+  warnMemberAfterOneDayOfInactivity(membersToWarnAfterOneDayInactivity);
+  warnMembersHalfTimeBeforeTimeout(membersToWarnHalfTimeBeforeTimeout);
+  warnMembersLastDayBeforeTimeout(membersToWarnLastDayBeforeTimeout);
+  timeoutMembers(membersToTimeout);
 };

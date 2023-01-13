@@ -202,8 +202,6 @@ class Logger {
    * @static
    *
    * @description Prints given warning messages to the console in warn mode.
-   * If the APP_DEBUG environment variable is set to false, then the function will not
-   * log anything to the console.
    *
    * @param   { ...any } warn - Warning messages to be logged.
    *
