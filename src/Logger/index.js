@@ -264,7 +264,7 @@ class Logger {
       // eslint-disable-next-line no-restricted-syntax
       for (const message of data) {
         // eslint-disable-next-line no-await-in-loop
-        await channel.send(message);
+        await channel.send(`\`${message}\``);
       }
     } catch (error) {
       Logger.errorToConsole(
