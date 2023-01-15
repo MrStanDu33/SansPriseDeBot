@@ -240,6 +240,7 @@ const timeoutMembers = async (members) => {
     Logger.info('Finished timing out members');
   }
 };
+
 /**
  * @description Function that is get all unresponsive members to timeout
  * and fires event called `App_getUserOutOfPipe`.

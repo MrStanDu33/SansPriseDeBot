@@ -10,6 +10,7 @@ import path from 'path';
 import chalk from 'chalk';
 import { get } from 'stack-trace';
 import cliSpinners from 'cli-spinners';
+import Store from '$src/Store';
 
 /** @typedef { import('ora').Color } Color */
 /** @typedef { import('ora').Options } SpinnerSettings */
@@ -107,7 +108,8 @@ class Logger {
   /**
    * @static
    *
-   * @description Prints given info messages to the console and to log file in info mode.
+   * @description Prints given info messages to the console, to discord debug channel and to
+   * log file in info mode.
    *
    * @param   { ...any } info - Info messages to be logged.
    *
@@ -119,12 +121,14 @@ class Logger {
   static info(...info) {
     Logger.infoToConsole(...info);
     Logger.infoToFile(...info);
+    Logger.infoToDiscord(...info);
   }
 
   /**
    * @static
    *
-   * @description Prints given warning messages to the console and to log file in warning mode.
+   * @description Prints given warning messages to the console, to discord debug channel and to
+   * log file in warning mode.
    *
    * @param   { ...any } warn - Warning messages to be logged.
    *
@@ -136,12 +140,14 @@ class Logger {
   static warn(...warn) {
     Logger.warnToConsole(...warn);
     Logger.warnToFile(...warn);
+    Logger.warnToDiscord(...warn);
   }
 
   /**
    * @static
    *
-   * @description Prints given error messages to the console and to log file in error mode.
+   * @description Prints given error messages to the console, to discord debug channel and to
+   * log file in error mode.
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
@@ -159,6 +165,110 @@ class Logger {
   static error(...error) {
     Logger.errorToConsole(...error);
     Logger.errorToFile(...error);
+    Logger.errorToDiscord(...error);
+  }
+
+  /**
+   * @static
+   *
+   * @description Prints given info messages to the discord log channel.
+   *
+   * @param   { ...any } info - Info messages to be logged.
+   *
+   * @returns { void }
+   *
+   * @example
+   * Logger.infoToDiscord('This is an info message', false, 20);
+   */
+  static infoToDiscord(...info) {
+    Logger.#writeToDiscordLogChannel(
+      `${Logger.#prefixes.console.info} |`,
+      ...info,
+    );
+  }
+
+  /**
+   * @static
+   *
+   * @description Prints given info messages to the discord log channel.
+   *
+   * @param   { ...any } warn - Warning messages to be logged.
+   *
+   * @returns { void }
+   *
+   * @example
+   * Logger.warnToConsole('This is a warn message', true, 42);
+   */
+  static warnToDiscord(...warn) {
+    Logger.#writeToDiscordLogChannel(
+      `${Logger.#prefixes.console.warn} |`,
+      ...warn,
+    );
+  }
+
+  /**
+   * @static
+   *
+   * @description Prints given error messages to the discord log channel.
+   * If first given argument is a boolean and is evaluated as true, the function will log the error
+   * in fatal mode.
+   *
+   * @param   { * }       [ error ] - Data to be logged.
+   * @param   { boolean } error[].0 - If set to true, log error as fatal.
+   * @param   { ...any }  error[].1 - Error messages to be logged.
+   *
+   * @returns { void }
+   *
+   * @example
+   * Logger.errorToDiscord('This is an error message', 45, false);
+   *
+   * Logger.errorToDiscord(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console
+   */
+  static errorToDiscord(...error) {
+    const fatal = error.length > 1 && error[0] === true && error.shift();
+    const flag = fatal ? 'fatal' : 'error';
+    Logger.#writeToDiscordLogChannel(
+      `${Logger.#prefixes.console[flag]} |`,
+      ...error,
+    );
+  }
+
+  /**
+   * @static
+   *
+   * @async
+   *
+   * @description Writes given data to the discord channel dedicated to log specified with
+   * the DISCORD_LOG_CHANNEL_ID environment variable.
+   *
+   * @param   { ...string }     data - Data to write into the log file.
+   *
+   * @returns { Promise<void> }
+   *
+   * @example
+   * Logger.#writeToDiscordLogChannel('this is an example message to log');
+   */
+  static async #writeToDiscordLogChannel(...data) {
+    try {
+      const { DISCORD_SERVER_ID, DISCORD_LOG_CHANNEL_ID } = process.env;
+      const { client } = Store;
+      const guild = await client.guilds.fetch(DISCORD_SERVER_ID);
+      const channel = await guild.channels.fetch(DISCORD_LOG_CHANNEL_ID);
+      // eslint-disable-next-line no-restricted-syntax
+      for (const message of data) {
+        // eslint-disable-next-line no-await-in-loop
+        await channel.send(message);
+      }
+    } catch (error) {
+      Logger.errorToConsole(
+        `Unable to send log message to discord channel with given id ${process.env.DISCORD_LOG_CHANNEL_ID}`,
+        error,
+      );
+      Logger.errorToFile(
+        `Unable to send log message to discord channel with given id ${process.env.DISCORD_LOG_CHANNEL_ID}`,
+        error,
+      );
+    }
   }
 
   /**
@@ -252,7 +362,7 @@ class Logger {
    * @returns { void }
    *
    * @example
-   * Logger.writeToLogFile('this is an example message to log');
+   * Logger.#writeToLogFile('this is an example message to log');
    */
   static #writeToLogFile(...data) {
     fs.writeFile(
