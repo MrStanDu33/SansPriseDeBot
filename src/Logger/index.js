@@ -182,7 +182,9 @@ class Logger {
    */
   static infoToDiscord(...info) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#prefixes.console.info} | ${
+      `${Logger.#getDateTime()} | ${
+        Logger.#prefixes.file.info
+      } | ${Logger.#getCaller()} | ${
         info.length === 1 && typeof info[0] === 'string'
           ? info[0]
           : JSON.stringify(info)
@@ -204,7 +206,9 @@ class Logger {
    */
   static warnToDiscord(...warn) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#prefixes.console.warn} | ${
+      `${Logger.#getDateTime()} | ${
+        Logger.#prefixes.file.warn
+      } | ${Logger.#getCaller()} | ${
         warn.length === 1 && typeof warn[0] === 'string'
           ? warn[0]
           : JSON.stringify(warn)
@@ -231,10 +235,10 @@ class Logger {
    * Logger.errorToDiscord(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console
    */
   static errorToDiscord(...error) {
-    const fatal = error.length > 1 && error[0] === true && error.shift();
-    const flag = fatal ? 'fatal' : 'error';
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#prefixes.console[flag]} | ${
+      `${Logger.#getDateTime()} | ${
+        Logger.#prefixes.file.error
+      } | ${Logger.#getCaller()} | ${
         error.length === 1 && typeof error[0] === 'string'
           ? error[0]
           : JSON.stringify(error)
