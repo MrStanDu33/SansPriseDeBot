@@ -182,9 +182,7 @@ class Logger {
    */
   static infoToDiscord(...info) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${
-        Logger.#prefixes.file.info
-      } | ${Logger.#getCaller()} | ${
+      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.info} | ${
         info.length === 1 && typeof info[0] === 'string'
           ? info[0]
           : JSON.stringify(info)
@@ -206,9 +204,7 @@ class Logger {
    */
   static warnToDiscord(...warn) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${
-        Logger.#prefixes.file.warn
-      } | ${Logger.#getCaller()} | ${
+      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.warn} | ${
         warn.length === 1 && typeof warn[0] === 'string'
           ? warn[0]
           : JSON.stringify(warn)
@@ -236,9 +232,7 @@ class Logger {
    */
   static errorToDiscord(...error) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${
-        Logger.#prefixes.file.error
-      } | ${Logger.#getCaller()} | ${
+      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.error} | ${
         error.length === 1 && typeof error[0] === 'string'
           ? error[0]
           : JSON.stringify(error)
