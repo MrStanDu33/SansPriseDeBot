@@ -182,7 +182,7 @@ class Logger {
    */
   static infoToDiscord(...info) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.info} | ${
+      `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.info} | ${
         info.length === 1 && typeof info[0] === 'string'
           ? info[0]
           : JSON.stringify(info)
@@ -204,7 +204,7 @@ class Logger {
    */
   static warnToDiscord(...warn) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.warn} | ${
+      `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.warn} | ${
         warn.length === 1 && typeof warn[0] === 'string'
           ? warn[0]
           : JSON.stringify(warn)
@@ -232,7 +232,7 @@ class Logger {
    */
   static errorToDiscord(...error) {
     Logger.#writeToDiscordLogChannel(
-      `${Logger.#getDateTime()} | ${Logger.#prefixes.file.error} | ${
+      `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.error} | ${
         error.length === 1 && typeof error[0] === 'string'
           ? error[0]
           : JSON.stringify(error)
@@ -259,12 +259,15 @@ class Logger {
     try {
       const { DISCORD_SERVER_ID, DISCORD_LOG_CHANNEL_ID } = process.env;
       const { client } = Store;
+
+      if (client === undefined || !client.isReady()) return;
+
       const guild = await client.guilds.fetch(DISCORD_SERVER_ID);
       const channel = await guild.channels.fetch(DISCORD_LOG_CHANNEL_ID);
       // eslint-disable-next-line no-restricted-syntax
       for (const message of data) {
         // eslint-disable-next-line no-await-in-loop
-        await channel.send(`\`${message}\``);
+        await channel.send(message);
       }
     } catch (error) {
       Logger.errorToConsole(
@@ -499,6 +502,12 @@ class Logger {
    * @property { string } prefixes.console.error - Colored prefix for errors in console.
    * @property { string } prefixes.console.fatal - Colored prefix for fatal errors in console.
    *
+   * @property { object } prefixes.discord       - List of prefixes to use for discord logging.
+   * @property { string } prefixes.discord.debug - Colored prefix for debug messages in discord.
+   * @property { string } prefixes.discord.info  - Colored prefix for info messages in discord.
+   * @property { string } prefixes.discord.warn  - Colored prefix for warnings in discord.
+   * @property { string } prefixes.discord.error - Colored prefix for errors in discord.
+   *
    * @property { object } prefixes.file          - List of prefixes to use for log file logging.
    * @property { string } prefixes.file.debug    - Prefix for debug messages in log file.
    * @property { string } prefixes.file.info     - Prefix for info messages in log file.
@@ -513,6 +522,12 @@ class Logger {
       warn: chalk.yellowBright('[WARN] '),
       error: chalk.redBright('[ERROR]'),
       fatal: chalk.red.bold('[FATAL]'),
+    },
+    discord: {
+      debug: '🔵 *[DEBUG]* 🔵',
+      info: '🟢 [INFO]  🟢',
+      warn: '🟠 **[WARN]**  🟠',
+      error: '🔴 __**[ERROR]**__ 🔴',
     },
     file: {
       debug: '[DEBUG]',
