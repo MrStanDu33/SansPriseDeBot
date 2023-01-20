@@ -11,7 +11,6 @@ import { Op } from '@sequelize/core';
 
 const { FollowedMember, LinkedChannel } = models;
 
-const TIMEOUT_IN_DAYS = 5;
 const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour <@{{ memberId }}>, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
 Tu n'as malheureusement pas encore répondu à mes questions.
@@ -141,7 +140,8 @@ const getInactiveMembers = async () => {
       warnsForInactivity: 1,
       lastUpdateAt: {
         [Op.lt]: new Date(
-          Date.now() - (TIMEOUT_IN_DAYS / 2) * 24 * 3600 * 1000,
+          Date.now() -
+            (Number(process.env.TIMEOUT_IN_DAYS) / 2) * 24 * 3600 * 1000,
         ),
       },
     },
@@ -155,7 +155,8 @@ const getInactiveMembers = async () => {
       warnsForInactivity: 2,
       lastUpdateAt: {
         [Op.lt]: new Date(
-          Date.now() - (TIMEOUT_IN_DAYS - 1) * 24 * 3600 * 1000,
+          Date.now() -
+            (Number(process.env.TIMEOUT_IN_DAYS) - 1) * 24 * 3600 * 1000,
         ),
       },
     },
@@ -168,7 +169,9 @@ const getInactiveMembers = async () => {
       inProcess: true,
       warnsForInactivity: 3,
       lastUpdateAt: {
-        [Op.lt]: new Date(Date.now() - TIMEOUT_IN_DAYS * 24 * 3600 * 1000),
+        [Op.lt]: new Date(
+          Date.now() - Number(process.env.TIMEOUT_IN_DAYS) * 24 * 3600 * 1000,
+        ),
       },
     },
     include: [{ model: LinkedChannel }],
