@@ -29,6 +29,12 @@ const ACTIVITY_LEVEL_ROLES = {
   level50: {
     id: '849789583221981185',
   },
+  level75: {
+    id: '849789635785785404',
+  },
+  level100: {
+    id: '849789694346657802',
+  },
 };
 
 /**
@@ -47,6 +53,12 @@ const ACTIVITY_LEVEL_ROLES = {
  * console.log(userPriority); // A number with a value that gets higher as user gets more active.
  */
 const getUserPriority = (roles) => {
+  if (roles.includes(ACTIVITY_LEVEL_ROLES.level100.role)) {
+    return 100;
+  }
+  if (roles.includes(ACTIVITY_LEVEL_ROLES.level75.role)) {
+    return 75;
+  }
   if (roles.includes(ACTIVITY_LEVEL_ROLES.level50.role)) {
     return 50;
   }
