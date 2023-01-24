@@ -36,7 +36,7 @@
     "docs:watch": "npx nodemon --exec 'npm run docs' --watch . --ignore ./docs/"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.1.0",
+    "@apidevtools/json-schema-ref-parser": "^10.0.1",
     "@sequelize/core": "^7.0.0-alpha.10",
     "chalk": "5.1.2",
     "cli-spinners": "^2.7.0",
