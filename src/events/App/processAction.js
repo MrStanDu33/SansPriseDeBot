@@ -54,33 +54,21 @@ const applyRoles = async (member) => {
     include: Role,
   });
 
-  await guild.roles.fetch(rolesToAdd[0].Role.discordId);
-
-  const roles = rolesToAdd.map((roleToAdd) => {
-    return {
-      role: guild.roles.fetch(roleToAdd.Role.discordId),
-      roleToAdd,
-    };
-  });
-
-  try {
-    await Promise.all(roles.map(({ role: promise }) => promise));
-
-    /* eslint-disable no-restricted-syntax,no-await-in-loop */
-    for (const { role, roleToAdd } of roles) {
-      // eslint-disable-next-line
-      const fetchedRole = await role;
-      if (fetchedRole === null) {
-        throw Error(
-          `Unable to fetch role ${roleToAdd.Role.name}-${roleToAdd.Role.roleId}`,
-        );
-      }
-      await roleToAdd.destroy().catch(Logger.error);
-      user.roles.add(fetchedRole).catch(Logger.error);
+  // eslint-disable-next-line no-restricted-syntax
+  for (const roleToAdd of rolesToAdd) {
+    // eslint-disable-next-line no-await-in-loop
+    const fetchedRole = await guild.roles
+      .fetch(roleToAdd.Role.discordId)
+      .catch(Logger.error);
+    if (fetchedRole === null) {
+      Logger.error(
+        `Unable to fetch role ${roleToAdd.Role.name}-${roleToAdd.Role.roleId}`,
+      );
     }
-    /* eslint-enable no-restricted-syntax,no-await-in-loop */
-  } catch (error) {
-    Logger.error(true, 'An error occurred while fetching a role', error);
+    // eslint-disable-next-line no-await-in-loop
+    await roleToAdd.destroy().catch(Logger.error);
+    // eslint-disable-next-line no-await-in-loop
+    await user.roles.add(fetchedRole).catch(Logger.error);
   }
 };
 
