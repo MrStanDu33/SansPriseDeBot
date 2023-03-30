@@ -1,57 +1,36 @@
-import { logDb } from '$src/Db';
-import i18n from '$src/I18n';
-import Store from '$src/Store';
-import Logger from '$src/Logger';
-import EventBus from '$src/EventBus';
+/**
+ * @file Handle "new user" event from discord by inserting member in pipe.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
 
+import EventBus from '$src/EventBus';
+import Logger from '$src/Logger';
+
+/** @typedef { import('discord.js').GuildMember } Member */
+
+/**
+ * @description Function that is called when a new member joins the server.
+ * It fires event called `App_initializePipe`.
+ *
+ * @event module:Libraries/EventBus#Discord_guildMemberAdd
+ *
+ * @param { Member } member - Member that just joined the server.
+ *
+ * @fires module:Libraries/EventBus#App_initializePipe
+ *
+ * @example
+ * await EventBus.emit({ event: 'Discord_guildMemberAdd' });
+ */
 export default (member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;
 
-  const { client } = Store;
-  const { guild } = member;
+  const whitelistEnabled =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST_ACTIVE === 'true';
+  const membersWhitelist =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST.split(',');
 
-  i18n.setLocale(member.user.locale || process.env.DEFAULT_LOCALE);
+  if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
 
   Logger.info(`New member just came ! (${member.user.tag})`);
-  const loader = Logger.loader(
-    { spinner: 'dots10', color: 'cyan' },
-    `Creating welcome channel for ${member.user.tag}`,
-    'info',
-  );
-
-  guild.channels
-    .create(`${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}`, {
-      type: 'text',
-      topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
-      nsfw: false,
-      parent: client.channels.cache.get(
-        process.env.DISCORD_WELCOME_CHANNEL_CATEGORY_ID,
-      ),
-      reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
-    })
-    .then((channel) => {
-      loader.succeed();
-      Logger.info(`Channel ${channel.name} successfully created !`);
-      const data = {
-        guild: channel.guild.id,
-        id: channel.id,
-        name: channel.name,
-        createdTimestamp: channel.createdTimestamp,
-        locale: member.user.locale || process.env.DEFAULT_LOCALE,
-        linkedMemberId: member.user.id,
-        linkedMemberUsername: member.user.tag,
-      };
-
-      logDb.push('/app/followingChannels[]', data, true);
-
-      EventBus.emit('sendWelcomeMessage', data);
-    })
-    .catch((error) => {
-      loader.fail();
-      Logger.error(
-        ` An error has occurred while creating welcome channel for ${member.user.tag} !`,
-        true,
-      );
-      throw new Error(error);
-    });
+  EventBus.emit({ event: 'App_initializePipe', args: [member] });
 };

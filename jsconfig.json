@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "module": "es6",
-    "target": "es6",
+    "module": "esnext",
+    "target": "esnext",
     "sourceMap": true,
     "baseUrl": ".",
+    "checkJs": true,
+    "moduleResolution": "node",
     "paths": {
       "$src/*": ["./src/*"]
     }

@@ -1,46 +1,77 @@
-import { logDb } from '$src/Db';
-import Logger from '$src/Logger/index';
-import Store from '$src/Store';
+/**
+ * @file Handle "user left" event from discord by removing member from pipe.
+ * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
+ */
 
-export default (member) => {
-  /*
-   * TODO: Detect on boot diff between channels on db and users on server.
-   * if so => delete channel and record !
-   */
-  const { client } = Store;
+import Logger from '$src/Logger/index';
+import models from '$src/Models';
+import EventBus from '$src/EventBus';
+
+const { LinkedChannel, FollowedMember } = models;
+
+/** @typedef { import('discord.js').GuildMember } Member */
+
+/**
+ * @description Function that is called when a member leaves the server.
+ * If member was not followed by the bot, nothing happens.
+ * Else, it removes the member welcome channel and removes member from the followed members list.
+ *
+ * @event module:Libraries/EventBus#Discord_guildMemberRemove
+ *
+ * @param   { Member }        member - Member that left the server.
+ *
+ * @returns { Promise<void> }
+ *
+ * @example
+ * await EventBus.emit({ event: 'Discord_guildMemberRemove' });
+ */
+export default async (member) => {
+  if (process.env.DRY_RUN === 'true') return;
+
+  const whitelistEnabled =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST_ACTIVE === 'true';
+  const membersWhitelist =
+    process.env.DISCORD_TEST_MEMBERS_WHITELIST.split(',');
+
+  if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
 
   Logger.info(`A member just left ! (${member.user.tag})`);
+
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
-    `Deleting welcome channel for ${member.user.tag}`,
+    `Deleting welcome channel and user data for ${member.user.tag}`,
     'info',
   );
 
-  const followingChannels = logDb.getData('/app/followingChannels');
-  const followingChannel = followingChannels.find(
-    (ch) => ch.linkedMemberId === member.user.id,
-  );
+  const followedMember = await FollowedMember.findOne({
+    where: { memberId: member.user.id },
+    include: [LinkedChannel],
+  });
 
-  const followingChannelIndex = logDb.getIndex(
-    '/app/followingChannels',
-    followingChannel.id,
-  );
+  if (followedMember === null) return;
 
-  const channel = client.channels.cache.get(followingChannel.id);
-
-  channel
-    .delete()
-    .then(() => {
-      loader.succeed();
-      Logger.info(`Channel ${followingChannel.name} successfully deleted !`);
-      logDb.delete(`/app/followingChannels[${followingChannelIndex}]`);
-    })
-    .catch((error) => {
-      loader.fail();
-      Logger.error(
-        ` An error has occurred while deleting welcome channel for ${member.user.tag}!`,
-        true,
+  try {
+    await EventBus.emit({
+      event: 'App_getOutOfPipe',
+      args: [followedMember],
+    }).catch(() => {
+      throw new Error(
+        `An error has occurred while deleting welcome channel for ${member.user.tag}!`,
       );
-      throw new Error(error);
     });
+
+    await followedMember.destroy().catch(() => {
+      throw new Error(
+        `An error has occurred while deleting user ${member.user.tag} from database !`,
+      );
+    });
+
+    loader.succeed();
+
+    Logger.info(`${followedMember.username}'s data successfully deleted !`);
+  } catch (error) {
+    loader.fail();
+    Logger.error(error.message, true);
+    throw new Error(error);
+  }
 };

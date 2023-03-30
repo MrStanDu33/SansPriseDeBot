@@ -1,4 +1,12 @@
 name: codacy-coverage-reporter
+env:
+  APP_DEBUG: ${{ secrets.ENV_APP_DEBUG }}
+  APP_DEBUG_FILE: ${{ secrets.ENV_APP_DEBUG_FILE }}
+  DISCORD_BOT_TOKEN: ${{ secrets.ENV_DISCORD_BOT_TOKEN }}
+  DISCORD_SERVER_ID: ${{ secrets.ENV_DISCORD_SERVER_ID }}
+  DEFAULT_LOCALE: ${{ secrets.ENV_DEFAULT_LOCALE }}
+  DISCORD_BOT_CHANNELS_CATEGORY_NEW_MEMBERS: ${{ secrets.ENV_DISCORD_BOT_CHANNELS_CATEGORY_NEW_MEMBERS }}
+  DISCORD_BOT_CHANNELS_CATEGORY_AWAITING_MEMBERS: ${{ secrets.ENV_DISCORD_BOT_CHANNELS_CATEGORY_AWAITING_MEMBERS }}
 
 on:
   push:
@@ -10,11 +18,11 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     name: codacy-coverage-reporter
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -22,8 +30,7 @@ jobs:
       - name: Installing dependencies
         run: npm install
       - name: Running tests
-        run: |
-          npm run coverage
+        run: npm run test:coverage
       - name: Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@master
         with:
