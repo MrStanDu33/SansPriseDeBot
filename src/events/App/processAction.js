@@ -10,6 +10,7 @@ import Message from '$src/Classes/Message';
 import Logger from '$src/Logger';
 import models from '$src/Models';
 import EventBus from '$src/EventBus';
+import { Op } from '@sequelize/core';
 
 const {
   Action,
@@ -136,9 +137,16 @@ const removeRole = async (member, role) => {
  * await printMessage(member, role);
  */
 const removeAllRoles = async (member) => {
+  const apparenceRole = await Role.findOne({
+    where: { name: 'Apparence' },
+  });
+
   await RolesToAddToMember.destroy({
     where: {
       FollowedMemberId: member.id,
+      RoleId: {
+        [Op.not]: apparenceRole.id,
+      },
     },
   });
 };
