@@ -5,7 +5,6 @@
 
 import models from '$src/Models';
 import Store from '$src/Store';
-import Logger from '$src/Logger';
 import Message from '$src/Classes/Message';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';

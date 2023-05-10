@@ -1,20 +1,22 @@
 name: Contributors
+
 on:
   push:
     branches: [main, develop]
+
 jobs:
   update-contributors-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Maanuj-Vora/List-Contributors@main
+      - uses: Maanuj-Vora/List-Contributors@release
         with:
           REPO_NAME: '${{github.repository}}'
           ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
           CONTRIBUTOR: '## Contributors'
           FILEPATH: '/README.md'
           FONT_SIZE: 19
-          COMMIT_MESSAGE: 'action: update README contributors'
+          COMMIT_MESSAGE: '📝 action: update README contributors'
   update-contributors-package:
     runs-on: ubuntu-latest
     steps:
@@ -26,4 +28,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           include_bots: false
           affiliation: all
-          commit_message: 'action: update package contributors'
+          commit_message: '📝 action: update package contributors'

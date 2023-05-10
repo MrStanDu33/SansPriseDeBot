@@ -13,15 +13,10 @@ describe('Discord.js', () => {
       const {
         DISCORD_BOT_TOKEN: DiscordBotToken,
         DISCORD_SERVER_ID: DiscordServerId,
-        DISCORD_BOT_CHANNELS_CATEGORY_NEW_MEMBERS: newMembersCategoryId,
-        DISCORD_BOT_CHANNELS_CATEGORY_AWAITING_MEMBERS:
-          awaitingMembersCategoryId,
       } = process.env;
 
       expect(DiscordBotToken).toBeTruthy();
       expect(DiscordServerId).toMatch(/[\d]{18}/);
-      expect(newMembersCategoryId).toMatch(/[\d]{18}/);
-      expect(awaitingMembersCategoryId).toMatch(/[\d]{18}/);
     });
 
     it('Should be able to connect to Discord API', () => {
