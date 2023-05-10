@@ -43,7 +43,6 @@ module.exports = {
         minimumLengthForMultiline: 80,
       },
     ],
-    'jsdoc/newline-after-description': 2,
     'jsdoc/no-bad-blocks': 2,
     'jsdoc/no-defaults': 2,
     'jsdoc/no-missing-syntax': 'off',
@@ -107,8 +106,9 @@ module.exports = {
       'always',
       {
         count: 1,
-        dropEndLines: true,
-        noEndLines: true,
+        startLines: 0,
+        endLines: 0,
+        applyToEndTag: false,
         tags: {
           param: { lines: 'any' },
           property: { lines: 'any' },
