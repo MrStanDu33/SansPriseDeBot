@@ -5,9 +5,9 @@
  * @module Models
  */
 
-import { readdirSync } from 'fs';
-import Logger from '$src/Logger';
-import instance from './connection';
+import { readdirSync } from "fs";
+import Logger from "$src/Logger";
+import instance from "./connection";
 
 const db = {
   instance,
@@ -15,10 +15,10 @@ const db = {
 
 const modelImportPromises = [];
 
-readdirSync('./src/Models/')
+readdirSync("./src/Models/")
   .filter(
     (file) =>
-      file.endsWith('.js') && !['index.js', 'connection.js'].includes(file),
+      file.endsWith(".js") && !["index.js", "connection.js"].includes(file)
   )
   .forEach((file) => {
     Logger.debug(`Importing model from ${file} ...`);
@@ -26,7 +26,7 @@ readdirSync('./src/Models/')
 
     modelImportPromise.then((modelBuilder) => {
       const model = modelBuilder.default(instance);
-      db[model.name.replaceAll('_', '')] = model;
+      db[model.name.replaceAll("_", "")] = model;
       Logger.debug(`Model ${model.name} successfully imported.`);
     });
 
@@ -34,118 +34,115 @@ readdirSync('./src/Models/')
   });
 
 const loaderConnect = Logger.loader(
-  { spinner: 'dots', color: 'cyan' },
-  'Connecting to the database ...',
-  'info',
+  { spinner: "dots", color: "cyan" },
+  "Connecting to the database ...",
+  "info"
 );
 
 await instance
   .authenticate()
   .catch((error) =>
-    Logger.error(true, 'Unable to connect to the database:', error),
+    Logger.error(true, "Unable to connect to the database:", error)
   );
 
 loaderConnect.succeed();
 
 await Promise.all(modelImportPromises);
 const cascadeHooks = {
-  onDelete: 'CASCADE',
-  onUpdate: 'CASCADE',
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
 };
-
-db.FollowedMember.hasOne(db.LinkedChannel, cascadeHooks);
-db.LinkedChannel.belongsTo(db.FollowedMember);
 
 db.DecisionsTree.hasMany(db.Action, cascadeHooks);
 db.Action.belongsTo(db.DecisionsTree);
 
 db.Action.hasOne(db.ActionQuestion, {
   ...cascadeHooks,
-  as: 'Question',
-  foreignKey: 'ActionId',
+  as: "Question",
+  foreignKey: "ActionId",
 });
 db.ActionQuestion.belongsTo(db.Action);
 
 db.ActionQuestion.hasMany(db.ActionQuestionAnswer, {
   ...cascadeHooks,
-  as: 'Answers',
-  foreignKey: 'ActionQuestionId',
+  as: "Answers",
+  foreignKey: "ActionQuestionId",
 });
 db.ActionQuestionAnswer.belongsTo(db.ActionQuestion);
 
 db.ActionQuestionAnswer.hasMany(db.ActionQuestionAnswersHasAction, {
   ...cascadeHooks,
-  as: 'AnswerActions',
+  as: "AnswerActions",
 });
 db.ActionQuestionAnswersHasAction.belongsTo(db.ActionQuestionAnswer);
 
 db.Action.hasMany(db.ActionQuestionAnswersHasAction, {
   ...cascadeHooks,
-  as: 'AnswerActions',
+  as: "AnswerActions",
 });
 db.ActionQuestionAnswersHasAction.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionGoto, {
   ...cascadeHooks,
-  as: 'Goto',
-  foreignKey: 'ActionId',
+  as: "Goto",
+  foreignKey: "ActionId",
 });
 db.ActionGoto.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionGoto);
 db.ActionGoto.belongsTo(db.Action, {
-  foreignKey: 'TargetActionId',
+  foreignKey: "TargetActionId",
   ...cascadeHooks,
 });
 
 db.Action.hasOne(db.ActionPrintMessage, {
   ...cascadeHooks,
-  as: 'PrintMessage',
-  foreignKey: 'ActionId',
+  as: "PrintMessage",
+  foreignKey: "ActionId",
 });
 db.ActionPrintMessage.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionAddRole, {
   ...cascadeHooks,
-  as: 'AddRole',
-  foreignKey: 'ActionId',
+  as: "AddRole",
+  foreignKey: "ActionId",
 });
 db.ActionAddRole.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionRemoveRole, {
   ...cascadeHooks,
-  as: 'RemoveRole',
-  foreignKey: 'ActionId',
+  as: "RemoveRole",
+  foreignKey: "ActionId",
 });
 db.ActionRemoveRole.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionPromptFile, {
   ...cascadeHooks,
-  as: 'PromptFile',
-  foreignKey: 'ActionId',
+  as: "PromptFile",
+  foreignKey: "ActionId",
 });
 db.ActionPromptFile.belongsTo(db.Action, {
-  as: 'Action',
+  as: "Action",
 });
 
 db.ActionPromptFile.hasMany(db.ActionPromptFileHasAction, {
   ...cascadeHooks,
-  as: 'Actions',
+  as: "Actions",
 });
 db.ActionPromptFileHasAction.belongsTo(db.ActionPromptFile);
 
 db.Action.hasMany(db.ActionPromptFileHasAction, {
   ...cascadeHooks,
-  as: 'Actions',
+  as: "Actions",
 });
 db.ActionPromptFileHasAction.belongsTo(db.Action);
 
 db.ActionPromptFile.belongsToMany(db.MimeType, {
-  as: 'MimeTypes',
-  through: 'Action_PromptFiles_Has_MimeTypes',
+  as: "MimeTypes",
+  through: "Action_PromptFiles_Has_MimeTypes",
 });
 db.MimeType.belongsToMany(db.ActionPromptFile, {
-  through: 'Action_PromptFiles_Has_MimeTypes',
+  through: "Action_PromptFiles_Has_MimeTypes",
 });
 
 db.Role.hasOne(db.ActionAddRole, cascadeHooks);
@@ -155,10 +152,10 @@ db.Role.hasOne(db.ActionRemoveRole, cascadeHooks);
 db.ActionRemoveRole.belongsTo(db.Role);
 
 db.Action.hasOne(db.FollowedMember, {
-  foreignKey: 'CurrentActionId',
+  foreignKey: "CurrentActionId",
 });
 db.FollowedMember.belongsTo(db.Action, {
-  foreignKey: 'CurrentActionId',
+  foreignKey: "CurrentActionId",
 });
 
 db.FollowedMember.hasMany(db.RolesToAddToMember, cascadeHooks);
@@ -168,15 +165,15 @@ db.Role.hasMany(db.RolesToAddToMember, cascadeHooks);
 db.RolesToAddToMember.belongsTo(db.Role);
 
 const loaderSync = Logger.loader(
-  { spinner: 'dots', color: 'cyan' },
-  'Syncing models to tables ...',
-  'info',
+  { spinner: "dots", color: "cyan" },
+  "Syncing models to tables ...",
+  "info"
 );
 
 await instance
   .sync()
-  .catch((error) => Logger.error(true, 'Unable to sync database:', error));
-Logger.info('Database synced successfully.');
+  .catch((error) => Logger.error(true, "Unable to sync database:", error));
+Logger.info("Database synced successfully.");
 
 loaderSync.succeed();
 
