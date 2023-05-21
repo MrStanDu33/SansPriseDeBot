@@ -1,0 +1,4402 @@
+{
+  "$schema": "./DecisionsTree.schema.json",
+  "default": {
+    "type": "question",
+    "uuid": "aise-discord",
+    "question": "Bonjour <@{{ memberId }}>,\nJe suis Sans prise de bot, le robot qui a pour mission de t'accompagner sur ce serveur.\nTout d'abord es-tu à l'aise avec Discord ?\nN'hésite pas à me répondre en cliquant sur les boutons ci-dessous <:point_down:960899113942138980>",
+    "answers": [
+      {
+        "icon": "✅",
+        "text": "Oui",
+        "actions": {
+          "add-role-apparence": {
+            "type": "addRole",
+            "role": {
+              "$ref": "#/definition/roles/apparence"
+            }
+          },
+          "student-plateforme": {
+            "type": "question",
+            "$ref": "#/definition/questions/students/plateforme"
+          }
+        }
+      },
+      {
+        "icon": "❌",
+        "text": "Non",
+        "actions": {
+          "add-role-apparence": {
+            "type": "addRole",
+            "role": {
+              "$ref": "#/definition/roles/apparence"
+            }
+          },
+          "print-message": {
+            "type": "printMessage",
+            "message": "Très bien ! <:magic_wand:960899292447518750> Voici quelques ressources qui te permettront d'en apprendre plus sur la plateforme. Tu peux également lire la documentation ci-après. <:point_down:960899113942138980>\n\nhttps://support.discord.com/hc/fr/articles/360045138571-Guide-de-Discord-pour-d%C3%A9butants"
+          },
+          "student-plateforme": {
+            "type": "question",
+            "$ref": "#/definition/questions/students/plateforme"
+          }
+        }
+      }
+    ]
+  },
+  "definition": {
+    "questions": {
+      "students": {
+        "plateforme": {
+          "type": "question",
+          "uuid": "students-plateforme",
+          "question": "Es-tu ou as-tu été étudiant sur une plateforme en ligne ?\n*Étudiants OpenClassrooms seulement*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "mentor-plateforme": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/mentor-oc-sans-formation"
+                }
+              }
+            }
+          ]
+        },
+        "academie": {
+          "type": "question",
+          "uuid": "students-academie",
+          "question": "Très bien ! Dans quelle académie de formation es-tu ?",
+          "answers": [
+            {
+              "icon": "🖥",
+              "text": "Académie Développement",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
+                }
+              }
+            },
+            {
+              "icon": "📉",
+              "text": "Académie Data",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "student-academie-data": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-data"
+                }
+              }
+            },
+            {
+              "icon": "📣",
+              "text": "Académie Marketing & Communication",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
+                  }
+                },
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "💼",
+              "text": "Académie Business",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "student-academie-business": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-business"
+                }
+              }
+            },
+            {
+              "icon": "🌐",
+              "text": "Académie Systèmes & Réseaux",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "student-academie-systemes-reseaux": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-systemes-reseaux"
+                }
+              }
+            },
+            {
+              "icon": "📚",
+              "text": "Académie Pédagogie",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "📝",
+              "text": "Académie Gestion de projet",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
+                  }
+                },
+                "student-academie-gestion-projet": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-gestion-projet"
+                }
+              }
+            },
+            {
+              "icon": "👷‍♂️",
+              "text": "Académie RH & Gestion",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "🖱",
+              "text": "Académie Bureautique",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "student-academie-bureautique": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-bureautique"
+                }
+              }
+            },
+            {
+              "icon": "📦",
+              "text": "Académie Supply Chain",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "student-academie-supply-chain": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-supply-chain"
+                }
+              }
+            },
+            {
+              "icon": "🔐",
+              "text": "Académie Cybersécurité",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "student-academie-cybersecurite": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-cybersecurite"
+                }
+              }
+            },
+            {
+              "icon": "🎨",
+              "text": "Académie Design",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "student-academie-design": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-design"
+                }
+              }
+            },
+            {
+              "icon": "❓",
+              "text": "Autre",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "student-academie-autre": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-autre"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-plateforme": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/plateforme"
+                }
+              }
+            }
+          ]
+        },
+        "academie-developpement": {
+          "type": "question",
+          "uuid": "students-academie-developpement",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/18-developpement>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/actuelles-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/anciennes-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-developpement": {
+          "type": "question",
+          "uuid": "students-actuelles-formations-developpement",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[IW] Intégrateur Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/integrateur_web"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DWP] Développeur WordPress",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_wordpress"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DW] Développeur Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_web"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAP/S] Développeur d'application - PHP/Symfony",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_php_symfony"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAI] Développeur d'application - iOS",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_ios"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAA] Développeur d'application - Android",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_android"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DSf] Développeur Salesforce",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_salesforce"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAJ] Développeur d'application - Java",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_java"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAJR] Développeur d'application - Javascript React",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_javascript_react"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAPy] Développeur d'application - Python",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_python"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DFS-JA] Développeur Full-Stack - Java & Angular",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_full_stack_java_angular"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[AL] Architecte logiciel",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/architecte_logiciel"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-developpement": {
+          "type": "question",
+          "uuid": "students-anciennes-formations-developpement",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[DWJ] Développeur Web Junior",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_web_junior"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DAFE] Développeur d'application - Front-End",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_application_front_end"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[PW] Prep'Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_web"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[FS] Prep'Full-Stack",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_full_stack"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[PA] Prep'Android",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_android"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DFS] Développeur Full-Stack",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_full_stack"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-developpement"
+                }
+              }
+            }
+          ]
+        },
+        "academie-data": {
+          "type": "question",
+          "uuid": "students-academie-data",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[BIA] Business Intelligence Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/business_intelligence_analyst"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DA] Data Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/data_analyst"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[DS] Data Scientist",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/data_scientist"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[IML] Ingénieur Machine Learning",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_machine_learning"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[IIA] Ingénieur IA",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_ia"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-marketing-communication": {
+          "type": "question",
+          "uuid": "students-academie-marketing-communication",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/14-marketing_et_communication>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/actuelles-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/anciennes-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-marketing-communication": {
+          "type": "question",
+          "uuid": "students-actuelles-formations-marketing-communication",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[BM] Brand Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/brand_manager"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[CM] Community Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/business_intelligence_analyst"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[CPM] Chef de projet marketing",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/chef_projet_marketing"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-marketing-communication": {
+          "type": "question",
+          "uuid": "students-anciennes-formations-marketing-communication",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[ESMC] Expert en stratégie marketing et communication",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_expert_strategie_marketing_communication"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[RMOC] Responsable marketing opérationnel et communication",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_responsable_marketing_operationnel_communication"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-marketing-communication"
+                }
+              }
+            }
+          ]
+        },
+        "academie-business": {
+          "type": "question",
+          "uuid": "students-academie-business",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[CE] Créateur d'entreprise",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/createur_entreprise"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[MO] Manager Opérationnel",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/manager_operationnel"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[AC] Attaché commercial",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/attache_commercial"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-systemes-reseaux": {
+          "type": "question",
+          "uuid": "students-academie-systemes-reseaux",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[TI] Technicien Informatique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/technicien_informatique"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[ASRS] Administrateur systemes, réseaux et sécurité",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/administrateur_systemes_reseaux_securite"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[RPCSI] Responsable de Projet Cybersécurité et SI",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_projet_cybersecurite_si"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-pedagogie": {
+          "type": "question",
+          "uuid": "students-academie_pedagogie",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/15-pedagogie>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/actuelles-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/anciennes-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-pedagogie": {
+          "type": "question",
+          "uuid": "students-actuelles-formations-pedagogie",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[IRP] Ingénieur responsable pédagogique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_responsable_pedagogique"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[FRPP] Formateur responsable de projets pédagogiques",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/formateur_responsable_projets_pedagogiques"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-pedagogie": {
+          "type": "question",
+          "uuid": "students-anciennes-formations-pedagogie",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[F/E] Formateur / Enseignant",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_formateur_enseignant"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-pedagogie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-gestion-projet": {
+          "type": "question",
+          "uuid": "students-academie-gestion-projet",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PM] Product Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/product_manager"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[CPD] Chef de projet digital",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/chef_projet_digital"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-rh-gestion": {
+          "type": "question",
+          "uuid": "students-academie-rh-gestion",
+          "question": "Est-ce que la formation que tu suis ou que tu as suivi est encore proposée sur la page des parcours ?  <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/32-rh_et_gestion>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/actuelles-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/anciennes-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-rh-gestion": {
+          "type": "question",
+          "uuid": "students-actuelles-formations-rh-gestion",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[CEP] Conseiller en évolution professionnelle",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/conseiller_evolution_professionnelle"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[RLD] Responsable Learning & Development",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_learning_development"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-rh-gestion": {
+          "type": "question",
+          "uuid": "students-anciennes-formations-rh-gestion",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[MRH] Manager RH",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_manager_rh"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[CGRH] Chargé de gestion des ressources humaines",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_charge_gestion_ressources_humaines"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[GP] Gestionnaire de paie",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_gestionnaire_paie"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie-rh-gestion"
+                }
+              }
+            }
+          ]
+        },
+        "academie-bureautique": {
+          "type": "question",
+          "uuid": "students-academie-bureautique",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PN] Passeport Numérique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/passeport_numerique"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "text": "[CN] CléA numérique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/clea_numerique"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-supply-chain": {
+          "type": "question",
+          "uuid": "students-academie-supply-chain",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[SCA] Supply Chain Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/supply_chain_analyst"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-cybersecurite": {
+          "type": "question",
+          "uuid": "students-academie-cybersecurite",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[RSSI] Responsable en sécurité des systèmes d'information",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_securite_systemes_information"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-design": {
+          "type": "question",
+          "uuid": "students-academie-design",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[UXD] UX Designer",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ux_designer"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-autre": {
+          "type": "question",
+          "uuid": "students-academie-autre",
+          "question": "Sur lequel de ces parcours es-tu ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PA] Prep'Apprentissage",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_apprentissage"
+                  }
+                },
+                "diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "diplome": {
+          "type": "question",
+          "uuid": "students-diplome",
+          "question": "Es-tu diplômé de cette formation ?\n⚠️***Confirmation du jury ou diplôme requis pour continuer***⚠️",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "print-message": {
+                  "type": "printMessage",
+                  "message": "Pour des raisons de sécurité, merci de nous envoyer une copie de ton diplôme ou une attestation de réussite de la formation de la part du jury."
+                },
+                "prompt-file": {
+                  "type": "promptFile",
+                  "allowedMimeTypes": [
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/tiff",
+                    "image/webp",
+                    "application/pdf"
+                  ],
+                  "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
+                  "actions": {
+                    "add-role": {
+                      "type": "addRole",
+                      "role": {
+                        "$ref": "#/definition/roles/diplome"
+                      }
+                    },
+                    "student-autre-formation": {
+                      "type": "question",
+                      "$ref": "#/definition/questions/students/autre-formation"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "student-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière (réinitialiser tout)",
+              "actions": {
+                "remove-all-roles": {
+                  "type": "removeAllRoles"
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        },
+        "autre-formation": {
+          "type": "question",
+          "uuid": "students-autre-formation",
+          "question": "As-tu suivis ou suis-tu une autre formation ?",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "mentor-oc": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/mentor-oc"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/diplome"
+                  }
+                },
+                "student-diplome": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/diplome"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "mentors": {
+        "mentor-oc-sans-formation": {
+          "type": "question",
+          "uuid": "mentors-mentor-oc-sans-formation",
+          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***Capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "print-message": {
+                  "type": "printMessage",
+                  "message": "Pour des raisons de sécurité, merci de nous envoyer une capture d'écran de ton tableau de bord de mentor."
+                },
+                "prompt-file": {
+                  "type": "promptFile",
+                  "allowedMimeTypes": [
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/tiff",
+                    "image/webp"
+                  ],
+                  "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
+                  "actions": {
+                    "add-role": {
+                      "type": "addRole",
+                      "role": {
+                        "$ref": "#/definition/roles/mentor"
+                      }
+                    },
+                    "mentor-academie": {
+                      "type": "question",
+                      "$ref": "#/definition/questions/mentors/academie"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "add-role-academie-autre": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "add-role-sans-formation": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/sans_formation"
+                  }
+                },
+                "print-message-fin": {
+                  "type": "printMessage",
+                  "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
+                },
+                "print-message-role": {
+                  "type": "printMessage",
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
+                },
+                "apply-roles": {
+                  "type": "applyRoles"
+                },
+                "get-out-of-pipe": {
+                  "type": "getOutOfPipe"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-plateforme": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/plateforme"
+                }
+              }
+            }
+          ]
+        },
+        "mentor-oc": {
+          "type": "question",
+          "uuid": "mentors-mentor-oc",
+          "question": "Travailles-tu pour OpenClassrooms en tant que mentor ?\n⚠️***Capture d'écran du tableau de bord mentor requis pour continuer***⚠️",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "print-message": {
+                  "type": "printMessage",
+                  "message": "Pour des raisons de sécurité, merci de nous envoyer une capture d'écran de ton tableau de bord de mentor."
+                },
+                "prompt-file": {
+                  "type": "promptFile",
+                  "allowedMimeTypes": [
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/tiff",
+                    "image/webp"
+                  ],
+                  "errorMessage": "Le fichier doit être une image ou un document pdf.",
+                  "pendingMessage": "Merci de ton message, le <@&891323492711153725> reviendra vers toi rapidement pour t'assigner le rôle. Nous t'informerons lorsque cela sera fait",
+                  "approvedMessage": "Félicitations <@{{ memberId }}> !\nLe staff a accepté le fichier, tu peux continuer.",
+                  "rejectedMessage": "Hello  <@{{ memberId }}> !\nLe staff a décliné le fichier, merci de renvoyer un fichier.",
+                  "actions": {
+                    "add-role": {
+                      "type": "addRole",
+                      "role": {
+                        "$ref": "#/definition/roles/mentor"
+                      }
+                    },
+                    "mentor-academie": {
+                      "type": "question",
+                      "$ref": "#/definition/questions/mentors/academie"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "print-message-fin": {
+                  "type": "printMessage",
+                  "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
+                },
+                "print-message-role": {
+                  "type": "printMessage",
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
+                },
+                "apply-roles": {
+                  "type": "applyRoles"
+                },
+                "get-out-of-pipe": {
+                  "type": "getOutOfPipe"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "student-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/autre-formation"
+                }
+              }
+            }
+          ]
+        },
+        "academie": {
+          "type": "question",
+          "uuid": "mentors-academie",
+          "question": "Très bien ! Dans quelle académie de formation mentores-tu ?",
+          "answers": [
+            {
+              "icon": "🖥",
+              "text": "Académie Développement",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
+                "student-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-developpement"
+                }
+              }
+            },
+            {
+              "icon": "📉",
+              "text": "Académie Data",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "student-academie-data": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-data"
+                }
+              }
+            },
+            {
+              "icon": "📣",
+              "text": "Académie Marketing & Communication",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
+                  }
+                },
+                "student-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "💼",
+              "text": "Académie Business",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "student-academie-business": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-business"
+                }
+              }
+            },
+            {
+              "icon": "🌐",
+              "text": "Académie Systèmes & Réseaux",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "student-academie-systemes-reseaux": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-systemes-reseaux"
+                }
+              }
+            },
+            {
+              "icon": "📚",
+              "text": "Académie Pédagogie",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "📝",
+              "text": "Académie Gestion de projet",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "student-academie-gestion-projet": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-gestion-projet"
+                }
+              }
+            },
+            {
+              "icon": "👷‍♂️",
+              "text": "Académie RH & Gestion",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "student-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "🖱",
+              "text": "Académie Bureautique",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "student-academie-bureautique": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-bureautique"
+                }
+              }
+            },
+            {
+              "icon": "📦",
+              "text": "Académie Supply Chain",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "student-academie-supply-chain": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-supply-chain"
+                }
+              }
+            },
+            {
+              "icon": "🔐",
+              "text": "Académie Cybersécurité",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "student-academie-cybersecurite": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-cybersecurite"
+                }
+              }
+            },
+            {
+              "icon": "🎨",
+              "text": "Académie Design",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "student-academie-design": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-design"
+                }
+              }
+            },
+            {
+              "icon": "❓",
+              "text": "Autre",
+              "actions": {
+                "add-role-academie": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "add-role-academie-icone": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "add-role-academie-couleur": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "student-academie-autre": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-autre"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/mentor"
+                  }
+                },
+                "mentor-oc": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/mentor-oc"
+                }
+              }
+            }
+          ]
+        },
+        "academie-developpement": {
+          "type": "question",
+          "uuid": "mentors-academie-developpement",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/18-developpement>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/actuelles-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/anciennes-formations-developpement"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_developpement_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-developpement": {
+          "type": "question",
+          "uuid": "mentors-actuelles-formations-developpement",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[IW] Intégrateur Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/integrateur_web"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DWP] Développeur WordPress",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_wordpress"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DW] Développeur Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_web"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAP/S] Développeur d'application - PHP/Symfony",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_php_symfony"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAI] Développeur d'application - iOS",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_ios"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAA] Développeur d'application - Android",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_android"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DSf] Développeur Salesforce",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_salesforce"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAJ] Développeur d'application - Java",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_java"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAJR] Développeur d'application - Javascript React",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_javascript_react"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAPy] Développeur d'application - Python",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_application_python"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DFS-JA] Développeur Full-Stack - Java & Angular",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/developpeur_full_stack_java_angular"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[AL] Architecte logiciel",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/architecte_logiciel"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-developpement"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-developpement": {
+          "type": "question",
+          "uuid": "mentors-anciennes-formations-developpement",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[DWJ] Développeur Web Junior",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_web_junior"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DAFE] Développeur d'application - Front-End",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_application_front_end"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[PW] Prep'Web",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_web"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[FS] Prep'Full-Stack",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_full_stack"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[PA] Prep'Android",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_android"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DFS] Développeur Full-Stack",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_developpeur_full_stack"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-developpement": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-developpement"
+                }
+              }
+            }
+          ]
+        },
+        "academie-data": {
+          "type": "question",
+          "uuid": "mentors-academie-data",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[BIA] Business Intelligence Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/business_intelligence_analyst"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DA] Data Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/data_analyst"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[DS] Data Scientist",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/data_scientist"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[IML] Ingénieur Machine Learning",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_machine_learning"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[IIA] Ingénieur IA",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_ia"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_data_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-marketing-communication": {
+          "type": "question",
+          "uuid": "mentors-academie-marketing-communication",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/14-marketing_et_communication>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/actuelles-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/anciennes-formations-marketing-communication"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_marketing_communication_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-marketing-communication": {
+          "type": "question",
+          "uuid": "mentors-actuelles-formations-marketing-communication",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[BM] Brand Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/brand_manager"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[CM] Community Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/business_intelligence_analyst"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[CPM] Chef de projet marketing",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/chef_projet_marketing"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-marketing-communication": {
+          "type": "question",
+          "uuid": "mentors-anciennes-formations-marketing-communication",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[ESMC] Expert en stratégie marketing et communication",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_expert_strategie_marketing_communication"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[RMOC] Responsable marketing opérationnel et communication",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_responsable_marketing_operationnel_communication"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-marketing-communication": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-marketing-communication"
+                }
+              }
+            }
+          ]
+        },
+        "academie-business": {
+          "type": "question",
+          "uuid": "mentors-academie-business",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[CE] Créateur d'entreprise",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/createur_entreprise"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[MO] Manager Opérationnel",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/manager_operationnel"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[AC] Attaché commercial",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/attache_commercial"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_business_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-systemes-reseaux": {
+          "type": "question",
+          "uuid": "mentors-academie-systemes-reseaux",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[TI] Technicien Informatique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/technicien_informatique"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[ASRS] Administrateur systemes, réseaux et sécurité",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/administrateur_systemes_reseaux_securite"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[RPCSI] Responsable de Projet Cybersécurité et SI",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_projet_cybersecurite_si"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_systemes_reseaux_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-pedagogie": {
+          "type": "question",
+          "uuid": "mentors-academie_pedagogie",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/15-pedagogie>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/actuelles-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/anciennes-formations-pedagogie"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_pedagogie_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-pedagogie": {
+          "type": "question",
+          "uuid": "mentors-actuelles-formations-pedagogie",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[IRP] Ingénieur responsable pédagogique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ingenieur_responsable_pedagogique"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[FRPP] Formateur responsable de projets pédagogiques",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/formateur_responsable_projets_pedagogiques"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-pedagogie": {
+          "type": "question",
+          "uuid": "mentors-anciennes-formations-pedagogie",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[F/E] Formateur / Enseignant",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_formateur_enseignant"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-pedagogie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-pedagogie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-gestion-projet": {
+          "type": "question",
+          "uuid": "mentors-academie-gestion-projet",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PM] Product Manager",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/product_manager"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[CPD] Chef de projet digital",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/chef_projet_digital"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_gestion_projet_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-rh-gestion": {
+          "type": "question",
+          "uuid": "mentors-academie-rh-gestion",
+          "question": "Est-ce que la formation que tu mentores est encore proposée sur la page des parcours ? <:notepad_spiral:960899560757145601>\n*<https://openclassrooms.com/fr/paths/topics/32-rh_et_gestion>*",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "actuelles-formations-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/actuelles-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "anciennes-formations-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/anciennes-formations-rh-gestion"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_rh_gestion_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "actuelles-formations-rh-gestion": {
+          "type": "question",
+          "uuid": "mentors-actuelles-formations-rh-gestion",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[CEP] Conseiller en évolution professionnelle",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/conseiller_evolution_professionnelle"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[RLD] Responsable Learning & Development",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_learning_development"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
+                }
+              }
+            }
+          ]
+        },
+        "anciennes-formations-rh-gestion": {
+          "type": "question",
+          "uuid": "mentors-anciennes-formations-rh-gestion",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[MRH] Manager RH",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_manager_rh"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[CGRH] Chargé de gestion des ressources humaines",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_charge_gestion_ressources_humaines"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[GP] Gestionnaire de paie",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_gestionnaire_paie"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "mentor-academie-rh-gestion": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie-rh-gestion"
+                }
+              }
+            }
+          ]
+        },
+        "academie-bureautique": {
+          "type": "question",
+          "uuid": "mentors-academie-bureautique",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PN] Passeport Numérique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/passeport_numerique"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "text": "[CN] CléA numérique",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/clea_numerique"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_bureautique_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-supply-chain": {
+          "type": "question",
+          "uuid": "mentors-academie-supply-chain",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[SCA] Supply Chain Analyst",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/supply_chain_analyst"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_supply_chain_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-cybersecurite": {
+          "type": "question",
+          "uuid": "mentors-academie-cybersecurite",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[RSSI] Responsable en sécurité des systèmes d'information",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/responsable_securite_systemes_information"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_cybersecurite_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-design": {
+          "type": "question",
+          "uuid": "mentors-academie-design",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[UXD] UX Designer",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/ux_designer"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_design_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "academie-autre": {
+          "type": "question",
+          "uuid": "mentors-academie-autre",
+          "question": "Tu accompagnes tes étudiants sur lequel de ces parcours ? <:round_pushpin:960899669276368946>",
+          "answers": [
+            {
+              "text": "[PA] Prep'Apprentissage",
+              "actions": {
+                "add-role": {
+                  "type": "addRole",
+                  "role": {
+                    "$ref": "#/definition/roles/formations/old_prep_apprentissage"
+                  }
+                },
+                "mentor-autre-formation": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/autre-formation"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière",
+              "actions": {
+                "remove-role-academie": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre"
+                  }
+                },
+                "remove-role-academie-icone": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_icone"
+                  }
+                },
+                "remove-role-academie-couleur": {
+                  "type": "removeRole",
+                  "role": {
+                    "$ref": "#/definition/roles/academie/academie_autre_couleur"
+                  }
+                },
+                "mentor-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            }
+          ]
+        },
+        "autre-formation": {
+          "type": "question",
+          "uuid": "mentors-autre-formation",
+          "question": "Accompagnes-tu tes étudiants sur une autre formation ?",
+          "answers": [
+            {
+              "icon": "✅",
+              "text": "Oui",
+              "actions": {
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/mentors/academie"
+                }
+              }
+            },
+            {
+              "icon": "❌",
+              "text": "Non",
+              "actions": {
+                "print-message-fin": {
+                  "type": "printMessage",
+                  "message": "Félicitations <:rocket:960899780115062794> ! Vous avez à présent accès à l'intégralité du serveur Sans prise de tech <:spdt:647347960707022858>. Profitez bien de cet outil !"
+                },
+                "print-message-suppression": {
+                  "type": "printMessage",
+                  "message": "Les rôles t'ont été attribués <:tada:960900006490038302> , ce salon disparaîtra dans 1 minute"
+                },
+                "aplly-roles": {
+                  "type": "applyRoles"
+                },
+                "get-out-of-pipe": {
+                  "type": "getOutOfPipe"
+                }
+              }
+            },
+            {
+              "icon": "⬅",
+              "text": "Revenir en arrière (réinitialiser tout)",
+              "actions": {
+                "remove-all-roles": {
+                  "type": "removeAllRoles"
+                },
+                "student-academie": {
+                  "type": "question",
+                  "$ref": "#/definition/questions/students/academie"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "roles": {
+      "academie": {
+        "academie_developpement": {
+          "name": "Académie Développement",
+          "roleId": "1047172832083333130"
+        },
+        "academie_developpement_icone": {
+          "name": "Développement",
+          "roleId": "1058794074548736063"
+        },
+        "academie_developpement_couleur": {
+          "name": "Bleu clair",
+          "roleId": "1058796353729335407"
+        },
+        "academie_data": {
+          "name": "Académie Data",
+          "roleId": "1047167135786487868"
+        },
+        "academie_data_icone": {
+          "name": "Data",
+          "roleId": "1058794296943317053"
+        },
+        "academie_data_couleur": {
+          "name": "Vert clair",
+          "roleId": "1058796454333915217"
+        },
+        "academie_marketing_communication": {
+          "name": "Académie Marketing & Communication",
+          "roleId": "1047173493533442148"
+        },
+        "academie_marketing_communication_icone": {
+          "name": "Marketing & Communication",
+          "roleId": "1058794402673336390"
+        },
+        "academie_marketing_communication_couleur": {
+          "name": "Bleu ciel",
+          "roleId": "1058796460524716102"
+        },
+        "academie_business": {
+          "name": "Académie Business",
+          "roleId": "1047173231578189864"
+        },
+        "academie_business_icone": {
+          "name": "Business",
+          "roleId": "1058795026949349466"
+        },
+        "academie_business_couleur": {
+          "name": "Vert",
+          "roleId": "1058796626296188979"
+        },
+        "academie_systemes_reseaux": {
+          "name": "Académie Systèmes et Réseaux",
+          "roleId": "1047173395348979742"
+        },
+        "academie_systemes_reseaux_icone": {
+          "name": "Systèmes et Réseaux",
+          "roleId": "1058795129923702804"
+        },
+        "academie_systemes_reseaux_couleur": {
+          "name": "Bleu",
+          "roleId": "1058796654247022712"
+        },
+        "academie_pedagogie": {
+          "name": "Académie Pédagogie",
+          "roleId": "1047173741920141332"
+        },
+        "academie_pedagogie_icone": {
+          "name": "Pédagogie",
+          "roleId": "1058795292218109953"
+        },
+        "academie_pedagogie_couleur": {
+          "name": "Saumon",
+          "roleId": "1058796659296968754"
+        },
+        "academie_gestion_projet": {
+          "name": "Académie Gestion de projet",
+          "roleId": "1047173908459163748"
+        },
+        "academie_gestion_projet_icone": {
+          "name": "Gestion de projet",
+          "roleId": "1058795389916020836"
+        },
+        "academie_gestion_projet_couleur": {
+          "name": "Vert pomme",
+          "roleId": "1058796663784886304"
+        },
+        "academie_rh_gestion": {
+          "name": "Académie RH & Gestion",
+          "roleId": "1047173126204694538"
+        },
+        "academie_rh_gestion_icone": {
+          "name": "RH & Gestion",
+          "roleId": "1058795584791789688"
+        },
+        "academie_rh_gestion_couleur": {
+          "name": "Bleu foncé",
+          "roleId": "1058796901367025794"
+        },
+        "academie_bureautique": {
+          "name": "Académie Bureautique",
+          "roleId": "1047174399540854804"
+        },
+        "academie_bureautique_icone": {
+          "name": "Bureautique",
+          "roleId": "1058795669013418065"
+        },
+        "academie_bureautique_couleur": {
+          "name": "Bleu gris",
+          "roleId": "1058796908413472828"
+        },
+        "academie_supply_chain": {
+          "name": "Académie Supply Chain",
+          "roleId": "1047922637780820029"
+        },
+        "academie_supply_chain_icone": {
+          "name": "Supply Chain",
+          "roleId": "1058795682695217152"
+        },
+        "academie_supply_chain_couleur": {
+          "name": "Orange",
+          "roleId": "1058796914885263360"
+        },
+        "academie_cybersecurite": {
+          "name": "Académie Cybersécurité",
+          "roleId": "1047179287138148352"
+        },
+        "academie_cybersecurite_icone": {
+          "name": "Cybersécurité",
+          "roleId": "1058795942830149662"
+        },
+        "academie_cybersecurite_couleur": {
+          "name": "Rose",
+          "roleId": "1058797224647204914"
+        },
+        "academie_design": {
+          "name": "Académie Design",
+          "roleId": "1047174066395676752"
+        },
+        "academie_design_icone": {
+          "name": "Design",
+          "roleId": "1058795950296010772"
+        },
+        "academie_design_couleur": {
+          "name": "Rouge",
+          "roleId": "1058797340963635270"
+        },
+        "academie_autre": {
+          "name": "Académie Autre",
+          "roleId": "1047174263049834597"
+        },
+        "academie_autre_icone": {
+          "name": "Autre",
+          "roleId": "1058796087516876861"
+        },
+        "academie_autre_couleur": {
+          "name": "Gris",
+          "roleId": "1058797418004631642"
+        }
+      },
+      "formations": {
+        "integrateur_web": {
+          "name": "[IW] Intégrateur Web",
+          "roleId": "1033052039187542107"
+        },
+        "developpeur_wordpress": {
+          "name": "[DWP] Développeur WordPress",
+          "roleId": "1033052166040072202"
+        },
+        "developpeur_web": {
+          "name": "[DW] Développeur Web",
+          "roleId": "654691713893531669"
+        },
+        "developpeur_application_php_symfony": {
+          "name": "[DAP/S] Développeur d'application - PHP/Symfony",
+          "roleId": "646364680968863775"
+        },
+        "developpeur_application_ios": {
+          "name": "[DAI] Développeur d'application - iOS",
+          "roleId": "646364509119971388"
+        },
+        "developpeur_application_android": {
+          "name": "[DAA] Développeur d'application - Android",
+          "roleId": "646364432271671298"
+        },
+        "developpeur_salesforce": {
+          "name": "[DSf] Développeur Salesforce",
+          "roleId": "646364040913879041"
+        },
+        "developpeur_application_java": {
+          "name": "[DAJ] Développeur d'application - Java",
+          "roleId": "646364729455017995"
+        },
+        "developpeur_application_javascript_react": {
+          "name": "[DAJR] Développeur d'application - Javascript React",
+          "roleId": "761183139283468298"
+        },
+        "developpeur_application_python": {
+          "name": "[DAPy] Développeur d'application - Python",
+          "roleId": "646364551855603735"
+        },
+        "developpeur_full_stack_java_angular": {
+          "name": "[DFS-JA] Développeur Full-Stack - Java & Angular",
+          "roleId": "1047174970222055424"
+        },
+        "architecte_logiciel": {
+          "name": "[AL] Architecte logiciel",
+          "roleId": "646363430575669248"
+        },
+        "old_developpeur_web_junior": {
+          "name": "(OLD) [DWJ] Développeur Web Junior",
+          "roleId": "646362171655323648"
+        },
+        "old_developpeur_application_front_end": {
+          "name": "(OLD) [DAFE] Développeur d'application - Front-End",
+          "roleId": "646364372045660181"
+        },
+        "old_prep_web": {
+          "name": "(OLD) [PW] Prep'Web",
+          "roleId": "646402911437324298"
+        },
+        "old_prep_full_stack": {
+          "name": "(OLD) [FS] Prep'Full-Stack",
+          "roleId": "647070658471395328"
+        },
+        "old_prep_android": {
+          "name": "(OLD) [PA] Prep'Android",
+          "roleId": "660482169139101727"
+        },
+        "old_developpeur_full_stack": {
+          "name": "(OLD) [DFS] Développeur Full Stack",
+          "roleId": "698474572122685450"
+        },
+        "business_intelligence_analyst": {
+          "name": "[BIA] Business Intelligence Analyst",
+          "roleId": "1033052631972720771"
+        },
+        "data_analyst": {
+          "name": "[DA] Data Analyst",
+          "roleId": "696173744153952356"
+        },
+        "data_scientist": {
+          "name": "[DS] Data Scientist",
+          "roleId": "710834984503738430"
+        },
+        "ingenieur_machine_learning": {
+          "name": "[IML] Ingénieur Machine Learning",
+          "roleId": "710835047694860348"
+        },
+        "ingenieur_ia": {
+          "name": "[IIA] Ingénieur IA",
+          "roleId": "710835144990130270"
+        },
+        "brand_manager": {
+          "name": "[BM] Brand Manager",
+          "roleId": "1033052867038289961"
+        },
+        "community_manager": {
+          "name": "[CM] Community Manager",
+          "roleId": "790952977937596458"
+        },
+        "chef_projet_marketing": {
+          "name": "[CPM] Chef de projet marketing",
+          "roleId": "1033053094633799690"
+        },
+        "old_expert_strategie_marketing_communication": {
+          "name": "(OLD) [ESMC] Expert en stratégie marketing et communication",
+          "roleId": "790952665349750834"
+        },
+        "old_responsable_marketing_operationnel_communication": {
+          "name": "(OLD) [RMOC] Responsable marketing opérationnel et communication",
+          "roleId": "790952808740159508"
+        },
+        "createur_entreprise": {
+          "name": "[CE] Créateur d'entreprise",
+          "roleId": "790951459520905236"
+        },
+        "manager_operationnel": {
+          "name": "[MO] Manager opérationnel",
+          "roleId": "790951670598074378"
+        },
+        "attache_commercial": {
+          "name": "[AC] Attaché commercial",
+          "roleId": "790951788429836298"
+        },
+        "technicien_informatique": {
+          "name": "[TI] Technicien informatique",
+          "roleId": "750426997414690816"
+        },
+        "administrateur_systemes_reseaux_securite": {
+          "name": "[ASRS] Administrateur systèmes, réseaux et sécurité",
+          "roleId": "648423968553828352"
+        },
+        "responsable_projet_cybersecurite_si": {
+          "name": "[RPCSI] Responsable de Projet Cybersécurité et SI",
+          "roleId": "790952109423853608"
+        },
+        "ingenieur_responsable_pedagogique": {
+          "name": "[IRP] Ingénieur responsable pédagogique",
+          "roleId": "790954051948773376"
+        },
+        "formateur_responsable_projets_pedagogiques": {
+          "name": "[FRPP] Formateur responsable de projets pédagogiques",
+          "roleId": "1033053609736273960"
+        },
+        "old_formateur_enseignant": {
+          "name": "(OLD) [F/E] Formateur / Enseignant",
+          "roleId": "790954160160899133"
+        },
+        "product_manager": {
+          "name": "[PM] Product Manager",
+          "roleId": "762993724590129223"
+        },
+        "chef_projet_digital": {
+          "name": "[CPD] Chef de projet digital",
+          "roleId": "679316012780224513"
+        },
+        "conseiller_evolution_professionnelle": {
+          "name": "[CEP] Conseiller en évolution professionnelle",
+          "roleId": "790951214992982016"
+        },
+        "responsable_learning_development": {
+          "name": "[RLD] Responsable Learning & Development",
+          "roleId": "790951033320505415"
+        },
+        "old_manager_rh": {
+          "name": "(OLD) [MRH] Manager RH",
+          "roleId": "790950567437402144"
+        },
+        "old_charge_gestion_ressources_humaines": {
+          "name": "(OLD) [CGRH] Chargé de gestion des ressources humaines",
+          "roleId": "790950556277538866"
+        },
+        "old_gestionnaire_paie": {
+          "name": "(OLD) [GP] Gestionnaire de paie",
+          "roleId": "790950208519405606"
+        },
+        "passeport_numerique": {
+          "name": "[PN] Passeport Numérique",
+          "roleId": "823199058234703922"
+        },
+        "clea_numerique": {
+          "name": "[CN] CléA numérique",
+          "roleId": "964163126310371398"
+        },
+        "supply_chain_analyst": {
+          "name": "[SCA] Supply Chain Analyst",
+          "roleId": "1047922782882775103"
+        },
+        "responsable_securite_systemes_information": {
+          "name": "[RSSI] Responsable en sécurité des systèmes d'information",
+          "roleId": "790952210607374367"
+        },
+        "ux_designer": {
+          "name": "[UXD] UX Designer",
+          "roleId": "752055308594970624"
+        },
+        "old_prep_apprentissage": {
+          "name": "(OLD) [PA] Prep'Apprentissage",
+          "roleId": "804722783963185213"
+        },
+        "sans_formation": {
+          "name": "Sans formation",
+          "roleId": "845283545676644363"
+        }
+      },
+      "apparence": {
+        "name": "Apparence",
+        "roleId": "1058796174494150757"
+      },
+      "diplome": {
+        "name": "Diplômé",
+        "roleId": "705042042480492544"
+      },
+      "mentor": {
+        "name": "Mentor",
+        "roleId": "648991513023479809"
+      }
+    }
+  }
+}

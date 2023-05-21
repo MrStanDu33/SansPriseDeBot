@@ -1,0 +1,91 @@
+{
+  "name": "sansprisedebot",
+  "version": "1.0.0",
+  "description": "Discord Bot that help new users to select the rights roles",
+  "homepage": "https://github.com/MrStanDu33/SansPriseDeBot/project#readme",
+  "bugs": {
+    "url": "https://github.com/MrStanDu33/SansPriseDeBot/issues",
+    "email": "contact@daniels-roth-stan.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrStanDu33/SansPriseDeBot"
+  },
+  "engines": {
+    "node": ">=18.7.0"
+  },
+  "engineStrict": true,
+  "main": "index.js",
+  "type": "module",
+  "author": "DANIELS-ROTH Stan <contact@daniels-roth-stan.fr> (https://daniels-roth-stan.fr/)",
+  "license": "GPL-3.0-or-later",
+  "private": "true",
+  "scripts": {
+    "preinstall": "link-module-alias clean || echo",
+    "postinstall": "link-module-alias",
+    "seed:roles": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/roles.js",
+    "seed:actions": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/actions.js ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^10.1.0",
+    "@sequelize/core": "7.0.0-alpha.13",
+    "chalk": "5.2.0",
+    "cli-spinners": "^2.7.0",
+    "discord.js": "^14.8.0",
+    "dotenv": "^16.0.3",
+    "i18n": "^0.15.1",
+    "json-refs": "^3.0.15",
+    "mysql2": "^3.2.0",
+    "node-cron": "^3.0.2",
+    "ora": "^6.3.0",
+    "stack-trace": "*",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "@dotenv/cli": "^2.2.2",
+    "@jest/globals": "29.5.0",
+    "@types/jest": "^29.5.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "better-docs": "^2.7.2",
+    "clean-jsdoc-theme": "^4.2.6",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^44.2.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "jest": "^29.5.0",
+    "jest-mock": "^29.5.0",
+    "link-module-alias": "^1.2.0",
+    "prettier": "^2.8.7"
+  },
+  "_moduleAliases": {
+    "$src": "src"
+  },
+  "contributors": [
+    {
+      "name": "MrStanDu33",
+      "email": "contact@daniels-roth-stan.fr",
+      "url": "https://github.com/MrStanDu33"
+    },
+    {
+      "name": "alexandrel63",
+      "email": "",
+      "url": "https://github.com/alexandrel63"
+    },
+    {
+      "name": "Kwaay",
+      "email": "benoit.dum74@gmail.com",
+      "url": "https://github.com/Kwaay"
+    },
+    {
+      "name": "snyk-bot",
+      "email": "snyk-bot@snyk.io",
+      "url": "https://github.com/snyk-bot"
+    }
+  ]
+}
