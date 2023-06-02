@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
-    "@sequelize/core": "7.0.0-alpha.13",
+    "@sequelize/core": "^7.0.0-alpha.26",
     "chalk": "5.2.0",
     "cli-spinners": "^2.7.0",
     "discord.js": "^14.8.0",
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.3",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@babel/preset-env": "^7.20.2",
     "@dotenv/cli": "^2.2.2",
     "@jest/globals": "29.5.0",

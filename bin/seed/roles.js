@@ -18,10 +18,10 @@ const { Role } = models;
 // TODO: Refactor to static class
 
 /**
- * @typedef {Object} BaseRole
+ * @typedef { object } BaseRole
  *
- * @property {string} name   - Name of the discord role.
- * @property {string} roleId - Id of the discord role.
+ * @property { string } name   - Name of the discord role.
+ * @property { string } roleId - Id of the discord role.
  */
 
 /**
@@ -29,9 +29,9 @@ const { Role } = models;
  *
  * @description Process all given roles, recursively.
  *
- * @param { BaseRole[] | [][] } roles - A collection of roles to save.
+ * @param   { BaseRole[] | [][] } roles - A collection of roles to save.
  *
- * @returns { Promise<Role>[] }  List off all models instances promises.
+ * @returns { Promise<Role>[] }         List off all models instances promises.
  */
 const processRoles = (roles) =>
   roles.map((role) => {
