@@ -12,8 +12,8 @@ class Message {
    * @constructs Message
    * @description Replaces mustaches interpolations with corresponding given values.
    *
-   * @param { string }                          message        - The message containing mustaches.
-   * @param { Object<string, (number|string)> } interpolations - Map of available interpolations variables.
+   * @param { string }                         message        - The message containing mustaches.
+   * @param { {[key: string]: string|number} } interpolations - Map of available interpolations variables.
    *
    * @example
    * const { message } = new Message(
