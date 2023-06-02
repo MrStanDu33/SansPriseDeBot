@@ -53,92 +53,96 @@ const cascadeHooks = {
   onUpdate: 'CASCADE',
 };
 
-db.FollowedMember.hasOne(db.LinkedChannel, cascadeHooks);
-db.LinkedChannel.belongsTo(db.FollowedMember);
+db.FollowedMember.hasOne(db.LinkedChannel, {
+  foreignKey: { ...cascadeHooks },
+});
 
-db.DecisionsTree.hasMany(db.Action, cascadeHooks);
-db.Action.belongsTo(db.DecisionsTree);
+db.DecisionsTree.hasMany(db.Action, { foreignKey: { ...cascadeHooks } });
 
 db.Action.hasOne(db.ActionQuestion, {
-  ...cascadeHooks,
   as: 'Question',
-  foreignKey: 'ActionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
-db.ActionQuestion.belongsTo(db.Action);
 
 db.ActionQuestion.hasMany(db.ActionQuestionAnswer, {
-  ...cascadeHooks,
   as: 'Answers',
-  foreignKey: 'ActionQuestionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionQuestionId',
+  },
 });
-db.ActionQuestionAnswer.belongsTo(db.ActionQuestion);
 
 db.ActionQuestionAnswer.hasMany(db.ActionQuestionAnswersHasAction, {
-  ...cascadeHooks,
+  foreignKey: { ...cascadeHooks },
   as: 'AnswerActions',
 });
-db.ActionQuestionAnswersHasAction.belongsTo(db.ActionQuestionAnswer);
 
 db.Action.hasMany(db.ActionQuestionAnswersHasAction, {
-  ...cascadeHooks,
+  foreignKey: { ...cascadeHooks },
   as: 'AnswerActions',
 });
-db.ActionQuestionAnswersHasAction.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionGoto, {
-  ...cascadeHooks,
   as: 'Goto',
-  foreignKey: 'ActionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
-db.ActionGoto.belongsTo(db.Action);
 
-db.Action.hasOne(db.ActionGoto);
-db.ActionGoto.belongsTo(db.Action, {
-  foreignKey: 'TargetActionId',
-  ...cascadeHooks,
+db.Action.hasOne(db.ActionGoto, {
+  foreignKey: {
+    ...cascadeHooks,
+  },
+  inverse: {
+    as: 'TargetAction',
+  },
 });
 
 db.Action.hasOne(db.ActionPrintMessage, {
-  ...cascadeHooks,
   as: 'PrintMessage',
-  foreignKey: 'ActionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
-db.ActionPrintMessage.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionAddRole, {
-  ...cascadeHooks,
   as: 'AddRole',
-  foreignKey: 'ActionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
-db.ActionAddRole.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionRemoveRole, {
-  ...cascadeHooks,
   as: 'RemoveRole',
-  foreignKey: 'ActionId',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
-db.ActionRemoveRole.belongsTo(db.Action);
 
 db.Action.hasOne(db.ActionPromptFile, {
-  ...cascadeHooks,
   as: 'PromptFile',
-  foreignKey: 'ActionId',
-});
-db.ActionPromptFile.belongsTo(db.Action, {
-  as: 'Action',
+  foreignKey: {
+    ...cascadeHooks,
+    name: 'ActionId',
+  },
 });
 
 db.ActionPromptFile.hasMany(db.ActionPromptFileHasAction, {
-  ...cascadeHooks,
+  foreignKey: { ...cascadeHooks },
   as: 'Actions',
 });
-db.ActionPromptFileHasAction.belongsTo(db.ActionPromptFile);
 
 db.Action.hasMany(db.ActionPromptFileHasAction, {
-  ...cascadeHooks,
+  foreignKey: { ...cascadeHooks },
   as: 'Actions',
 });
-db.ActionPromptFileHasAction.belongsTo(db.Action);
 
 db.ActionPromptFile.belongsToMany(db.MimeType, {
   as: 'MimeTypes',
@@ -148,24 +152,19 @@ db.MimeType.belongsToMany(db.ActionPromptFile, {
   through: 'Action_PromptFiles_Has_MimeTypes',
 });
 
-db.Role.hasOne(db.ActionAddRole, cascadeHooks);
-db.ActionAddRole.belongsTo(db.Role);
+db.Role.hasOne(db.ActionAddRole, { foreignKey: { ...cascadeHooks } });
 
-db.Role.hasOne(db.ActionRemoveRole, cascadeHooks);
-db.ActionRemoveRole.belongsTo(db.Role);
+db.Role.hasOne(db.ActionRemoveRole, { foreignKey: { ...cascadeHooks } });
 
 db.Action.hasOne(db.FollowedMember, {
   foreignKey: 'CurrentActionId',
 });
-db.FollowedMember.belongsTo(db.Action, {
-  foreignKey: 'CurrentActionId',
+
+db.FollowedMember.hasMany(db.RolesToAddToMember, {
+  foreignKey: { cascadeHooks },
 });
 
-db.FollowedMember.hasMany(db.RolesToAddToMember, cascadeHooks);
-db.RolesToAddToMember.belongsTo(db.FollowedMember);
-
-db.Role.hasMany(db.RolesToAddToMember, cascadeHooks);
-db.RolesToAddToMember.belongsTo(db.Role);
+db.Role.hasMany(db.RolesToAddToMember, { foreignKey: { ...cascadeHooks } });
 
 const loaderSync = Logger.loader(
   { spinner: 'dots', color: 'cyan' },
