@@ -96,6 +96,11 @@
       "name": "snyk-bot",
       "email": "snyk-bot@snyk.io",
       "url": "https://github.com/snyk-bot"
+    },
+    {
+      "name": "alexanderhollauf",
+      "email": "",
+      "url": "https://github.com/alexanderhollauf"
     }
   ]
 }
