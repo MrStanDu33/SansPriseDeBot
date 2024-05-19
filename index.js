@@ -3,10 +3,13 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
+import sourceMapSupport from 'source-map-support';
 import '$src/config';
 import App from '$src/Classes/App';
 import Logger from '$src/Logger';
 import Store from '$src/Store';
+
+sourceMapSupport.install();
 
 Error.stackTraceLimit = Infinity;
 
