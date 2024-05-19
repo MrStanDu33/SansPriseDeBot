@@ -11,7 +11,6 @@
     "noImplicitAny": true,
     "allowJs": true,
     "outDir": "dist",
-    "rootDirs": ["src", "tests"],
 
     "sourceMap": true
   }

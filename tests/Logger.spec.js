@@ -2,7 +2,6 @@
  * @file Test Logger class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
-// @ts-nocheck
 
 import { PassThrough } from 'node:stream';
 import { jest } from '@jest/globals';
@@ -46,7 +45,7 @@ describe('Logger', () => {
        * @function terminalCallback
        * @description Prevent terminal refresh.
        */
-      const terminalCallback = () => {};
+      const terminalCallback = jest.fn();
 
       stream.clearLine = terminalCallback;
       stream.cursorTo = terminalCallback;

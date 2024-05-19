@@ -96,7 +96,6 @@ const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
 
   await memberMessage.channel.send({
     content: '\nSouhaitez-vous approuver le document ?',
-    // @ts-ignore
     components: [component],
   });
 

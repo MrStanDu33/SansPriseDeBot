@@ -60,7 +60,6 @@ const disableMessageButtons = async (message, clickedButtonId) => {
 
     updatedActionRow.addComponents(
       oldActionRow.components.map((buttonComponent) => {
-        // @ts-ignore
         const newButton = ButtonBuilder.from(buttonComponent);
 
         // eslint-disable-next-line operator-linebreak
@@ -76,7 +75,6 @@ const disableMessageButtons = async (message, clickedButtonId) => {
     return updatedActionRow;
   });
 
-  // @ts-ignore
   message.edit({ components: newActionRowEmbeds });
 };
 

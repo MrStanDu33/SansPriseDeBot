@@ -7,7 +7,6 @@
 
 import Logger from '$src/Logger/index';
 import Dotenv from 'dotenv';
-// @ts-ignore
 import FormationRolesDecisionsTree from '../../src/Db/DecisionsTrees/FormationRolesDecisionsTree.json' assert { type: 'json' };
 
 Dotenv.config();

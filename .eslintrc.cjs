@@ -7,11 +7,13 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb-base',
-    'plugin:prettier/recommended',
     'plugin:jsdoc/recommended',
+    'airbnb-base',
+    'plugin:@typescript-eslint/strict-type-checked',
+    'plugin:@typescript-eslint/stylistic-type-checked',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['prettier', 'jsdoc'],
+  plugins: ['prettier', 'jsdoc', '@typescript-eslint'],
   rules: {
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
@@ -123,7 +125,7 @@ module.exports = {
     ],
     'jsdoc/valid-types': 1,
   },
-  ignorePatterns: ['docs', 'node_modules'],
+  ignorePatterns: ['docs', 'node_modules', 'dist', '*.json'],
   settings: {
     'import/resolver': {
       alias: [['$src', './src']],
@@ -140,8 +142,17 @@ module.exports = {
   globals: {
     node: true,
   },
-  parser: '@babel/eslint-parser',
+  overrides: [
+    {
+      extends: ['plugin:@typescript-eslint/disable-type-checked'],
+      files: ['./**/*.js', './**/*.cjs', './**/*.mjs'],
+    },
+  ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
+    project: true,
+    tsconfigRootDir: __dirname,
+    extraFileExtensions: ['.json'],
   },
 };

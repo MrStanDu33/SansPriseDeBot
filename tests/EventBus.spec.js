@@ -2,7 +2,6 @@
  * @file Test EventBus class.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
-// @ts-nocheck
 
 import { jest } from '@jest/globals';
 import EventBus from '$src/EventBus';
@@ -31,7 +30,7 @@ describe('EventBus', () => {
     });
 
     it('Should allow to register an event', () => {
-      EventBus.on('eventName', () => {});
+      EventBus.on('eventName', jest.fn());
 
       // eslint-disable-next-line no-underscore-dangle
       expect(EventBus._eventName).toBeTruthy();

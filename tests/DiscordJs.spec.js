@@ -2,7 +2,6 @@
  * @file Test discord.js bot authentication.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
-// @ts-nocheck
 
 import { Client, IntentsBitField } from 'discord.js';
 import { jest } from '@jest/globals';

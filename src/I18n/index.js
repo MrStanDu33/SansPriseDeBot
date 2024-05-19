@@ -20,7 +20,6 @@ i18n.configure({
   retryInDefaultLocale: false,
 });
 
-// @ts-ignore
 i18n.l = i18n.__; // eslint-disable-line no-underscore-dangle
 
 export default i18n;

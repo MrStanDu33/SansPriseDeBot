@@ -206,7 +206,7 @@ export default async () => {
 
   const discordMembersToFollow = [...membersOnServer]
     // eslint-disable-next-line no-unused-vars
-    .map(([_id, member]) => member)
+    .map(([, member]) => member)
     .filter((member) => !membersIdsTracked.includes(member.user.id))
     .filter((member) => {
       if (member.user.bot) return false;
