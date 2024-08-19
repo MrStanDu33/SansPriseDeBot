@@ -50,7 +50,7 @@ class EventBus {
     if (!this.registry[key]) this.registry[key] = [];
 
     Logger.debug(`Listening "${event}" event`);
-    this.registry[key]!.push(callback);
+    this.registry[key]?.push(callback);
   }
 
   /**
@@ -84,11 +84,12 @@ class EventBus {
     const key = `_${event}`;
     if (this.registry[key] === undefined) return;
 
-    // eslint-disable-next-line no-restricted-syntax
+    // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/no-non-null-assertion
     for (const callback of this.registry[key]!) {
       if (async) {
         void callback(...args);
       } else {
+        // eslint-disable-next-line no-await-in-loop
         await callback(...args);
       }
     }
