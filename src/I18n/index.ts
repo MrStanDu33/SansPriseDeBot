@@ -9,9 +9,10 @@ import path from 'path';
 /**
  * @description I18n library.
  *
- * @exports Libraries/I18n
+ * @exports Libraries.I18n
  */
-const i18n = new I18n();
+
+const i18n: I18n = new I18n();
 
 i18n.configure({
   locales: ['fr', 'en'],
@@ -19,7 +20,5 @@ i18n.configure({
   defaultLocale: process.env.DEFAULT_LOCALE,
   retryInDefaultLocale: false,
 });
-
-i18n.l = i18n.__; // eslint-disable-line no-underscore-dangle
 
 export default i18n;
