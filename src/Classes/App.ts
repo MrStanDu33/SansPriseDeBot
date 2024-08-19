@@ -15,6 +15,8 @@ import cron from 'node-cron';
  * @description App instance.
  */
 class App {
+  Store: null | typeof Store;
+
   /**
    * @description Creates app and initialize Discord bot.
    *
@@ -26,7 +28,6 @@ class App {
    */
   constructor() {
     this.Store = Store;
-
     Logger.info('Starting Discord.js client');
     if (!this.Store.client) {
       // TODO: Review discord Intents for more security
@@ -42,22 +43,30 @@ class App {
         intents,
       });
     }
-    this.Store.client.login(process.env.DISCORD_BOT_TOKEN);
-
     const loader = Logger.loader(
       { spinner: 'aesthetic', color: 'cyan' },
       'Connecting Discord bot to Discord ...',
       'info',
     );
 
-    Store.client.on('ready', async () => {
-      await EventBus.emit({ event: 'Discord_ready', args: [loader] });
-      await EventBus.emit({ event: 'App_syncDbOnBoot' });
+    void this.Store.client
+      .login(process.env.DISCORD_BOT_TOKEN)
+      .catch((err: unknown) => {
+        Logger.error(err);
+      });
+
+    this.Store.client.on('ready', () => {
+      void EventBus.emit({
+        event: 'Discord_ready',
+        args: [loader],
+        async: false,
+      });
+      void EventBus.emit({ event: 'App_syncDbOnBoot', async: false });
 
       App.setCronJobs();
     });
 
-    Store.client.on('shardError', (error) => {
+    this.Store.client.on('shardError', (error) => {
       Logger.error(true, 'A websocket connection encountered an error:', error);
     });
   }
@@ -74,15 +83,19 @@ class App {
    * App.setCronJobs();
    */
   static setCronJobs() {
+    if (process.env.TIMEOUT_BATCH_FREQUENCY === undefined) return;
+
     const timeoutBatchFrequency = `*/${process.env.TIMEOUT_BATCH_FREQUENCY} * * * *`;
-    cron.schedule(timeoutBatchFrequency, () =>
-      EventBus.emit({ event: 'App_timeoutUsers' }),
-    );
+    cron.schedule(timeoutBatchFrequency, () => {
+      void EventBus.emit({ event: 'App_timeoutUsers' });
+    });
+
+    if (process.env.AWAITING_MEMBERS_BATCH_FREQUENCY === undefined) return;
 
     const awaitingMembersBatchFrequency = `*/${process.env.AWAITING_MEMBERS_BATCH_FREQUENCY} * * * *`;
-    cron.schedule(awaitingMembersBatchFrequency, () =>
-      EventBus.emit({ event: 'App_processAwaitingMembers' }),
-    );
+    cron.schedule(awaitingMembersBatchFrequency, () => {
+      void EventBus.emit({ event: 'App_processAwaitingMembers' });
+    });
   }
 }
 
