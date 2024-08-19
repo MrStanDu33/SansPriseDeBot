@@ -17,6 +17,8 @@ module.exports = {
   rules: {
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
+    'no-void': ['error', { allowAsStatement: true }],
+
     'jsdoc/check-access': 'off',
     'jsdoc/check-alignment': 2,
     'jsdoc/check-examples': 0,
