@@ -11,10 +11,11 @@ import chalk from 'chalk';
 import { get } from 'stack-trace';
 import cliSpinners from 'cli-spinners';
 import Store from '$src/Store';
+import { ChannelType } from 'discord.js';
 
-/** @typedef { import('ora').Color } Color */
-/** @typedef { import('ora').Options } SpinnerSettings */
-/** @typedef { import('ora').Ora } Loader */
+type SpinnerSettings = import('ora').Options;
+type Loader = import('ora').Ora;
+type LogType = 'debug' | 'info' | 'warn' | 'error';
 
 /**
  * @class
@@ -22,8 +23,9 @@ import Store from '$src/Store';
  *
  * @hideconstructor
  *
- * @exports Libraries/Logger
+ * @exports Libraries.Logger
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class Logger {
   /**
    * @static
@@ -31,13 +33,13 @@ class Logger {
    * @description It creates a new ora instance with the given spinner and message, and starts
    * the spinner. It also logs the message to the console using the given logType.
    *
-   * @param   { SpinnerSettings }               spinnerSettings - A spinner configuration.
-   * @param   { any }                           message         - The message to print while the loader is spinning.
-   * @param   { 'debug'|'info'|'warn'|'error' } logType         - The type of log to print to the console.
+   * @param   { SpinnerSettings } spinnerSettings - A spinner configuration.
+   * @param   { unknown }         message         - The message to print while the loader is spinning.
+   * @param   { LogType }         logType         - The type of log to print to the console.
    *
    * @throws  { Error }                                         - Thrown if argument is not valid.
    *
-   * @returns { Loader }                                        - The spinner instance.
+   * @returns { Loader }                          - The spinner instance.
    *
    * @example
    * // create a new loader ...
@@ -49,7 +51,11 @@ class Logger {
    * // stop loader and mark it as failed
    * loader.fail();
    */
-  static loader(spinnerSettings, message, logType) {
+  static loader(
+    spinnerSettings: SpinnerSettings,
+    message: unknown,
+    logType: LogType,
+  ): Loader {
     if (typeof message !== 'string' || message.length === 0) {
       throw new Error(
         'Please provide a valid message to print while loader spinning',
@@ -65,7 +71,7 @@ class Logger {
     if (
       !Object.prototype.hasOwnProperty.call(
         cliSpinners,
-        spinnerSettings.spinner,
+        String(spinnerSettings.spinner),
       )
     ) {
       throw new Error(
@@ -82,7 +88,13 @@ class Logger {
       text: message + os.EOL,
     }).start();
 
-    const methodName = `${logType}ToFile`;
+    type LoggerMethod =
+      | 'debugToFile'
+      | 'infoToFile'
+      | 'warnToFile'
+      | 'errorToFile';
+
+    const methodName: LoggerMethod = `${logType}ToFile`;
     Logger[methodName](message);
 
     return spinnerInstance;
@@ -93,14 +105,14 @@ class Logger {
    *
    * @description Prints given debug messages to the console and to log file in debug mode.
    *
-   * @param   { ...any } debug - Debug messages to be logged.
+   * @param   { unknown[] } debug - Debug messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.debug('This is a debug message', 12, false);
    */
-  static debug(...debug) {
+  static debug(...debug: unknown[]): void {
     Logger.debugToConsole(...debug);
     Logger.debugToFile(...debug);
   }
@@ -111,14 +123,14 @@ class Logger {
    * @description Prints given info messages to the console, to discord debug channel and to
    * log file in info mode.
    *
-   * @param   { ...any } info - Info messages to be logged.
+   * @param   { unknown[] } info - Info messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.info('This is an info message', false, 20);
    */
-  static info(...info) {
+  static info(...info: unknown[]): void {
     Logger.infoToConsole(...info);
     Logger.infoToFile(...info);
     Logger.infoToDiscord(...info);
@@ -130,14 +142,14 @@ class Logger {
    * @description Prints given warning messages to the console, to discord debug channel and to
    * log file in warning mode.
    *
-   * @param   { ...any } warn - Warning messages to be logged.
+   * @param   { unknown[] } warn - Warning messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.warn('This is a warn message', true, 42);
    */
-  static warn(...warn) {
+  static warn(...warn: unknown[]): void {
     Logger.warnToConsole(...warn);
     Logger.warnToFile(...warn);
     Logger.warnToDiscord(...warn);
@@ -151,9 +163,9 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }       [ error ] - Data to be logged.
-   * @param   { boolean } error[].0 - If set to true, log error as fatal.
-   * @param   { ...any }  error[].1 - Error messages to be logged.
+   * @param   { * }         [ error ] - Data to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { unknown[] } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    *
@@ -162,7 +174,7 @@ class Logger {
    *
    * Logger.error(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console nor file
    */
-  static error(...error) {
+  static error(...error: unknown[]): void {
     Logger.errorToConsole(...error);
     Logger.errorToFile(...error);
     Logger.errorToDiscord(...error);
@@ -173,15 +185,15 @@ class Logger {
    *
    * @description Prints given info messages to the discord log channel.
    *
-   * @param   { ...any } info - Info messages to be logged.
+   * @param   { unknown[] } info - Info messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.infoToDiscord('This is an info message', false, 20);
    */
-  static infoToDiscord(...info) {
-    Logger.#writeToDiscordLogChannel(
+  static infoToDiscord(...info: unknown[]): void {
+    void Logger.#writeToDiscordLogChannel(
       `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.info} | ${
         info.length === 1 && typeof info[0] === 'string'
           ? info[0]
@@ -195,15 +207,15 @@ class Logger {
    *
    * @description Prints given info messages to the discord log channel.
    *
-   * @param   { ...any } warn - Warning messages to be logged.
+   * @param   { unknown[] } warn - Warning messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.warnToConsole('This is a warn message', true, 42);
    */
-  static warnToDiscord(...warn) {
-    Logger.#writeToDiscordLogChannel(
+  static warnToDiscord(...warn: unknown[]): void {
+    void Logger.#writeToDiscordLogChannel(
       `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.warn} | ${
         warn.length === 1 && typeof warn[0] === 'string'
           ? warn[0]
@@ -219,9 +231,9 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }       [ error ] - Data to be logged.
-   * @param   { boolean } error[].0 - If set to true, log error as fatal.
-   * @param   { ...any }  error[].1 - Error messages to be logged.
+   * @param   { * }         [ error ] - Data to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { unknown[] } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    *
@@ -230,8 +242,8 @@ class Logger {
    *
    * Logger.errorToDiscord(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console
    */
-  static errorToDiscord(...error) {
-    Logger.#writeToDiscordLogChannel(
+  static errorToDiscord(...error: unknown[]): void {
+    void Logger.#writeToDiscordLogChannel(
       `\`${Logger.#getDateTime()}\` | ${Logger.#prefixes.discord.error} | ${
         error.length === 1 && typeof error[0] === 'string'
           ? error[0]
@@ -255,15 +267,20 @@ class Logger {
    * @example
    * Logger.#writeToDiscordLogChannel('this is an example message to log');
    */
-  static async #writeToDiscordLogChannel(...data) {
+  static async #writeToDiscordLogChannel(...data: string[]): Promise<void> {
+    const { DISCORD_SERVER_ID, DISCORD_LOG_CHANNEL_ID } = process.env;
+    if (!DISCORD_SERVER_ID || !DISCORD_LOG_CHANNEL_ID) return;
+
     try {
-      const { DISCORD_SERVER_ID, DISCORD_LOG_CHANNEL_ID } = process.env;
       const { client } = Store;
 
-      if (client === undefined || !client.isReady()) return;
+      if (!client?.isReady()) return;
 
       const guild = await client.guilds.fetch(DISCORD_SERVER_ID);
       const channel = await guild.channels.fetch(DISCORD_LOG_CHANNEL_ID);
+
+      if (!channel || channel.type !== ChannelType.GuildText) return;
+
       // eslint-disable-next-line no-restricted-syntax
       for (const message of data) {
         // eslint-disable-next-line no-await-in-loop
@@ -271,11 +288,11 @@ class Logger {
       }
     } catch (error) {
       Logger.errorToConsole(
-        `Unable to send log message to discord channel with given id ${process.env.DISCORD_LOG_CHANNEL_ID}`,
+        `Unable to send log message to discord channel with given id ${DISCORD_LOG_CHANNEL_ID}`,
         error,
       );
       Logger.errorToFile(
-        `Unable to send log message to discord channel with given id ${process.env.DISCORD_LOG_CHANNEL_ID}`,
+        `Unable to send log message to discord channel with given id ${DISCORD_LOG_CHANNEL_ID}`,
         error,
       );
     }
@@ -288,14 +305,14 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the console.
    *
-   * @param   { ...any } debug - Debug messages to be logged.
+   * @param   { unknown[] } debug - Debug messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.debugToConsole('This is a debug message', 12, false);
    */
-  static debugToConsole(...debug) {
+  static debugToConsole(...debug: unknown[]): void {
     if (process.env.APP_DEBUG === 'false') return;
     // eslint-disable-next-line no-console
     console.log(`${Logger.#prefixes.console.debug} |`, ...debug);
@@ -306,14 +323,14 @@ class Logger {
    *
    * @description Prints given info messages to the console in log mode.
    *
-   * @param   { ...any } info - Info messages to be logged.
+   * @param   { unknown[] } info - Info messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.infoToConsole('This is an info message', false, 20);
    */
-  static infoToConsole(...info) {
+  static infoToConsole(...info: unknown[]): void {
     // eslint-disable-next-line no-console
     console.log(`${Logger.#prefixes.console.info} |`, ...info);
   }
@@ -323,14 +340,14 @@ class Logger {
    *
    * @description Prints given warning messages to the console in warn mode.
    *
-   * @param   { ...any } warn - Warning messages to be logged.
+   * @param   { unknown[] } warn - Warning messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.warnToConsole('This is a warn message', true, 42);
    */
-  static warnToConsole(...warn) {
+  static warnToConsole(...warn: unknown[]): void {
     // eslint-disable-next-line no-console
     console.warn(`${Logger.#prefixes.console.warn} |`, ...warn);
   }
@@ -342,9 +359,9 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }       [ error ] - Data to be logged.
-   * @param   { boolean } error[].0 - If set to true, log error as fatal.
-   * @param   { ...any }  error[].1 - Error messages to be logged.
+   * @param   { * }         [ error ] - Data to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { unknown[] } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    *
@@ -353,7 +370,7 @@ class Logger {
    *
    * Logger.errorToConsole(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be logged in console
    */
-  static errorToConsole(...error) {
+  static errorToConsole(...error: unknown[]): void {
     const fatal = error.length > 1 && error[0] === true && error.shift();
     const method = fatal ? 'error' : 'log';
     const flag = fatal ? 'fatal' : 'error';
@@ -374,10 +391,12 @@ class Logger {
    * @example
    * Logger.#writeToLogFile('this is an example message to log');
    */
-  static #writeToLogFile(...data) {
+  static #writeToLogFile(...data: string[]): void {
+    if (!process.env.APP_DEBUG_FILE) return;
+
     fs.writeFile(
       process.env.APP_DEBUG_FILE,
-      data + os.EOL,
+      data.join('') + os.EOL,
       { flag: 'a' },
       (err) => {
         if (err) throw err;
@@ -393,20 +412,21 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the log file.
    *
-   * @param   { ...any } debug - Debug messages to be logged.
+   * @param   { unknown[] } debug - Debug messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.debugToFile('This is a debug message', 12, false);
    */
-  static debugToFile(...debug) {
+  static debugToFile(...debug: unknown[]): void {
     if (process.env.APP_DEBUG === 'false') return;
+
     debug.forEach((debugData) => {
       Logger.#writeToLogFile(
         `${Logger.#getDateTime()} | ${
           Logger.#prefixes.file.debug
-        } | ${Logger.#getCaller()} | ${debugData}`,
+        } | ${Logger.#getCaller()} | ${String(debugData)}`,
       );
     });
   }
@@ -417,19 +437,19 @@ class Logger {
    * @description Writes given info messages to the log file.
    * It will automatically prefix info messages with date-time and caller.
    *
-   * @param   { ...any } info - Info messages to be logged.
+   * @param   { unknown[] } info - Info messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.infoToFile('This is an info message', false, 20);
    */
-  static infoToFile(...info) {
+  static infoToFile(...info: unknown[]): void {
     info.forEach((infoData) => {
       Logger.#writeToLogFile(
         `${Logger.#getDateTime()} | ${
           Logger.#prefixes.file.info
-        } | ${Logger.#getCaller()} | ${infoData}`,
+        } | ${Logger.#getCaller()} | ${String(infoData)}`,
       );
     });
   }
@@ -442,19 +462,19 @@ class Logger {
    * If the APP_DEBUG environment variable is set to false, then the function will not
    * log anything to the log file.
    *
-   * @param   { ...any } warn - Warning messages to be logged.
+   * @param   { unknown[] } warn - Warning messages to be logged.
    *
    * @returns { void }
    *
    * @example
    * Logger.warnToFile('This is a warn message', true, 42);
    */
-  static warnToFile(...warn) {
+  static warnToFile(...warn: unknown[]): void {
     warn.forEach((warnData) => {
       Logger.#writeToLogFile(
         `${Logger.#getDateTime()} | ${
           Logger.#prefixes.file.warn
-        } | ${Logger.#getCaller()} | ${warnData}`,
+        } | ${Logger.#getCaller()} | ${String(warnData)}`,
       );
     });
   }
@@ -467,9 +487,9 @@ class Logger {
    * If first given argument is a boolean and is evaluated as true, the function will log the error
    * in fatal mode.
    *
-   * @param   { * }       [ error ] - Data to be logged.
-   * @param   { boolean } error[].0 - If set to true, log error as fatal.
-   * @param   { ...any }  error[].1 - Error messages to be logged.
+   * @param   { * }         [ error ] - Data to be logged.
+   * @param   { boolean }   error[].0 - If set to true, log error as fatal.
+   * @param   { unknown[] } error[].1 - Error messages to be logged.
    *
    * @returns { void }
    *
@@ -478,14 +498,14 @@ class Logger {
    *
    * Logger.errorToFile(true, 'This is a fatal error message', 12, false); // note the first param being a boolean set to true, it will not be written in file
    */
-  static errorToFile(...error) {
+  static errorToFile(...error: unknown[]): void {
     error.forEach((errorData, index) => {
       if (errorData === true && index === 0) return;
 
       Logger.#writeToLogFile(
         `${Logger.#getDateTime()} | ${
           Logger.#prefixes.file.error
-        } | ${Logger.#getCaller()} | ${errorData}`,
+        } | ${Logger.#getCaller()} | ${String(errorData)}`,
       );
     });
   }
@@ -552,8 +572,8 @@ class Logger {
    *
    * console.log(year); // '2018'
    */
-  static #getYear(date) {
-    return `${date.getFullYear()}`;
+  static #getYear(date: Date): string {
+    return date.getFullYear().toString();
   }
 
   /**
@@ -571,7 +591,7 @@ class Logger {
    *
    * console.log(month); // 'Sep'
    */
-  static #getMonth(date) {
+  static #getMonth(date: Date): string {
     return [
       'Jan',
       'Feb',
@@ -606,8 +626,8 @@ class Logger {
    * console.log(day1); // '22'
    * console.log(day2); // '02'
    */
-  static #getDay(date) {
-    return `0${date.getDate()}`.slice(-2);
+  static #getDay(date: Date): string {
+    return `0${date.getDate().toString()}`.slice(-2);
   }
 
   /**
@@ -628,8 +648,8 @@ class Logger {
    * console.log(hour1); // '15'
    * console.log(hour2); // '05'
    */
-  static #getHours(date) {
-    return `0${date.getHours()}`.slice(-2);
+  static #getHours(date: Date): string {
+    return `0${date.getHours().toString()}`.slice(-2);
   }
 
   /**
@@ -650,8 +670,8 @@ class Logger {
    * console.log(minute1); // '12'
    * console.log(minute2); // '02'
    */
-  static #getMinutes(date) {
-    return `0${date.getMinutes()}`.slice(-2);
+  static #getMinutes(date: Date): string {
+    return `0${date.getMinutes().toString()}`.slice(-2);
   }
 
   /**
@@ -672,8 +692,8 @@ class Logger {
    * console.log(second1); // '25'
    * console.log(second2); // '05'
    */
-  static #getSeconds(date) {
-    return `0${date.getSeconds()}`.slice(-2);
+  static #getSeconds(date: Date): string {
+    return `0${date.getSeconds().toString()}`.slice(-2);
   }
 
   /**
@@ -694,8 +714,8 @@ class Logger {
    * console.log(milliSecond1); // '154'
    * console.log(milliSecond2); // '001'
    */
-  static #getMilliseconds(date) {
-    return `00${date.getMilliseconds()}`.slice(-3);
+  static #getMilliseconds(date: Date): string {
+    return `00${date.getMilliseconds().toString()}`.slice(-3);
   }
 
   /**
@@ -711,7 +731,7 @@ class Logger {
    *
    * console.log(dateTime); // '2018 Sep 22 - 15:12:25,154'
    */
-  static #getDateTime() {
+  static #getDateTime(): string {
     const date = new Date();
 
     const year = Logger.#getYear(date);
@@ -744,12 +764,13 @@ class Logger {
    *
    * main();
    */
-  static #getCaller() {
-    const source = get()[5].getFileName();
+  static #getCaller(): string {
+    const stackFrame = get()[5];
+    const source: string = stackFrame.getFileName();
 
     if (source) {
       const filename = path.basename(source);
-      const line = get()[5].getLineNumber();
+      const line = stackFrame.getLineNumber().toString();
       return `${filename}:${line}`.padStart(25, ' ');
     }
 

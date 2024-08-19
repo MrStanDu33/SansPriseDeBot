@@ -64,6 +64,7 @@
     "@jest/globals": "29.5.0",
     "@types/jest": "^29.5.0",
     "@types/source-map-support": "^0.5.10",
+    "@types/stack-trace": "^0.0.33",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "babel-eslint": "^10.1.0",
