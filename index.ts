@@ -23,7 +23,10 @@ process.once('SIGUSR2', () => {
     'Disconnecting Discord bot to Discord ...',
     'info',
   );
-  Store.client?.destroy();
+
+  if (Store.client !== null) {
+    Store.client.destroy();
+  }
   loader.succeed();
   Logger.info('Discord bot successfully disconnected');
   process.kill(process.pid, 'SIGUSR2');
