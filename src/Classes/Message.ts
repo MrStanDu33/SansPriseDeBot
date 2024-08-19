@@ -7,7 +7,10 @@
  * @class
  * @description Message manager.
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class Message {
+  message: string;
+
   /**
    * @constructs Message
    * @description Replaces mustaches interpolations with corresponding given values.
@@ -22,7 +25,10 @@ class Message {
    * );
    * console.log(message); // 'This is a nice message !'
    */
-  constructor(message, interpolations) {
+  constructor(
+    message: string,
+    interpolations: Record<string, string | number>,
+  ) {
     this.message = message;
 
     const availableInterpolations =
