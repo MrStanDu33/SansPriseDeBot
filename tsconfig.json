@@ -13,6 +13,10 @@
     "allowJs": true,
     "outDir": "dist",
     "sourceMap": true,
-    "types": [ "i18n" ]
+    "types": [ "i18n" ],
+    "baseUrl": ".",
+    "paths": {
+      "$src/*": ["src/*"]
+    }
   }
 }
