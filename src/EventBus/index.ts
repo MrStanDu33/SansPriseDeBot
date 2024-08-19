@@ -50,7 +50,7 @@ class EventBus {
     if (!this.registry[key]) this.registry[key] = [];
 
     Logger.debug(`Listening "${event}" event`);
-    this.registry[key].push(callback);
+    this.registry[key]!.push(callback);
   }
 
   /**
@@ -58,12 +58,12 @@ class EventBus {
    *
    * @description It calls all the callbacks associated with the emitted event.
    *
-   * @param { EventTriggerSettings } settings         - Configuration of emitted event.
-   * @param { EventName }            settings.event   - The name of the event to emit.
-   * @param { EventCallbackArgs }    [settings.args]  - List of arguments passed to callbacks.
-   * @param { EventCallbackIsAsync } [settings.async] - Wether callbacks should be ran asynchronously or not.
+   * @param   { EventTriggerSettings } settings         - Configuration of emitted event.
+   * @param   { EventName }            settings.event   - The name of the event to emit.
+   * @param   { EventCallbackArgs }    [settings.args]  - List of arguments passed to callbacks.
+   * @param   { EventCallbackIsAsync } [settings.async] - Wether callbacks should be ran asynchronously or not.
    *
-   * @returns { Promise<void> } - A promise that resolves when all callbacks have been executed.
+   * @returns { Promise<void> }                         - A promise that resolves when all callbacks have been executed.
    *
    * @example
    * await EventBus.emit({
@@ -85,7 +85,7 @@ class EventBus {
     if (this.registry[key] === undefined) return;
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const callback of this.registry[key]) {
+    for (const callback of this.registry[key]!) {
       if (async) {
         void callback(...args);
       } else {
