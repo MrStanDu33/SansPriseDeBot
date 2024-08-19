@@ -13,11 +13,19 @@ module.exports = {
     'plugin:@typescript-eslint/stylistic-type-checked',
     'plugin:prettier/recommended',
   ],
-  plugins: ['prettier', 'jsdoc', '@typescript-eslint'],
+  plugins: ['prettier', 'jsdoc', '@typescript-eslint', 'import'],
   rules: {
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
     'no-void': ['error', { allowAsStatement: true }],
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        ts: 'never',
+      },
+    ],
 
     'jsdoc/check-access': 'off',
     'jsdoc/check-alignment': 2,
@@ -130,6 +138,7 @@ module.exports = {
   ignorePatterns: ['docs', 'node_modules', 'dist', '*.json'],
   settings: {
     'import/resolver': {
+      typescript: {},
       alias: [['$src', './src']],
     },
     jsdoc: {
