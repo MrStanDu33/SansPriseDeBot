@@ -5,16 +5,15 @@
  * @module Models/RolesToAddToMember
  */
 
-/** @typedef { import('@sequelize/core').Sequelize } Sequelize */
-/** @typedef { import('@sequelize/core').Model } Model */
-/** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
+type Sequelize = import('@sequelize/core').Sequelize;
+type ModelStatic = import('@sequelize/core').ModelStatic;
 
 /**
  * @description RolesToAddToMembers model initializer.
  *
- * @param   { Sequelize }        instance - Sequelize instance linked to database.
+ * @param   { Sequelize }   instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated FollowedMember <-> Roles relation model.
+ * @returns { ModelStatic }          - Instantiated FollowedMember <-> Roles relation model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,7 +23,7 @@
  *
  * const RolesToAddToMemberModel = RolesToAddToMembersModelBuilder(instance);
  */
-const RolesToAddToMembersModelBuilder = (instance) =>
+const RolesToAddToMembersModelBuilder = (instance: Sequelize): ModelStatic =>
   instance.define('RolesToAddToMember', {});
 
 export default RolesToAddToMembersModelBuilder;

@@ -5,16 +5,15 @@
  * @module Models/Action/RemoveRole
  */
 
-/** @typedef { import('@sequelize/core').Sequelize } Sequelize */
-/** @typedef { import('@sequelize/core').Model } Model */
-/** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
+type Sequelize = import('@sequelize/core').Sequelize;
+type ModelStatic = import('@sequelize/core').ModelStatic;
 
 /**
  * @description RemoveRole actions model initializer.
  *
- * @param   { Sequelize }        instance - Sequelize instance linked to database.
+ * @param   { Sequelize }   instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated removeRole action model.
+ * @returns { ModelStatic }          - Instantiated removeRole action model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,7 +23,7 @@
  *
  * const ActionRemoveRolesModel = ActionRemoveRolesModelBuilder(instance);
  */
-const ActionRemoveRolesModelBuilder = (instance) =>
+const ActionRemoveRolesModelBuilder = (instance: Sequelize): ModelStatic =>
   instance.define('Action_RemoveRole', {});
 
 export default ActionRemoveRolesModelBuilder;

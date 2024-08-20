@@ -4,17 +4,15 @@
  *
  * @module Models/Action/Goto
  */
-
-/** @typedef {import('@sequelize/core').Sequelize} Sequelize */
-/** @typedef { import('@sequelize/core').Model } Model */
-/** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
+type Sequelize = import('@sequelize/core').Sequelize;
+type ModelStatic = import('@sequelize/core').ModelStatic;
 
 /**
  * @description Goto actions model initializer.
  *
- * @param   { Sequelize }        instance - Sequelize instance linked to database.
+ * @param   { Sequelize }   instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated goto action model.
+ * @returns { ModelStatic }          - Instantiated goto action model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,7 +22,7 @@
  *
  * const ActionGotosModel = ActionGotosModelBuilder(instance);
  */
-const ActionGotosModelBuilder = (instance) =>
+const ActionGotosModelBuilder = (instance: Sequelize): ModelStatic =>
   instance.define('Action_Goto', {});
 
 export default ActionGotosModelBuilder;

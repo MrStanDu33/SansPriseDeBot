@@ -4,17 +4,15 @@
  *
  * @module Models/ActionQuestionAnswersHasAction
  */
-
-/** @typedef { import('@sequelize/core').Sequelize } Sequelize */
-/** @typedef { import('@sequelize/core').Model } Model */
-/** @typedef { import('@sequelize/core').ModelCtor<Model> } ModelConstructor */
+type Sequelize = import('@sequelize/core').Sequelize;
+type ModelStatic = import('@sequelize/core').ModelStatic;
 
 /**
  * @description ActionQuestionAnswersHasAction model initializer.
  *
- * @param   { Sequelize }        instance - Sequelize instance linked to database.
+ * @param   { Sequelize }   instance - Sequelize instance linked to database.
  *
- * @returns { ModelConstructor }          - Instantiated PromptFile action <-> Action relation model.
+ * @returns { ModelStatic }          - Instantiated PromptFile action <-> Action relation model.
  *
  * @example
  * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
@@ -24,7 +22,9 @@
  *
  * const ActionQuestionAnswersHasActionModel = ActionQuestionAnswersHasActionModelBuilder(instance);
  */
-const ActionQuestionAnswersHasActionModelBuilder = (instance) =>
+const ActionQuestionAnswersHasActionModelBuilder = (
+  instance: Sequelize,
+): ModelStatic =>
   instance.define(
     'ActionQuestionAnswersHasAction',
     {},

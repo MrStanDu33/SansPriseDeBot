@@ -9,26 +9,38 @@ import { readdirSync } from 'fs';
 import Logger from '$src/Logger';
 import instance from './connection';
 
-const db = {
-  instance,
-};
+type Sequelize = import('@sequelize/core').Sequelize;
+type ModelStatic = import('@sequelize/core').ModelStatic;
+type ForeignKeyOptions = import('@sequelize/core').ForeignKeyOptions<string>;
 
-const modelImportPromises = [];
+interface ModelBuilder {
+  default: (arg0: Sequelize) => ModelStatic;
+}
 
-readdirSync('./src/Models/')
+type DB = Record<string, ModelStatic>;
+
+const db: DB = {};
+
+const modelImportPromises: Promise<ModelBuilder>[] = [];
+
+readdirSync(import.meta.dirname)
   .filter(
     (file) =>
       file.endsWith('.js') && !['index.js', 'connection.js'].includes(file),
   )
   .forEach((file) => {
     Logger.debug(`Importing model from ${file} ...`);
-    const modelImportPromise = import(`./${file}`);
+    const modelImportPromise = import(`./${file}`) as Promise<ModelBuilder>;
 
-    modelImportPromise.then((modelBuilder) => {
-      const model = modelBuilder.default(instance);
-      db[model.name.replaceAll('_', '')] = model;
-      Logger.debug(`Model ${model.name} successfully imported.`);
-    });
+    modelImportPromise
+      .then((modelBuilder: ModelBuilder) => {
+        const model: ModelStatic = modelBuilder.default(instance);
+        db[model.name.replaceAll('_', '')] = model;
+        Logger.debug(`Model ${model.name} successfully imported.`);
+      })
+      .catch((err: unknown) => {
+        Logger.error(err);
+      });
 
     modelImportPromises.push(modelImportPromise);
   });
@@ -39,25 +51,23 @@ const loaderConnect = Logger.loader(
   'info',
 );
 
-await instance
-  .authenticate()
-  .catch((error) =>
-    Logger.error(true, 'Unable to connect to the database:', error),
-  );
+await instance.authenticate().catch((error: unknown) => {
+  Logger.error(true, 'Unable to connect to the database:', error);
+});
 
 loaderConnect.succeed();
-
 await Promise.all(modelImportPromises);
-const cascadeHooks = {
+
+const cascadeHooks: ForeignKeyOptions = {
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 };
 
 db.FollowedMember.hasOne(db.LinkedChannel, {
-  foreignKey: { ...cascadeHooks },
+  foreignKey: cascadeHooks,
 });
 
-db.DecisionsTree.hasMany(db.Action, { foreignKey: { ...cascadeHooks } });
+db.DecisionsTree.hasMany(db.Action, { foreignKey: cascadeHooks });
 
 db.Action.hasOne(db.ActionQuestion, {
   as: 'Question',
@@ -76,12 +86,12 @@ db.ActionQuestion.hasMany(db.ActionQuestionAnswer, {
 });
 
 db.ActionQuestionAnswer.hasMany(db.ActionQuestionAnswersHasAction, {
-  foreignKey: { ...cascadeHooks },
+  foreignKey: cascadeHooks,
   as: 'AnswerActions',
 });
 
 db.Action.hasMany(db.ActionQuestionAnswersHasAction, {
-  foreignKey: { ...cascadeHooks },
+  foreignKey: cascadeHooks,
   as: 'AnswerActions',
 });
 
@@ -94,9 +104,7 @@ db.Action.hasOne(db.ActionGoto, {
 });
 
 db.Action.hasOne(db.ActionGoto, {
-  foreignKey: {
-    ...cascadeHooks,
-  },
+  foreignKey: cascadeHooks,
   inverse: {
     as: 'TargetAction',
   },
@@ -135,12 +143,12 @@ db.Action.hasOne(db.ActionPromptFile, {
 });
 
 db.ActionPromptFile.hasMany(db.ActionPromptFileHasAction, {
-  foreignKey: { ...cascadeHooks },
+  foreignKey: cascadeHooks,
   as: 'Actions',
 });
 
 db.Action.hasMany(db.ActionPromptFileHasAction, {
-  foreignKey: { ...cascadeHooks },
+  foreignKey: cascadeHooks,
   as: 'Actions',
 });
 
@@ -152,19 +160,19 @@ db.MimeType.belongsToMany(db.ActionPromptFile, {
   through: 'Action_PromptFiles_Has_MimeTypes',
 });
 
-db.Role.hasOne(db.ActionAddRole, { foreignKey: { ...cascadeHooks } });
+db.Role.hasOne(db.ActionAddRole, { foreignKey: cascadeHooks });
 
-db.Role.hasOne(db.ActionRemoveRole, { foreignKey: { ...cascadeHooks } });
+db.Role.hasOne(db.ActionRemoveRole, { foreignKey: cascadeHooks });
 
 db.Action.hasOne(db.FollowedMember, {
   foreignKey: 'CurrentActionId',
 });
 
 db.FollowedMember.hasMany(db.RolesToAddToMember, {
-  foreignKey: { cascadeHooks },
+  foreignKey: cascadeHooks,
 });
 
-db.Role.hasMany(db.RolesToAddToMember, { foreignKey: { ...cascadeHooks } });
+db.Role.hasMany(db.RolesToAddToMember, { foreignKey: cascadeHooks });
 
 const loaderSync = Logger.loader(
   { spinner: 'dots', color: 'cyan' },
@@ -172,9 +180,9 @@ const loaderSync = Logger.loader(
   'info',
 );
 
-await instance
-  .sync()
-  .catch((error) => Logger.error(true, 'Unable to sync database:', error));
+await instance.sync().catch((error: unknown) => {
+  Logger.error(true, 'Unable to sync database:', error);
+});
 Logger.info('Database synced successfully.');
 
 loaderSync.succeed();
