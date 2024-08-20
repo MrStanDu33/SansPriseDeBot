@@ -12,7 +12,7 @@
     "url": "https://github.com/MrStanDu33/SansPriseDeBot"
   },
   "engines": {
-    "node": ">=18.7.0"
+    "node": ">=20.11.1"
   },
   "engineStrict": true,
   "main": "./dist/index.js",
@@ -28,8 +28,8 @@
     "test:coverage": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage --forceExit",
     "preinstall": "link-module-alias clean || echo",
     "postinstall": "link-module-alias",
-    "start:prod": "node --experimental-vm-modules --experimental-specifier-resolution=node dist/index.js",
-    "start:dev": "nodemon --experimental-vm-modules --experimental-specifier-resolution=node --inspect dist/index.js --watch dist",
+    "start:prod": "node --experimental-loader=extensionless --experimental-vm-modules --experimental-specifier-resolution=node dist/index.js",
+    "start:dev": "nodemon --experimental-loader=extensionless --experimental-vm-modules --experimental-specifier-resolution=node --inspect dist/index.js --watch dist",
     "build:prod": "tsc && tsc-alias",
     "build:dev": "tsc --watch && tsc-alias",
     "dev": "npm-run-all --parallel build:dev start:dev",
@@ -39,6 +39,9 @@
     "docs": "jsdoc -c jsdoc.json",
     "docs:watch": "npx nodemon --exec 'npm run docs' --watch . --ignore ./docs/"
   },
+  "_moduleAliases": {
+    "$src": "./dist/src"
+  },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "@sequelize/core": "^7.0.0-alpha.26",
@@ -47,6 +50,7 @@
     "cli-spinners": "^2.7.0",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
+    "extensionless": "^1.9.9",
     "i18n": "^0.15.1",
     "json-refs": "^3.0.15",
     "mysql2": "^3.2.0",
