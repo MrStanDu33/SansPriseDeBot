@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for awaiting members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,49 +7,42 @@
  * @module Models/AwaitingMember
  */
 
-import { DataTypes } from '@sequelize/core';
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+} from '@sequelize/core';
+import { Attribute, NotNull, Unique } from '@sequelize/core/decorators-legacy';
 
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
 /**
- * @description AwaitingMembers model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated awaiting member model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const AwaitingMembersModel = AwaitingMembersModelBuilder(instance);
  */
-const AwaitingMembersModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('AwaitingMember', {
-    memberId: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true,
-    },
-    existingRoles: {
-      type: DataTypes.STRING(4096),
-      allowNull: false,
-    },
-    locale: {
-      type: DataTypes.STRING(2),
-      allowNull: false,
-    },
-    username: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: true,
-    },
-    priority: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-  });
+class AwaitingMember extends Model<
+  InferAttributes<AwaitingMember>,
+  InferCreationAttributes<AwaitingMember>
+> {
+  @Attribute(DataTypes.STRING(20))
+  @NotNull
+  @Unique
+  declare memberId: string;
 
-export default AwaitingMembersModelBuilder;
+  @Attribute(DataTypes.STRING(4096))
+  @NotNull
+  declare existingRoles: string;
+
+  @Attribute(DataTypes.STRING(2))
+  @NotNull
+  declare locale: string;
+
+  @Attribute(DataTypes.STRING(255))
+  @NotNull
+  @Unique
+  declare username: string;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare priority: number;
+}
+
+export default AwaitingMember;

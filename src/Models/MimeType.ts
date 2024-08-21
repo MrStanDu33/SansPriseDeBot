@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for MIME types.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,33 +7,43 @@
  * @module Models/MimeType
  */
 
-import { DataTypes } from '@sequelize/core';
-
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from '@sequelize/core';
+import {
+  Attribute,
+  NotNull,
+  Unique,
+  HasMany,
+} from '@sequelize/core/decorators-legacy';
+import ActionPromptFileHasMimeType from './Action_PromptFile_Has_MimeType.js';
 
 /**
- * @description MimeTypes model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated MIME types model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const MimeTypesModel = MimeTypesModelBuilder(instance);
  */
-const MimeTypesModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('MimeType', {
-    name: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: true,
-    },
-  });
+class MimeType extends Model<
+  InferAttributes<MimeType>,
+  InferCreationAttributes<MimeType>
+> {
+  @Attribute(DataTypes.STRING(255))
+  @NotNull
+  @Unique
+  declare name: string;
 
-export default MimeTypesModelBuilder;
+  @HasMany(() => ActionPromptFileHasMimeType, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+    inverse: {
+      as: 'MimeType',
+    },
+  })
+  declare ActionPromptFiles?: NonAttribute<ActionPromptFileHasMimeType>[];
+}
+
+export default MimeType;

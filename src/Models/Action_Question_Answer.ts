@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for `Question` actions answers.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,36 +7,52 @@
  * @module Models/Action/Question/Answer
  */
 
-import { DataTypes } from '@sequelize/core';
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from '@sequelize/core';
+import {
+  Attribute,
+  NotNull,
+  Table,
+  HasMany,
+  AllowNull,
+} from '@sequelize/core/decorators-legacy';
 
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import ActionQuestionAnswersHasAction from './Action_Question_Answer_Has_Action.js';
 
 /**
- * @description Question action answers model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated question action answers model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const ActionQuestionAnswersModel = ActionQuestionAnswersModelBuilder(instance);
  */
-const ActionQuestionAnswersModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('Action_Question_Answer', {
-    icon: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    text: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  });
+@Table({ tableName: 'Action_Question_Answers' })
+class ActionQuestionAnswer extends Model<
+  InferAttributes<ActionQuestionAnswer>,
+  InferCreationAttributes<ActionQuestionAnswer>
+> {
+  @Attribute(DataTypes.TEXT)
+  @AllowNull
+  declare icon: string;
 
-export default ActionQuestionAnswersModelBuilder;
+  @Attribute(DataTypes.TEXT)
+  @NotNull
+  declare text: string;
+
+  @Attribute(DataTypes.INTEGER)
+  declare ActionQuestionId: number;
+
+  @HasMany(() => ActionQuestionAnswersHasAction, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+    inverse: {
+      as: 'ActionQuestionAnswer',
+    },
+  })
+  declare actionQuestionAnswersHasAction?: NonAttribute<ActionQuestionAnswersHasAction>;
+}
+
+export default ActionQuestionAnswer;

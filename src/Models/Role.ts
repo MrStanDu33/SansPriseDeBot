@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for discord servers roles.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,38 +7,62 @@
  * @module Models/Role
  */
 
-import { DataTypes } from '@sequelize/core';
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from '@sequelize/core';
 
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  Attribute,
+  NotNull,
+  Unique,
+  HasOne,
+  HasMany,
+} from '@sequelize/core/decorators-legacy';
+import ActionAddRole from './Action_AddRole.js';
+import ActionRemoveRole from './Action_RemoveRole.js';
+import RolesToAddToMember from './RolesToAddToMember.js';
 
 /**
- * @description Roles model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated role model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const RolesModel = RolesModelBuilder(instance);
  */
-const RolesModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('Role', {
-    discordId: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-  });
+class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
+  @Attribute(DataTypes.STRING(20))
+  @NotNull
+  @Unique
+  declare discordId: string;
 
-export default RolesModelBuilder;
+  @Attribute(DataTypes.STRING)
+  @NotNull
+  @Unique
+  declare name: string;
+
+  @HasOne(() => ActionAddRole, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  })
+  declare actionAddRole?: NonAttribute<ActionAddRole>;
+
+  @HasOne(() => ActionRemoveRole, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  })
+  declare actionRemoveRole?: NonAttribute<ActionRemoveRole>;
+
+  @HasMany(() => RolesToAddToMember, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  })
+  declare rolesToAddToMember?: NonAttribute<RolesToAddToMember>;
+}
+
+export default Role;

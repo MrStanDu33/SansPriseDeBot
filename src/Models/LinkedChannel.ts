@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for channels linked to a member.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,38 +7,30 @@
  * @module Models/LinkedChannel
  */
 
-import { DataTypes } from '@sequelize/core';
-
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+} from '@sequelize/core';
+import { Attribute, NotNull, Unique } from '@sequelize/core/decorators-legacy';
 
 /**
- * @description LinkedChannels model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated linked channel model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const LinkedChannelsModel = LinkedChannelsModelBuilder(instance);
  */
-const LinkedChannelsModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('LinkedChannel', {
-    discordId: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true,
-    },
-    name: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: true,
-    },
-  });
+class LinkedChannel extends Model<
+  InferAttributes<LinkedChannel>,
+  InferCreationAttributes<LinkedChannel>
+> {
+  @Attribute(DataTypes.STRING(20))
+  @NotNull
+  @Unique
+  declare discordId: string;
 
-export default LinkedChannelsModelBuilder;
+  @Attribute(DataTypes.STRING(255))
+  @NotNull
+  @Unique
+  declare name: string;
+}
+
+export default LinkedChannel;

@@ -4,7 +4,7 @@
  * @file Sequelize model for linking PromptFile action to a list of actions to run.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  *
- * @module Models/ActionPromptFileHasAction
+ * @module Models/ActionPromptFileHasMimeType
  */
 
 import {
@@ -17,10 +17,10 @@ import { Table } from '@sequelize/core/decorators-legacy';
 /**
  *
  */
-@Table({ tableName: 'Action_PromptFiles_Has_Actions' })
-class ActionPromptFileHasAction extends Model<
-  InferAttributes<ActionPromptFileHasAction>,
-  InferCreationAttributes<ActionPromptFileHasAction>
+@Table({ tableName: 'Action_PromptFiles_Has_MimeTypes' })
+class ActionPromptFileHasMimeType extends Model<
+  InferAttributes<ActionPromptFileHasMimeType>,
+  InferCreationAttributes<ActionPromptFileHasMimeType>
 > {}
 
-export default ActionPromptFileHasAction;
+export default ActionPromptFileHasMimeType;

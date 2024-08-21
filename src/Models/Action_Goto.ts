@@ -1,28 +1,30 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for `Goto` actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  *
  * @module Models/Action/Goto
  */
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+} from '@sequelize/core';
+import { Table, Attribute } from '@sequelize/core/decorators-legacy';
 
 /**
- * @description Goto actions model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated goto action model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const ActionGotosModel = ActionGotosModelBuilder(instance);
  */
-const ActionGotosModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('Action_Goto', {});
+@Table({ tableName: 'Action_Gotos' })
+class ActionGoto extends Model<
+  InferAttributes<ActionGoto>,
+  InferCreationAttributes<ActionGoto>
+> {
+  @Attribute(DataTypes.INTEGER)
+  declare ActionId: number;
+}
 
-export default ActionGotosModelBuilder;
+export default ActionGoto;

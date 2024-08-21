@@ -1,36 +1,26 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for linking question's answers to a list of actions to run.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  *
  * @module Models/ActionQuestionAnswersHasAction
  */
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+
+import {
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+} from '@sequelize/core';
+import { Table } from '@sequelize/core/decorators-legacy';
 
 /**
- * @description ActionQuestionAnswersHasAction model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated PromptFile action <-> Action relation model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const ActionQuestionAnswersHasActionModel = ActionQuestionAnswersHasActionModelBuilder(instance);
  */
-const ActionQuestionAnswersHasActionModelBuilder = (
-  instance: Sequelize,
-): ModelStatic =>
-  instance.define(
-    'ActionQuestionAnswersHasAction',
-    {},
-    {
-      tableName: 'Action_Question_Answers_Has_Actions',
-    },
-  );
+@Table({ tableName: 'Action_Question_Answers_Has_Actions' })
+class ActionQuestionAnswersHasActions extends Model<
+  InferAttributes<ActionQuestionAnswersHasActions>,
+  InferCreationAttributes<ActionQuestionAnswersHasActions>
+> {}
 
-export default ActionQuestionAnswersHasActionModelBuilder;
+export default ActionQuestionAnswersHasActions;

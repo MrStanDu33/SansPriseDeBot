@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for `RemoveRole` actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,25 +7,21 @@
  * @module Models/Action/RemoveRole
  */
 
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  Model,
+  DataTypes,
+  InferAttributes,
+  InferCreationAttributes,
+} from '@sequelize/core';
+import { Table, Attribute } from '@sequelize/core/decorators-legacy';
 
 /**
- * @description RemoveRole actions model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated removeRole action model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const ActionRemoveRolesModel = ActionRemoveRolesModelBuilder(instance);
  */
-const ActionRemoveRolesModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('Action_RemoveRole', {});
+@Table({ tableName: 'Action_RemoveRoles' })
+class ActionRemoveRole extends Model<
+  InferAttributes<ActionRemoveRole>,
+  InferCreationAttributes<ActionRemoveRole>
+> {}
 
-export default ActionRemoveRolesModelBuilder;
+export default ActionRemoveRole;

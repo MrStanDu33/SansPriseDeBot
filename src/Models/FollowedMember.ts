@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for followed members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,67 +7,85 @@
  * @module Models/FollowedMember
  */
 
-import { DataTypes } from '@sequelize/core';
-
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from '@sequelize/core';
+import {
+  Attribute,
+  NotNull,
+  Unique,
+  Default,
+  HasOne,
+  HasMany,
+} from '@sequelize/core/decorators-legacy';
+import LinkedChannel from './LinkedChannel.js';
+import RolesToAddToMember from './RolesToAddToMember.js';
 
 /**
- * @description FollowedMembers model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated followed member model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const FollowedMembersModel = FollowedMembersModelBuilder(instance);
  */
-const FollowedMembersModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('FollowedMember', {
-    guildId: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-    },
-    locale: {
-      type: DataTypes.STRING(2),
-      allowNull: false,
-    },
-    memberId: {
-      type: DataTypes.STRING(20),
-      allowNull: false,
-      unique: true,
-    },
-    username: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      unique: true,
-    },
-    inProcess: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    needUploadFile: {
-      type: DataTypes.BOOLEAN,
-    },
-    lastUpdateAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    isNewComer: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-    },
-    warnsForInactivity: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-  });
+class FollowedMember extends Model<
+  InferAttributes<FollowedMember>,
+  InferCreationAttributes<FollowedMember>
+> {
+  @Attribute(DataTypes.STRING(20))
+  @NotNull
+  declare guildId: string;
 
-export default FollowedMembersModelBuilder;
+  @Attribute(DataTypes.STRING(2))
+  @NotNull
+  declare locale: string;
+
+  @Attribute(DataTypes.STRING(20))
+  @NotNull
+  @Unique
+  declare memberId: string;
+
+  @Attribute(DataTypes.STRING(255))
+  @NotNull
+  @Unique
+  declare username: string;
+
+  @Attribute(DataTypes.BOOLEAN)
+  @NotNull
+  declare inProcess: boolean;
+
+  @Attribute(DataTypes.BOOLEAN)
+  declare needUploadFile: boolean;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  @Default(DataTypes.NOW)
+  declare lastUpdateAt: Date;
+
+  @Attribute(DataTypes.BOOLEAN)
+  @NotNull
+  @Default(true)
+  declare isNewComer: boolean;
+
+  @Attribute(DataTypes.INTEGER)
+  @Default(0)
+  declare warnsForInactivity: number;
+
+  @HasOne(() => LinkedChannel, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  })
+  declare linkedChannel?: NonAttribute<LinkedChannel>;
+
+  @HasMany(() => RolesToAddToMember, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+  })
+  declare rolesToAddToMember?: NonAttribute<RolesToAddToMember>;
+}
+
+export default FollowedMember;

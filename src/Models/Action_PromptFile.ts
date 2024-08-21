@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for `PromptFile` actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
@@ -5,44 +7,67 @@
  * @module Models/Action/PromptFile
  */
 
-import { DataTypes } from '@sequelize/core';
-
-type Sequelize = import('@sequelize/core').Sequelize;
-type ModelStatic = import('@sequelize/core').ModelStatic;
+import {
+  DataTypes,
+  Model,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from '@sequelize/core';
+import {
+  Attribute,
+  NotNull,
+  Table,
+  HasMany,
+} from '@sequelize/core/decorators-legacy';
+import ActionPromptFileHasAction from './Action_PromptFile_Has_Action.js';
+import ActionPromptFileHasMimeType from './Action_PromptFile_Has_MimeType.js';
 
 /**
- * @description PromptFile actions model initializer.
  *
- * @param   { Sequelize }   instance - Sequelize instance linked to database.
- *
- * @returns { ModelStatic }          - Instantiated promptFile action model.
- *
- * @example
- * const instance = new Sequelize('DB_NAME', 'DB_USER', 'DB_PASS', {
- *   host: 'DB_HOST',
- *   dialect: 'mysql',
- * });
- *
- * const ActionPromptFileModel = ActionPromptFileModelBuilder(instance);
  */
-const ActionPromptFileModelBuilder = (instance: Sequelize): ModelStatic =>
-  instance.define('Action_PromptFile', {
-    errorMessage: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    pendingMessage: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    approvedMessage: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    rejectedMessage: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-  });
+@Table({ tableName: 'Action_PromptFiles' })
+class ActionPromptFile extends Model<
+  InferAttributes<ActionPromptFile>,
+  InferCreationAttributes<ActionPromptFile>
+> {
+  @Attribute(DataTypes.TEXT)
+  @NotNull
+  declare errorMessage: string;
 
-export default ActionPromptFileModelBuilder;
+  @Attribute(DataTypes.TEXT)
+  @NotNull
+  declare pendingMessage: string;
+
+  @Attribute(DataTypes.TEXT)
+  @NotNull
+  declare approvedMessage: string;
+
+  @Attribute(DataTypes.TEXT)
+  @NotNull
+  declare rejectedMessage: string;
+
+  @HasMany(() => ActionPromptFileHasAction, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+    inverse: {
+      as: 'ActionPromptFile',
+    },
+  })
+  declare Actions?: NonAttribute<ActionPromptFileHasAction>[];
+
+  @HasMany(() => ActionPromptFileHasMimeType, {
+    foreignKey: {
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+    inverse: {
+      as: 'ActionPromptFile',
+    },
+  })
+  declare MimeTypes?: NonAttribute<ActionPromptFileHasMimeType>[];
+}
+
+export default ActionPromptFile;
