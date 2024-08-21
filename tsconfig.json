@@ -2,21 +2,25 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "_version": "18.2.0",
   "compilerOptions": {
-    "module": "es2022",
-    "moduleResolution": "Node",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
     "target": "es2022",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": false,
     "noImplicitAny": true,
     "allowJs": true,
     "outDir": "dist",
     "sourceMap": true,
-    "types": [ "i18n" ],
+    "types": ["i18n"],
     "baseUrl": ".",
     "paths": {
       "$src/*": ["src/*"]
     }
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

@@ -10,10 +10,13 @@ import Logger from '$src/Logger';
 import { ModelStatic } from '@sequelize/core';
 
 type DB = Record<string, ModelStatic>;
+interface ImportedModel {
+  default: ModelStatic;
+}
 
 const db: DB = {};
 
-const modelImportPromises: Promise<ModelStatic>[] = [];
+const modelImportPromises: Promise<ImportedModel>[] = [];
 
 readdirSync(import.meta.dirname)
   .filter(
@@ -22,11 +25,11 @@ readdirSync(import.meta.dirname)
   )
   .forEach((file) => {
     Logger.debug(`Importing model from ${file} ...`);
-    const modelImportPromise = import(`./${file}`) as Promise<ModelStatic>;
+    const modelImportPromise = import(`./${file}`) as Promise<ImportedModel>;
 
     modelImportPromise
       .then((importedModules) => {
-        const model: ModelStatic = importedModules.default;
+        const model = importedModules.default;
         const modelName = model.name.replaceAll('_', '');
         db[modelName] = model;
         Logger.debug(`Model ${model.name} successfully imported.`);
