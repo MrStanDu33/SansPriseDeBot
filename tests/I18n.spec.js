@@ -32,10 +32,10 @@ describe('I18n', () => {
 
   it('Should retrieve default welcome message', () => {
     i18n.setLocale('en');
-    const englishDefaultWelcomeMessage = i18n.l('WELCOME_CHANNEL_NAME');
+    const englishDefaultWelcomeMessage = i18n.__('WELCOME_CHANNEL_NAME');
 
     i18n.setLocale('fr');
-    const frenchDefaultWelcomeMessage = i18n.l('WELCOME_CHANNEL_NAME');
+    const frenchDefaultWelcomeMessage = i18n.__('WELCOME_CHANNEL_NAME');
 
     expect(englishDefaultWelcomeMessage).toBe('Welcome');
     expect(frenchDefaultWelcomeMessage).toBe('Bienvenue');
