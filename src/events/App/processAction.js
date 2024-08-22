@@ -8,11 +8,10 @@ import Store from '$src/Store';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import Message from '$src/Classes/Message';
 import Logger from '$src/Logger';
-import models from '$src/Models';
 import EventBus from '$src/EventBus';
 import { Op } from '@sequelize/core';
 
-const {
+import {
   Action,
   ActionAddRole,
   ActionRemoveRole,
@@ -26,7 +25,7 @@ const {
   FollowedMember,
   Role,
   RolesToAddToMember,
-} = models;
+} from '$src/Models';
 
 /** @typedef { import('$src/Models/Role').default } Role */
 
@@ -50,7 +49,7 @@ const applyRoles = async (member) => {
 
   const rolesToAdd = await RolesToAddToMember.findAll({
     where: {
-      FollowedMemberId: member.id,
+      followedMemberId: member.id,
     },
     include: Role,
   });
@@ -59,7 +58,7 @@ const applyRoles = async (member) => {
   for (const roleToAdd of rolesToAdd) {
     // eslint-disable-next-line no-await-in-loop
     const fetchedRole = await guild.roles
-      .fetch(roleToAdd.Role.discordId)
+      .fetch(roleToAdd.role.discordId)
       .catch(Logger.error);
     if (fetchedRole === null) {
       Logger.error(
@@ -91,8 +90,8 @@ const applyRoles = async (member) => {
  */
 const addRole = async (member, role) => {
   await RolesToAddToMember.create({
-    FollowedMemberId: member.id,
-    RoleId: role.AddRole.Role.id,
+    followedMemberId: member.id,
+    roleId: role.addRole.role.id,
   });
 };
 
@@ -115,8 +114,8 @@ const addRole = async (member, role) => {
 const removeRole = async (member, role) => {
   await RolesToAddToMember.destroy({
     where: {
-      FollowedMemberId: member.id,
-      RoleId: role.RemoveRole.Role.id,
+      followedMemberId: member.id,
+      roleId: role.removeRole.role.id,
     },
   });
 };
@@ -143,8 +142,8 @@ const removeAllRoles = async (member) => {
 
   await RolesToAddToMember.destroy({
     where: {
-      FollowedMemberId: member.id,
-      RoleId: {
+      followedMemberId: member.id,
+      roleId: {
         [Op.not]: apparenceRole.id,
       },
     },
@@ -169,11 +168,11 @@ const printMessage = async (member, action) => {
   const { client } = Store;
 
   const channel = await client.channels.cache.get(
-    member.LinkedChannel.discordId,
+    member.linkedChannel.discordId,
   );
 
   await channel.send({
-    content: action.PrintMessage.message,
+    content: action.printMessage.message,
   });
 };
 
@@ -196,14 +195,14 @@ const askQuestion = async (member, action) => {
   const { client } = Store;
 
   Logger.info(
-    `Asking member ${member.username} the question "${action.Question.question}"`,
+    `Asking member ${member.username} the question "${action.question.question}"`,
   );
 
-  const channel = client.channels.cache.get(member.LinkedChannel.discordId);
+  const channel = client.channels.cache.get(member.linkedChannel.discordId);
 
   const messageRows = [];
 
-  action.Question.Answers.forEach((answer, index) => {
+  action.question.answers.forEach((answer, index) => {
     if (index % 5 === 0) {
       const buttonsRow = new ActionRowBuilder();
       messageRows.push(buttonsRow);
@@ -225,7 +224,7 @@ const askQuestion = async (member, action) => {
     messageRows[buttonsRowIndexToPush].addComponents(button);
   });
 
-  const { message } = new Message(action.Question.question, {
+  const { message } = new Message(action.question.question, {
     memberId: member.memberId,
   });
 
@@ -294,28 +293,30 @@ export default async (memberId, actionId) => {
   const actionToPerform = await Action.findOne({
     where: { id: actionId },
     include: [
-      { model: ActionAddRole, as: 'AddRole', include: Role },
-      { model: ActionRemoveRole, as: 'RemoveRole', include: Role },
-      { model: ActionGoto, include: Action, as: 'Goto' },
-      { model: ActionPrintMessage, as: 'PrintMessage' },
+      { model: ActionAddRole, as: 'addRole', include: Role },
+      { model: ActionRemoveRole, as: 'removeRole', include: Role },
+      {
+        association: 'goto',
+      },
+      { model: ActionPrintMessage, as: 'printMessage' },
       {
         model: ActionPromptFile,
-        as: 'PromptFile',
+        as: 'promptFile',
         include: {
           model: ActionPromptFileHasAction,
-          as: 'Actions',
+          as: 'actions',
         },
       },
       {
         model: ActionQuestion,
-        as: 'Question',
+        as: 'question',
         include: [
           {
             model: ActionQuestionAnswer,
-            as: 'Answers',
+            as: 'answers',
             include: {
               model: ActionQuestionAnswersHasAction,
-              as: 'AnswerActions',
+              as: 'answerActions',
             },
           },
         ],
@@ -324,7 +325,7 @@ export default async (memberId, actionId) => {
   });
 
   if (['promptFile', 'question'].includes(actionToPerform?.type)) {
-    member.CurrentActionId = actionId;
+    member.currentActionId = actionId;
     member.warnsForInactivity = 0;
     member.lastUpdateAt = Date.now();
     await member.save();
@@ -372,7 +373,7 @@ export default async (memberId, actionId) => {
       break;
     }
     default: {
-      const channel = client.channels.cache.get(member.LinkedChannel.discordId);
+      const channel = client.channels.cache.get(member.linkedChannel.discordId);
       await channel.send(
         `An error occured. <@&${process.env.DISCORD_STAFF_ROLE_ID}> has been informed about the issue and will contact you soon.`,
       );

@@ -6,9 +6,7 @@
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
 import Store from '$src/Store';
-import models from '$src/Models';
-
-const { AwaitingMember, FollowedMember } = models;
+import { AwaitingMember, FollowedMember } from '$src/Models';
 
 /**
  * @description Function that process awaiting member.

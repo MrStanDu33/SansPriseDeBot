@@ -4,10 +4,8 @@
  */
 
 import Logger from '$src/Logger/index';
-import models from '$src/Models';
+import { LinkedChannel, FollowedMember } from '$src/Models';
 import EventBus from '$src/EventBus';
-
-const { LinkedChannel, FollowedMember } = models;
 
 /** @typedef { import('discord.js').GuildMember } Member */
 

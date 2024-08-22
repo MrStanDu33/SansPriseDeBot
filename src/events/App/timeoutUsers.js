@@ -5,11 +5,9 @@
 
 import Logger from '$src/Logger';
 import Store from '$src/Store';
-import models from '$src/Models';
+import { FollowedMember, LinkedChannel } from '$src/Models';
 import Message from '$src/Classes/Message';
 import { Op } from '@sequelize/core';
-
-const { FollowedMember, LinkedChannel } = models;
 
 const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour <@{{ memberId }}>, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
@@ -39,6 +37,11 @@ Pour des raisons de limitation technique de la plateforme Discord, j'étais dans
 Si tu souhaites rejoindre à nouveau notre serveur, pas de soucis ! Tu peux le rejoindre en passant par ce lien : <https://discord.gg/spdt>.
 Au plaisir de te revoir 👋`;
 
+/**
+ *
+ * @param member
+ * @param message
+ */
 const sendTimeoutWarningMessage = async (member, message) => {
   const loader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
@@ -57,7 +60,7 @@ const sendTimeoutWarningMessage = async (member, message) => {
   const { message: channelLinkMessage } = new Message(
     'Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>',
     {
-      channelId: member.LinkedChannel.discordId,
+      channelId: member.linkedChannel.discordId,
     },
   );
 
@@ -81,6 +84,10 @@ const sendTimeoutWarningMessage = async (member, message) => {
   Logger.info(`Timeout message sent successfully for ${member.username} !`);
 };
 
+/**
+ *
+ * @param member
+ */
 const timeoutMember = async (member) => {
   const dataLoader = Logger.loader(
     { spinner: 'dots10', color: 'cyan' },
@@ -121,6 +128,9 @@ const timeoutMember = async (member) => {
   Logger.info(`${member.username} successfully kicked of server !`);
 };
 
+/**
+ *
+ */
 const getInactiveMembers = async () => {
   const membersToWarnAfterOneDayInactivity = await FollowedMember.findAll({
     where: {
@@ -186,6 +196,10 @@ const getInactiveMembers = async () => {
   };
 };
 
+/**
+ *
+ * @param members
+ */
 const warnMemberAfterOneDayOfInactivity = async (members) => {
   if (members.length !== 0) {
     Logger.info('Start warning members after one day of inactivity');
@@ -198,6 +212,10 @@ const warnMemberAfterOneDayOfInactivity = async (members) => {
   }
 };
 
+/**
+ *
+ * @param members
+ */
 const warnMembersHalfTimeBeforeTimeout = async (members) => {
   if (members.length !== 0) {
     Logger.info(
@@ -217,6 +235,10 @@ const warnMembersHalfTimeBeforeTimeout = async (members) => {
   }
 };
 
+/**
+ *
+ * @param members
+ */
 const warnMembersLastDayBeforeTimeout = async (members) => {
   if (members.length !== 0) {
     Logger.info('Start warning members one day before timeout');
@@ -232,6 +254,10 @@ const warnMembersLastDayBeforeTimeout = async (members) => {
   }
 };
 
+/**
+ *
+ * @param members
+ */
 const timeoutMembers = async (members) => {
   if (members.length !== 0) {
     Logger.info('Start timing out members');

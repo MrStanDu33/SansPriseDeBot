@@ -9,9 +9,7 @@
 import Logger from '$src/Logger';
 import Store from '$src/Store';
 import EventBus from '$src/EventBus';
-import models from '$src/Models';
-
-const { AwaitingMember, FollowedMember, LinkedChannel } = models;
+import { AwaitingMember, FollowedMember, LinkedChannel } from '$src/Models';
 
 const ACTIVITY_LEVEL_ROLES = {
   level1: {

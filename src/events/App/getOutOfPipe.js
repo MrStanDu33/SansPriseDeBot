@@ -4,10 +4,8 @@
  */
 
 import Logger from '$src/Logger';
-import models from '$src/Models';
+import { FollowedMember } from '$src/Models';
 import Store from '$src/Store';
-
-const { FollowedMember } = models;
 
 /**
  * @description Get user out of pipe by deleting linked channel
@@ -34,15 +32,15 @@ export default async (member) => {
 
   const guild = await client.guilds.fetch(process.env.DISCORD_SERVER_ID);
 
-  if (member.LinkedChannel !== null && member.LinkedChannel !== undefined) {
-    const channelName = member.LinkedChannel.name;
+  if (member.linkedChannel !== null && member.linkedChannel !== undefined) {
+    const channelName = member.linkedChannel.name;
     try {
       const channelToDelete = await guild.channels.fetch(
-        member.LinkedChannel.discordId,
+        member.linkedChannel.discordId,
       );
 
       await channelToDelete.delete(
-        member.LinkedChannel.discordId,
+        member.linkedChannel.discordId,
         'User got out of pipe',
       );
 
@@ -57,7 +55,7 @@ export default async (member) => {
         `Asked to delete channel ${channelName} but channel does not exist anymore !`,
       );
     } finally {
-      await member.LinkedChannel.destroy();
+      await member.linkedChannel.destroy();
     }
   }
 

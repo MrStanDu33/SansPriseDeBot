@@ -8,13 +8,16 @@ import i18n from '$src/I18n';
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
-import models from '$src/Models';
+import {
+  LinkedChannel,
+  FollowedMember,
+  DecisionsTree,
+  Action,
+} from '$src/Models';
 
 /** @typedef { import('discord.js').GuildMember } Member */
 /** @typedef { import('discord.js').GuildChannel } Channel */
 /** @typedef { import('discord.js').CategoryChannel } Category */
-
-const { LinkedChannel, FollowedMember, DecisionsTree, Action } = models;
 
 const ROLES_IDS_TO_KEEP = [
   '849789213167058985', // Actif | Niveau 1
@@ -75,14 +78,14 @@ const createChannel = async (member, category) => {
 
   const channel = await guild.channels
     .create({
-      name: `${i18n.l('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
+      name: `${i18n.__('WELCOME_CHANNEL_NAME')}-${member.user.username}#${
         member.user.discriminator
       }`,
       type: ChannelType.GuildText,
-      topic: i18n.l('WELCOME_CHANNEL_TOPIC'),
+      topic: i18n.__('WELCOME_CHANNEL_TOPIC'),
       nsfw: false,
       parent: category.id,
-      reason: i18n.l('WELCOME_CHANNEL_TOPIC'),
+      reason: i18n.__('WELCOME_CHANNEL_TOPIC'),
       permissionOverwrites: channelPermissionOverwrites,
     })
     .catch((error) => {
@@ -142,7 +145,7 @@ export default async (member, isNewComer = true) => {
     locale: member.user.locale || process.env.DEFAULT_LOCALE,
     memberId: member.user.id,
     username: member.user.tag,
-    CurrentActionId: null,
+    currentActionId: null,
     rolesToAdd: [],
     inProcess: true,
     warnsForInactivity: 0,
@@ -186,7 +189,7 @@ export default async (member, isNewComer = true) => {
   await LinkedChannel.create({
     discordId: channel.id,
     name: channel.name,
-    FollowedMemberId: memberData.id,
+    followedMemberId: memberData.id,
   });
 
   await EventBus.emit({

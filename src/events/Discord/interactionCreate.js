@@ -6,11 +6,7 @@
 import { ButtonBuilder, ButtonStyle, ActionRowBuilder } from 'discord.js';
 import Store from '$src/Store';
 import EventBus from '$src/EventBus';
-import models from '$src/Models';
-import Logger from '$src/Logger';
-import Message from '$src/Classes/Message';
-
-const {
+import {
   FollowedMember,
   Action,
   ActionQuestion,
@@ -19,7 +15,9 @@ const {
   LinkedChannel,
   ActionPromptFile,
   ActionPromptFileHasAction,
-} = models;
+} from '$src/Models';
+import Logger from '$src/Logger';
+import Message from '$src/Classes/Message';
 
 /** @typedef { import('discord.js').Interaction } Interaction */
 /** @typedef { import('discord.js').Message } DiscordMessage */
@@ -78,6 +76,10 @@ const disableMessageButtons = async (message, clickedButtonId) => {
   message.edit({ components: newActionRowEmbeds });
 };
 
+/**
+ *
+ * @param interaction
+ */
 const processUserAnswer = async (interaction) => {
   const linkedChannel = await LinkedChannel.findOne({
     where: { discordId: interaction.channelId },
@@ -90,14 +92,14 @@ const processUserAnswer = async (interaction) => {
             include: [
               {
                 model: ActionQuestion,
-                as: 'Question',
+                as: 'question',
                 include: [
                   {
                     model: ActionQuestionAnswer,
-                    as: 'Answers',
+                    as: 'answers',
                     include: {
                       model: ActionQuestionAnswersHasAction,
-                      as: 'AnswerActions',
+                      as: 'answerActions',
                     },
                   },
                 ],
@@ -109,10 +111,10 @@ const processUserAnswer = async (interaction) => {
     ],
   });
 
-  if (linkedChannel.FollowedMember === null) return;
+  if (linkedChannel.followedMember === null) return;
 
   const selectedAnswer =
-    linkedChannel.FollowedMember.Action.Question.Answers.find(
+    linkedChannel.followedMember.currentAction.question.answers.find(
       (/** @type { object } */ answer) =>
         answer.id === Number(interaction.customId.split('||')[1]),
     );
@@ -120,7 +122,7 @@ const processUserAnswer = async (interaction) => {
   if (selectedAnswer === undefined) return;
 
   Logger.info(
-    `Member ${linkedChannel.FollowedMember.username} answered ${selectedAnswer.text} to the question ${linkedChannel.FollowedMember.Action}`,
+    `Member ${linkedChannel.followedMember.username} answered ${selectedAnswer.text} to the question ${linkedChannel.followedMember.currentAction}`,
   );
 
   disableMessageButtons(interaction.message, interaction.customId);
@@ -129,11 +131,11 @@ const processUserAnswer = async (interaction) => {
   await reply.delete();
 
   // eslint-disable-next-line no-restricted-syntax
-  for (const action of selectedAnswer.AnswerActions) {
+  for (const action of selectedAnswer.answerActions) {
     // eslint-disable-next-line no-await-in-loop
     await EventBus.emit({
       event: 'App_processAction',
-      args: [linkedChannel.FollowedMember.id, action.ActionId],
+      args: [linkedChannel.followedMember.id, action.actionId],
     });
 
     // eslint-disable-next-line no-await-in-loop
@@ -141,6 +143,11 @@ const processUserAnswer = async (interaction) => {
   }
 };
 
+/**
+ *
+ * @param interaction
+ * @param guild
+ */
 const processStaffFileValidation = async (interaction, guild) => {
   const linkedChannel = await LinkedChannel.findOne({
     where: { discordId: interaction.channelId },
@@ -153,8 +160,8 @@ const processStaffFileValidation = async (interaction, guild) => {
             include: [
               {
                 model: ActionPromptFile,
-                as: 'PromptFile',
-                include: [{ model: ActionPromptFileHasAction, as: 'Actions' }],
+                as: 'promptFile',
+                include: [{ model: ActionPromptFileHasAction, as: 'actions' }],
               },
             ],
           },
@@ -173,25 +180,25 @@ const processStaffFileValidation = async (interaction, guild) => {
 
   switch (staffDecision) {
     case 'approve': {
-      linkedChannel.FollowedMember.needUploadFile = null;
-      linkedChannel.FollowedMember.save();
+      linkedChannel.followedMember.needUploadFile = null;
+      linkedChannel.followedMember.save();
 
       const { message } = new Message(
-        linkedChannel.FollowedMember.Action.PromptFile.approvedMessage,
+        linkedChannel.followedMember.currentAction.promptFile.approvedMessage,
         {
-          memberId: linkedChannel.FollowedMember.memberId,
+          memberId: linkedChannel.followedMember.memberId,
         },
       );
 
       await channel.send(message);
 
       // eslint-disable-next-line no-restricted-syntax
-      for (const action of linkedChannel.FollowedMember.Action.PromptFile
-        .Actions) {
+      for (const action of linkedChannel.followedMember.currentAction.promptFile
+        .actions) {
         // eslint-disable-next-line no-await-in-loop
         await EventBus.emit({
           event: 'App_processAction',
-          args: [linkedChannel.FollowedMember.id, action.ActionId],
+          args: [linkedChannel.followedMember.id, action.actionId],
         });
 
         // eslint-disable-next-line no-await-in-loop
@@ -200,13 +207,13 @@ const processStaffFileValidation = async (interaction, guild) => {
       break;
     }
     case 'reject': {
-      linkedChannel.FollowedMember.needUploadFile = true;
-      linkedChannel.FollowedMember.save();
+      linkedChannel.followedMember.needUploadFile = true;
+      linkedChannel.followedMember.save();
 
       const { message } = new Message(
-        linkedChannel.FollowedMember.Action.PromptFile.rejectedMessage,
+        linkedChannel.followedMember.currentAction.promptFile.rejectedMessage,
         {
-          memberId: linkedChannel.FollowedMember.memberId,
+          memberId: linkedChannel.followedMember.memberId,
         },
       );
 

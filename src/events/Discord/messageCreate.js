@@ -3,14 +3,17 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-import models from '$src/Models';
+import {
+  Action,
+  ActionPromptFile,
+  MimeType,
+  LinkedChannel,
+  FollowedMember,
+} from '$src/Models';
 import Store from '$src/Store';
 import Message from '$src/Classes/Message';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
-
-const { Action, ActionPromptFile, MimeType, LinkedChannel, FollowedMember } =
-  models;
 
 /** @typedef { import('discord.js').Message } DiscordMessage */
 
@@ -39,7 +42,7 @@ const timeoutBeforeAction = (timeoutDuration) =>
  */
 const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
   const expectedMimeTypes =
-    linkedChannel.FollowedMember.Action.PromptFile.MimeTypes.map(
+    linkedChannel.followedMember.currentAction.promptFile.MimeTypes.map(
       ({ name }) => name,
     );
 
@@ -50,9 +53,9 @@ const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
     !expectedMimeTypes.includes(attachment.contentType)
   ) {
     const { message } = new Message(
-      linkedChannel.FollowedMember.Action.PromptFile.errorMessage,
+      linkedChannel.followedMember.currentAction.promptFile.errorMessage,
       {
-        memberId: linkedChannel.FollowedMember.memberId,
+        memberId: linkedChannel.followedMember.memberId,
       },
     );
 
@@ -61,17 +64,17 @@ const processPromptFileAnswer = async (memberMessage, linkedChannel) => {
   }
 
   const { message } = new Message(
-    linkedChannel.FollowedMember.Action.PromptFile.pendingMessage,
+    linkedChannel.followedMember.currentAction.promptFile.pendingMessage,
     {
-      memberId: linkedChannel.FollowedMember.memberId,
+      memberId: linkedChannel.followedMember.memberId,
     },
   );
 
   await memberMessage.channel.send(message);
 
   // eslint-disable-next-line no-param-reassign
-  linkedChannel.FollowedMember.needUploadFile = false;
-  linkedChannel.FollowedMember.save();
+  linkedChannel.followedMember.needUploadFile = false;
+  linkedChannel.followedMember.save();
 
   // eslint-disable-next-line no-await-in-loop
   await timeoutBeforeAction(1000);
@@ -129,7 +132,7 @@ export default async (message) => {
             include: [
               {
                 model: ActionPromptFile,
-                as: 'PromptFile',
+                as: 'promptFile',
                 include: [{ model: MimeType, as: 'MimeTypes' }],
               },
             ],
@@ -146,12 +149,12 @@ export default async (message) => {
   const staffRole = await guild.roles.fetch(process.env.DISCORD_STAFF_ROLE_ID);
   const memberIsStaff = member.roles.cache.find((role) => role === staffRole);
 
-  if (!memberIsStaff && linkedChannel.FollowedMember.memberId !== member.id)
+  if (!memberIsStaff && linkedChannel.followedMember.memberId !== member.id)
     return; // message was not sent from user linked to the channel nor a staff member
 
-  if (linkedChannel.FollowedMember.Action.PromptFile !== null) {
+  if (linkedChannel.followedMember.currentAction.promptFile !== null) {
     if (memberIsStaff) return;
-    if (linkedChannel.FollowedMember.needUploadFile !== true) return;
+    if (linkedChannel.followedMember.needUploadFile !== true) return;
     processPromptFileAnswer(message, linkedChannel);
   } // user was not prompted to send a file.
 };
