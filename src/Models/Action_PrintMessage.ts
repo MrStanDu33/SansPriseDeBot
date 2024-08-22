@@ -28,7 +28,7 @@ class ActionPrintMessages extends Model<
   declare message: string;
 
   @Attribute(DataTypes.INTEGER)
-  declare ActionId: number;
+  declare actionId: number;
 }
 
 export default ActionPrintMessages;

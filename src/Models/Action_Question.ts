@@ -21,7 +21,7 @@ import {
   Table,
 } from '@sequelize/core/decorators-legacy';
 
-import ActionQuestionAnswer from './Action_Question_Answer.js';
+import { ActionQuestionAnswer } from '$src/Models';
 
 /**
  *
@@ -40,19 +40,19 @@ class ActionQuestion extends Model<
   declare uuid: string;
 
   @Attribute(DataTypes.INTEGER)
-  declare ActionId: number;
+  declare actionId: number;
 
   @HasMany(() => ActionQuestionAnswer, {
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
-      name: 'ActionQuestionId',
+      name: 'actionQuestionId',
     },
     inverse: {
-      as: 'Answers',
+      as: 'answers',
     },
   })
-  declare actionQuestion?: NonAttribute<ActionQuestion>;
+  declare answers?: NonAttribute<ActionQuestionAnswer>[];
 }
 
 export default ActionQuestion;

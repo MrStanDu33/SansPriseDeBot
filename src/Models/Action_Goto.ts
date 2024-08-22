@@ -22,9 +22,6 @@ import { Table, Attribute } from '@sequelize/core/decorators-legacy';
 class ActionGoto extends Model<
   InferAttributes<ActionGoto>,
   InferCreationAttributes<ActionGoto>
-> {
-  @Attribute(DataTypes.INTEGER)
-  declare ActionId: number;
-}
+> {}
 
 export default ActionGoto;

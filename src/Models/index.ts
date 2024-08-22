@@ -7,7 +7,7 @@
 
 import { Sequelize } from '@sequelize/core';
 import Logger from '$src/Logger';
-import models from './ModelLoader.js';
+import * as Models from './ModelLoader';
 
 if (process.env.DB_NAME === undefined) throw new Error('DB_NAME is not set');
 if (process.env.DB_USER === undefined) throw new Error('DB_USER is not set');
@@ -20,7 +20,8 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: 'mysql',
-    models: [...Object.values(models)],
+    // @ts-expect-error "Models contains multiple sequelize models classes"
+    models: Object.values(Models),
 
     /**
      * @description Function that is called every time a query is executed to log queries
@@ -58,4 +59,4 @@ await sequelize.sync().catch((error: unknown) => {
 Logger.info('Database synced successfully.');
 loaderSync.succeed();
 
-export default models;
+export * from './ModelLoader';

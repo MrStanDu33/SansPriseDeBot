@@ -22,7 +22,7 @@ import {
   AllowNull,
 } from '@sequelize/core/decorators-legacy';
 
-import ActionQuestionAnswersHasAction from './Action_Question_Answer_Has_Action.js';
+import ActionQuestionAnswersHasAction from './Action_Question_Answers_Has_Action.js';
 
 /**
  *
@@ -40,19 +40,16 @@ class ActionQuestionAnswer extends Model<
   @NotNull
   declare text: string;
 
-  @Attribute(DataTypes.INTEGER)
-  declare ActionQuestionId: number;
-
   @HasMany(() => ActionQuestionAnswersHasAction, {
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
     },
     inverse: {
-      as: 'ActionQuestionAnswer',
+      as: 'actionQuestionAnswer',
     },
   })
-  declare actionQuestionAnswersHasAction?: NonAttribute<ActionQuestionAnswersHasAction>;
+  declare answerActions?: NonAttribute<ActionQuestionAnswersHasAction>;
 }
 
 export default ActionQuestionAnswer;

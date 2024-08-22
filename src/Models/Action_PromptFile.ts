@@ -19,9 +19,11 @@ import {
   NotNull,
   Table,
   HasMany,
+  BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
 import ActionPromptFileHasAction from './Action_PromptFile_Has_Action.js';
 import ActionPromptFileHasMimeType from './Action_PromptFile_Has_MimeType.js';
+import MimeType from './MimeType.js';
 
 /**
  *
@@ -53,19 +55,16 @@ class ActionPromptFile extends Model<
       onUpdate: 'CASCADE',
     },
     inverse: {
-      as: 'ActionPromptFile',
+      as: 'actionPromptFile',
     },
   })
-  declare Actions?: NonAttribute<ActionPromptFileHasAction>[];
+  declare actions?: NonAttribute<ActionPromptFileHasAction>[];
 
-  @HasMany(() => ActionPromptFileHasMimeType, {
-    foreignKey: {
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
-    },
-    inverse: {
-      as: 'ActionPromptFile',
-    },
+  @BelongsToMany(() => MimeType, {
+    /**
+     *
+     */
+    through: () => ActionPromptFileHasMimeType,
   })
   declare MimeTypes?: NonAttribute<ActionPromptFileHasMimeType>[];
 }

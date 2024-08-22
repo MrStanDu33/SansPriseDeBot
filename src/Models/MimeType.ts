@@ -19,8 +19,10 @@ import {
   NotNull,
   Unique,
   HasMany,
+  BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
-import ActionPromptFileHasMimeType from './Action_PromptFile_Has_MimeType.js';
+
+import { ActionPromptFileHasMimeType, ActionPromptFile } from '$src/Models';
 
 /**
  *
@@ -34,16 +36,24 @@ class MimeType extends Model<
   @Unique
   declare name: string;
 
-  @HasMany(() => ActionPromptFileHasMimeType, {
-    foreignKey: {
-      onDelete: 'CASCADE',
-      onUpdate: 'CASCADE',
-    },
-    inverse: {
-      as: 'MimeType',
-    },
+  @BelongsToMany(() => ActionPromptFile, {
+    /**
+     *
+     */
+    through: () => ActionPromptFileHasMimeType,
   })
-  declare ActionPromptFiles?: NonAttribute<ActionPromptFileHasMimeType>[];
+  declare actionPromptFile?: NonAttribute<ActionPromptFileHasMimeType>[];
+
+  // @HasMany(() => ActionPromptFileHasMimeType, {
+  //   foreignKey: {
+  //     onDelete: 'CASCADE',
+  //     onUpdate: 'CASCADE',
+  //   },
+  //   inverse: {
+  //     as: 'MimeTypes',
+  //   },
+  // })
+  // declare ActionPromptFiles?: NonAttribute<ActionPromptFileHasMimeType>[];
 }
 
 export default MimeType;

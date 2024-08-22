@@ -22,7 +22,7 @@ import {
   HasMany,
 } from '@sequelize/core/decorators-legacy';
 import ActionQuestion from './Action_Question.js';
-import ActionQuestionAnswersHasAction from './Action_Question_Answer_Has_Action.js';
+import ActionQuestionAnswersHasAction from './Action_Question_Answers_Has_Action.js';
 import ActionGoto from './Action_Goto.js';
 import ActionAddRole from './Action_AddRole.js';
 import ActionPrintMessages from './Action_PrintMessage.js';
@@ -47,18 +47,19 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
-      name: 'ActionId',
+      name: 'actionId',
     },
     inverse: {
-      as: 'Question',
+      as: 'actionQuestion',
     },
   })
-  declare actionQuestion?: NonAttribute<ActionQuestion>;
+  declare question?: NonAttribute<ActionQuestion>;
 
   @HasMany(() => ActionQuestionAnswersHasAction, {
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'actionId',
     },
   })
   declare actionQuestionAnswersHasAction?: NonAttribute<ActionQuestionAnswersHasAction>;
@@ -67,13 +68,12 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
-      name: 'ActionId',
     },
     inverse: {
-      as: 'Goto',
+      as: 'goto',
     },
   })
-  declare actionGoto?: NonAttribute<ActionGoto>;
+  declare goto?: NonAttribute<ActionGoto>;
 
   @HasOne(() => ActionGoto, {
     foreignKey: {
@@ -81,7 +81,7 @@ class Action extends Model<
       onUpdate: 'CASCADE',
     },
     inverse: {
-      as: 'TargetAction',
+      as: 'targetAction',
     },
   })
   declare targetAction?: NonAttribute<ActionGoto>;
@@ -90,10 +90,10 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
-      name: 'ActionId',
+      name: 'actionId',
     },
     inverse: {
-      as: 'PrintMessage',
+      as: 'printMessage',
     },
   })
   declare printMessage?: NonAttribute<ActionPrintMessages>;
@@ -110,9 +110,10 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'actionId',
     },
     inverse: {
-      as: 'Action',
+      as: 'action',
     },
   })
   declare removeRole?: NonAttribute<ActionRemoveRole>;
@@ -121,9 +122,10 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'actionId',
     },
     inverse: {
-      as: 'Action',
+      as: 'action',
     },
   })
   declare promptFile?: NonAttribute<ActionPromptFile>;
@@ -132,9 +134,10 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'actionId',
     },
     inverse: {
-      as: 'Action',
+      as: 'action',
     },
   })
   declare ActionPromptFile?: NonAttribute<ActionPromptFileHasAction>;
@@ -143,9 +146,10 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'currentActionId',
     },
     inverse: {
-      as: 'CurrentAction',
+      as: 'currentAction',
     },
   })
   declare followedMember?: NonAttribute<FollowedMember>;
