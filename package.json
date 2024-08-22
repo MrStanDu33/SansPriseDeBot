@@ -34,8 +34,8 @@
     "build:dev": "tsc --watch && tsc-alias",
     "dev": "npm-run-all --parallel build:dev start:dev",
     "start": "npm run build:prod && npm run start:prod",
-    "seed:roles": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/roles.js",
-    "seed:actions": "node --experimental-vm-modules --experimental-specifier-resolution=node ./bin/seed/actions.js ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json",
+    "seed:roles": "tsx ./bin/seed/roles.js",
+    "seed:actions": "tsx ./bin/seed/actions.ts ./src/Db/DecisionsTrees/FormationRolesDecisionsTree.json",
     "docs": "jsdoc -c jsdoc.json",
     "docs:watch": "npx nodemon --exec 'npm run docs' --watch . --ignore ./docs/"
   },
@@ -59,6 +59,7 @@
     "ora": "^6.3.0",
     "source-map-support": "^0.5.21",
     "stack-trace": "*",
+    "tsx": "^4.17.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
