@@ -39,7 +39,7 @@
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "@sequelize/core": "^7.0.0-alpha.26",
     "chalk": "5.3.0",
-    "cli-spinners": "^2.7.0",
+    "cli-spinners": "^3.2.0",
     "discord.js": "^14.8.0",
     "dotenv": "^16.0.3",
     "i18n": "^0.15.1",
