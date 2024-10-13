@@ -19,7 +19,7 @@ describe('Discord.js', () => {
     });
 
     it('Should be able to connect to Discord API', () => {
-      const clientConnected = jest.fn();
+      const clientConnected: () => void = jest.fn();
       const intents = new IntentsBitField();
 
       intents.add(
@@ -32,7 +32,7 @@ describe('Discord.js', () => {
       const client = new Client({ intents });
 
       client.on('ready', clientConnected);
-      client.login(process.env.DISCORD_BOT_TOKEN).then(() => {
+      void client.login(process.env.DISCORD_BOT_TOKEN).then(() => {
         expect(clientConnected).toHaveBeenCalled();
       });
     });

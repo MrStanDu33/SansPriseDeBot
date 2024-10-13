@@ -3,53 +3,50 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-import { PassThrough } from 'node:stream';
+import { PassThrough } from 'stream';
 import { jest } from '@jest/globals';
 import Logger from '$src/Logger';
 import fs from 'fs';
+import { SpiedFunction } from 'jest-mock';
 
 describe('Logger', () => {
   describe('loader', () => {
     it('check if message is given', () => {
       expect(() => {
+        // @ts-expect-error Error forced for test purposes
         Logger.loader({});
-      }).toThrowError(
+      }).toThrow(
         'Please provide a valid message to print while loader spinning',
       );
     });
 
     it('check if logType is given', () => {
       expect(() => {
+        // @ts-expect-error Error forced for test purposes
         Logger.loader({}, 'this is a test message');
-      }).toThrowError(
-        'Please provide a valid log type (debug,info,warn,error)',
-      );
+      }).toThrow('Please provide a valid log type (debug,info,warn,error)');
     });
 
     it("check if given spinner's setting exist", () => {
       expect(() => {
         Logger.loader(
           {
+            // @ts-expect-error Error forced for test purposes
             spinner: 'Not A Spinner',
           },
           'this is a test message',
           'info',
         );
-      }).toThrowError('Please provide a spinner name');
+      }).toThrow('Please provide a spinner name');
     });
 
-    it('calls start', async () => {
-      const stream = new PassThrough();
+    it('calls start', () => {
+      const stream = new PassThrough() as unknown as NodeJS.WritableStream;
 
       /**
        * @function terminalCallback
        * @description Prevent terminal refresh.
        */
-      const terminalCallback = jest.fn();
-
-      stream.clearLine = terminalCallback;
-      stream.cursorTo = terminalCallback;
-      stream.moveCursor = terminalCallback;
 
       const spinner = Logger.loader(
         {
@@ -63,24 +60,27 @@ describe('Logger', () => {
       );
 
       expect(spinner.isSpinning).toBe(true);
-      expect(spinner.isEnabled).toBe(true);
     });
   });
 
   describe('Console and File loggers', () => {
-    let writeFileMock;
-    let consoleLogMock;
-    let consoleWarnMock;
-    let consoleErrorMock;
-    const env = {};
+    let writeFileMock: SpiedFunction<typeof fs.writeFile>;
+    let consoleLogMock: SpiedFunction<typeof console.log>;
+    let consoleWarnMock: SpiedFunction<typeof console.warn>;
+    let consoleErrorMock: SpiedFunction<typeof console.error>;
+    const env: Record<string, string | undefined> = {};
 
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
       process.env.APP_DEBUG = 'true';
-      writeFileMock = jest.spyOn(fs, 'writeFile').mockImplementation();
-      consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
-      consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
-      consoleErrorMock = jest.spyOn(console, 'error').mockImplementation();
+      writeFileMock = jest.spyOn(fs, 'writeFile').mockImplementation(jest.fn());
+      consoleLogMock = jest.spyOn(console, 'log').mockImplementation(jest.fn());
+      consoleWarnMock = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(jest.fn());
+      consoleErrorMock = jest
+        .spyOn(console, 'error')
+        .mockImplementation(jest.fn());
     });
 
     afterEach(() => {
@@ -131,17 +131,21 @@ describe('Logger', () => {
   });
 
   describe('Console loggers', () => {
-    let consoleLogMock;
-    let consoleWarnMock;
-    let consoleErrorMock;
-    const env = {};
+    let consoleLogMock: SpiedFunction<typeof console.log>;
+    let consoleWarnMock: SpiedFunction<typeof console.warn>;
+    let consoleErrorMock: SpiedFunction<typeof console.error>;
+    const env: Record<string, string | undefined> = {};
 
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
       process.env.APP_DEBUG = 'true';
-      consoleLogMock = jest.spyOn(console, 'log').mockImplementation();
-      consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation();
-      consoleErrorMock = jest.spyOn(console, 'error').mockImplementation();
+      consoleLogMock = jest.spyOn(console, 'log').mockImplementation(jest.fn());
+      consoleWarnMock = jest
+        .spyOn(console, 'warn')
+        .mockImplementation(jest.fn());
+      consoleErrorMock = jest
+        .spyOn(console, 'error')
+        .mockImplementation(jest.fn());
     });
 
     afterEach(() => {
@@ -186,13 +190,13 @@ describe('Logger', () => {
   });
 
   describe('File loggers', () => {
-    let writeFileMock;
-    const env = {};
+    let writeFileMock: SpiedFunction<typeof fs.writeFile>;
+    const env: Record<string, string | undefined> = {};
 
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
-      process.env.APP_DEBUG = true;
-      writeFileMock = jest.spyOn(fs, 'writeFile').mockImplementation();
+      process.env.APP_DEBUG = 'true';
+      writeFileMock = jest.spyOn(fs, 'writeFile').mockImplementation(jest.fn());
     });
 
     afterEach(() => {

@@ -46,6 +46,14 @@ class EventBus {
    * });
    */
   static on(event: string, callback: Callable): void {
+    if (typeof event !== 'string') {
+      throw new Error('please provide an event name');
+    }
+
+    if (typeof callback !== 'function') {
+      throw new Error('please provide a valid callback');
+    }
+
     const key = `_${event}`;
     if (!this.registry[key]) this.registry[key] = [];
 
@@ -76,11 +84,17 @@ class EventBus {
    *   async: false,
    * });
    */
-  static async emit({
-    event,
-    args = [],
-    async = true,
-  }: EventTriggerSettings): Promise<void> {
+  static async emit(
+    {
+      event,
+      args = [],
+      async = true,
+    }: EventTriggerSettings = {} as EventTriggerSettings,
+  ): Promise<void> {
+    if (typeof event !== 'string') {
+      throw new Error('please provide an event name');
+    }
+
     const key = `_${event}`;
     if (this.registry[key] === undefined) return;
 

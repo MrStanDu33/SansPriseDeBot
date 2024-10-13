@@ -7,7 +7,7 @@ import { jest } from '@jest/globals';
 import EventBus from '$src/EventBus';
 
 describe('EventBus', () => {
-  let APP_DEBUG;
+  let APP_DEBUG: string | undefined;
   beforeEach(() => {
     APP_DEBUG = process.env.APP_DEBUG;
     process.env.APP_DEBUG = 'false';
@@ -19,21 +19,25 @@ describe('EventBus', () => {
   describe('Event Listener', () => {
     it("Should require event's name", () => {
       expect(() => {
+        // @ts-expect-error Error forced for test purposes
         EventBus.on();
-      }).toThrowError('please provide an event name');
+      }).toThrow('please provide an event name');
     });
 
     it('Should require a callback', () => {
       expect(() => {
+        // @ts-expect-error Error forced for test purposes
         EventBus.on('eventName');
-      }).toThrowError('please provide a valid callback');
+      }).toThrow('please provide a valid callback');
     });
 
-    it('Should allow to register an event', () => {
-      EventBus.on('eventName', jest.fn());
+    it('Should allow to register an event', async () => {
+      const callback = jest.fn();
+      EventBus.on('eventName', callback);
 
+      await EventBus.emit({ event: 'eventName' });
       // eslint-disable-next-line no-underscore-dangle
-      expect(EventBus._eventName).toBeTruthy();
+      expect(callback).toHaveBeenCalled();
     });
   });
 
@@ -42,7 +46,9 @@ describe('EventBus', () => {
       try {
         await EventBus.emit();
       } catch (error) {
-        expect(error.message).toEqual('please provide an event name');
+        if (error instanceof Error) {
+          expect(error.message).toEqual('please provide an event name');
+        }
       }
     });
 

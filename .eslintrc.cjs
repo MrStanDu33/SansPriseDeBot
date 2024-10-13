@@ -15,6 +15,7 @@ module.exports = {
   ],
   plugins: ['prettier', 'jsdoc', '@typescript-eslint', 'import'],
   rules: {
+    'no-underscore-dangle': ['error', { allow: ['__'] }],
     'implicit-arrow-linebreak': 'off',
     'function-paren-newline': 'off',
     'no-void': ['error', { allowAsStatement: true }],

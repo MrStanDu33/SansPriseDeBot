@@ -15,12 +15,12 @@
     "allowJs": true,
     "outDir": "dist",
     "sourceMap": true,
-    "types": ["i18n"],
+    "types": ["i18n", "jest", "@types/jest"],
     "baseUrl": ".",
     "paths": {
       "$src/*": ["src/*"]
     }
   },
-  "include": ["src", "bin", "index.ts"],
+  "include": ["src", "bin", "tests", "index.ts", "jest.config.ts"],
   "exclude": ["node_modules"]
 }
