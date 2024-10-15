@@ -1,5 +1,3 @@
-# Authors
-
 This repository could not exist without a lot of persons.
 
 A big THANK YOU goes to:
