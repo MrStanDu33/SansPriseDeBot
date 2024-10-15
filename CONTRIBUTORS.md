@@ -1,3 +1,5 @@
+# Contributors
+
 This repository could not exist without a lot of persons.
 
 Here is an inevitably incomplete list of MUCH-APPRECIATED CONTRIBUTORS,
