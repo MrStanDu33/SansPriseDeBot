@@ -336,42 +336,34 @@ export default async (memberId, actionId) => {
   );
 
   switch (actionToPerform.type) {
-    case 'applyRoles': {
+    case 'applyRoles':
       await applyRoles(member);
       break;
-    }
-    case 'addRole': {
+    case 'addRole':
       await addRole(member, actionToPerform);
       break;
-    }
-    case 'removeRole': {
+    case 'removeRole':
       await removeRole(member, actionToPerform);
       break;
-    }
-    case 'removeAllRoles': {
+    case 'removeAllRoles':
       await removeAllRoles(member);
       break;
-    }
-    case 'printMessage': {
+    case 'printMessage':
       await printMessage(member, actionToPerform);
       await timeoutBeforeAction(2_000);
       break;
-    }
-    case 'question': {
+    case 'question':
       await askQuestion(member, actionToPerform);
       break;
-    }
-    case 'promptFile': {
+    case 'promptFile':
       await promptFile(member);
       break;
-    }
-    case 'getOutOfPipe': {
+    case 'getOutOfPipe':
       Logger.info(`Scheduled App_getOutOfPipe event in 60 seconds`);
       setTimeout(() => {
         EventBus.emit({ event: 'App_getOutOfPipe', args: [member] });
       }, 60000);
       break;
-    }
     default: {
       const channel = client.channels.cache.get(member.linkedChannel.discordId);
       await channel.send(

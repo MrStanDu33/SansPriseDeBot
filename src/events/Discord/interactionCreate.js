@@ -220,11 +220,10 @@ const processStaffFileValidation = async (interaction, guild) => {
       await channel.send(message);
       break;
     }
-    default: {
+    default:
       Logger.warn(
         `Unable to determine action to do with request ${staffDecision}`,
       );
-    }
   }
 };
 

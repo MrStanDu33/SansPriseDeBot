@@ -445,9 +445,8 @@ const saveAction = async ({
       }
       break;
     }
-    default: {
+    default:
       break;
-    }
   }
   return true;
 };
