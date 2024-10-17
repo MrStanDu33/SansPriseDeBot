@@ -18,7 +18,6 @@ import {
   Attribute,
   NotNull,
   Unique,
-  HasMany,
   BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
 
@@ -38,7 +37,7 @@ class MimeType extends Model<
 
   @BelongsToMany(() => ActionPromptFile, {
     /**
-     *
+     * @returns { ActionPromptFileHasMimeType } - ActionPromptFile association model with MimeType.
      */
     through: () => ActionPromptFileHasMimeType,
   })

@@ -62,7 +62,7 @@ class ActionPromptFile extends Model<
 
   @BelongsToMany(() => MimeType, {
     /**
-     *
+     * @returns { ActionPromptFileHasMimeType } - ActionPromptFile association model with MimeType.
      */
     through: () => ActionPromptFileHasMimeType,
   })

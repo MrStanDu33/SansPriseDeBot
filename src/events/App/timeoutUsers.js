@@ -129,7 +129,7 @@ const timeoutMember = async (member) => {
 };
 
 /**
- *
+ * @returns { Promise<FollowedMember[]> } - A list of inactive members.
  */
 const getInactiveMembers = async () => {
   const membersToWarnAfterOneDayInactivity = await FollowedMember.findAll({
