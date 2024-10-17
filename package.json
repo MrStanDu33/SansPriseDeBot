@@ -36,13 +36,13 @@
     "docs:watch": "npx nodemon --exec 'npm run docs' --watch . --ignore ./docs/"
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^10.1.0",
+    "@apidevtools/json-schema-ref-parser": "^11.7.2",
     "@sequelize/core": "^7.0.0-alpha.43",
     "@sequelize/mysql": "^7.0.0-alpha.43",
     "@types/i18n": "^0.13.12",
     "@types/node": "^22.7.6",
     "chalk": "5.3.0",
-    "cli-spinners": "^2.9.2",
+    "cli-spinners": "^3.2.0",
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",
     "extensionless": "^1.9.9",
@@ -50,11 +50,11 @@
     "json-refs": "^3.0.15",
     "mysql2": "^3.11.3",
     "node-cron": "^3.0.3",
-    "ora": "^6.3.1",
+    "ora": "^8.1.0",
     "source-map-support": "^0.5.21",
-    "stack-trace": "*",
+    "stack-trace": "0.0.10",
     "tsx": "^4.19.1",
-    "uuid": "^9.0.1"
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.8",
@@ -74,7 +74,7 @@
     "clean-jsdoc-theme": "^4.3.0",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.10.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^3.6.3",
     "eslint-plugin-import": "^2.31.0",
