@@ -26,8 +26,6 @@
     "test:debug": "node --inspect-brk --experimental-vm-modules --no-warnings ./node_modules/.bin/jest --runInBand --watch",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",
-    "preinstall": "link-module-alias clean || echo",
-    "postinstall": "link-module-alias",
     "start:prod": "node --experimental-loader=extensionless --experimental-vm-modules --experimental-specifier-resolution=node dist/index.js",
     "build:prod": "rimraf dist && tsc && tsc-alias",
     "dev": "tsx .",
@@ -40,6 +38,7 @@
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^10.1.0",
     "@sequelize/core": "^7.0.0-alpha.26",
+    "@sequelize/mysql": "^7.0.0-alpha.43",
     "@types/i18n": "^0.13.12",
     "@types/node": "^22.5.0",
     "chalk": "5.3.0",
