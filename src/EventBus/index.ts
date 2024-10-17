@@ -28,6 +28,7 @@ export type Subscriber = Record<string, Callable[] | undefined>;
  *
  * @exports Libraries.EventBus
  */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class EventBus {
   private static registry = {} as Subscriber;
 
@@ -59,7 +60,7 @@ class EventBus {
     if (!this.registry[key]) this.registry[key] = [];
 
     Logger.debug(`Listening "${event}" event`);
-    this.registry[key]?.push(callback);
+    this.registry[key].push(callback);
   }
 
   /**
@@ -100,7 +101,7 @@ class EventBus {
     if (this.registry[key] === undefined) return;
 
     // eslint-disable-next-line no-restricted-syntax, @typescript-eslint/no-non-null-assertion
-    for (const callback of this.registry[key]!) {
+    for (const callback of this.registry[key]) {
       if (async) {
         void callback(...args);
       } else {
