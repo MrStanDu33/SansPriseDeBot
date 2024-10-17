@@ -39,6 +39,8 @@ class EventBus {
    * @param { EventName } event    - The name of the event you want to listen to.
    * @param { Callable }  callback - The callback function that will be called when the event is emitted.
    *
+   * @throws  { Error } Thrown if argument is not valid.
+   *
    * @example
    * EventBus.on('mySuperEvent', (payload) => {
    *   console.log('mySuperEvent was fired', payload);
