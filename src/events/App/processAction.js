@@ -15,7 +15,6 @@ import {
   Action,
   ActionAddRole,
   ActionRemoveRole,
-  ActionGoto,
   ActionPrintMessage,
   ActionPromptFile,
   ActionPromptFileHasAction,

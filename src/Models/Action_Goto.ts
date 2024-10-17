@@ -8,12 +8,11 @@
  */
 
 import {
-  DataTypes,
   Model,
   InferAttributes,
   InferCreationAttributes,
 } from '@sequelize/core';
-import { Table, Attribute } from '@sequelize/core/decorators-legacy';
+import { Table } from '@sequelize/core/decorators-legacy';
 
 /**
  *
