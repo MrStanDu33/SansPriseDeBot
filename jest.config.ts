@@ -3,6 +3,7 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { pathsToModuleNameMapper } from 'ts-jest';
 
 export default {

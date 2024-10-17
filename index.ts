@@ -24,10 +24,23 @@ process.once('SIGUSR2', () => {
     'info',
   );
 
-  if (Store.client !== null) {
-    Store.client.destroy();
+  if (Store.client === null) {
+    loader.succeed();
+    Logger.info('Discord bot successfully disconnected');
+    process.kill(process.pid, 'SIGUSR2');
+    return;
   }
-  loader.succeed();
-  Logger.info('Discord bot successfully disconnected');
-  process.kill(process.pid, 'SIGUSR2');
+
+  Store.client
+    .destroy()
+    .then(() => {
+      loader.succeed();
+      Logger.info('Discord bot successfully disconnected');
+    })
+    .catch(() => {
+      Logger.error(true, 'Failed to disconnect Discord bot');
+    })
+    .finally(() => {
+      process.kill(process.pid, 'SIGUSR2');
+    });
 });
