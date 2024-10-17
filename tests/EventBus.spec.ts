@@ -52,13 +52,32 @@ describe('EventBus', () => {
       }
     });
 
-    it('Should allow to emit an event', async () => {
+    it('Should ignore non-registered events', async () => {
       const callback = jest.fn();
       EventBus.on('eventName', callback);
 
-      await EventBus.emit({ event: 'eventName' });
+      await EventBus.emit({ event: 'nonRegisteredEvent' });
       // eslint-disable-next-line no-underscore-dangle
-      expect(callback).toHaveBeenCalled();
+      expect(callback).not.toHaveBeenCalled();
+    });
+
+    describe('Should allow to emit an event', () => {
+      it('Synchronously', async () => {
+        const callback = jest.fn();
+        EventBus.on('eventName', callback);
+
+        await EventBus.emit({ event: 'eventName' });
+        // eslint-disable-next-line no-underscore-dangle
+        expect(callback).toHaveBeenCalled();
+      });
+      it('Asynchronously', async () => {
+        const callback = jest.fn();
+        EventBus.on('eventName', callback);
+
+        await EventBus.emit({ event: 'eventName', async: false });
+        // eslint-disable-next-line no-underscore-dangle
+        expect(callback).toHaveBeenCalled();
+      });
     });
 
     it('Should allow to pass data', async () => {
