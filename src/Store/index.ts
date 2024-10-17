@@ -3,12 +3,6 @@
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>
  */
 
-/**
- * @description Store library.
- *
- * @exports Libraries.Store
- */
-
 export interface State {
   client: null | import('discord.js').Client;
 }
@@ -17,6 +11,11 @@ const state: State = {
   client: null,
 };
 
+/**
+ * @description Store library.
+ *
+ * @exports Libraries.Store
+ */
 const Store = new Proxy(state, {
   /**
    * @description Get the store data based on the data
