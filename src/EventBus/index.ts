@@ -5,15 +5,6 @@
 
 import Logger from '$src/Logger';
 
-/**
- * @class
- * @description EventBus library.
- *
- * @hideconstructor
- *
- * @exports Libraries.EventBus
- */
-
 type EventName = string;
 type EventCallbackArgs = unknown[];
 type EventCallbackIsAsync = boolean;
@@ -29,6 +20,14 @@ export type Callable =
   | ((...args: EventCallbackArgs) => Promise<void>);
 export type Subscriber = Record<string, Callable[] | undefined>;
 
+/**
+ * @class
+ * @description EventBus library.
+ *
+ * @hideconstructor
+ *
+ * @exports Libraries.EventBus
+ */
 class EventBus {
   private static registry = {} as Subscriber;
 
