@@ -21,12 +21,12 @@ const Store = new Proxy(state, {
    * @description Get the store data based on the data
    * name provided in the key.
    *
-   * @param   { object }  target - Store object.
-   * @param   { string }  key    - Key of requested data in store.
+   * @param   { object<string> } target - Store object.
+   * @param   { string }         key    - Key of requested data in store.
    *
-   * @returns { unknown }        - Return whatever data has been stored
-   *                             or undefined if given key does not
-   *                             exist in store.
+   * @returns { unknown }               - Return whatever data has been stored
+   *                                    or undefined if given key does not
+   *                                    exist in store.
    *
    * @example
    * const mySuperVariable = Store.mySuperKey;
@@ -43,12 +43,12 @@ const Store = new Proxy(state, {
    * @description Set a data in store based on the data
    * name provided in the key and given value.
    *
-   * @param   { object }  target - Store object.
-   * @param   { string }  key    - Key of requested data in store.
-   * @param   { any }     value  - Key of requested data in store.
+   * @param   { object<string> } target - Store object.
+   * @param   { string }         key    - Key of requested data in store.
+   * @param   { any }            value  - Key of requested data in store.
    *
-   * @returns { boolean }        - Return true if data was successfully stored
-   *                             or false if an error occurred.
+   * @returns { boolean }               - Return true if data was successfully stored
+   *                                    or false if an error occurred.
    *
    * @example
    * Store.mySuperKey = 'This is a nice value';

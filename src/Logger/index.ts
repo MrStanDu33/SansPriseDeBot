@@ -207,7 +207,7 @@ class Logger {
    *
    * @description Prints given info messages to the discord log channel.
    *
-   * @param   { unknown[] } warn - Warning messages to be logged.
+   * @param   { Array<unknown> } warn - Warning messages to be logged.
    *
    * @returns { void }
    *
@@ -513,27 +513,27 @@ class Logger {
   /**
    * @static
    *
-   * @property { object } prefixes               - List of prefixes to use for logging.
+   * @property { object<string> } prefixes               - List of prefixes to use for logging.
    *
-   * @property { object } prefixes.console       - List of prefixes to use for console logging.
-   * @property { string } prefixes.console.debug - Colored prefix for debug messages in console.
-   * @property { string } prefixes.console.info  - Colored prefix for info messages in console.
-   * @property { string } prefixes.console.warn  - Colored prefix for warnings in console.
-   * @property { string } prefixes.console.error - Colored prefix for errors in console.
-   * @property { string } prefixes.console.fatal - Colored prefix for fatal errors in console.
+   * @property { object<string> } prefixes.console       - List of prefixes to use for console logging.
+   * @property { string }         prefixes.console.debug - Colored prefix for debug messages in console.
+   * @property { string }         prefixes.console.info  - Colored prefix for info messages in console.
+   * @property { string }         prefixes.console.warn  - Colored prefix for warnings in console.
+   * @property { string }         prefixes.console.error - Colored prefix for errors in console.
+   * @property { string }         prefixes.console.fatal - Colored prefix for fatal errors in console.
    *
-   * @property { object } prefixes.discord       - List of prefixes to use for discord logging.
-   * @property { string } prefixes.discord.debug - Colored prefix for debug messages in discord.
-   * @property { string } prefixes.discord.info  - Colored prefix for info messages in discord.
-   * @property { string } prefixes.discord.warn  - Colored prefix for warnings in discord.
-   * @property { string } prefixes.discord.error - Colored prefix for errors in discord.
+   * @property { object<string> } prefixes.discord       - List of prefixes to use for discord logging.
+   * @property { string }         prefixes.discord.debug - Colored prefix for debug messages in discord.
+   * @property { string }         prefixes.discord.info  - Colored prefix for info messages in discord.
+   * @property { string }         prefixes.discord.warn  - Colored prefix for warnings in discord.
+   * @property { string }         prefixes.discord.error - Colored prefix for errors in discord.
    *
-   * @property { object } prefixes.file          - List of prefixes to use for log file logging.
-   * @property { string } prefixes.file.debug    - Prefix for debug messages in log file.
-   * @property { string } prefixes.file.info     - Prefix for info messages in log file.
-   * @property { string } prefixes.file.warn     - Prefix for warnings in log file.
-   * @property { string } prefixes.file.error    - Prefix for errors in log file.
-   * @property { string } prefixes.file.fatal    - Prefix for fatal errors in log file.
+   * @property { object<string> } prefixes.file          - List of prefixes to use for log file logging.
+   * @property { string }         prefixes.file.debug    - Prefix for debug messages in log file.
+   * @property { string }         prefixes.file.info     - Prefix for info messages in log file.
+   * @property { string }         prefixes.file.warn     - Prefix for warnings in log file.
+   * @property { string }         prefixes.file.error    - Prefix for errors in log file.
+   * @property { string }         prefixes.file.fatal    - Prefix for fatal errors in log file.
    */
   static #prefixes = {
     console: {

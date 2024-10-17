@@ -149,6 +149,7 @@ module.exports = {
         returns: 'returns',
         constructor: 'constructor',
       },
+      preferredTypes: { object: 'object.<>' },
     },
   },
   globals: {

@@ -128,7 +128,7 @@ const syncMissingMembersInWaitList = async (members) => {
  * keeps only the ones that are not already followed by the bot or awaiting, and
  * then creates an awaiting member for each of them.
  *
- * @param   { (FollowedMember|AwaitingMember)[] } followedMembers - Discord member to untrack.
+ * @param   { Array<FollowedMember|AwaitingMember> } followedMembers - Discord member to untrack.
  *
  * @returns { Promise<void> }
  *

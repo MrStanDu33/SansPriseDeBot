@@ -115,7 +115,7 @@ const processUserAnswer = async (interaction) => {
 
   const selectedAnswer =
     linkedChannel.followedMember.currentAction.question.answers.find(
-      (/** @type { object } */ answer) =>
+      (/** @type { object<string> } */ answer) =>
         answer.id === Number(interaction.customId.split('||')[1]),
     );
 

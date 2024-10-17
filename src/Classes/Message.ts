@@ -7,16 +7,15 @@
  * @class
  * @description Message manager.
  */
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
-class Message {
+export default class Message {
   message: string;
 
   /**
    * @constructs Message
    * @description Replaces mustaches interpolations with corresponding given values.
    *
-   * @param { string }                         message        - The message containing mustaches.
-   * @param { {[key: string]: string|number} } interpolations - Map of available interpolations variables.
+   * @param { string }                        message        - The message containing mustaches.
+   * @param { object<string, string|number> } interpolations - Map of available interpolations variables.
    *
    * @example
    * const { message } = new Message(
@@ -49,5 +48,3 @@ class Message {
     });
   }
 }
-
-export default Message;

@@ -19,8 +19,8 @@ Dotenv.config();
  * @function saveAction
  * @description Save action to database and create sub-action model instance if needed.
  *
- * @param   { object }           settings                      - The action to store in database.
- * @param   { object }           settings.action               - The action to store in database.
+ * @param   { object<string> }   settings                      - The action to store in database.
+ * @param   { object<string> }   settings.action               - The action to store in database.
  * @param   { number }           [settings.parentAnswerId]     - Id of parent answer for when action
  *                                                             is due when answer selected.
  * @param   { number }           [settings.parentPromptFileId] - Id of parent PromptFile action

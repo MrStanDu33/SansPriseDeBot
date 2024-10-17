@@ -14,7 +14,7 @@ import cron from 'node-cron';
  * @class
  * @description App instance.
  */
-class App {
+export default class App {
   Store: null | typeof Store;
 
   /**
@@ -98,5 +98,3 @@ class App {
     });
   }
 }
-
-export default App;
