@@ -14,8 +14,8 @@ export default class Message {
    * @constructs Message
    * @description Replaces mustaches interpolations with corresponding given values.
    *
-   * @param { string }                        message        - The message containing mustaches.
-   * @param { object<string, string|number> } interpolations - Map of available interpolations variables.
+   * @param { string }                                  message        - The message containing mustaches.
+   * @param { object<string, string|number|undefined> } interpolations - Map of available interpolations variables.
    *
    * @example
    * const { message } = new Message(
@@ -26,7 +26,7 @@ export default class Message {
    */
   constructor(
     message: string,
-    interpolations: Record<string, string | number>,
+    interpolations: Record<string, string | number | undefined>,
   ) {
     this.message = message;
 

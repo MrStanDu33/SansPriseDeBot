@@ -8,6 +8,7 @@ import Store from '$src/Store';
 import { FollowedMember, LinkedChannel } from '$src/Models';
 import Message from '$src/Classes/Message';
 import { Op } from '@sequelize/core';
+import { GuildTextBasedChannel } from 'discord.js';
 
 const ONE_DAY_INACTIVITY_MESSAGE = `Bonjour <@{{ memberId }}>, je suis Sans prise de bot, le robot du serveur Sans prise de tech.
 
@@ -38,100 +39,124 @@ Si tu souhaites rejoindre à nouveau notre serveur, pas de soucis ! Tu peux le r
 Au plaisir de te revoir 👋`;
 
 /**
+ * @description Send a warning to the member who is inactive.
  *
- * @param member
- * @param message
+ * @param {FollowedMember} member  - The member to send a warning message.
+ * @param {string}         message - The message to send to the member.
  */
-const sendTimeoutWarningMessage = async (member, message) => {
-  const loader = Logger.loader(
-    { spinner: 'dots10', color: 'cyan' },
-    `Sending warning before timeout message for ${member.username}...`,
-    'info',
-  );
+const sendTimeoutWarningMessage = async (
+  member: FollowedMember,
+  message: string,
+) => {
+  try {
+    const loader = Logger.loader(
+      { spinner: 'dots10', color: 'cyan' },
+      `Sending warning before timeout message for ${member.username}...`,
+      'info',
+    );
 
-  // eslint-disable-next-line no-param-reassign
-  member.warnsForInactivity += 1;
-  await member.save();
+    // eslint-disable-next-line no-param-reassign
+    member.warnsForInactivity += 1;
+    await member.save();
 
-  const { message: dmMessage } = new Message(message, {
-    memberId: member.memberId,
-  });
+    const { message: dmMessage } = new Message(message, {
+      memberId: member.memberId,
+    });
+    if (!member.linkedChannel?.discordId)
+      throw new Error('Linked channel not found');
 
-  const { message: channelLinkMessage } = new Message(
-    'Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>',
-    {
-      channelId: member.linkedChannel.discordId,
-    },
-  );
+    const { message: channelLinkMessage } = new Message(
+      'Tu peux retrouver notre conversation pour la continuer ici: <#{{ channelId }}>',
+      {
+        channelId: member.linkedChannel.discordId,
+      },
+    );
+    // @ts-expect-error: Client must exist.
+    const guild = await Store.client.guilds.fetch(
+      process.env.DISCORD_SERVER_ID,
+    );
+    const memberChannel = (await guild.channels.fetch(
+      member.linkedChannel.discordId,
+    )) as GuildTextBasedChannel | null;
+    if (memberChannel === null)
+      throw new Error(
+        `Unable to find discord channel with ID ${
+          member.linkedChannel.discordId
+        }`,
+      );
+    await memberChannel.send(dmMessage);
 
-  const guild = await Store.client.guilds
-    .fetch(process.env.DISCORD_SERVER_ID)
-    .catch(Logger.error);
+    const discordMember = await guild.members.fetch(member.memberId);
 
-  const memberChannel = await guild.channels
-    .fetch(member.LinkedChannel.discordId)
-    .catch(Logger.error);
+    await discordMember.send(dmMessage);
+    await discordMember.send(channelLinkMessage);
 
-  await memberChannel.send(dmMessage).catch(Logger.error);
-
-  const discordMember = await guild.members
-    .fetch(member.memberId)
-    .catch(Logger.error);
-  await discordMember.send(dmMessage).catch(Logger.error);
-  await discordMember.send(channelLinkMessage).catch(Logger.error);
-
-  loader.succeed();
-  Logger.info(`Timeout message sent successfully for ${member.username} !`);
+    loader.succeed();
+    Logger.info(`Timeout message sent successfully for ${member.username} !`);
+  } catch (e: unknown) {
+    Logger.error(e);
+  }
 };
 
 /**
+ * @description Timeout a member who has been inactive for too long time.
  *
- * @param member
+ * @param {FollowedMember} member - The member to timeout.
  */
-const timeoutMember = async (member) => {
-  const dataLoader = Logger.loader(
-    { spinner: 'dots10', color: 'cyan' },
-    `Processing timeout kick for ${member.username}...`,
-    'info',
-  );
+const timeoutMember = async (member: FollowedMember) => {
+  try {
+    const dataLoader = Logger.loader(
+      { spinner: 'dots10', color: 'cyan' },
+      `Processing timeout kick for ${member.username}...`,
+      'info',
+    );
+    // @ts-expect-error: Client must exist.
+    const guild = await Store.client.guilds.fetch(
+      process.env.DISCORD_SERVER_ID,
+    );
 
-  const guild = await Store.client.guilds
-    .fetch(process.env.DISCORD_SERVER_ID)
-    .catch(Logger.error);
+    dataLoader.succeed();
+    Logger.info(`${member.username}'s data successfully deleted !`);
 
-  dataLoader.succeed();
-  Logger.info(`${member.username}'s data successfully deleted !`);
+    const kickLoader = Logger.loader(
+      { spinner: 'dots10', color: 'cyan' },
+      `Kicking ${member.username} from server ...`,
+      'info',
+    );
 
-  const kickLoader = Logger.loader(
-    { spinner: 'dots10', color: 'cyan' },
-    `Kicking ${member.username} from server ...`,
-    'info',
-  );
+    const discordMember = await guild.members.fetch(member.memberId);
 
-  const discordMember = await guild.members
-    .fetch(member.memberId)
-    .catch(Logger.error);
-
-  await discordMember
-    .send(TIMEOUT_MESSAGE)
-    .catch((error) =>
+    await discordMember.send(TIMEOUT_MESSAGE).catch((error: unknown) => {
       Logger.warn(
         `Unable to send timeout message to ${member.username}`,
         error,
-      ),
-    );
-  await discordMember
-    .kick(`Kick pour non-réponse au workflow d'entrée`)
-    .catch(Logger.error);
+      );
+    });
+    await discordMember.kick(`Kick pour non-réponse au workflow d'entrée`);
 
-  kickLoader.succeed();
-  Logger.info(`${member.username} successfully kicked of server !`);
+    kickLoader.succeed();
+    Logger.info(`${member.username} successfully kicked of server !`);
+  } catch (e: unknown) {
+    Logger.error(e);
+  }
 };
 
 /**
- * @returns { Promise<FollowedMember[]> } - A list of inactive members.
+ * @description Get list of inactive members based on different inactivity durations.
+ *
+ * @returns { Promise<{
+ * membersToWarnAfterOneDayInactivity: FollowedMember[];
+ * membersToWarnHalfTimeBeforeTimeout: FollowedMember[];
+ * membersToWarnLastDayBeforeTimeout: FollowedMember[];
+ * membersToTimeout: FollowedMember[];
+ * }> } - A list of inactive members.
  */
-const getInactiveMembers = async () => {
+const getInactiveMembers = async (): Promise<{
+  membersToWarnAfterOneDayInactivity: FollowedMember[];
+  membersToWarnHalfTimeBeforeTimeout: FollowedMember[];
+  membersToWarnLastDayBeforeTimeout: FollowedMember[];
+  membersToTimeout: FollowedMember[];
+}> => {
   const membersToWarnAfterOneDayInactivity = await FollowedMember.findAll({
     where: {
       inProcess: true,
@@ -197,10 +222,11 @@ const getInactiveMembers = async () => {
 };
 
 /**
+ * @description Warn a list of members who are inactive for one day.
  *
- * @param members
+ * @param {FollowedMember[]} members - List of members to warn after one day of inactivity.
  */
-const warnMemberAfterOneDayOfInactivity = async (members) => {
+const warnMemberAfterOneDayOfInactivity = async (members: FollowedMember[]) => {
   if (members.length !== 0) {
     Logger.info('Start warning members after one day of inactivity');
     // eslint-disable-next-line no-restricted-syntax
@@ -213,10 +239,11 @@ const warnMemberAfterOneDayOfInactivity = async (members) => {
 };
 
 /**
+ * @description Warn a list of members who are inactive for half of the given time.
  *
- * @param members
+ * @param {FollowedMember[]} members - List of members to warn after half time before timeout.
  */
-const warnMembersHalfTimeBeforeTimeout = async (members) => {
+const warnMembersHalfTimeBeforeTimeout = async (members: FollowedMember[]) => {
   if (members.length !== 0) {
     Logger.info(
       'Start warning members after half time remaining before timeout',
@@ -236,10 +263,11 @@ const warnMembersHalfTimeBeforeTimeout = async (members) => {
 };
 
 /**
+ * @description Warn a list of members who ar about to be kicked in one day due to inactivity.
  *
- * @param members
+ * @param {FollowedMember[]} members - List of members to warn last day before timeout.
  */
-const warnMembersLastDayBeforeTimeout = async (members) => {
+const warnMembersLastDayBeforeTimeout = async (members: FollowedMember[]) => {
   if (members.length !== 0) {
     Logger.info('Start warning members one day before timeout');
     // eslint-disable-next-line no-restricted-syntax
@@ -255,10 +283,11 @@ const warnMembersLastDayBeforeTimeout = async (members) => {
 };
 
 /**
+ * @description Timeout a list of members.
  *
- * @param members
+ * @param {FollowedMember[]} members - List of members to timeout.
  */
-const timeoutMembers = async (members) => {
+const timeoutMembers = async (members: FollowedMember[]) => {
   if (members.length !== 0) {
     Logger.info('Start timing out members');
     // eslint-disable-next-line no-restricted-syntax
@@ -290,8 +319,8 @@ export default async () => {
     membersToTimeout,
   } = await getInactiveMembers();
 
-  warnMemberAfterOneDayOfInactivity(membersToWarnAfterOneDayInactivity);
-  warnMembersHalfTimeBeforeTimeout(membersToWarnHalfTimeBeforeTimeout);
-  warnMembersLastDayBeforeTimeout(membersToWarnLastDayBeforeTimeout);
-  timeoutMembers(membersToTimeout);
+  void warnMemberAfterOneDayOfInactivity(membersToWarnAfterOneDayInactivity);
+  void warnMembersHalfTimeBeforeTimeout(membersToWarnHalfTimeBeforeTimeout);
+  void warnMembersLastDayBeforeTimeout(membersToWarnLastDayBeforeTimeout);
+  void timeoutMembers(membersToTimeout);
 };
