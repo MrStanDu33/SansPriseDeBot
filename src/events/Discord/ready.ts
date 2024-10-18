@@ -6,9 +6,9 @@
 import Store from '$src/Store';
 import Logger from '$src/Logger';
 import EventBus from '$src/EventBus';
-// import { joinVoiceChannel } from '@discordjs/voice';
 
-/** @typedef { import('ora').Ora } Loader */
+type Loader = import('ora').Ora;
+// import { joinVoiceChannel } from '@discordjs/voice';
 
 /**
  * @description Function called when the bot is connected to discord.
@@ -26,7 +26,7 @@ import EventBus from '$src/EventBus';
  * @example
  * await EventBus.emit({ event: 'Discord_ready' });
  */
-export default async (loader) => {
+export default (loader: Loader) => {
   const { client } = Store;
 
   /* const channel = await client.channels.fetch('959821807383355392');
@@ -38,24 +38,33 @@ export default async (loader) => {
   }); */
 
   loader.succeed();
+  // @ts-expect-error: Client must exist.
   Logger.info(`Logged in as ${Store.client.user.tag}!`);
 
-  client.on('guildMemberAdd', (member) =>
-    EventBus.emit({ event: 'Discord_guildMemberAdd', args: [member] }),
-  );
+  // @ts-expect-error: Client must exist.
+  client.on('guildMemberAdd', (member) => {
+    void EventBus.emit({ event: 'Discord_guildMemberAdd', args: [member] });
+  });
 
-  client.on('guildMemberRemove', (member) =>
-    EventBus.emit({ event: 'Discord_guildMemberRemove', args: [member] }),
-  );
+  // @ts-expect-error: Client must exist.
+  client.on('guildMemberRemove', (member) => {
+    void EventBus.emit({ event: 'Discord_guildMemberRemove', args: [member] });
+  });
 
-  client.on('interactionCreate', (interaction) =>
-    EventBus.emit({ event: 'Discord_interactionCreate', args: [interaction] }),
-  );
+  // @ts-expect-error: Client must exist.
+  client.on('interactionCreate', (interaction) => {
+    void EventBus.emit({
+      event: 'Discord_interactionCreate',
+      args: [interaction],
+    });
+  });
 
-  client.on('messageCreate', (message) =>
-    EventBus.emit({ event: 'Discord_messageCreate', args: [message] }),
-  );
+  // @ts-expect-error: Client must exist.
+  client.on('messageCreate', (message) => {
+    void EventBus.emit({ event: 'Discord_messageCreate', args: [message] });
+  });
 
+  // @ts-expect-error: Client must exist.
   client.application.commands
     .create({
       name: 'ping',
@@ -64,7 +73,9 @@ export default async (loader) => {
     .then(() => {
       Logger.info('Command `/ping` successfully registered');
     })
-    .catch(Logger.error);
+    .catch((e: unknown) => {
+      Logger.error(e);
+    });
 
   //   cron.schedule('00 09 07 03 *', async () => {
   //     const { DISCORD_SERVER_ID } = process.env;
