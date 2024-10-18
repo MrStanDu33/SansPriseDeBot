@@ -13,9 +13,12 @@ import {
   InferAttributes,
   InferCreationAttributes,
   NonAttribute,
+  CreationOptional,
 } from '@sequelize/core';
 import {
   Attribute,
+  PrimaryKey,
+  AutoIncrement,
   NotNull,
   Unique,
   Default,
@@ -28,10 +31,15 @@ import RolesToAddToMember from './RolesToAddToMember.js';
 /**
  *
  */
-class FollowedMember extends Model<
+export default class FollowedMember extends Model<
   InferAttributes<FollowedMember>,
   InferCreationAttributes<FollowedMember>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.STRING(20))
   @NotNull
   declare guildId: string;
@@ -86,6 +94,7 @@ class FollowedMember extends Model<
     },
   })
   declare rolesToAddToMember?: NonAttribute<RolesToAddToMember>;
-}
 
-export default FollowedMember;
+  @Attribute(DataTypes.INTEGER)
+  declare currentActionId: number;
+}
