@@ -17,7 +17,8 @@
     "seatonjiang.gitmoji-vscode",
     "oderwat.indent-rainbow",
     "jakob101.relativepath",
-    "gruntfuggly.todo-tree"
+    "gruntfuggly.todo-tree",
+    "streetsidesoftware.code-spell-checker"
   ],
   "unwantedRecommendations": [
     "ms-vscode.cpptools",

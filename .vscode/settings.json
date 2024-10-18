@@ -6,5 +6,6 @@
     }
   ],
   "jest.jestCommandLine": "NODE_OPTIONS=--experimental-vm-modules ./node_modules/.bin/jest",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.language": "en-US,en"
 }
