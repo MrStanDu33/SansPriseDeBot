@@ -6,8 +6,12 @@
 import fs from 'fs';
 import EventBus from '$src/EventBus';
 
-const promises = [];
+const promises: Promise<boolean>[] = [];
 const eventFilesLocations = ['App', 'Discord'];
+
+interface Event {
+  default: (...args: unknown[]) => Promise<void>;
+}
 
 /**
  * @description Tells file auto importer wether to import this file or not.
@@ -21,10 +25,10 @@ const eventFilesLocations = ['App', 'Discord'];
  * @param   { string }  file - The name of the file being checked.
  * @returns { boolean }      - Wether the file must be imported or ignored.
  */
-const eventFilesFilter = (file) => {
-  const fileIsHidden = file.indexOf('.') === 0;
+const eventFilesFilter = (file: string): boolean => {
+  const fileIsHidden = file.startsWith('.');
   const fileIsIndex = file === 'index.js';
-  const fileIsJs = file.slice(-3) === '.js';
+  const fileIsJs = file.endsWith('.js');
 
   return !fileIsHidden && !fileIsIndex && fileIsJs;
 };
@@ -41,8 +45,11 @@ const eventFilesFilter = (file) => {
  *
  * @returns { Promise<boolean> }                    - True when operation done.
  */
-const eventFileHandler = async (eventFilesLocation, file) => {
-  const event = await import(`./${eventFilesLocation}/${file}`);
+const eventFileHandler = async (
+  eventFilesLocation: string,
+  file: string,
+): Promise<boolean> => {
+  const event = (await import(`./${eventFilesLocation}/${file}`)) as Event;
   const fileName = file.split('.').slice(0, -1).join('.');
   EventBus.on(`${eventFilesLocation}_${fileName}`, event.default);
   return true;
