@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for awaiting members.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>

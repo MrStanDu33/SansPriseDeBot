@@ -1,5 +1,4 @@
 /* eslint-disable no-use-before-define */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /**
  * @file Sequelize model for `Question` actions.
  * @author DANIELS-ROTH Stan <contact@daniels-roth-stan.fr>

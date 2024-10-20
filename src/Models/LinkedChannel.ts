@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable no-use-before-define */
 /**
  * @file Sequelize model for channels linked to a member.
