@@ -10,16 +10,19 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
+  type NonAttribute,
 } from '@sequelize/core';
 import {
   Attribute,
-  NotNull,
   Table,
-  HasMany,
+  NotNull,
   AllowNull,
+  HasMany,
+  PrimaryKey,
+  AutoIncrement,
 } from '@sequelize/core/decorators-legacy';
 
 import ActionQuestionAnswersHasAction from './Action_Question_Answers_Has_Action.js';
@@ -32,6 +35,11 @@ class ActionQuestionAnswer extends Model<
   InferAttributes<ActionQuestionAnswer>,
   InferCreationAttributes<ActionQuestionAnswer>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.TEXT)
   @AllowNull
   declare icon: string;
@@ -39,6 +47,18 @@ class ActionQuestionAnswer extends Model<
   @Attribute(DataTypes.TEXT)
   @NotNull
   declare text: string;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare actionQuestionId: number;
 
   @HasMany(() => ActionQuestionAnswersHasAction, {
     foreignKey: {

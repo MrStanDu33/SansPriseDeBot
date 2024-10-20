@@ -10,12 +10,15 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
+  type NonAttribute,
 } from '@sequelize/core';
 import {
   Attribute,
+  PrimaryKey,
+  AutoIncrement,
   NotNull,
   Table,
   HasOne,
@@ -39,9 +42,22 @@ class Action extends Model<
   InferAttributes<Action>,
   InferCreationAttributes<Action>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.STRING(255))
   @NotNull
   declare type: string;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
 
   @HasOne(() => ActionQuestion, {
     foreignKey: {
@@ -68,6 +84,7 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'actionId',
     },
     inverse: {
       as: 'goto',
@@ -79,6 +96,7 @@ class Action extends Model<
     foreignKey: {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE',
+      name: 'targetActionId',
     },
     inverse: {
       as: 'targetAction',

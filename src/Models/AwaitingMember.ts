@@ -10,10 +10,17 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
 } from '@sequelize/core';
-import { Attribute, NotNull, Unique } from '@sequelize/core/decorators-legacy';
+import {
+  Attribute,
+  NotNull,
+  Unique,
+  PrimaryKey,
+  AutoIncrement,
+} from '@sequelize/core/decorators-legacy';
 
 /**
  *
@@ -22,6 +29,11 @@ class AwaitingMember extends Model<
   InferAttributes<AwaitingMember>,
   InferCreationAttributes<AwaitingMember>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.STRING(20))
   @NotNull
   @Unique
@@ -43,6 +55,14 @@ class AwaitingMember extends Model<
   @Attribute(DataTypes.INTEGER)
   @NotNull
   declare priority: number;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
 }
 
 export default AwaitingMember;

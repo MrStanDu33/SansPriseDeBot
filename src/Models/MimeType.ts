@@ -10,14 +10,17 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
+  type NonAttribute,
 } from '@sequelize/core';
 import {
   Attribute,
   NotNull,
   Unique,
+  PrimaryKey,
+  AutoIncrement,
   BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
 
@@ -30,10 +33,23 @@ class MimeType extends Model<
   InferAttributes<MimeType>,
   InferCreationAttributes<MimeType>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.STRING(255))
   @NotNull
   @Unique
   declare name: string;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
 
   @BelongsToMany(() => ActionPromptFile, {
     /**

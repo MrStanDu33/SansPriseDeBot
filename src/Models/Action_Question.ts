@@ -10,15 +10,18 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
+  type NonAttribute,
 } from '@sequelize/core';
 import {
   Attribute,
-  HasMany,
-  NotNull,
   Table,
+  NotNull,
+  HasMany,
+  PrimaryKey,
+  AutoIncrement,
 } from '@sequelize/core/decorators-legacy';
 
 import { ActionQuestionAnswer } from '$src/Models';
@@ -31,6 +34,11 @@ class ActionQuestion extends Model<
   InferAttributes<ActionQuestion>,
   InferCreationAttributes<ActionQuestion>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.TEXT('long'))
   @NotNull
   declare question: string;
@@ -39,7 +47,16 @@ class ActionQuestion extends Model<
   @NotNull
   declare uuid: string;
 
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
+
   @Attribute(DataTypes.INTEGER)
+  @NotNull
   declare actionId: number;
 
   @HasMany(() => ActionQuestionAnswer, {

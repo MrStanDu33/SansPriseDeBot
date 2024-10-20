@@ -10,14 +10,17 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
+  type NonAttribute,
 } from '@sequelize/core';
 import {
   Attribute,
-  NotNull,
   Table,
+  NotNull,
+  PrimaryKey,
+  AutoIncrement,
   HasMany,
   BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
@@ -33,6 +36,11 @@ class ActionPromptFile extends Model<
   InferAttributes<ActionPromptFile>,
   InferCreationAttributes<ActionPromptFile>
 > {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
   @Attribute(DataTypes.TEXT)
   @NotNull
   declare errorMessage: string;
@@ -48,6 +56,18 @@ class ActionPromptFile extends Model<
   @Attribute(DataTypes.TEXT)
   @NotNull
   declare rejectedMessage: string;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare actionId: number;
 
   @HasMany(() => ActionPromptFileHasAction, {
     foreignKey: {

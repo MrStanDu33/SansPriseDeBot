@@ -8,11 +8,19 @@
  */
 
 import {
+  DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
 } from '@sequelize/core';
-import { Table } from '@sequelize/core/decorators-legacy';
+import {
+  Attribute,
+  Table,
+  NotNull,
+  PrimaryKey,
+  AutoIncrement,
+} from '@sequelize/core/decorators-legacy';
 
 /**
  *
@@ -21,6 +29,27 @@ import { Table } from '@sequelize/core/decorators-legacy';
 class ActionQuestionAnswersHasActions extends Model<
   InferAttributes<ActionQuestionAnswersHasActions>,
   InferCreationAttributes<ActionQuestionAnswersHasActions>
-> {}
+> {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare actionQuestionAnswerId: number;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare actionId: number;
+}
 
 export default ActionQuestionAnswersHasActions;

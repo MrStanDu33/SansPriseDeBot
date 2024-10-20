@@ -20,6 +20,7 @@ import {
   PrimaryKey,
   AutoIncrement,
   NotNull,
+  AllowNull,
   Unique,
   Default,
   HasOne,
@@ -76,6 +77,7 @@ class FollowedMember extends Model<
   declare inProcess: boolean;
 
   @Attribute(DataTypes.BOOLEAN)
+  @AllowNull
   declare needUploadFile: boolean;
 
   @Attribute(DataTypes.DATE)
@@ -89,19 +91,21 @@ class FollowedMember extends Model<
   declare isNewComer: boolean;
 
   @Attribute(DataTypes.INTEGER)
+  @AllowNull
   @Default(0)
   declare warnsForInactivity: number;
 
   @Attribute(DataTypes.INTEGER)
-  declare currentActionId: number;
+  @AllowNull
+  declare currentActionId: CreationOptional<number>;
 
   @Attribute(DataTypes.DATE)
   @NotNull
-  declare createdAt: Date;
+  declare createdAt: CreationOptional<Date>;
 
   @Attribute(DataTypes.DATE)
   @NotNull
-  declare updatedAt: Date;
+  declare updatedAt: CreationOptional<Date>;
 
   @HasOne(() => LinkedChannel, {
     foreignKey: {

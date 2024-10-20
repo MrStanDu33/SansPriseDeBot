@@ -8,11 +8,19 @@
  */
 
 import {
+  DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type CreationOptional,
 } from '@sequelize/core';
-import { Table } from '@sequelize/core/decorators-legacy';
+import {
+  Attribute,
+  Table,
+  NotNull,
+  PrimaryKey,
+  AutoIncrement,
+} from '@sequelize/core/decorators-legacy';
 
 /**
  *
@@ -21,6 +29,27 @@ import { Table } from '@sequelize/core/decorators-legacy';
 class ActionRemoveRole extends Model<
   InferAttributes<ActionRemoveRole>,
   InferCreationAttributes<ActionRemoveRole>
-> {}
+> {
+  @Attribute(DataTypes.INTEGER)
+  @PrimaryKey
+  @AutoIncrement
+  declare id: CreationOptional<number>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: CreationOptional<Date>;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare actionId: number;
+
+  @Attribute(DataTypes.INTEGER)
+  @NotNull
+  declare roleId: number;
+}
 
 export default ActionRemoveRole;
