@@ -25,9 +25,14 @@ import {
 } from '@sequelize/core/decorators-legacy';
 import Action from './Action.js';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging, @typescript-eslint/no-empty-interface
+interface DecisionsTree
+  extends HasManyMixin<Action, number, 'action', 'actions'> {}
+
 /**
  *
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class DecisionsTree extends Model<
   InferAttributes<DecisionsTree>,
   InferCreationAttributes<DecisionsTree>

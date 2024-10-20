@@ -28,10 +28,21 @@ import ActionPromptFileHasAction from './Action_PromptFile_Has_Action.js';
 import ActionPromptFileHasMimeType from './Action_PromptFile_Has_MimeType.js';
 import MimeType from './MimeType.js';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+interface ActionPromptFile
+  extends BelongsToManyMixin<MimeType, number, 'MimeType', 'MimeTypes'>,
+    HasManyMixin<
+      ActionPromptFileHasAction,
+      number,
+      'ActionPromptFileHasAction',
+      'ActionPromptFileHasActions'
+    > {}
+
 /**
  *
  */
 @Table({ tableName: 'Action_PromptFiles' })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class ActionPromptFile extends Model<
   InferAttributes<ActionPromptFile>,
   InferCreationAttributes<ActionPromptFile>
@@ -81,10 +92,16 @@ class ActionPromptFile extends Model<
   declare actions?: NonAttribute<ActionPromptFileHasAction>[];
 
   @BelongsToMany(() => MimeType, {
-    /**
-     * @returns { ActionPromptFileHasMimeType } - ActionPromptFile association model with MimeType.
-     */
-    through: () => ActionPromptFileHasMimeType,
+    through: {
+      model: ActionPromptFileHasMimeType,
+      unique: 'ActionPromptFileHasMimeType',
+    },
+    foreignKey: {
+      name: 'actionPromptFileId',
+    },
+    otherKey: {
+      name: 'mimeTypeId',
+    },
   })
   declare MimeTypes?: NonAttribute<ActionPromptFileHasMimeType>[];
 }

@@ -34,10 +34,34 @@ import ActionPromptFile from './Action_PromptFile.js';
 import ActionPromptFileHasAction from './Action_PromptFile_Has_Action.js';
 import FollowedMember from './FollowedMember.js';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+interface Action
+  extends HasOneMixin<ActionQuestion, number, 'question'>,
+    HasManyMixin<
+      ActionQuestionAnswersHasAction,
+      number,
+      'actionQuestionAnswersHasAction',
+      'actionQuestionAnswersHasActions'
+    >,
+    HasOneMixin<ActionGoto, number, 'goto'>,
+    HasOneMixin<ActionGoto, number, 'targetAction'>,
+    HasOneMixin<ActionPrintMessages, number, 'printMessage'>,
+    HasOneMixin<ActionAddRole, number, 'addRole'>,
+    HasOneMixin<ActionRemoveRole, number, 'removeRole'>,
+    HasOneMixin<ActionPromptFile, number, 'promptFile'>,
+    HasManyMixin<
+      ActionPromptFileHasAction,
+      number,
+      'ActionPromptFile',
+      'ActionPromptFiles'
+    >,
+    HasOneMixin<FollowedMember, number, 'followedMember'> {}
+
 /**
  *
  */
 @Table({ tableName: 'Action' })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class Action extends Model<
   InferAttributes<Action>,
   InferCreationAttributes<Action>

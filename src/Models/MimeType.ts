@@ -23,12 +23,21 @@ import {
   AutoIncrement,
   BelongsToMany,
 } from '@sequelize/core/decorators-legacy';
-
 import { ActionPromptFileHasMimeType, ActionPromptFile } from '$src/Models';
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging, @typescript-eslint/no-empty-interface
+interface MimeType
+  extends BelongsToManyMixin<
+    ActionPromptFile,
+    number,
+    'actionPromptFile',
+    'actionPromptFiles'
+  > {}
 
 /**
  *
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class MimeType extends Model<
   InferAttributes<MimeType>,
   InferCreationAttributes<MimeType>
@@ -52,23 +61,18 @@ class MimeType extends Model<
   declare updatedAt: CreationOptional<Date>;
 
   @BelongsToMany(() => ActionPromptFile, {
-    /**
-     * @returns { ActionPromptFileHasMimeType } - ActionPromptFile association model with MimeType.
-     */
-    through: () => ActionPromptFileHasMimeType,
+    through: {
+      model: ActionPromptFileHasMimeType,
+      unique: 'ActionPromptFileHasMimeType',
+    },
+    foreignKey: {
+      name: 'mimeTypeId',
+    },
+    otherKey: {
+      name: 'actionPromptFileId',
+    },
   })
-  declare actionPromptFile?: NonAttribute<ActionPromptFileHasMimeType>[];
-
-  // @HasMany(() => ActionPromptFileHasMimeType, {
-  //   foreignKey: {
-  //     onDelete: 'CASCADE',
-  //     onUpdate: 'CASCADE',
-  //   },
-  //   inverse: {
-  //     as: 'MimeTypes',
-  //   },
-  // })
-  // declare ActionPromptFiles?: NonAttribute<ActionPromptFileHasMimeType>[];
+  declare actionPromptFiles?: NonAttribute<ActionPromptFileHasMimeType>[];
 }
 
 export default MimeType;

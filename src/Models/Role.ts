@@ -28,9 +28,21 @@ import ActionAddRole from './Action_AddRole.js';
 import ActionRemoveRole from './Action_RemoveRole.js';
 import RolesToAddToMember from './RolesToAddToMember.js';
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+interface Role
+  extends HasOneMixin<ActionAddRole, number, 'actionAddRole'>,
+    HasOneMixin<ActionRemoveRole, number, 'actionRemoveRole'>,
+    HasManyMixin<
+      RolesToAddToMember,
+      number,
+      'rolesToAddToMember',
+      'rolesToAddToMembers'
+    > {}
+
 /**
  *
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class Role extends Model<InferAttributes<Role>, InferCreationAttributes<Role>> {
   @Attribute(DataTypes.INTEGER)
   @PrimaryKey

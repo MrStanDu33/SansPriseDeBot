@@ -24,13 +24,22 @@ import {
   PrimaryKey,
   AutoIncrement,
 } from '@sequelize/core/decorators-legacy';
-
 import ActionQuestionAnswersHasAction from './Action_Question_Answers_Has_Action.js';
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging, @typescript-eslint/no-empty-interface
+interface ActionQuestionAnswer
+  extends HasManyMixin<
+    ActionQuestionAnswersHasAction,
+    number,
+    'answerAction',
+    'answerActions'
+  > {}
 
 /**
  *
  */
 @Table({ tableName: 'Action_Question_Answers' })
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 class ActionQuestionAnswer extends Model<
   InferAttributes<ActionQuestionAnswer>,
   InferCreationAttributes<ActionQuestionAnswer>
