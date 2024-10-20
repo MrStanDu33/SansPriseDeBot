@@ -28,9 +28,10 @@ interface Event {
 const eventFilesFilter = (file: string): boolean => {
   const fileIsHidden = file.startsWith('.');
   const fileIsIndex = file === 'index.ts';
-  const fileIsJs = file.endsWith('.ts');
+  const fileIsJs = file.endsWith('.js');
+  const fileIsTs = file.endsWith('.ts');
 
-  return !fileIsHidden && !fileIsIndex && fileIsJs;
+  return !fileIsHidden && !fileIsIndex && (fileIsJs || fileIsTs);
 };
 
 /**
