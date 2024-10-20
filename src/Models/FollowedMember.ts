@@ -10,10 +10,10 @@
 import {
   DataTypes,
   Model,
-  InferAttributes,
-  InferCreationAttributes,
-  NonAttribute,
-  CreationOptional,
+  type InferAttributes,
+  type InferCreationAttributes,
+  type NonAttribute,
+  type CreationOptional,
 } from '@sequelize/core';
 import {
   Attribute,
@@ -27,11 +27,24 @@ import {
 } from '@sequelize/core/decorators-legacy';
 import LinkedChannel from './LinkedChannel.js';
 import RolesToAddToMember from './RolesToAddToMember.js';
+import type Action from './Action.js';
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+interface FollowedMember
+  extends BelongsToMixin<Action, number, 'Action'>,
+    HasOneMixin<LinkedChannel, number, 'LinkedChannel'>,
+    HasManyMixin<
+      RolesToAddToMember,
+      number,
+      'RolesToAddToMember',
+      'RolesToAddToMembers'
+    > {}
 
 /**
  *
  */
-export default class FollowedMember extends Model<
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+class FollowedMember extends Model<
   InferAttributes<FollowedMember>,
   InferCreationAttributes<FollowedMember>
 > {
@@ -98,3 +111,5 @@ export default class FollowedMember extends Model<
   @Attribute(DataTypes.INTEGER)
   declare currentActionId: number;
 }
+
+export default FollowedMember;
