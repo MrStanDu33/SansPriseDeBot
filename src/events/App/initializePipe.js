@@ -114,7 +114,7 @@ const createChannel = async (member, category) => {
  * @fires module:Libraries/EventBus#App_processAction
  *
  * @example
- * await EventBus.emit({ event: 'App_processAction' });
+ * await EventBus.emit({ event: 'App_initializePipe' });
  */
 export default async (member, isNewComer = true) => {
   const { client } = Store;
