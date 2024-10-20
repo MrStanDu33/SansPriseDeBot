@@ -6,7 +6,7 @@
 import EventBus from '$src/EventBus';
 import Logger from '$src/Logger';
 
-/** @typedef { import('discord.js').GuildMember } Member */
+type Member = import('discord.js').GuildMember;
 
 /**
  * @description Function that is called when a new member joins the server.
@@ -21,7 +21,7 @@ import Logger from '$src/Logger';
  * @example
  * await EventBus.emit({ event: 'Discord_guildMemberAdd' });
  */
-export default (member) => {
+export default (member: Member) => {
   if (member.guild.id !== process.env.DISCORD_SERVER_ID) return;
 
   const whitelistEnabled =
@@ -32,5 +32,5 @@ export default (member) => {
   if (whitelistEnabled && !membersWhitelist.includes(member.id)) return;
 
   Logger.info(`New member just came ! (${member.user.tag})`);
-  EventBus.emit({ event: 'App_initializePipe', args: [member] });
+  void EventBus.emit({ event: 'App_initializePipe', args: [member] });
 };

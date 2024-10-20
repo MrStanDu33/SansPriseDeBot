@@ -14,7 +14,7 @@ describe('EventBus', () => {
   });
 
   afterEach(() => {
-    process.env.APP_DEBUG = APP_DEBUG;
+    process.env.APP_DEBUG = APP_DEBUG as 'true' | 'false';
   });
   describe('Event Listener', () => {
     it("Should require event's name", () => {

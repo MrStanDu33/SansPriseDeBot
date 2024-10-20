@@ -68,7 +68,7 @@ describe('Logger', () => {
     let consoleLogMock: SpiedFunction<typeof console.log>;
     let consoleWarnMock: SpiedFunction<typeof console.warn>;
     let consoleErrorMock: SpiedFunction<typeof console.error>;
-    const env: Record<string, string | undefined> = {};
+    const env: Record<string, string> = {};
 
     beforeEach(() => {
       env.APP_DEBUG = process.env.APP_DEBUG;
@@ -84,7 +84,7 @@ describe('Logger', () => {
     });
 
     afterEach(() => {
-      process.env.APP_DEBUG = env.APP_DEBUG;
+      process.env.APP_DEBUG = env.APP_DEBUG as 'true' | 'false';
       writeFileMock.mockRestore();
       consoleLogMock.mockRestore();
       consoleWarnMock.mockRestore();
@@ -149,7 +149,7 @@ describe('Logger', () => {
     });
 
     afterEach(() => {
-      process.env.APP_DEBUG = env.APP_DEBUG;
+      process.env.APP_DEBUG = env.APP_DEBUG as 'true' | 'false';
       consoleLogMock.mockRestore();
       consoleWarnMock.mockRestore();
       consoleErrorMock.mockRestore();
@@ -201,7 +201,7 @@ describe('Logger', () => {
 
     afterEach(() => {
       writeFileMock.mockRestore();
-      process.env.APP_DEBUG = env.APP_DEBUG;
+      process.env.APP_DEBUG = env.APP_DEBUG as 'true' | 'false';
     });
 
     describe('debugToFile', () => {

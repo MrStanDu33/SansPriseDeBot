@@ -7,7 +7,7 @@ import Logger from '$src/Logger/index';
 import { LinkedChannel, FollowedMember } from '$src/Models';
 import EventBus from '$src/EventBus';
 
-/** @typedef { import('discord.js').GuildMember } Member */
+type Member = import('discord.js').GuildMember;
 
 /**
  * @description Function that is called when a member leaves the server.
@@ -23,7 +23,7 @@ import EventBus from '$src/EventBus';
  * @example
  * await EventBus.emit({ event: 'Discord_guildMemberRemove' });
  */
-export default async (member) => {
+export default async (member: Member) => {
   if (process.env.DRY_RUN === 'true') return;
 
   const whitelistEnabled =
@@ -67,9 +67,9 @@ export default async (member) => {
     loader.succeed();
 
     Logger.info(`${followedMember.username}'s data successfully deleted !`);
-  } catch (error) {
+  } catch (error: unknown) {
     loader.fail();
+    // @ts-expect-error: "Unable to get member out of pipe"
     Logger.error(error.message, true);
-    throw new Error(error);
   }
 };
