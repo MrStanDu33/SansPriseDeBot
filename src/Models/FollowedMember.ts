@@ -92,6 +92,17 @@ class FollowedMember extends Model<
   @Default(0)
   declare warnsForInactivity: number;
 
+  @Attribute(DataTypes.INTEGER)
+  declare currentActionId: number;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare createdAt: Date;
+
+  @Attribute(DataTypes.DATE)
+  @NotNull
+  declare updatedAt: Date;
+
   @HasOne(() => LinkedChannel, {
     foreignKey: {
       onDelete: 'CASCADE',
@@ -107,9 +118,6 @@ class FollowedMember extends Model<
     },
   })
   declare rolesToAddToMember?: NonAttribute<RolesToAddToMember>;
-
-  @Attribute(DataTypes.INTEGER)
-  declare currentActionId: number;
 }
 
 export default FollowedMember;
